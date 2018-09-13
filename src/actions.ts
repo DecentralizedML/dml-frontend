@@ -1,34 +1,34 @@
 export enum Actions {
   SET_LOADING = 'SET_LOADING',
-  LOGIN = 'LOGIN',
-  LOGOUT = 'LOGOUT'
+  REQUEST_LOGIN = 'REQUEST_LOGIN',
+  REQUEST_LOGOUT = 'REQUEST_LOGOUT'
 };
 
 export interface Action {
   type: string
 };
 
-export interface LoadingAction extends Action {
+export interface SetLoadingAction extends Action {
   payload: boolean
 };
 
-export const loading = (value: boolean): LoadingAction => ({
+export const setLoading = (value: boolean): SetLoadingAction => ({
   type: Actions.SET_LOADING,
   payload: value
 });
 
-export interface LoginAction extends Action {
+export interface RequestLoginAction extends Action {
   payload: {
     username: string,
     password: string
   }
 };
 
-export const login = (username: string, password: string): LoginAction => ({
-  type: Actions.LOGIN,
+export const requestLogin = (username: string, password: string): RequestLoginAction => ({
+  type: Actions.REQUEST_LOGIN,
   payload: { username, password }
 });
 
-export const logout = (): Action => ({
-  type: Actions.LOGOUT
+export const requestLogout = (): Action => ({
+  type: Actions.REQUEST_LOGOUT
 });
