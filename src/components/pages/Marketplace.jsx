@@ -1,24 +1,21 @@
+
 import * as React from 'react';
 import { connect } from "react-redux";
-import { State } from '../../state';
 import Login from '../ui/Login';
 import './Marketplace.css';
 
 import logo from '../../assets/logo.svg';
 
-interface MarketplaceProps extends State {
-}
+class Marketplace extends React.Component {
 
-class Marketplace extends React.Component<MarketplaceProps, {}> {
-
-  public shouldComponentUpdate (nextProps: MarketplaceProps): boolean {
+  shouldComponentUpdate (nextProps) {
     console.log('Marketplace.shouldComponentUpdate');
     console.log(this.props);
     console.log(nextProps);
     return true;
   }
 
-  public render () {
+  render () {
     return (
       <div className="App-page">
         <div className="App-header">

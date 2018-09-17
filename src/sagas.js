@@ -1,8 +1,8 @@
 import { all, takeLatest, /* call, */ put, call } from 'redux-saga/effects';
 import { delay } from 'redux-saga';
-import { Actions, setLoading, RequestLoginAction } from './actions';
+import { Actions, setLoading } from './actions';
 
-function* loginSaga (action: RequestLoginAction) {
+function* loginSaga (action) {
   const loading_on = setLoading(true);
   console.log(loading_on);
   yield put(loading_on);

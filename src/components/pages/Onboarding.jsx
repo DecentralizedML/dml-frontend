@@ -1,22 +1,18 @@
 import * as React from 'react';
 import { connect } from "react-redux";
-import { State } from '../../state';
-import './Bounties.css';
+import './Onboarding.css';
 
-interface BountiesProps extends State {
-}
-
-class Bounties extends React.Component<BountiesProps, {}> {
+class Onboarding extends React.Component {
 
   /*
-  public shouldComponentUpdate (nextProps: BountiesProps): boolean {
+  shouldComponentUpdate (nextProps) {
     console.log(this.props);
     console.log(nextProps);
     return true;
   }
   */
 
-  public render () {
+  render () {
     return (
       <div>
         <h1>Bounties</h1>
@@ -30,4 +26,4 @@ export default connect(
   state => state,
   dispatch => ({
   })
-)(Bounties);
+)(Onboarding);

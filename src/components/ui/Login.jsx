@@ -4,22 +4,10 @@ import { requestLogin } from '../../actions';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import './Login.css';
 
-/*
-interface LoginState {
-  email: string,
-  password: string
-}
-
-interface LoginProps {
-  redirectOnFailTo?: string,
-  requestLogin: typeof requestLogin
-}
-*/
-
 class Login extends React.Component {
 
   /*
-  public shouldComponentUpdate (nextProps: LoginProps): boolean {
+  shouldComponentUpdate (nextProps) {
     console.log(this.props);
     console.log(nextProps);
     return true;
@@ -38,7 +26,7 @@ class Login extends React.Component {
 
   }
 
-  public render () {
+  render () {
     return (
       <div className="Login-form">
         <h2>Log In</h2>

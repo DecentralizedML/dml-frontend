@@ -10,7 +10,7 @@ import Onboarding from './components/pages/Onboarding';
 
 import './App.css';
 
-export const App: React.StatelessComponent<{}> = () => (
+export const App = () => (
   <div className="App">
     <BrowserRouter>
       <Switch>
@@ -24,4 +24,4 @@ export const App: React.StatelessComponent<{}> = () => (
     </BrowserRouter>
   </div>
 );
-// TODO parameterise routes by header and/or sidebar
+// TODO parameterise routes by header and/or sidebar?
