@@ -23,10 +23,10 @@ class Marketplace extends React.Component {
         </div>
         <div className="App-body">
           <h1>Marketplace</h1>
-          <pre>{ JSON.stringify(this.props) }</pre>
           <div className="text-center">
             <Login />
           </div>
+          <pre>{ JSON.stringify(this.props) }</pre>
         </div>
       </div>
     );
