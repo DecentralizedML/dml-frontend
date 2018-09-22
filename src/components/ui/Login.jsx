@@ -22,25 +22,17 @@ class Login extends React.Component {
   }
 
   requestGoogleOAuth () {
-    console.log(lazyLoadScript);
     // TODO Saga most of this.
-    lazyLoadScript('https://apis.google.com/js/platform.js', 'Login-oauth-google').then(() => {
+    lazyLoadScript('https://apis.google.com/js/client:platform.js', 'Login-oauth-google').then(() => {
       window.gapi.load('auth2', () => {
         const auth2 = window.gapi.auth2.getAuthInstance();
         (auth2 ? Promise.resolve(auth2) : window.gapi.auth2.init({
-          client_id: '434267187748-rmsin2o1nt2mi7rtqkm49b5fju0siqkt.apps.googleusercontent.com',
-          scope: 'profile',
-          fetch_basic_profile: false /* ,
-          ux_mode: 'redirect',
-          redirect_uri: `${window.location.protocol}//${window.location.hostname}${window.location.port ? `:${window.location.port}` : ''}/auth/google/callback`
-          */
+          client_id: '434267187748-rmsin2o1nt2mi7rtqkm49b5fju0siqkt.apps.googleusercontent.com'
         }))
-        .then(auth2 => auth2.signIn())
-        .then(googleUser => {
-          console.log(googleUser);
-          const resp = googleUser.getAuthResponse();
-          console.log(googleUser.getAuthResponse());
-          fetch(`https://elegant-brisk-indianjackal.gigalixirapp.com/auth/google/callback?code=${resp.access_token}`).then(
+        .then(auth2 => auth2.grantOfflineAccess())
+        .then(access => {
+          console.log(access);
+          fetch(`https://elegant-brisk-indianjackal.gigalixirapp.com/auth/google/callback?code=${access.code}`).then(
             (...args) => {
               console.log(args);
             },
