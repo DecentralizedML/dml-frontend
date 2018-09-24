@@ -21,43 +21,78 @@ class Login extends React.Component {
     this.props.requestLogin(username, password);
   }
 
-  requestGoogleOAuth () {
+  requestOAuthLogin (provider, code) {
     // TODO Saga most of this.
-    lazyLoadScript('https://apis.google.com/js/client:platform.js', 'Login-oauth-google').then(() => {
-      window.gapi.load('auth2', () => {
-        const auth2 = window.gapi.auth2.getAuthInstance();
-        (auth2 ? Promise.resolve(auth2) : window.gapi.auth2.init({
-          client_id: '434267187748-rmsin2o1nt2mi7rtqkm49b5fju0siqkt.apps.googleusercontent.com'
-        }))
-        .then(auth2 => auth2.grantOfflineAccess())
-        .then(access => fetch(`https://elegant-brisk-indianjackal.gigalixirapp.com/auth/google/callback?code=${access.code}`))
+    return fetch(`https://elegant-brisk-indianjackal.gigalixirapp.com/auth/${provider}/callback?code=${code}`)
+      .then(response => {
+        // TODO catch unexpected responses and throw.
+        return response.json();
+      })
+      .then(data => {
+        console.log(data);
+        // TODO store data.jwt and other detail in the user state.
+      });
+  }
+
+  requestGoogleOAuth = () => {
+    // TODO Saga most of this.
+    const requestOAuthLogin = this.requestOAuthLogin;
+    lazyLoadScript('https://apis.google.com/js/client:platform.js', 'Login-oauth-google')
+      .then(() => {
+        window.gapi.load('auth2', () => {
+          const auth2 = window.gapi.auth2.getAuthInstance();
+          (auth2 ? Promise.resolve(auth2) : window.gapi.auth2.init({
+            client_id: '434267187748-rmsin2o1nt2mi7rtqkm49b5fju0siqkt.apps.googleusercontent.com'
+          }))
+          .then(auth2 => auth2.grantOfflineAccess())
+          .then(access => requestOAuthLogin('google', access.code))
+          .catch(reason => {
+            // TODO error handling in miscReducer.
+            console.error(reason);
+            debugger;
+          })
+        });
+      })
+      .catch(reason => {
+        // TODO error handling in miscReducer.
+        console.error(reason);
+        debugger;
+      });
+  }
+
+  requestFacebookOAuth = () => {
+    // TODO Saga most of this.
+    // TODO maybe try-catch this to provide a single error handling point.
+    const requestOAuthLogin = this.requestOAuthLogin;
+    window.fbAsyncInit = window.fbAsyncInit || (() => {
+      window.FB.init({
+        appId: '1100670340090827',
+        autoLogAppEvents: true,
+        xfbml: true,
+        version: 'v3.1'
+      });
+      window.FB.login(response => Promise.resolve(response)
         .then(response => {
-          // TODO catch unexpected responses and throw.
-          return response.json();
+          if (response.authResponse) {
+            return response.authResponse;
+          } else {
+            throw new Error('Facebook login failed or rejected');
+          }
         })
-        .then(data => {
-          console.log(data);
-          // TODO store data.jwt and other detail in the user state.
-        })
+        .then(auth => requestOAuthLogin('facebook', auth.accessToken))
         .catch(reason => {
-          // TODO report error
+          // TODO error handling in miscReducer.
           console.error(reason);
           debugger;
-        });
-      });
+        })
+      );
     });
-  }
-
-  requestFacebookOAuth () {
-
-  }
-
-  responseGoogle (googleUser) {
-    console.log(googleUser);
-  }
-
-  responseFacebook (facebookUser) {
-    console.log(facebookUser);
+    lazyLoadScript('https://connect.facebook.net/en_US/sdk.js', 'Login-oauth-facebook')
+      .catch(reason => {
+        // TODO error handling in miscReducer.
+        console.error(reason);
+        debugger;
+      });
   }
 
   render () {

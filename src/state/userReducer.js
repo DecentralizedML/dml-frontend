@@ -1,7 +1,14 @@
 import { Actions } from '../actions';
 
 export const initialUserState = {
-  id: null
+  server: {
+    id: null,
+    jwt: null,
+    email: 'rwebber@kyokan.io',
+    first_name: null,
+    last_name: null,
+    wallet_address: null
+  }
 };
 
 export const userReducer = (state = initialUserState, action) => {
@@ -10,7 +17,7 @@ export const userReducer = (state = initialUserState, action) => {
     case Actions.REQUEST_LOGOUT:
       return {
         ...state,
-        id: null
+        server: initialUserState.server
         // This will probably clear a cookie/localStorage, so should be in sagas instead.
       };
     default:
