@@ -30,20 +30,19 @@ class Login extends React.Component {
           client_id: '434267187748-rmsin2o1nt2mi7rtqkm49b5fju0siqkt.apps.googleusercontent.com'
         }))
         .then(auth2 => auth2.grantOfflineAccess())
-        .then(access => {
-          console.log(access);
-          fetch(`https://elegant-brisk-indianjackal.gigalixirapp.com/auth/google/callback?code=${access.code}`).then(
-            (...args) => {
-              console.log(args);
-            },
-            reason => {
-              console.error(reason);
-            }
-          )
+        .then(access => fetch(`https://elegant-brisk-indianjackal.gigalixirapp.com/auth/google/callback?code=${access.code}`))
+        .then(response => {
+          // TODO catch unexpected responses and throw.
+          return response.json();
+        })
+        .then(data => {
+          console.log(data);
+          // TODO store data.jwt and other detail in the user state.
         })
         .catch(reason => {
           // TODO report error
           console.error(reason);
+          debugger;
         });
       });
     });
