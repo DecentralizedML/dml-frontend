@@ -7,6 +7,7 @@ import Bounties from './components/pages/Bounties';
 import Upload from './components/pages/Upload';
 import Account from './components/pages/Account';
 import Onboarding from './components/pages/Onboarding';
+import FacebookCallback from './components/ui/Login/FacebookCallback';
 
 import './App.css';
 
@@ -15,6 +16,7 @@ export const App = () => (
     <BrowserRouter>
       <Switch>
         <Redirect exact from="/" to="/marketplace" />
+        <Route path="/auth/facebook/callback" component={FacebookCallback} />
         <Route path="/marketplace" component={Marketplace} />
         <Route path="/bounties" component={Bounties} />
         <Route path="/upload" component={Upload} />

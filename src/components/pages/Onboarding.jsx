@@ -15,7 +15,7 @@ class Onboarding extends React.Component {
   render () {
     return (
       <div>
-        <h1>Bounties</h1>
+        <h1>Onboarding</h1>
         <pre>{ JSON.stringify(this.props) }</pre>
       </div>
     );
