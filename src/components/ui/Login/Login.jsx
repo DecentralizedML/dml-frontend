@@ -68,8 +68,9 @@ class Login extends React.Component {
     const location = window.location;
     const redirectUri = `${location.origin}/auth/facebook/callback`;
     const state = encodeURIComponent(location);
+    const scope = [ 'email' ].join(',');
     // TODO use this.props.history.push()
-    location.assign(`https://www.facebook.com/v3.1/dialog/oauth?client_id=${clientId}&redirect_uri=${redirectUri}&state=${state}&display=popup`);
+    location.assign(`https://www.facebook.com/v3.1/dialog/oauth?client_id=${clientId}&redirect_uri=${redirectUri}&state=${state}&scope=${scope}`);
     // TODO redirect back to the current location and intercept ?code= parameter via a middleware auth handler.
   }
 
