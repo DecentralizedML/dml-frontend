@@ -4,21 +4,32 @@ export const initialUserState = {
   server: {
     id: null,
     jwt: null,
-    email: 'rwebber@kyokan.io',
+    email: null,
     first_name: null,
     last_name: null,
     wallet_address: null
   }
 };
 
-export const userReducer = (state = initialUserState, action) => {
-  switch (action.type) {
-    // case Actions.REQUEST_LOGIN: needs to make an call, so definitely needs to be in sagas.
-    case Actions.REQUEST_LOGOUT:
+export const userReducer = (state = initialUserState, { type, payload }) => {
+  switch (type) {
+    case Actions.AUTH_SUCCESS:
+      return {
+        ...state,
+        server: {
+          id: payload.id,
+          jwt: payload.jwt,
+          email: payload.email,
+          first_name: payload.first_name,
+          last_name: payload.last_name,
+          wallet_address: payload.wallet_address
+        }
+      };
+    case Actions.AUTH_LOGOUT:
+    case Actions.AUTH_FAILURE:
       return {
         ...state,
         server: initialUserState.server
-        // This will probably clear a cookie/localStorage, so should be in sagas instead.
       };
     default:
       return state;

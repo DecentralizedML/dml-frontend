@@ -14,7 +14,6 @@ class FacebookCallback extends React.Component {
       .then(data => {
         console.log(data);
         // TODO store data.jwt and other detail in the user state.
-        debugger;
         window.location.assign(params.state);
       });
   }

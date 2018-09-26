@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { requestLogin } from '../../../actions';
+import { requestLogin, requestOAuth } from '../../../actions';
 import lazyLoadScript from 'lazyload-script';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import './Login.css';
@@ -22,22 +22,8 @@ class Login extends React.Component {
     this.props.requestLogin(username, password);
   }
 
-  requestOAuthLogin (provider, code) {
-    // TODO Saga most of this.
-    return fetch(`https://elegant-brisk-indianjackal.gigalixirapp.com/auth/${provider}/callback?code=${code}`)
-      .then(response => {
-        // TODO catch unexpected responses and throw.
-        return response.json();
-      })
-      .then(data => {
-        console.log(data);
-        // TODO store data.jwt and other detail in the user state.
-      });
-  }
-
   requestGoogleOAuth = () => {
     // TODO Saga most of this.
-    const requestOAuthLogin = this.requestOAuthLogin;
     lazyLoadScript('https://apis.google.com/js/client:platform.js', 'Login-oauth-google')
       .then(() => {
         window.gapi.load('auth2', () => {
@@ -47,7 +33,7 @@ class Login extends React.Component {
             // TODO change to use ux_mode=redirect for consistency with Facebook behaviour.
           }))
           .then(auth2 => auth2.grantOfflineAccess())
-          .then(access => requestOAuthLogin('google', access.code))
+          .then(access => this.props.requestOAuth('google', access.code))
           .catch(reason => {
             // TODO error handling in miscReducer.
             console.error(reason);
@@ -111,6 +97,9 @@ export default withRouter(connect(
   dispatch => ({
     requestLogin: (username, password) => {
       dispatch(requestLogin(username, password));
+    },
+    requestOAuth: (provider, code) => {
+      dispatch(requestOAuth(provider, code));
     }
   })
 )(Login));

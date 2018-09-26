@@ -10,7 +10,6 @@ class Marketplace extends React.Component {
 
   shouldComponentUpdate (nextProps) {
     console.log('Marketplace.shouldComponentUpdate');
-    console.log(this.props);
     console.log(nextProps);
     return true;
   }
@@ -26,7 +25,7 @@ class Marketplace extends React.Component {
           <div className="text-center">
             <Login />
           </div>
-          <pre>{ JSON.stringify(this.props) }</pre>
+          <pre>{ JSON.stringify(this.props.user) }</pre>
         </div>
       </div>
     );

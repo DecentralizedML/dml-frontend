@@ -1,22 +1,22 @@
-import { all, takeLatest, /* call, */ put, call } from 'redux-saga/effects';
-import { delay } from 'redux-saga';
-import { Actions, setLoading } from './actions';
+import { all, takeLatest, call, put } from 'redux-saga/effects';
+import { Actions, authSuccess, authFailure } from './actions';
 
-function* loginSaga (action) {
-  const loading_on = setLoading(true);
-  console.log(loading_on);
-  yield put(loading_on);
-  console.log(action);
-  // TODO send login API request. The response does put(loading(false)).
-  // TODO setup a race with a timeout.
-  yield call(delay, 2000);
-  const loading_off = setLoading(false);
-  console.log(loading_off);
-  yield put(loading_off);
+function* requestOAuth ({ payload }) {
+  console.log(payload);
+  try {
+    const response = yield call(fetch, `https://elegant-brisk-indianjackal.gigalixirapp.com/auth/${payload.provider}/callback?code=${payload.code}`);
+    console.log(response);
+    // TODO throw on bad response.status
+    const data = yield call(response.json.bind(response));
+    console.log(data);
+    yield put(authSuccess(data));
+  } catch (e) {
+    yield put(authFailure(e));
+  }
 }
 
 export default function* sagas () {
   yield all([
-    yield takeLatest(Actions.REQUEST_LOGIN, loginSaga)
+    yield takeLatest(Actions.REQUEST_OAUTH, requestOAuth)
   ]);
 }
