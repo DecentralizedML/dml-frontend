@@ -3,6 +3,7 @@ import * as React from 'react';
 import { connect } from "react-redux";
 import Login from '../ui/Login';
 import './Marketplace.css';
+import { Button } from "kyokan-ui";
 
 import logo from '../../assets/logo.svg';
 
@@ -28,6 +29,9 @@ class Marketplace extends React.Component {
           </div>
           <pre>{ JSON.stringify(this.props) }</pre>
         </div>
+        <Button text={"HEY YO"}>
+          HEY YO
+        </Button>
       </div>
     );
   }
