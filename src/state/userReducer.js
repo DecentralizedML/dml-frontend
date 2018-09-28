@@ -1,6 +1,7 @@
 import { Actions } from '../actions';
 
 export const initialUserState = {
+  authRequired: false,
   server: {
     id: null,
     jwt: null,
@@ -13,6 +14,11 @@ export const initialUserState = {
 
 export const userReducer = (state = initialUserState, { type, payload }) => {
   switch (type) {
+    case Actions.SET_AUTH_REQUIRED:
+      return {
+        ...state,
+        authRequired: payload
+      };
     case Actions.AUTH_SUCCESS:
       return {
         ...state,

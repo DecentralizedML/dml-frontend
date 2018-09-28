@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { requestLogin, requestOAuth } from '../../../actions';
+import { requestLogin, requestOAuth, requestGoogleOAuth, requestFacebookOAuth } from '../../../actions';
 import lazyLoadScript from 'lazyload-script';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import './Login.css';
@@ -100,6 +100,12 @@ export default withRouter(connect(
     },
     requestOAuth: (provider, code) => {
       dispatch(requestOAuth(provider, code));
+    },
+    requestGoogleOAuth: () => {
+      dispatch(requestGoogleOAuth());
+    },
+    requestFacebookOAuth: () => {
+      dispatch(requestFacebookOAuth());
     }
   })
 )(Login));
