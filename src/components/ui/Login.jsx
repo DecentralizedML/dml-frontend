@@ -2,7 +2,8 @@ import * as React from 'react';
 import { connect } from "react-redux";
 import { requestLogin } from '../../actions';
 import lazyLoadScript from 'lazyload-script';
-import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import { Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button } from 'kyokan-ui';
 import './Login.css';
 
 class Login extends React.Component {
