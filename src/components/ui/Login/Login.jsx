@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { connect } from "react-redux";
-import { requestLogin } from '../../actions';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { requestLogin, requestOAuth, requestGoogleOAuth, requestFacebookOAuth } from '../../../actions';
 import lazyLoadScript from 'lazyload-script';
 import { Form, FormGroup, Label, Input } from 'reactstrap';
 import { Button } from 'kyokan-ui';
@@ -22,31 +23,18 @@ class Login extends React.Component {
     this.props.requestLogin(username, password);
   }
 
-  requestOAuthLogin (provider, code) {
-    // TODO Saga most of this.
-    return fetch(`https://elegant-brisk-indianjackal.gigalixirapp.com/auth/${provider}/callback?code=${code}`)
-      .then(response => {
-        // TODO catch unexpected responses and throw.
-        return response.json();
-      })
-      .then(data => {
-        console.log(data);
-        // TODO store data.jwt and other detail in the user state.
-      });
-  }
-
   requestGoogleOAuth = () => {
     // TODO Saga most of this.
-    const requestOAuthLogin = this.requestOAuthLogin;
     lazyLoadScript('https://apis.google.com/js/client:platform.js', 'Login-oauth-google')
       .then(() => {
         window.gapi.load('auth2', () => {
           const auth2 = window.gapi.auth2.getAuthInstance();
           (auth2 ? Promise.resolve(auth2) : window.gapi.auth2.init({
             client_id: '434267187748-rmsin2o1nt2mi7rtqkm49b5fju0siqkt.apps.googleusercontent.com'
+            // TODO change to use ux_mode=redirect for consistency with Facebook behaviour.
           }))
           .then(auth2 => auth2.grantOfflineAccess())
-          .then(access => requestOAuthLogin('google', access.code))
+          .then(access => this.props.requestOAuth('google', access.code))
           .catch(reason => {
             // TODO error handling in miscReducer.
             console.error(reason);
@@ -63,37 +51,14 @@ class Login extends React.Component {
 
   requestFacebookOAuth = () => {
     // TODO Saga most of this.
-    // TODO maybe try-catch this to provide a single error handling point.
-    const requestOAuthLogin = this.requestOAuthLogin;
-    window.fbAsyncInit = window.fbAsyncInit || (() => {
-      window.FB.init({
-        appId: '1100670340090827',
-        autoLogAppEvents: true,
-        xfbml: true,
-        version: 'v3.1'
-      });
-      window.FB.login(response => Promise.resolve(response)
-        .then(response => {
-          if (response.authResponse) {
-            return response.authResponse;
-          } else {
-            throw new Error('Facebook login failed or rejected');
-          }
-        })
-        .then(auth => requestOAuthLogin('facebook', auth.accessToken))
-        .catch(reason => {
-          // TODO error handling in miscReducer.
-          console.error(reason);
-          debugger;
-        })
-      );
-    });
-    lazyLoadScript('https://connect.facebook.net/en_US/sdk.js', 'Login-oauth-facebook')
-      .catch(reason => {
-        // TODO error handling in miscReducer.
-        console.error(reason);
-        debugger;
-      });
+    const clientId = '1100670340090827';
+    const location = window.location;
+    const redirectUri = `${location.origin}/auth/facebook/callback`;
+    const state = encodeURIComponent(location);
+    const scope = [ 'email' ].join(',');
+    // TODO use this.props.history.push()
+    location.assign(`https://www.facebook.com/v3.1/dialog/oauth?client_id=${clientId}&redirect_uri=${redirectUri}&state=${state}&scope=${scope}`);
+    // TODO redirect back to the current location and intercept ?code= parameter via a middleware auth handler.
   }
 
   render () {
@@ -125,7 +90,7 @@ class Login extends React.Component {
   }
 }
 
-export default connect(
+export default withRouter(connect(
   () => ({
     email: null,
     password: null
@@ -133,6 +98,15 @@ export default connect(
   dispatch => ({
     requestLogin: (username, password) => {
       dispatch(requestLogin(username, password));
+    },
+    requestOAuth: (provider, code) => {
+      dispatch(requestOAuth(provider, code));
+    },
+    requestGoogleOAuth: () => {
+      dispatch(requestGoogleOAuth());
+    },
+    requestFacebookOAuth: () => {
+      dispatch(requestFacebookOAuth());
     }
   })
-)(Login);
+)(Login));

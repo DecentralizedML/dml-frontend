@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
+import { createLogger } from 'redux-logger';
 import { reducers } from './state';
 import sagas from './sagas';
 import registerServiceWorker from './registerServiceWorker';
@@ -13,10 +14,13 @@ import './index.css';
 // create the saga middleware
 const sagaMiddleware = createSagaMiddleware();
 
-// mount it on the Store
+// add a logger
+const logger = createLogger();
+
+// mount it on the store
 const store = createStore(
   reducers,
-  applyMiddleware(sagaMiddleware)
+  applyMiddleware(sagaMiddleware, logger)
 );
 
 // then run the saga
