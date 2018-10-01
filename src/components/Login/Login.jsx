@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { requestLogin, requestOAuth, requestGoogleOAuth, requestFacebookOAuth } from '../../../actions';
+import { requestLogin, requestOAuth, requestGoogleOAuth, requestFacebookOAuth } from '../../actions';
 import lazyLoadScript from 'lazyload-script';
 import { Form, FormGroup, Label, Input } from 'reactstrap';
 import { Button } from 'kyokan-ui';

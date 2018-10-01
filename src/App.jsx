@@ -5,14 +5,12 @@ import { Redirect, Route, Switch } from 'react-router';
 import { ThemeProvider } from 'styled-components';
 import { DMLTheme } from 'kyokan-ui';
 
-import Marketplace from './components/pages/Marketplace';
-import Bounties from './components/pages/Bounties';
-import Upload from './components/pages/Upload';
-import Account from './components/pages/Account';
-import Onboarding from './components/pages/Onboarding';
-import FacebookCallback from './components/ui/Login/FacebookCallback';
-
-import './App.css';
+import Marketplace from './pages/Marketplace';
+import Bounties from './pages/Bounties';
+import Upload from './pages/Upload';
+import Account from './pages/Account';
+import Onboarding from './pages/Onboarding';
+import FacebookCallback from './components/Login/FacebookCallback';
 
 export const App = () => (
     <ThemeProvider theme={DMLTheme}>

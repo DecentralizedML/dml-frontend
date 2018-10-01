@@ -1,10 +1,10 @@
 
 import * as React from 'react';
 import { connect } from "react-redux";
-import Login from '../ui/Login';
+import Login from '../components/Login';
 import './Marketplace.css';
 
-import logo from '../../assets/logo.svg';
+import logo from '../assets/logo.svg';
 
 class Marketplace extends React.Component {
 

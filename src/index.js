@@ -8,8 +8,6 @@ import { reducers } from './state';
 import sagas from './sagas';
 import registerServiceWorker from './registerServiceWorker';
 import { App } from './App';
-import 'bootstrap/dist/css/bootstrap.css';
-import './index.css';
 
 // create the saga middleware
 const sagaMiddleware = createSagaMiddleware();
