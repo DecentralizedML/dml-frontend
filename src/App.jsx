@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Redirect, Route, Switch } from 'react-router';
 
 import { ThemeProvider } from 'styled-components';
-import DMLTheme from 'kyokan-ui/DMLTheme';
+import { DMLTheme } from 'kyokan-ui';
 
 import Marketplace from './pages/Marketplace';
 import Bounties from './pages/Bounties';
