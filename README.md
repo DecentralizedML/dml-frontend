@@ -7,8 +7,8 @@ This project is implemented using React, Redux-Saga and Bootstrap.
 The initial boilerplate was generated using [Create React App](https://github.com/facebookincubator/create-react-app).
 The boilerplate was manually extended to include:
 - redux-saga,
+- redux-persist,
 - react-router-dom,
-- react-error-overlay,
 - reactstrap (Bootstrap 4),
 - react-fontawesome.
 

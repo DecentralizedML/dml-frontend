@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Redirect, Route, Switch } from 'react-router';
 
 import { ThemeProvider } from 'styled-components';
-import { DMLTheme } from 'kyokan-ui';
+import DMLTheme from 'kyokan-ui/DMLTheme';
 
 import Marketplace from './pages/Marketplace';
 import Bounties from './pages/Bounties';
@@ -17,6 +17,7 @@ export const App = () => (
       <BrowserRouter>
         <Switch>
           <Redirect exact from="/" to="/marketplace" />
+          <Route path="/auth/facebook/callback" component={FacebookCallback} />
           <Route path="/marketplace" component={Marketplace} />
           <Route path="/bounties" component={Bounties} />
           <Route path="/upload" component={Upload} />
