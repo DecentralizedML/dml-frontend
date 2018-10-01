@@ -1,0 +1,16 @@
+.onboarding {
+    display: flex;
+    flex-flow: row nowrap;
+    height: 100vh;
+    widht: 100vw;
+}
+
+.onboarding__sidebar {
+    background-image: url("../../assets/sidebar_bg.svg");
+    background-repeat: no-repeat;
+    background-position: 202px 68px;
+}
+
+.onboarding__logo {
+    width: 170px;
+}

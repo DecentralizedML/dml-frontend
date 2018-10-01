@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="40px" viewBox="0 0 48 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>Icon/48px/Developers</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Onboarding" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="DML/Onboarding---Step-2" transform="translate(-64.000000, -358.000000)">
+            <g id="Sidebar">
+                <g id="Slider" transform="translate(64.000000, 354.000000)">
+                    <g id="Icon/48px/Developers">
+                        <g id="Icon" transform="translate(0.000000, 4.000000)">
+                            <path d="M1,9 L47,9 L47,3 C47,1.8954305 46.1045695,1 45,1 L3,1 C1.8954305,1 1,1.8954305 1,3 L1,9 Z" id="Rectangle-9" stroke="#8194B2" stroke-width="2" fill-opacity="0.2" fill="#6E8DBD"></path>
+                            <circle id="Oval" fill="#8194B2" cx="5" cy="5" r="1"></circle>
+                            <circle id="Oval" fill="#8194B2" cx="9" cy="5" r="1"></circle>
+                            <circle id="Oval" fill="#8194B2" cx="13" cy="5" r="1"></circle>
+                            <path d="M1,9 L1,38 C1,38.5522847 1.44771525,39 2,39 L46,39 C46.5522847,39 47,38.5522847 47,38 L47,9 L1,9 Z" id="Rectangle-8" stroke="#8194B2" stroke-width="2"></path>
+                            <path d="M13.2000015,24.2686292 L16.6343161,20.8343146 C16.9467355,20.5218951 17.4532675,20.5218951 17.765687,20.8343146 C18.0781064,21.146734 18.0781064,21.653266 17.765687,21.9656854 L13.765687,25.9656854 C13.6094772,26.1218951 13.4047394,26.2 13.2000015,26.2 C12.9952637,26.2 12.7905258,26.1218951 12.6343161,25.9656854 L8.6343161,21.9656854 C8.32189667,21.653266 8.32189667,21.146734 8.6343161,20.8343146 C8.94673553,20.5218951 9.45326752,20.5218951 9.76568695,20.8343146 L13.2000015,24.2686292 Z" id="Combined-Shape" fill="#FFFFFF" fill-rule="nonzero" transform="translate(13.200002, 23.400000) rotate(90.000000) translate(-13.200002, -23.400000) "></path>
+                            <path d="M34.8000015,24.2686292 L38.2343161,20.8343146 C38.5467355,20.5218951 39.0532675,20.5218951 39.365687,20.8343146 C39.6781064,21.146734 39.6781064,21.653266 39.365687,21.9656854 L35.365687,25.9656854 C35.2094772,26.1218951 35.0047394,26.2 34.8000015,26.2 C34.5952637,26.2 34.3905258,26.1218951 34.2343161,25.9656854 L30.2343161,21.9656854 C29.9218967,21.653266 29.9218967,21.146734 30.2343161,20.8343146 C30.5467355,20.5218951 31.0532675,20.5218951 31.365687,20.8343146 L34.8000015,24.2686292 Z" id="Combined-Shape" fill="#FFFFFF" fill-rule="nonzero" transform="translate(34.800002, 23.400000) rotate(-90.000000) translate(-34.800002, -23.400000) "></path>
+                            <path d="M21.2000015,29.4854998 L27.2427514,17.4" id="Line-3" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
