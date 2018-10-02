@@ -1,0 +1,74 @@
+.onboarding {
+    display: flex;
+    flex-flow: row nowrap;
+    height: 100vh;
+    width: 100vw;
+}
+
+.onboarding__sidebar {
+    background-image: url("../../assets/sidebar_bg.svg");
+    background-repeat: no-repeat;
+    background-position: 202px 68px;
+}
+
+.onboarding__logo {
+    width: 170px;
+}
+
+.onboarding__content {
+    flex: 1 0 auto;
+    background-color: #ebf0f5;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    padding: 4.5rem 0 0;
+}
+
+.onboarding__panel {
+    width: 28rem;
+    padding: 2rem;
+    margin-top: 3rem;
+}
+
+.onboarding__panel-header {
+    margin-bottom: 1rem;
+}
+
+.onboarding__panel-dev-header {
+    margin-top: 2rem;
+}
+
+.onboarding__input {
+    margin-bottom: 1rem;
+}
+
+.onboarding__dev-description {
+    font-size: .9rem;
+    font-weight: 300;
+}
+
+.onboarding__gh-oauth {
+    margin: 1rem 0 2rem;
+}
+
+.onboarding__metamask-install-btn {
+    margin-top: 2rem;
+}
+
+.onboarding__metamask-proceed-btn {
+    width: 14rem;
+    margin-top: 1rem;
+}
+
+.onboarding__installed-mm-text {
+    margin-top: 2rem;
+    font-weight: 300;
+    font-size: .8rem;
+    color: rgb(129,148,178);
+    letter-spacing: 0.03rem;
+}
+
+.onboarding__unlock-image {
+    margin-top: 3rem;
+    width: 24rem;
+}

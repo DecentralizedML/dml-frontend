@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { connect } from "react-redux";
 import './Onboarding.css';
+import Signup from './Signup';
+import AdditionalInfo from './AdditionalInfo';
+import Metamask from './Metamask';
 
 class Onboarding extends React.Component {
 
@@ -13,12 +16,7 @@ class Onboarding extends React.Component {
   */
 
   render () {
-    return (
-      <div>
-        <h1>Onboarding</h1>
-        <pre>{ JSON.stringify(this.props) }</pre>
-      </div>
-    );
+    return <Signup />
   }
 }
 
