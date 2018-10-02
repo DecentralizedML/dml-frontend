@@ -12,6 +12,11 @@ import {
 } from 'kyokan-ui';
 import logo from "../../../assets/logo.svg";
 import icon from "../../../assets/icon_developers.svg";
+import unlockImage from "../../../assets/illustration_unlock_metamask.png";
+
+const INSTALL = 0;
+const INSTALLED = 1;
+const UNLOCK = 2;
 
 class Metamask extends React.Component {
 
@@ -22,6 +27,10 @@ class Metamask extends React.Component {
     return true;
   }
   */
+
+  state = {
+    step: INSTALL,
+  };
 
   renderSidebar() {
     return (
@@ -40,58 +49,66 @@ class Metamask extends React.Component {
     );
   }
 
-  renderContent() {
-    return (
-      <div className="onboarding__content">
-        <Title>Create Your Account</Title>
-        <Description>Your email address is used for account related updates.</Description>
-        <Panel className="onboarding__panel">
-          <TextInput
-            className="onboarding__input"
-            onChange={e => console.log(e.target.value)}
-            type="email"
-            placeholder="Email Address"
-          />
-          <TextInput
-            className="onboarding__input"
-            onChange={e => console.log(e.target.value)}
-            type="password"
-            placeholder="Password"
-          />
-          <Button>Continue</Button>
-        </Panel>
-      </div>
-    )
-  }
-
-  renderInstallMetamask() {
+  renderInstall() {
     return (
       <div className="onboarding__content">
         <Title>You're Almost Done!</Title>
         <Description>DML uses Metamask as your secure wallet.</Description>
         <Description>It is also used to sign blockchain transactions.</Description>
-        <MetaMaskButton className="onboarding__metamask-install-btn"/>
+        <MetaMaskButton
+          className="onboarding__metamask-install-btn"
+          onClick={() => this.setState({ step: INSTALLED })}
+        />
       </div>
     );
   }
 
-  renderInstalledMetamask() {
+  renderInstalled() {
     return (
       <div className="onboarding__content">
         <Title>You're Almost Done!</Title>
         <Description>DML uses Metamask as your secure wallet.</Description>
         <Description>It is also used to sign blockchain transactions.</Description>
         <div className="onboarding__installed-mm-text">Already installed MetaMask?</div>
-        <Button className="onboarding__metamask-proceed-btn">Proceed</Button>
+        <Button
+          className="onboarding__metamask-proceed-btn"
+          onClick={() => this.setState({ step: UNLOCK })}
+        >
+          Proceed
+        </Button>
       </div>
     );
+  }
+
+  renderUnlock() {
+    return (
+      <div className="onboarding__content">
+        <Title>Unlock MetaMask to access DML</Title>
+        <Description>Start by creating your MetaMask account by clicking on the extension.</Description>
+        <Description>If you already did, simply type in your password.</Description>
+        <img className="onboarding__unlock-image" src={unlockImage} />
+      </div>
+    );
+  }
+
+  renderContent() {
+    switch (this.state.step) {
+      case INSTALL:
+        return this.renderInstall();
+      case INSTALLED:
+        return this.renderInstalled();
+      case UNLOCK:
+        return this.renderUnlock();
+      default:
+        return null;
+    }
   }
 
   render () {
     return (
       <div className="onboarding">
         { this.renderSidebar() }
-        { this.renderInstalledMetamask() }
+        { this.renderContent() }
       </div>
     );
   }

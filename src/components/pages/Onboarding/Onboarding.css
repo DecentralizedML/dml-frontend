@@ -67,3 +67,8 @@
     color: rgb(129,148,178);
     letter-spacing: 0.03rem;
 }
+
+.onboarding__unlock-image {
+    margin-top: 3rem;
+    width: 24rem;
+}
