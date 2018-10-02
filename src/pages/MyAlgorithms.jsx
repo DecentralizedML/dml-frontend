@@ -2,8 +2,8 @@ import * as React from 'react';
 import { connect } from "react-redux";
 import {
   Grid,
-  Row,  
-  Column,
+  Row,
+  // Column,
   SiteHeader,
   Logo,
   Tabs,
