@@ -8,13 +8,11 @@ import {
   Panel,
   TextInput,
   Button,
-  Header,
-  GitHubOAuth,
 } from 'kyokan-ui';
-import logo from "../../../assets/logo.svg";
-import icon from "../../../assets/icon_developers.svg";
+import logo from "../../assets/logo.svg";
+import icon from "../../assets/icon_developers.svg";
 
-class AdditionalInfo extends React.Component {
+class Signup extends React.Component {
 
   /*
   shouldComponentUpdate (nextProps) {
@@ -31,34 +29,30 @@ class AdditionalInfo extends React.Component {
           className="onboarding__sidebar"
           logoUrl={logo}
           logoClassName="onboarding__logo"
-          subheaderText="CUSTOMERS"
-          headerText="Use Algorithms to get Target Audience Insights"
-          descriptionText="Select existing or request tailer-made algorithms based on practical needs"
+          subheaderText="DEVELOPERS"
+          headerText="Create Machine Learning Algorithmn"
+          descriptionText="Upload your algorithms to the marketplace and get paid each time they run on a device."
           iconUrl={icon}
           iconClassName="onboarding__icon"
-          currentStepIndex={1}
+          currentStepIndex={0}
           totalSteps={3}
         />
         <div className="onboarding__content">
-          <Title>Add Account Details</Title>
-          <Description>Add your account details and connect to Github if you're a developer.</Description>
+          <Title>Create Your Account</Title>
+          <Description>Your email address is used for account related updates.</Description>
           <Panel className="onboarding__panel">
-            <Header className="onboarding__panel-header">Personal Information</Header>
             <TextInput
               className="onboarding__input"
               onChange={e => console.log(e.target.value)}
-              type="text"
-              placeholder="First Name"
+              type="email"
+              placeholder="Email Address"
             />
             <TextInput
               className="onboarding__input"
               onChange={e => console.log(e.target.value)}
-              type="text"
-              placeholder="Last Name"
+              type="password"
+              placeholder="Password"
             />
-            <Header className="onboarding__panel-dev-header">Are you a developer?</Header>
-            <div className="onboarding__dev-description">Connect to GitHub to upload algorithms to the marketplace.</div>
-            <GitHubOAuth className="onboarding__gh-oauth" />
             <Button>Continue</Button>
           </Panel>
         </div>
@@ -71,4 +65,4 @@ export default connect(
   state => state,
   dispatch => ({
   })
-)(AdditionalInfo);
+)(Signup);

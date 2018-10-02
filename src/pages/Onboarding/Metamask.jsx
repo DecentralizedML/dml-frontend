@@ -10,9 +10,9 @@ import {
   Button,
   MetaMaskButton,
 } from 'kyokan-ui';
-import logo from "../../../assets/logo.svg";
-import icon from "../../../assets/icon_developers.svg";
-import unlockImage from "../../../assets/illustration_unlock_metamask.png";
+import logo from "../../assets/logo.svg";
+import icon from "../../assets/icon_developers.svg";
+import unlockImage from "../../assets/illustration_unlock_metamask.png";
 
 const INSTALL = 0;
 const INSTALLED = 1;

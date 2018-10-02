@@ -16,7 +16,7 @@ class Onboarding extends React.Component {
   */
 
   render () {
-    return <Metamask />
+    return <Signup />
   }
 }
 
