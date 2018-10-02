@@ -50,3 +50,7 @@
 .onboarding__gh-oauth {
     margin: 1rem 0 2rem;
 }
+
+.onboarding__metamask-install-btn {
+    margin-top: 2rem;
+}

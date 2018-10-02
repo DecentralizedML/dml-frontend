@@ -43,7 +43,7 @@ class AdditionalInfo extends React.Component {
           <Title>Add Account Details</Title>
           <Description>Add your account details and connect to Github if you're a developer.</Description>
           <Panel className="onboarding__panel">
-            <Header className="onboarding__panel-header">Personal Info</Header>
+            <Header className="onboarding__panel-header">Personal Information</Header>
             <TextInput
               className="onboarding__input"
               onChange={e => console.log(e.target.value)}

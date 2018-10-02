@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import './Onboarding.css';
 import Signup from './Signup';
 import AdditionalInfo from './AdditionalInfo';
+import Metamask from './Metamask';
 
 class Onboarding extends React.Component {
 
@@ -15,7 +16,7 @@ class Onboarding extends React.Component {
   */
 
   render () {
-    return <AdditionalInfo />
+    return <Metamask />
   }
 }
 
