@@ -75,11 +75,23 @@ class Metamask extends React.Component {
     );
   }
 
+  renderInstalledMetamask() {
+    return (
+      <div className="onboarding__content">
+        <Title>You're Almost Done!</Title>
+        <Description>DML uses Metamask as your secure wallet.</Description>
+        <Description>It is also used to sign blockchain transactions.</Description>
+        <div className="onboarding__installed-mm-text">Already installed MetaMask?</div>
+        <Button className="onboarding__metamask-proceed-btn">Proceed</Button>
+      </div>
+    );
+  }
+
   render () {
     return (
       <div className="onboarding">
         { this.renderSidebar() }
-        { this.renderInstallMetamask() }
+        { this.renderInstalledMetamask() }
       </div>
     );
   }
