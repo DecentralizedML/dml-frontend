@@ -38,16 +38,16 @@ class Account extends Component {
     return (
       <Grid>
         <Row>
-          <Column xl={12}>
+          <Column xlOffset={3} xl={6}>
             <Header>Account Settings</Header>
           </Column>
         </Row>
         <Row>
-          <Column xl={12}>
+          <Column xlOffset={3} xl={6}>
             <Tabs>
               <VerticalTab
                 title="Edit Profile"
-                icon=""
+                icon="user"
               >
                 <Row>
                   <Column xl={8}>
@@ -128,7 +128,7 @@ class Account extends Component {
               </VerticalTab>
               <VerticalTab
                 title="Manage Wallet"
-                icon=""
+                icon="wallet"
               >
                 <Row>
                   <Column xl={8}>
