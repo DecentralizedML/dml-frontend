@@ -6,6 +6,7 @@
     "enzyme": "^3.6.0",
     "kyokan-ui": "https://github.com/kyokan/kyokan-ui.git#master",
     "lazyload-script": "^1.0.5",
+    "prop-types": "^15.6.2",
     "query-string": "^6.1.0",
     "react": "^16.5.1",
     "react-dom": "^16.5.1",

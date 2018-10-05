@@ -1,4 +1,5 @@
 import * as React from 'react';
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import './Onboarding.css';
 import {
@@ -23,6 +24,10 @@ class AdditionalInfo extends React.Component {
     return true;
   }
   */
+
+  static propTypes = {
+    onComplete: PropTypes.func,
+  };
 
   render () {
     return (
@@ -59,7 +64,7 @@ class AdditionalInfo extends React.Component {
             <Header className="onboarding__panel-dev-header">Are you a developer?</Header>
             <div className="onboarding__dev-description">Connect to GitHub to upload algorithms to the marketplace.</div>
             <GitHubOAuth className="onboarding__gh-oauth" />
-            <Button>Continue</Button>
+            <Button onClick={this.props.onComplete}>Continue</Button>
           </Panel>
         </div>
       </div>
