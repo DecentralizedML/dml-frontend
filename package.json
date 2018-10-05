@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "enzyme": "^3.6.0",
-    "kyokan-ui": "https://github.com/kyokan/kyokan-ui.git#master",
+    "kyokan-ui": "git+https://github.com/kyokan/kyokan-ui#master",
     "lazyload-script": "^1.0.5",
     "prop-types": "^15.6.2",
     "query-string": "^6.1.0",
