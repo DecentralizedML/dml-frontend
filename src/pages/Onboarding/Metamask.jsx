@@ -5,8 +5,6 @@ import {
   OnboardingSidebar,
   Title,
   Description,
-  Panel,
-  TextInput,
   Button,
   MetaMaskButton,
 } from 'kyokan-ui';
@@ -86,7 +84,11 @@ class Metamask extends React.Component {
         <Title>Unlock MetaMask to access DML</Title>
         <Description>Start by creating your MetaMask account by clicking on the extension.</Description>
         <Description>If you already did, simply type in your password.</Description>
-        <img className="onboarding__unlock-image" src={unlockImage} />
+        <img
+          className="onboarding__unlock-image"
+          src={unlockImage}
+          alt="unlock"
+        />
       </div>
     );
   }
