@@ -5,12 +5,12 @@ import { withRouter } from 'react-router-dom';
 import { requestLogin, requestOAuth, requestGoogleOAuth, requestFacebookOAuth } from '../../actions';
 import './Onboarding.css';
 import {
-  OnboardingSidebar,
-  Title,
-  Description,
-  Panel,
-  TextInput,
+  Box,
   Button,
+  Description,
+  OnboardingSidebar,
+  TextInput,
+  Title,
 } from 'kyokan-ui';
 import logo from "../../assets/logo.svg";
 import icon from "../../assets/icon_developers.svg";
@@ -89,7 +89,7 @@ class Signup extends React.Component {
         <div className="onboarding__content">
           <Title>Create Your Account</Title>
           <Description>Your email address is used for account related updates.</Description>
-          <Panel className="onboarding__panel">
+          <Box className="onboarding__box">
             <TextInput
               className="onboarding__input"
               onChange={e => console.log(e.target.value)}
@@ -105,7 +105,7 @@ class Signup extends React.Component {
             <Button onClick={this.props.onComplete}>Continue</Button>
             <Button onClick={this.requestGoogleOAuth}>Use Google Account</Button>
             <Button onClick={this.requestFacebookOAuth}>Use Facebook Account</Button>
-          </Panel>
+          </Box>
         </div>
       </div>
     );

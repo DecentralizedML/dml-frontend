@@ -6,7 +6,7 @@ import {
   OnboardingSidebar,
   Title,
   Description,
-  Panel,
+  Box,
   TextInput,
   Button,
   Header,
@@ -47,8 +47,8 @@ class AdditionalInfo extends React.Component {
         <div className="onboarding__content">
           <Title>Add Account Details</Title>
           <Description>Add your account details and connect to Github if you're a developer.</Description>
-          <Panel className="onboarding__panel">
-            <Header className="onboarding__panel-header">Personal Information</Header>
+          <Box className="onboarding__box">
+            <Header className="onboarding__box-header">Personal Information</Header>
             <TextInput
               className="onboarding__input"
               onChange={e => console.log(e.target.value)}
@@ -61,11 +61,11 @@ class AdditionalInfo extends React.Component {
               type="text"
               placeholder="Last Name"
             />
-            <Header className="onboarding__panel-dev-header">Are you a developer?</Header>
+            <Header className="onboarding__box-dev-header">Are you a developer?</Header>
             <div className="onboarding__dev-description">Connect to GitHub to upload algorithms to the marketplace.</div>
             <GitHubOAuth className="onboarding__gh-oauth" />
             <Button onClick={this.props.onComplete}>Continue</Button>
-          </Panel>
+          </Box>
         </div>
       </div>
     );

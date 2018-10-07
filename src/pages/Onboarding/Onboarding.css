@@ -24,17 +24,17 @@
     padding: 4.5rem 0 0;
 }
 
-.onboarding__panel {
+.onboarding__box {
     width: 28rem;
     padding: 2rem;
     margin-top: 3rem;
 }
 
-.onboarding__panel-header {
+.onboarding__box-header {
     margin-bottom: 1rem;
 }
 
-.onboarding__panel-dev-header {
+.onboarding__box-dev-header {
     margin-top: 2rem;
 }
 
