@@ -6,11 +6,11 @@ const requestLogin = () => {
   });
 };
 
-const loadUserData = (userData) => {
+const loadUserData = (data) => {
   return ({
     type    : types.LOAD_USER_DATA,
     payload : {
-      userData,
+      data,
     },
   });
 };
