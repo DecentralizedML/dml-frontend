@@ -4,8 +4,8 @@
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.3.1",
+    "@kyokan/kyokan-ui": "^0.1.0",
     "enzyme": "^3.6.0",
-    "kyokan-ui": "git+https://github.com/kyokan/kyokan-ui#master",
     "lazyload-script": "^1.0.5",
     "prop-types": "^15.6.2",
     "query-string": "^6.1.0",
