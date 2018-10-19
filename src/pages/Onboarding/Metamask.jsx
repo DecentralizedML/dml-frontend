@@ -7,7 +7,7 @@ import {
   Description,
   Button,
   MetaMaskButton,
-} from 'kyokan-ui';
+} from '@kyokan/kyokan-ui';
 import logo from "../../assets/logo.svg";
 import icon from "../../assets/icon_developers.svg";
 import unlockImage from "../../assets/illustration_unlock_metamask.png";

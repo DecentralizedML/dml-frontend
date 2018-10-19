@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { requestLogin, requestOAuth, requestGoogleOAuth, requestFacebookOAuth } from '../../actions';
 import lazyLoadScript from 'lazyload-script';
 import { Form, FormGroup, Label, Input } from 'reactstrap';
-import { Button } from 'kyokan-ui';
+import { Button } from '@kyokan/kyokan-ui';
 import './Login.css';
 
 class Login extends React.Component {
