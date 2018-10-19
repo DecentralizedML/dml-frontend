@@ -11,7 +11,7 @@ import {
   OnboardingSidebar,
   TextInput,
   Title,
-} from 'kyokan-ui';
+} from '@kyokan/kyokan-ui';
 import logo from "../../assets/logo.svg";
 import icon from "../../assets/icon_developers.svg";
 import lazyLoadScript from "lazyload-script";

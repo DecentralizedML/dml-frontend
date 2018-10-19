@@ -19,7 +19,7 @@ import {
   TextArea,
   TextInput,
   VerticalTab,
-} from 'kyokan-ui';
+} from '@kyokan/kyokan-ui';
 
 import DMLBalance from '../components/DMLBalance';
 import DMLDebitLimit from '../components/DMLDebitLimit';

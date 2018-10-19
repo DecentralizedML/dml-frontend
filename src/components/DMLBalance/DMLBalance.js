@@ -10,7 +10,7 @@ import {
   Grid,
   Row,
   TokenAmount,
-} from 'kyokan-ui';
+} from '@kyokan/kyokan-ui';
 
 const DMLBalance = (props) => {
   const StyledDMLBalance = styled.div`

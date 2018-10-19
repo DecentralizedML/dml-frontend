@@ -9,7 +9,7 @@ import {
   Tabs,
   HorizontalTab,
 
-} from 'kyokan-ui';
+} from '@kyokan/kyokan-ui';
 import './MyAlgorithms.css';
 
 class MyAlgorithms extends React.Component {
