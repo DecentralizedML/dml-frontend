@@ -15,6 +15,12 @@ const listUsersError = (error) => {
   });
 };
 
+export const getMyUser = () => {
+  return {
+    type: types.GET_MY_USER
+  };
+};
+
 const loadAccountData = (data) => {
   return ({
     type    : types.LOAD_ACCOUNT_DATA,
@@ -47,6 +53,7 @@ const updateUserSuccess = () => {
 export default {
   listUsers,
   listUsersError,
+  getMyUser,
   loadAccountData,
   updateUser,
   updateUserError,

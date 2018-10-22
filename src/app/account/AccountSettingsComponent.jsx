@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import {
   AvatarControl,
@@ -60,7 +60,7 @@ const AccountComponent = (props) => {
                           >
                             <TextInput
                               label="First Name"
-                              defaultValue={props.firstName}
+                              value={props.firstName}
                             />
                           </Box>
                         </Column>
@@ -71,7 +71,7 @@ const AccountComponent = (props) => {
                           >
                             <TextInput
                               label="Last Name"
-                              defaultValue={props.lastName}
+                              value={props.lastName}
                             />
                           </Box>
                         </Column>
@@ -82,6 +82,7 @@ const AccountComponent = (props) => {
                             <TextInput
                               label="Email Address"
                               errorMessage="Please enter a valid Email Address"
+                              value={props.email}
                             />
                           </Box>
                         </Column>
