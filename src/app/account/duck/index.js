@@ -1,4 +1,4 @@
-import reducer from './reducers';
+import reducer from './reducer';
 
 export { default as accountSelectors  } from './selectors';
 export { default as accountOperations } from './operations';
