@@ -5,9 +5,10 @@
 /* ############################# */
 
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 
-import { Provider } from 'react-redux';
+import { Provider, connect } from 'react-redux';
 
 import { ThemeProvider } from 'styled-components';
 import { DMLTheme } from '@kyokan/kyokan-ui';
@@ -24,6 +25,7 @@ import Bounties from './bounties';
 import Marketplace from './marketplace';
 import Onboarding from './onboarding';
 import ProtectedRoute from './auth/ProtectedRoute';
+import { Web3Connect } from '../utils/web3connect';
 
 /* ########### */
 /* ### APP ### */
@@ -34,23 +36,26 @@ class App extends Component {
     return (
       <ThemeProvider theme={DMLTheme}>
         <Provider store={store}>
-          <Router>
-            <Switch>
-              <ProtectedRoute path="/account/:section" component={Account}     />
-              <ProtectedRoute path="/account"          component={Account}     />
-              <ProtectedRoute path="/algorithms/:id"   component={Algorithms}  />
-              <ProtectedRoute path="/bounties/:id"     component={Bounties}    />
-              <ProtectedRoute path="/marketplace"      component={Marketplace} />
+          <div id="app-root">
+            <Web3Connect/>
+            <Router>
+              <Switch>
+                <ProtectedRoute path="/account/:section" component={Account}     />
+                <ProtectedRoute path="/account"          component={Account}     />
+                <ProtectedRoute path="/algorithms/:id"   component={Algorithms}  />
+                <ProtectedRoute path="/bounties/:id"     component={Bounties}    />
+                <ProtectedRoute path="/marketplace"      component={Marketplace} />
 
-              <ProtectedRoute path="/details"          component={Onboarding}  />
-              <ProtectedRoute path="/metamask"         component={Onboarding}  />
+                <ProtectedRoute path="/details"          component={Onboarding}  />
+                <ProtectedRoute path="/metamask"         component={Onboarding}  />
 
-              <Route          path="/login"            component={Onboarding}  />
-              <Route          path="/signup"           component={Onboarding}  />
+                <Route          path="/login"            component={Onboarding}  />
+                <Route          path="/signup"           component={Onboarding}  />
 
-              <Redirect to="/marketplace" />
-            </Switch>
-          </Router>
+                <Redirect to="/marketplace" />
+              </Switch>
+            </Router>
+          </div>
         </Provider>
       </ThemeProvider>
     );

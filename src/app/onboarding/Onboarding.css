@@ -31,3 +31,14 @@
     margin-top: 3rem;
     width: 24rem;
 }
+
+.onboarding__address-container {
+    border: 1px solid #d8d8d8;
+    border-radius: 4px;
+    padding: .5rem 1rem;
+    text-align: center;
+    font-size: 1rem;
+    font-family: monospace;
+    background-color: #efefef;
+    color: #737373;
+}

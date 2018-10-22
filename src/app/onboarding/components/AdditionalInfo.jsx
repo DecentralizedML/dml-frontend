@@ -20,7 +20,6 @@ import {
 } from '@kyokan/kyokan-ui';
 
 import '../Onboarding.css';
-import authActions from "../../auth/duck/actions";
 
 class AdditionalInfo extends Component {
   static defaultProps = {

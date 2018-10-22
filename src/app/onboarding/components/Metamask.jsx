@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import {
@@ -13,14 +14,11 @@ import {
 } from '@kyokan/kyokan-ui';
 
 import '../Onboarding.css';
-
-const INSTALL = 0;
-const INSTALLED = 1;
-const UNLOCK = 2;
+import {updateUser} from "../../account/duck/actions";
 
 class Metamask extends Component {
   state = {
-    step: INSTALL,
+    hasInstalledMetamask: false,
   };
 
   renderSidebar = () => {
@@ -49,7 +47,7 @@ class Metamask extends Component {
         <MetaMaskButton
           className="onboarding__metamask-install-btn"
           onClick={() => {
-            this.setState({ step: INSTALLED });
+            this.setState({ hasInstalledMetamask: true });
           }}
         />
       </div>
@@ -65,8 +63,31 @@ class Metamask extends Component {
         <div className="onboarding__installed-mm-text">Already installed MetaMask?</div>
         <Button
           className="onboarding__metamask-proceed-btn"
+          onClick={() => window.location.reload()}
+        >
+          Refresh
+        </Button>
+      </div>
+    );
+  }
+
+  renderAddWallet = () => {
+    const { account } = this.props;
+
+    return (
+      <div className="onboarding__content">
+        <Title>Is this your wallet address?</Title>
+        <Description>DML will associate this wallet address with you account.</Description>
+        <div className="onboarding__address-container">
+          {account || ' - '}
+        </div>
+        <Button
+          className="onboarding__metamask-proceed-btn"
           onClick={() => {
-            this.setState({ step: UNLOCK });
+            const { account, history } = this.props;
+            if (account) {
+              this.props.updateUser(account, () => history.push('/account'));
+            }
           }}
         >
           Proceed
@@ -75,32 +96,19 @@ class Metamask extends Component {
     );
   }
 
-  renderUnlock = () => {
-    return (
-      <div className="onboarding__content">
-        <Title>Unlock MetaMask to access DML</Title>
-        <Description>Start by creating your MetaMask account by clicking on the extension.</Description>
-        <Description>If you already did, simply type in your password.</Description>
-        {<img
-          className="onboarding__unlock-image"
-          src="/illustration_unlock_metamask.png"
-          alt="unlock"
-        />}
-      </div>
-    );
-  }
-
   renderContent () {
-    switch (this.state.step) {
-      case INSTALL:
-        return this.renderInstall();
-      case INSTALLED:
-        return this.renderInstalled();
-      case UNLOCK:
-        return this.renderUnlock();
-      default:
-        return null;
+    const { web3 } = this.props;
+    const { hasInstalledMetamask } = this.state;
+
+    if (!web3 && !hasInstalledMetamask) {
+      return this.renderInstall();
     }
+
+    if (!web3 && hasInstalledMetamask) {
+      return this.renderInstalled();
+    }
+
+    return this.renderAddWallet();
   }
 
   render () {
@@ -130,11 +138,19 @@ class Metamask extends Component {
   }
 }
 
-export default connect(
-  (state) => {
-    return state;
-  },
-  (dispatch) => {
-    return {};
-  },
-)(Metamask);
+export default withRouter(
+  connect(
+    state => ({
+      account: state.web3connect.account,
+      web3: state.web3connect.web3,
+    }),
+    dispatch => ({
+      updateUser: (wallet_address, next) => {
+        dispatch(updateUser({
+          user: { wallet_address },
+          next,
+        }));
+      }
+    }),
+  )(Metamask)
+);
