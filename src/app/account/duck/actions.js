@@ -22,7 +22,7 @@ const loadAccountData = (data) => {
   });
 };
 
-const updateUser = (data) => {
+export const updateUser = (data) => {
   return ({
     type    : types.UPDATE_USER,
     payload : data,

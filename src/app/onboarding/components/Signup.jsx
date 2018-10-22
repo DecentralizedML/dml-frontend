@@ -25,6 +25,10 @@ import { requestOAuth, requestGoogleOAuth, requestFacebookOAuth } from '../../..
 
 import authActions from '../../auth/duck/actions';
 
+const StyledContainer = styled.div`
+  height: 500px;
+`;
+
 class Signup extends Component {
   requestGoogleOAuth = () => {
     // TODO Saga most of this.
@@ -70,9 +74,7 @@ class Signup extends Component {
   };
 
   render () {
-    const StyledContainer = styled.div`
-      height: 500px;
-    `;
+    const { history } = this.props;
 
     return (
       <div className="onboarding">
@@ -142,7 +144,7 @@ class Signup extends Component {
                             const password             = document.querySelector("[data-id='signup-input-password']").value;
                             const passwordConfirmation = document.querySelector("[data-id='signup-input-password-confirmation']").value;
 
-                            this.props.signup(email, password, passwordConfirmation);
+                            this.props.signup(email, password, passwordConfirmation, this.props.onComplete);
                           }}
                         >
                           Sign Up
@@ -185,8 +187,7 @@ class Signup extends Component {
                           onClick={() => {
                             const email    = document.querySelector("[data-id='login-input-email']").value;
                             const password = document.querySelector("[data-id='login-input-password']").value;
-
-                            this.props.login(email, password);
+                            this.props.login(email, password, history);
                           }}
                         >
                           Log In
@@ -228,21 +229,23 @@ export default withRouter(connect(
       password : null,
     };
   },
-  (dispatch) => {
+  (dispatch, ownProps) => {
     return {
       login: (email, password) => {
         dispatch(authActions.login({
           email,
           password,
+          history: ownProps.history,
         }));
       },
-      signup: (email, password, passwordConfirmation) => {
+      signup: (email, password, passwordConfirmation, next) => {
         dispatch(authActions.signup({
           user: {
             email                 : email,
             password              : password,
             password_confirmation : passwordConfirmation,
           },
+          next,
         }));
       },
       requestOAuth: (provider, code) => {

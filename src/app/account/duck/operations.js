@@ -25,6 +25,7 @@ function* updateUserSaga (action) {
   try {
     yield call(updateUser, action.payload);
     yield put(actions.updateUserSuccess());
+    yield action.payload.next && action.payload.next();
   } catch (error) {
     yield put(actions.updateUserError(error));
   }
