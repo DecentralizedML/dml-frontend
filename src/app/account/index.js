@@ -1,3 +1,3 @@
-import AccountContainer from './AccountContainer';
+import AccountSettingsContainer from './AccountSettingsContainer';
 
-export default AccountContainer;
+export default AccountSettingsContainer;

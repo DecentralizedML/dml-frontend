@@ -1,21 +1,19 @@
 import http from '../../../utils/http';
 
-const root = "/account";
+const root = '/api/users';
+const me = '/api/me';
 
-export default class AccountAPI {
-  static get () {
-    return http.get(root);
-  }
+// User / List (all)
+export function listUsers () {
+  return http.get(root);
+}
 
-  static edit (payload) {
-    return http.put(`${root}/edit/payload.id`, payload);
-  }
+// User / Update
+export function updateUser (payload) {
+  return http.put(`${root}/`, payload);
+}
 
-  static add (payload) {
-    return http.post(root, payload);
-  }
-
-  static delete (payload) {
-    return http.delete(`${root}/delete/${payload.id}`);
-  }
+// User / me
+export function getMyUser () {
+  return http.get(me);
 }

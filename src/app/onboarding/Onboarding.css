@@ -1,0 +1,44 @@
+.onboarding {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.onboarding__sidebar {
+  background-image: url("/sidebar_bg.svg");
+  background-repeat: no-repeat;
+  background-position: 202px 68px;
+  height: 100vh;
+}
+
+.onboarding__metamask-install-btn {
+    margin-top: 2rem;
+}
+
+.onboarding__metamask-proceed-btn {
+    width: 14rem;
+    margin-top: 1rem;
+}
+
+.onboarding__installed-mm-text {
+    margin-top: 2rem;
+    font-weight: 300;
+    font-size: .8rem;
+    color: rgb(129,148,178);
+    letter-spacing: 0.03rem;
+}
+
+.onboarding__unlock-image {
+    margin-top: 3rem;
+    width: 24rem;
+}
+
+.onboarding__address-container {
+    border: 1px solid #d8d8d8;
+    border-radius: 4px;
+    padding: .5rem 1rem;
+    text-align: center;
+    font-size: 1rem;
+    font-family: monospace;
+    background-color: #efefef;
+    color: #737373;
+}

@@ -1,17 +1,53 @@
+import { call, put, takeLatest } from 'redux-saga/effects';
+
 import actions from './actions';
+import types from './types';
 
-// This is a link to an action defined in actions.js.
-const simpleQuack = actions.quack;
+import {
+  listUsers,
+  updateUser,
+  getMyUser,
+} from './api';
 
-// This is a thunk which dispatches multiple actions from actions.js
-const complexQuack = (distance) => (dispatch) => {
-  dispatch(actions.quack()).then(() => {
-    dispatch(actions.swim(distance));
-    dispatch(/* any action */);
-  } );
+function* listUsersSaga (action) {
+  try {
+    const { data } = yield call(listUsers, action.payload);
+    yield call(console.log, data);
+  } catch (error) {
+    yield put(actions.listUsersError(error));
+  }
+}
+
+function* listUsersWatcherSaga () {
+  yield takeLatest(types.LIST_USERS, listUsersSaga);
+}
+
+function* getMyUserSaga () {
+  try {
+    const { data } = yield call(getMyUser);
+    yield put(actions.loadAccountData(data));
+  } catch (error) {
+    console.error('Error fetching user');
+  }
+
+}
+
+function* updateUserSaga (action) {
+  try {
+    yield call(updateUser, action.payload);
+    yield put(actions.updateUserSuccess());
+    yield action.payload.next && action.payload.next();
+  } catch (error) {
+    yield put(actions.updateUserError(error));
+  }
+}
+
+function* updateUserWatcherSaga () {
+  yield takeLatest(types.UPDATE_USER, updateUserSaga);
 }
 
 export default {
-  simpleQuack,
-  complexQuack,
+  listUsersWatcherSaga,
+  updateUserWatcherSaga,
+  getMyUserSaga,
 };
