@@ -6,6 +6,7 @@ import types from './types';
 import {
   listUsers,
   updateUser,
+  getMyUser,
 } from './api';
 
 function* listUsersSaga (action) {
@@ -21,10 +22,21 @@ function* listUsersWatcherSaga () {
   yield takeLatest(types.LIST_USERS, listUsersSaga);
 }
 
+function* getMyUserSaga () {
+  try {
+    const { data } = yield call(getMyUser);
+    yield put(actions.loadAccountData(data));
+  } catch (error) {
+    console.error('Error fetching user');
+  }
+
+}
+
 function* updateUserSaga (action) {
   try {
     yield call(updateUser, action.payload);
     yield put(actions.updateUserSuccess());
+    yield action.payload.next && action.payload.next();
   } catch (error) {
     yield put(actions.updateUserError(error));
   }
@@ -37,4 +49,5 @@ function* updateUserWatcherSaga () {
 export default {
   listUsersWatcherSaga,
   updateUserWatcherSaga,
+  getMyUserSaga,
 };

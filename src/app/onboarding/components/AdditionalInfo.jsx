@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { updateUser } from '../../account/duck/actions';
 
 import {
   Box,
@@ -19,78 +21,96 @@ import {
 
 import '../Onboarding.css';
 
-const AdditionalInfo = (props) => {
-  return (
-    <div className="onboarding">
-      <Grid>
-        <Row middle="xs">
-          <Column sm={2} md={2} lg={2} xl={2}>
-            <OnboardingSidebar
-              className="onboarding__sidebar"
-              logoUrl="/logo.svg"
-              logoClassName="onboarding__logo"
-              subheaderText="CUSTOMERS"
-              headerText="Use Algorithms to get Target Audience Insights"
-              descriptionText="Select existing or request tailer-made algorithms based on practical needs."
-              iconUrl="/icon_developers.svg"
-              iconClassName="onboarding__icon"
-              currentStepIndex={1}
-              totalSteps={3}
-            />
-          </Column>
-          <Column
-            sm={5} md={5} lg={5} xl={5}
-            smOffset={3} mdOffset={3} lgOffset={3} xlOffset={3}
-          >
-            <Title>Add Account Details</Title>
-            <Description>Add your account details and connect to Github if you&apos;re a developer.</Description>
-            <Box>
-              <Box verticalMargin={5}>
-                <Header>Personal Information</Header>
+class AdditionalInfo extends Component {
+  static defaultProps = {
+    onComplete: () => {},
+  };
+
+  static propTypes = {
+    onComplete: PropTypes.func,
+  };
+
+  render() {
+    // console.log(this.props.history.push('/metamask'))
+    return (
+      <div className="onboarding">
+        <Grid>
+          <Row middle="xs">
+            <Column sm={2} md={2} lg={2} xl={2}>
+              <OnboardingSidebar
+                className="onboarding__sidebar"
+                logoUrl="/logo.svg"
+                logoClassName="onboarding__logo"
+                subheaderText="CUSTOMERS"
+                headerText="Use Algorithms to get Target Audience Insights"
+                descriptionText="Select existing or request tailer-made algorithms based on practical needs."
+                iconUrl="/icon_developers.svg"
+                iconClassName="onboarding__icon"
+                currentStepIndex={1}
+                totalSteps={3}
+              />
+            </Column>
+            <Column
+              sm={5} md={5} lg={5} xl={5}
+              smOffset={3} mdOffset={3} lgOffset={3} xlOffset={3}
+            >
+              <Title>Add Account Details</Title>
+              <Description>Add your account details and connect to Github if you&apos;re a developer.</Description>
+              <Box>
+                <Box verticalMargin={5}>
+                  <Header>Personal Information</Header>
+                </Box>
+                <Box margin={1}>
+                  <TextInput
+                    type="text"
+                    placeholder="First Name"
+                    data-id="details-input-first-name"
+                  />
+                </Box>
+                <Box margin={1}>
+                  <TextInput
+                    type="text"
+                    placeholder="Last Name"
+                    data-id="details-input-last-name"
+                  />
+                </Box>
+                <Box verticalMargin={5}>
+                  <Header>Are you a developer?</Header>
+                </Box>
+                <Text>Connect to GitHub to upload algorithms to the marketplace.</Text>
+                <Box verticalMargin={4}>
+                  <GitHubOAuth />
+                </Box>
+                <Button
+                  onClick={() => {
+                    const firstName = document.querySelector("[data-id='details-input-first-name']").value;
+                    const lastName = document.querySelector("[data-id='details-input-last-name']").value;
+                    this.props.updateUser(firstName, lastName, this.props.onComplete);
+                  }}
+                >
+                  Continue
+                </Button>
               </Box>
-              <Box margin={1}>
-                <TextInput
-                  onChange={(e) => { return console.log(e.target.value); }}
-                  type="text"
-                  placeholder="First Name"
-                />
-              </Box>
-              <Box margin={1}>
-                <TextInput
-                  onChange={(e) => { return console.log(e.target.value); }}
-                  type="text"
-                  placeholder="Last Name"
-                />
-              </Box>
-              <Box verticalMargin={5}>
-                <Header>Are you a developer?</Header>
-              </Box>
-              <Text>Connect to GitHub to upload algorithms to the marketplace.</Text>
-              <Box verticalMargin={4}>
-                <GitHubOAuth />
-              </Box>
-              <Button onClick={props.onComplete}>Continue</Button>
-            </Box>
-          </Column>
-        </Row>
-      </Grid>
-    </div>
-  );
+            </Column>
+          </Row>
+        </Grid>
+      </div>
+    );
+  }
 };
 
-AdditionalInfo.defaultProps = {
-  onComplete: () => {},
-};
-
-AdditionalInfo.propTypes = {
-  onComplete: PropTypes.func,
-};
-
-export default connect(
-  (state) => {
-    return state;
-  },
-  (dispatch) => {
-    return ({});
-  },
-)(AdditionalInfo);
+export default withRouter(
+  connect(
+    (state) => {
+      return state;
+    },
+    dispatch => ({
+      updateUser: (first_name, last_name, next) => {
+        dispatch(updateUser({
+          user: { first_name, last_name },
+          next,
+        }));
+      }
+    }),
+  )(AdditionalInfo)
+);

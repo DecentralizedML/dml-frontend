@@ -19,8 +19,6 @@ class Onboarding extends Component {
     let step;
     const stepName = props.match.path;
 
-    console.log(stepName);
-
     switch (stepName) {
       case '/details':
         step = ADDITIONAL_INFO;

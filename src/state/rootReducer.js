@@ -6,6 +6,7 @@ import authReducer        from '../app/auth/duck';
 import bountiesReducer    from '../app/bounties/duck';
 import marketplaceReducer from '../app/marketplace/duck';
 import onboardingReducer  from '../app/onboarding/duck';
+import web3connectReducer from '../utils/web3connect';
 
 const reducers = combineReducers({
   account     : accountReducer,     // account settings, user info
@@ -14,6 +15,7 @@ const reducers = combineReducers({
   bounties    : bountiesReducer,    // bounties
   marketplace : marketplaceReducer, // marketplace
   onboarding  : onboardingReducer,  // onboarding
+  web3connect : web3connectReducer, // web3 connect
 });
 
 export default reducers;

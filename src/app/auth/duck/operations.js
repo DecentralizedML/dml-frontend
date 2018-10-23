@@ -47,6 +47,7 @@ function* loginSaga (action) {
     yield call((jwt) => { storage.token = jwt; }, data.jwt);
     yield put(actions.loginSuccess());
     yield put(accountActions.loadAccountData(data));
+    yield action.payload.history.push('/marketplace');
   } catch (error) {
     yield put(actions.loginError(error));
   }
@@ -75,6 +76,7 @@ function* signupSaga (action) {
     const { data } = yield call(signup, action.payload);
     yield call((jwt) => { storage.token = jwt; }, data.jwt);
     yield put(actions.signupSuccess());
+    yield action.payload.next && action.payload.next();
   } catch (error) {
     yield put(actions.signupError(error));
   }

@@ -7,6 +7,7 @@ import bountiesOperations   from '../app/bounties/duck/operations';
 
 export default function* rootSaga () {
   yield all([
+    accountOperations.getMyUserSaga(),
     accountOperations.listUsersWatcherSaga(),
     accountOperations.updateUserWatcherSaga(),
 
