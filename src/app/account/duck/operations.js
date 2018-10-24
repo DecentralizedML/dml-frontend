@@ -29,7 +29,6 @@ function* getMyUserSaga () {
   } catch (error) {
     console.error('Error fetching user');
   }
-
 }
 
 function* updateUserSaga (action) {

@@ -14,7 +14,7 @@ import {
 } from '@kyokan/kyokan-ui';
 
 import '../Onboarding.css';
-import {updateUser} from "../../account/duck/actions";
+import { updateUser } from '../../account/duck/actions';
 
 class Metamask extends Component {
   state = {

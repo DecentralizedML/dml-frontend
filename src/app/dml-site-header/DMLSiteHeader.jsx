@@ -67,11 +67,11 @@ const DMLSiteHeader = (props) => {
   };
 
   const renderMyAlgorithms = () => {
-    if (props.myAlgorithms || props.myAlgorithmsActive) {
+    if (props.algorithms || props.algorithmsActive) {
       return (
         <DMLSiteHeaderLink
           text="Algorithms"
-          active={props.myAlgorithmsActive}
+          active={props.algorithmsActive}
         />
       );
     }
@@ -145,31 +145,31 @@ const DMLSiteHeader = (props) => {
 };
 
 DMLSiteHeader.defaultProps = {
-  accountDropdown    : false,
-  bounties           : false,
-  bountiesActive     : false,
-  createAlgorithm    : false,
-  logo               : true,
-  marketplace        : false,
-  marketplaceActive  : false,
-  myAlgorithms       : false,
-  myAlgorithmsActive : false,
-  userName           : 'User',
-  userAvatar         : '',
+  accountDropdown   : false,
+  bounties          : false,
+  bountiesActive    : false,
+  createAlgorithm   : false,
+  logo              : true,
+  marketplace       : false,
+  marketplaceActive : false,
+  algorithms        : false,
+  algorithmsActive  : false,
+  userName          : 'User',
+  userAvatar        : '',
 };
 
 DMLSiteHeader.propTypes = {
-  accountDropdown    : PropTypes.bool,
-  bounties           : PropTypes.bool,
-  bountiesActive     : PropTypes.bool,
-  createAlgorithm    : PropTypes.bool,
-  logo               : PropTypes.bool,
-  marketplace        : PropTypes.bool,
-  marketplaceActive  : PropTypes.bool,
-  myAlgorithms       : PropTypes.bool,
-  myAlgorithmsActive : PropTypes.bool,
-  userName           : PropTypes.string,
-  userAvatar         : PropTypes.string,
+  accountDropdown   : PropTypes.bool,
+  bounties          : PropTypes.bool,
+  bountiesActive    : PropTypes.bool,
+  createAlgorithm   : PropTypes.bool,
+  logo              : PropTypes.bool,
+  marketplace       : PropTypes.bool,
+  marketplaceActive : PropTypes.bool,
+  algorithms        : PropTypes.bool,
+  algorithmsActive  : PropTypes.bool,
+  userName          : PropTypes.string,
+  userAvatar        : PropTypes.string,
 };
 
 export default DMLSiteHeader;
