@@ -25,8 +25,8 @@ function* listUsersWatcherSaga () {
 function* hydrateUserDataSaga () {
   try {
     const { data } = yield call(hydrateUserData);
-    yield put(actions.loadAccountData(data));
     yield put(actions.hydrateUserDataSuccess());
+    yield put(actions.loadAccountData(data));
   } catch (error) {
     yield put(actions.hydrateUserDataError());
   }

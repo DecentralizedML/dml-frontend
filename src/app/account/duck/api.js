@@ -1,7 +1,7 @@
 import http from '../../../utils/http';
 
 const root = '/api/users';
-const me = '/api/me';
+const me   = '/api/me';
 
 // User / List (all)
 export function listUsers () {

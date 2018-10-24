@@ -9,7 +9,9 @@ const mapStateToProps = (state) => {
   });
 };
 
-const mapDispatchToProps = (dispatch) => {};
+const mapDispatchToProps = (dispatch) => {
+  return {};
+};
 
 const AlgorithmsContainer = connect(
   mapStateToProps,

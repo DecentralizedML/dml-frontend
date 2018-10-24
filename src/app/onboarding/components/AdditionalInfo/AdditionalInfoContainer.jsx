@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { updateUser } from '../../../account/duck/actions';
+
+import accountActions from '../../../account/duck/actions';
 
 import AdditionalInfoComponent from './AdditionalInfoComponent';
 
@@ -32,7 +33,7 @@ const AdditionalInfoContainer = withRouter(
       return (
         {
           updateUser: (firstName, lastName, next) => {
-            dispatch(updateUser({
+            dispatch(accountActions.updateUser({
               user: {
                 first_name : firstName,
                 last_name  : lastName,

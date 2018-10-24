@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import { updateUser } from '../../../account/duck/actions';
+import accountActions from '../../../account/duck/actions';
 import MetamaskComponent from './MetamaskComponent';
 
 // const mapStateToProps = (state) => {
@@ -37,7 +37,7 @@ const MetamaskContainer = withRouter(
       return (
         {
           updateUser: (walletAddress, next) => {
-            dispatch(updateUser({
+            dispatch(accountActions.updateUser({
               user: {
                 wallet_address: walletAddress,
               },

@@ -4,14 +4,16 @@ import { withRouter } from 'react-router-dom';
 import DMLSiteHeaderComponent from './DMLSiteHeaderComponent';
 
 const mapStateToProps = (state) => {
-  const { userData } = state.account;
+  const { firstName, lastName } = state.account;
 
   return {
-    userData,
+    userName: `${firstName} ${lastName}`,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {};
+const mapDispatchToProps = (dispatch) => {
+  return {};
+};
 
 const OnboardingContainer = withRouter(
   connect(

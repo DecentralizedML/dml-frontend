@@ -13,7 +13,7 @@ import Onboarding from './onboarding';
 
 import ProtectedRoute from './auth/ProtectedRoute';
 
-import { hydrateUserData } from './account/duck/actions';
+import accountActions from './account/duck/actions';
 
 import { initialize, startWatching } from '../utils/web3connect';
 
@@ -60,7 +60,7 @@ export default connect(
     return (
       {
         hydrateUserData: () => {
-          return dispatch(hydrateUserData());
+          return dispatch(accountActions.hydrateUserData());
         },
         initialize: () => {
           return dispatch(initialize());
