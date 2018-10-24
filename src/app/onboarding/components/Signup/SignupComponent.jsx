@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import lazyLoadScript from 'lazyload-script';
 import styled from 'styled-components';
 
@@ -19,11 +17,7 @@ import {
   VerticalTab,
 } from '@kyokan/kyokan-ui';
 
-import '../Onboarding.css';
-
-import { requestOAuth, requestGoogleOAuth, requestFacebookOAuth } from '../../../actions';
-
-import authActions from '../../auth/duck/actions';
+import '../../Onboarding.css';
 
 const StyledContainer = styled.div`
   height: 500px;
@@ -222,43 +216,8 @@ Signup.propTypes = {
   login        : PropTypes.func.isRequired,
   requestOAuth : PropTypes.func.isRequired,
   signup       : PropTypes.func.isRequired,
+  history      : PropTypes.object.isRequired,
+  onComplete   : PropTypes.func.isRequired,
 };
 
-export default withRouter(connect(
-  () => {
-    return {
-      email    : null,
-      password : null,
-    };
-  },
-  (dispatch, ownProps) => {
-    return {
-      login: (email, password) => {
-        dispatch(authActions.login({
-          email,
-          password,
-          history: ownProps.history,
-        }));
-      },
-      signup: (email, password, passwordConfirmation, next) => {
-        dispatch(authActions.signup({
-          user: {
-            email                 : email,
-            password              : password,
-            password_confirmation : passwordConfirmation,
-          },
-          next,
-        }));
-      },
-      requestOAuth: (provider, code) => {
-        dispatch(requestOAuth(provider, code));
-      },
-      requestGoogleOAuth: () => {
-        dispatch(requestGoogleOAuth());
-      },
-      requestFacebookOAuth: () => {
-        dispatch(requestFacebookOAuth());
-      },
-    };
-  },
-)(Signup));
+export default Signup;

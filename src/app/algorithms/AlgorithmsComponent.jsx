@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
 import {
   Box,
@@ -48,16 +47,6 @@ const Algorithms = (props) => {
   );
 };
 
-Algorithms.propTypes = {
-  text            : PropTypes.string.isRequired,
-  isAuthenticated : PropTypes.bool.isRequired,
-};
+Algorithms.propTypes = {};
 
-const mapStateToProps = (state) => {
-  return ({
-    text            : state.text,
-    isAuthenticated : state.account.isAuthenticated,
-  });
-};
-
-export default connect(mapStateToProps)(Algorithms);
+export default Algorithms;

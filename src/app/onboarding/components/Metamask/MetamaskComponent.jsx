@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
 
 import {
   Button,
@@ -14,13 +12,16 @@ import {
   Title,
 } from '@kyokan/kyokan-ui';
 
-import '../Onboarding.css';
-import { updateUser } from '../../account/duck/actions';
+import '../../Onboarding.css';
 
 class Metamask extends Component {
-  state = {
-    hasInstalledMetamask: false,
-  };
+  constructor (props) {
+    super(props);
+
+    this.state = {
+      hasInstalledMetamask: false,
+    };
+  }
 
   renderSidebar = () => {
     return (
@@ -151,29 +152,4 @@ Metamask.propTypes = {
   web3       : PropTypes.object.isRequired,
 };
 
-export default withRouter(
-  connect(
-    (state) => {
-      return (
-        {
-          account : state.web3connect.account,
-          web3    : state.web3connect.web3,
-        }
-      );
-    },
-    (dispatch) => {
-      return (
-        {
-          updateUser: (walletAddress, next) => {
-            dispatch(updateUser({
-              user: {
-                wallet_address: walletAddress,
-              },
-              next,
-            }));
-          },
-        }
-      );
-    },
-  )(Metamask),
-);
+export default Metamask;

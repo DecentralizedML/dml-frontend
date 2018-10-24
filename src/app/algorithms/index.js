@@ -1,3 +1,3 @@
-import Algorithms from './Algorithms';
+import AlgorithmsContainer from './AlgorithmsContainer';
 
-export default Algorithms;
+export default AlgorithmsContainer;
