@@ -37,7 +37,7 @@ const DMLSiteHeader = (props) => {
           src="/logo.svg"
           alt="Decentralized Machine Learning"
           onClick={() => {
-            console.log('logoClick');
+            props.history.push('/');
           }}
         />
       );
@@ -50,6 +50,9 @@ const DMLSiteHeader = (props) => {
         <DMLSiteHeaderLink
           text="Marketplace"
           active={props.marketplaceActive}
+          onClick={() => {
+            props.history.push('/marketplace');
+          }}
         />
       );
     }
@@ -61,6 +64,9 @@ const DMLSiteHeader = (props) => {
         <DMLSiteHeaderLink
           text="Bounties"
           active={props.bountiesActive}
+          onClick={() => {
+            props.history.push('/bounties');
+          }}
         />
       );
     }
@@ -72,6 +78,9 @@ const DMLSiteHeader = (props) => {
         <DMLSiteHeaderLink
           text="Algorithms"
           active={props.algorithmsActive}
+          onClick={() => {
+            props.history.push('/algorithms');
+          }}
         />
       );
     }
@@ -95,12 +104,15 @@ const DMLSiteHeader = (props) => {
         <AccountDropdown
           avatar={props.userAvatar}
           items={[
-            { text: 'Account Settings', route: '/details' },
+            { text: 'Account Settings', route: '/account' },
             { text: 'Logout',           route: '/logout' },
           ]}
           name={props.userName}
-          onItemClick={() => {}}
-          onToggleClick={() => {}}
+          onItemClick={({ route }) => {
+            if (route) {
+              props.history.push(route);
+            }
+          }}
         />
       );
     }
@@ -146,30 +158,31 @@ const DMLSiteHeader = (props) => {
 
 DMLSiteHeader.defaultProps = {
   accountDropdown   : false,
+  algorithms        : false,
+  algorithmsActive  : false,
   bounties          : false,
   bountiesActive    : false,
   createAlgorithm   : false,
   logo              : true,
   marketplace       : false,
   marketplaceActive : false,
-  algorithms        : false,
-  algorithmsActive  : false,
-  userName          : 'User',
   userAvatar        : '',
+  userName          : 'User',
 };
 
 DMLSiteHeader.propTypes = {
   accountDropdown   : PropTypes.bool,
+  algorithms        : PropTypes.bool,
+  algorithmsActive  : PropTypes.bool,
   bounties          : PropTypes.bool,
   bountiesActive    : PropTypes.bool,
   createAlgorithm   : PropTypes.bool,
+  history           : PropTypes.object.isRequired,
   logo              : PropTypes.bool,
   marketplace       : PropTypes.bool,
   marketplaceActive : PropTypes.bool,
-  algorithms        : PropTypes.bool,
-  algorithmsActive  : PropTypes.bool,
-  userName          : PropTypes.string,
   userAvatar        : PropTypes.string,
+  userName          : PropTypes.string,
 };
 
 export default DMLSiteHeader;

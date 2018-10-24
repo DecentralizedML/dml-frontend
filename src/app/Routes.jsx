@@ -12,6 +12,7 @@ import Marketplace from './marketplace';
 import Onboarding from './onboarding';
 
 import ProtectedRoute from './auth/ProtectedRoute';
+import Logout from './auth/Logout';
 
 import accountActions from './account/duck/actions';
 
@@ -40,6 +41,7 @@ class Routes extends Component {
 
           <Route          path="/login"            component={Onboarding}  />
           <Route          path="/signup"           component={Onboarding}  />
+          <Route          path="/logout"           component={Logout}  />
 
           <Redirect to="/marketplace" />
         </Switch>

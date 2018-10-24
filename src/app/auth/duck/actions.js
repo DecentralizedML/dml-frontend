@@ -66,10 +66,9 @@ const loginSuccess = () => {
   });
 };
 
-const logout = (data) => {
+const logout = () => {
   return ({
-    type    : types.LOGOUT,
-    payload : data,
+    type: types.LOGOUT,
   });
 };
 
