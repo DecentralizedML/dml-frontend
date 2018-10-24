@@ -9,13 +9,8 @@ const mapStateToProps = (state) => {
   });
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {};
-};
-
 const AlgorithmsContainer = connect(
   mapStateToProps,
-  mapDispatchToProps,
 )(AlgorithmsComponent);
 
 export default AlgorithmsContainer;

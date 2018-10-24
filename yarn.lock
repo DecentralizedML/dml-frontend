@@ -869,10 +869,10 @@
     humps "^2.0.1"
     prop-types "^15.5.10"
 
-"@kyokan/kyokan-ui@^0.1.18":
-  version "0.1.18"
-  resolved "https://registry.yarnpkg.com/@kyokan/kyokan-ui/-/kyokan-ui-0.1.18.tgz#76838155f31f4f453ff6810fae9e07115750f400"
-  integrity sha512-Cuuk9rSoW8kWh61yX6PUO+Xt06rgJfh0id79ouvj1ERo437QNXlUt5lctvhybZU3FhzPo4wWAnxp8djfHprE1A==
+"@kyokan/kyokan-ui@^0.1.19":
+  version "0.1.19"
+  resolved "https://registry.yarnpkg.com/@kyokan/kyokan-ui/-/kyokan-ui-0.1.19.tgz#2dfcc797a9241adc9d874668d299c1fe773ac92e"
+  integrity sha512-dpqeAeXwDhaBOQksGihX6D54n/LcytkEGhhT/w1Jg5mGkugvQ0AmV6knTCRfoU8n02mJ8esyRSkinW4i+hJcBw==
   dependencies:
     "@fortawesome/fontawesome-svg-core" "^1.2.4"
     "@fortawesome/free-solid-svg-icons" "^5.3.1"

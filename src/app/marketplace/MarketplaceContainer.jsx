@@ -14,13 +14,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {};
-};
-
 const MarketplaceContainer = connect(
   mapStateToProps,
-  mapDispatchToProps,
 )(MarketplaceComponent);
 
 export default MarketplaceContainer;

@@ -11,14 +11,9 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {};
-};
-
 const OnboardingContainer = withRouter(
   connect(
     mapStateToProps,
-    mapDispatchToProps,
   )(DMLSiteHeaderComponent),
 );
 

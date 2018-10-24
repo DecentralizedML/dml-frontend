@@ -27,7 +27,9 @@ import DMLBalance    from './components/DMLBalance';
 import DMLDebitLimit from './components/DMLDebitLimit';
 import DMLSiteHeader from '../dml-site-header';
 
-const AccountComponent = (props) => {
+const AccountSettingsComponent = (props) => {
+  const isProfile = (!props.match.params.section || props.match.params.section === 'profile');
+
   return (
     <Grid fluid style={{ padding: 0 }}>
       <DMLSiteHeader
@@ -57,10 +59,15 @@ const AccountComponent = (props) => {
           }}
         >
           <Box rounded>
-            <Tabs>
+            <Tabs
+              defaultActiveTabIndex={isProfile ? 0 : 1}
+            >
               <VerticalTab
                 title="Edit Profile"
                 icon="user"
+                onTabClick={() => {
+                  props.history.push('/account/profile');
+                }}
               >
                 <Row nogutter>
                   <Column xl={8}>
@@ -178,6 +185,9 @@ const AccountComponent = (props) => {
               <VerticalTab
                 title="Manage Wallet"
                 icon="wallet"
+                onTabClick={() => {
+                  props.history.push('/account/wallet');
+                }}
               >
                 <Row nogutter>
                   <Column xl={8}>
@@ -250,15 +260,18 @@ const AccountComponent = (props) => {
   );
 };
 
-AccountComponent.defaultProps = {
-  bio: '',
+AccountSettingsComponent.defaultProps = {
+  bio       : '',
+  isProfile : true,
 };
 
-AccountComponent.propTypes = {
-  firstName : PropTypes.string.isRequired,
-  lastName  : PropTypes.string.isRequired,
-  email     : PropTypes.string.isRequired,
+AccountSettingsComponent.propTypes = {
   bio       : PropTypes.string,
+  email     : PropTypes.string.isRequired,
+  firstName : PropTypes.string.isRequired,
+  history   : PropTypes.object.isRequired,
+  isProfile : PropTypes.bool,
+  lastName  : PropTypes.string.isRequired,
 };
 
-export default AccountComponent;
+export default AccountSettingsComponent;
