@@ -229,8 +229,8 @@ const ERC20_ABI = [
   }
 ];
 
-export const INITIALIZE = 'we3connect/initialize';
-export const UPDATE_ACCOUNT = 'we3connect/updateAccount';
+export const INITIALIZE = 'web3connect/initialize';
+export const UPDATE_ACCOUNT = 'web3connect/updateAccount';
 export const WATCH_ETH_BALANCE = 'web3connect/watchEthBalance';
 export const WATCH_TOKEN_BALANCE = 'web3connect/watchTokenBalance';
 export const UPDATE_ETH_BALANCE = 'web3connect/updateEthBalance';
