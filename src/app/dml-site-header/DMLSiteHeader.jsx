@@ -124,7 +124,7 @@ const DMLSiteHeader = (props) => {
                 {renderMyAlgorithms()}
               </StyledContainer>
             </Column>
-            <Column xs={12} sm={12} md={6} lg={2} xl={2} offset={{ xl: 2 }}>
+            <Column xs={6} sm={6} md={6} lg={2} xl={2} offset={{ xl: 2 }}>
               <Box
                 verticalPadding={2}
                 rightContent
@@ -132,7 +132,7 @@ const DMLSiteHeader = (props) => {
                 {renderCreateAlgorithm()}
               </Box>
             </Column>
-            <Column xs={12} sm={12} md={6} lg={2} xl={2}>
+            <Column xs={6} sm={6} md={6} lg={2} xl={2}>
               <Box centerContent>
                 {renderAccountDropdown()}
               </Box>
