@@ -8,6 +8,7 @@ yarn run cypress:open # to open Cypress
 
 ## User Stories
 
+```
 User Types:
   Business User
 
@@ -202,3 +203,4 @@ Bounties
   Developer should be able to view their own submissions.
 
   Developer should be able to see how many people have submitted.
+```
