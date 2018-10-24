@@ -15,9 +15,24 @@ const listUsersError = (error) => {
   });
 };
 
-export const getMyUser = () => {
+const hydrateUserData = () => {
   return {
-    type: types.GET_MY_USER,
+    type: types.HYDRATE_USER_DATA,
+  };
+};
+
+const hydrateUserDataError = (error) => {
+  return {
+    type    : types.HYDRATE_USER_DATA_ERROR,
+    payload : {
+      error,
+    },
+  };
+};
+
+const hydrateUserDataSuccess = () => {
+  return {
+    type: types.HYDRATE_USER_DATA_SUCCESS,
   };
 };
 
@@ -28,7 +43,7 @@ const loadAccountData = (data) => {
   });
 };
 
-export const updateUser = (data) => {
+const updateUser = (data) => {
   return ({
     type    : types.UPDATE_USER,
     payload : data,
@@ -53,7 +68,9 @@ const updateUserSuccess = () => {
 export default {
   listUsers,
   listUsersError,
-  getMyUser,
+  hydrateUserData,
+  hydrateUserDataError,
+  hydrateUserDataSuccess,
   loadAccountData,
   updateUser,
   updateUserError,

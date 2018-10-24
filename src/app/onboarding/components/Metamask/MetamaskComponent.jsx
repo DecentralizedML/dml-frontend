@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import {
   Button,
@@ -13,13 +12,16 @@ import {
   Title,
 } from '@kyokan/kyokan-ui';
 
-import '../Onboarding.css';
-import { updateUser } from '../../account/duck/actions';
+import '../../Onboarding.css';
 
 class Metamask extends Component {
-  state = {
-    hasInstalledMetamask: false,
-  };
+  constructor (props) {
+    super(props);
+
+    this.state = {
+      hasInstalledMetamask: false,
+    };
+  }
 
   renderSidebar = () => {
     return (
@@ -63,7 +65,9 @@ class Metamask extends Component {
         <div className="onboarding__installed-mm-text">Already installed MetaMask?</div>
         <Button
           className="onboarding__metamask-proceed-btn"
-          onClick={() => window.location.reload()}
+          onClick={() => {
+            window.location.reload();
+          }}
         >
           Refresh
         </Button>
@@ -72,7 +76,7 @@ class Metamask extends Component {
   }
 
   renderAddWallet = () => {
-    const { account } = this.props;
+    const { account, history } = this.props;
 
     return (
       <div className="onboarding__content">
@@ -84,9 +88,10 @@ class Metamask extends Component {
         <Button
           className="onboarding__metamask-proceed-btn"
           onClick={() => {
-            const { account, history } = this.props;
             if (account) {
-              this.props.updateUser(account, () => history.push('/account'));
+              this.props.updateUser(account, () => {
+                history.push('/account');
+              });
             }
           }}
         >
@@ -140,19 +145,11 @@ class Metamask extends Component {
   }
 }
 
-export default withRouter(
-  connect(
-    state => ({
-      account: state.web3connect.account,
-      web3: state.web3connect.web3,
-    }),
-    dispatch => ({
-      updateUser: (wallet_address, next) => {
-        dispatch(updateUser({
-          user: { wallet_address },
-          next,
-        }));
-      }
-    }),
-  )(Metamask)
-);
+Metamask.propTypes = {
+  account    : PropTypes.object.isRequired,
+  history    : PropTypes.object.isRequired,
+  updateUser : PropTypes.func.isRequired,
+  web3       : PropTypes.object.isRequired,
+};
+
+export default Metamask;

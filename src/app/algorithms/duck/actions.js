@@ -59,15 +59,15 @@ const listAlgorithmsError = (error) => {
   });
 };
 
-const listAlgorithmsMine = () => {
+const listUserAlgorithms = () => {
   return ({
-    type: types.LIST_ALGORITHMS_MINE,
+    type: types.LIST_USER_ALGORITHMS,
   });
 };
 
-const listAlgorithmsMineError = (error) => {
+const listUserAlgorithmsError = (error) => {
   return ({
-    type    : types.LIST_ALGORITHMS_MINE_ERROR,
+    type    : types.LIST_USER_ALGORITHMS_ERROR,
     payload : {
       error,
     },
@@ -121,8 +121,8 @@ export default {
   downloadAlgorithmSuccess,
   listAlgorithms,
   listAlgorithmsError,
-  listAlgorithmsMine,
-  listAlgorithmsMineError,
+  listUserAlgorithms,
+  listUserAlgorithmsError,
   showAlgorithm,
   showAlgorithmError,
   updateAlgorithm,

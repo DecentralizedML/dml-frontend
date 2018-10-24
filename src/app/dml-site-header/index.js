@@ -1,3 +1,3 @@
-import DMLSiteHeader from './DMLSiteHeader';
+import DMLSiteHeaderContainer from './DMLSiteHeaderContainer';
 
-export default DMLSiteHeader;
+export default DMLSiteHeaderContainer;

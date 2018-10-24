@@ -39,9 +39,11 @@ const authReducer = (state = {}, action) => {
         break;
 
       case types.LOGOUT:
+        draftState.isAuthenticated = false;
         break;
 
       case types.LOGOUT_ERROR:
+        draftState.isAuthenticated = false;
         break;
 
       case types.LOGOUT_SUCCESS:

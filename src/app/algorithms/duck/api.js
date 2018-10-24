@@ -13,7 +13,7 @@ export function listAlgorithms () {
 }
 
 // Algorithm / List (mine)
-export function listAlgorithmsMine () {
+export function listUserAlgorithms () {
   return http.get(`${root}/mine`);
 }
 

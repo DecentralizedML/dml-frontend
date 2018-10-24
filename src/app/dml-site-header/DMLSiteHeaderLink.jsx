@@ -42,6 +42,7 @@ const DMLSiteHeaderLink = (props) => {
   return (
     <StyledHeaderItem
       className={classes}
+      onClick={props.onClick}
     >
       {props.text}
     </StyledHeaderItem>
@@ -49,12 +50,14 @@ const DMLSiteHeaderLink = (props) => {
 };
 
 DMLSiteHeaderLink.defaultProps = {
-  active: false,
+  active  : false,
+  onClick : () =>  {},
 };
 
 DMLSiteHeaderLink.propTypes = {
-  text   : PropTypes.string.isRequired,
-  active : PropTypes.bool,
+  text    : PropTypes.string.isRequired,
+  active  : PropTypes.bool,
+  onClick : PropTypes.func,
 };
 
 export default DMLSiteHeaderLink;

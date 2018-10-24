@@ -1,6 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+// import PropTypes from 'prop-types';
 
 import {
   Box,
@@ -12,13 +11,13 @@ import {
 
 import DMLSiteHeader from '../dml-site-header';
 
-const Algorithms = (props) => {
+const Bounties = (props) => {
   return (
     <Grid fluid style={{ padding: 0 }}>
       <DMLSiteHeader
         marketplace
-        bounties
-        algorithmsActive
+        bountiesActive
+        algorithms
         createAlgorithm
         accountDropdown
       />
@@ -30,7 +29,7 @@ const Algorithms = (props) => {
           }}
         >
           <Box padding={8}>
-            <Header>Algorithms</Header>
+            <Header>Bounties</Header>
           </Box>
         </Column>
       </Row>
@@ -41,23 +40,13 @@ const Algorithms = (props) => {
             lg: 2,
           }}
         >
-          ALGORITHMS
+          BOUNTIES
         </Column>
       </Row>
     </Grid>
   );
 };
 
-Algorithms.propTypes = {
-  text            : PropTypes.string.isRequired,
-  isAuthenticated : PropTypes.bool.isRequired,
-};
+Bounties.propTypes = {};
 
-const mapStateToProps = (state) => {
-  return ({
-    text            : state.text,
-    isAuthenticated : state.account.isAuthenticated,
-  });
-};
-
-export default connect(mapStateToProps)(Algorithms);
+export default Bounties;

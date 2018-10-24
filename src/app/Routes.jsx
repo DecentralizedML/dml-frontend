@@ -1,36 +1,28 @@
 /* eslint-disable react/prefer-stateless-function */
 
-/* ############################# */
-/* ### EXTERNAL DEPENDENCIES ### */
-/* ############################# */
-
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
-
-/* ############################# */
-/* ### INTERNAL DEPENDENCIES ### */
-/* ############################# */
 
 import Account from './account';
 import Algorithms from './algorithms';
 import Bounties from './bounties';
 import Marketplace from './marketplace';
 import Onboarding from './onboarding';
+
 import ProtectedRoute from './auth/ProtectedRoute';
-import { getMyUser } from './account/duck/actions';
+import Logout from './auth/Logout';
+
+import accountActions from './account/duck/actions';
+
 import { initialize, startWatching } from '../utils/web3connect';
 
-/* ########### */
-/* ### APP ### */
-/* ########### */
-
 class Routes extends Component {
-  componentWillMount() {
-    this.props.getMyUser();
-    this.props.initialize()
-      .then(this.props.startWatching)
-  };
+  componentWillMount () {
+    this.props.hydrateUserData();
+    this.props.initialize().then(this.props.startWatching);
+  }
 
   render () {
     return (
@@ -49,6 +41,7 @@ class Routes extends Component {
 
           <Route          path="/login"            component={Onboarding}  />
           <Route          path="/signup"           component={Onboarding}  />
+          <Route          path="/logout"           component={Logout}  />
 
           <Redirect to="/marketplace" />
         </Switch>
@@ -57,11 +50,27 @@ class Routes extends Component {
   }
 }
 
+Routes.propTypes = {
+  hydrateUserData : PropTypes.func.isRequired,
+  initialize      : PropTypes.func.isRequired,
+  startWatching   : PropTypes.func.isRequired,
+};
+
 export default connect(
   null,
-  dispatch => ({
-    getMyUser: () => dispatch(getMyUser()),
-    initialize: () => dispatch(initialize()),
-    startWatching: () => dispatch(startWatching()),
-  })
+  (dispatch) => {
+    return (
+      {
+        hydrateUserData: () => {
+          return dispatch(accountActions.hydrateUserData());
+        },
+        initialize: () => {
+          return dispatch(initialize());
+        },
+        startWatching: () => {
+          return dispatch(startWatching());
+        },
+      }
+    );
+  },
 )(Routes);

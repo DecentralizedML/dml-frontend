@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {BigNumber as BN} from 'bignumber.js';
+import { BigNumber as BN } from 'bignumber.js';
 import Web3 from 'web3';
 
 const ERC20_ABI = [
@@ -229,14 +229,13 @@ const ERC20_ABI = [
   }
 ];
 
-export const INITIALIZE = 'we3connect/initialize';
-export const UPDATE_ACCOUNT = 'we3connect/updateAccount';
-export const WATCH_ETH_BALANCE = 'web3connect/watchEthBalance';
-export const WATCH_TOKEN_BALANCE = 'web3connect/watchTokenBalance';
-export const UPDATE_ETH_BALANCE = 'web3connect/updateEthBalance';
+export const INITIALIZE           = 'web3connect/initialize';
+export const UPDATE_ACCOUNT       = 'web3connect/updateAccount';
+export const WATCH_ETH_BALANCE    = 'web3connect/watchEthBalance';
+export const WATCH_TOKEN_BALANCE  = 'web3connect/watchTokenBalance';
+export const UPDATE_ETH_BALANCE   = 'web3connect/updateEthBalance';
 export const UPDATE_TOKEN_BALANCE = 'web3connect/updateTokenBalance';
-export const ADD_CONTRACT = 'web3connect/addContract';
-
+export const ADD_CONTRACT         = 'web3connect/addContract';
 
 const initialState = {
   web3: null,
