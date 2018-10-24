@@ -20,8 +20,8 @@ const DMLBalance = (props) => {
   return (
     <StyledDMLBalance>
       <Box padding={7}>
-        <Grid>
-          <Row>
+        <Grid fluid style={{ padding: 0 }}>
+          <Row nogutter>
             <Column xl={6}>
               <Box padding={5}>
                 <TokenAmount
