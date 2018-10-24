@@ -29,9 +29,9 @@ const AccountComponent = (props) => {
   return (
     <Grid fluid style={{ padding: 0 }}>
       <DMLSiteHeader
-        marketplaceActive
+        marketplace
         bounties
-        myAlgorithms
+        algorithms
         createAlgorithm
         accountDropdown
       />

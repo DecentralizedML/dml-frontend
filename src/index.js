@@ -7,7 +7,7 @@ import ReactDOM from 'react-dom';
 import App from './app/App';
 // import * as serviceWorker from './serviceWorker';
 
-window.addEventListener('load', function() {
+window.addEventListener('load', () => {
   ReactDOM.render(<App />, document.getElementById('root'));
 });
 

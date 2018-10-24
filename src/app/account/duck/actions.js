@@ -17,7 +17,7 @@ const listUsersError = (error) => {
 
 export const getMyUser = () => {
   return {
-    type: types.GET_MY_USER
+    type: types.GET_MY_USER,
   };
 };
 
