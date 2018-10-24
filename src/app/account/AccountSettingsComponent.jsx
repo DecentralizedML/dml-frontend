@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-one-expression-per-line */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -11,7 +13,7 @@ import {
   Grid,
   Header,
   HorizontalRule,
-  Link,
+  Link as KUILink,
   Row,
   Status,
   Tabs,
@@ -201,7 +203,7 @@ const AccountComponent = (props) => {
                             <Text dark>Not sure how to get DML Tokens?</Text>
                           </Box>
                           <Text>
-                            Learn how on our <Link>FAQ Page</Link>.
+                            Learn how on our <KUILink>FAQ Page</KUILink>.
                           </Text>
                         </Column>
                       </Row>
@@ -217,7 +219,7 @@ const AccountComponent = (props) => {
                           <Box marginBottom={5}>
                             <Header dark>Approved Debit Limit</Header>
                           </Box>
-                          <Description>Your debt limit is dynamic. It goes down when charged and needs to be reset once it's spent.</Description>
+                          <Description>Your debt limit is dynamic. It goes down when charged and needs to be reset once it&apos;s spent.</Description>
                         </Column>
                       </Row>
                       <Row nogutter>

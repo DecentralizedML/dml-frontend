@@ -18,7 +18,7 @@ import Bounties from './bounties';
 import Marketplace from './marketplace';
 import Onboarding from './onboarding';
 import ProtectedRoute from './auth/ProtectedRoute';
-import { getMyUser } from './account/duck/actions';
+import { hydrateUserData } from './account/duck/actions';
 import { initialize, startWatching } from '../utils/web3connect';
 
 /* ########### */
@@ -27,7 +27,7 @@ import { initialize, startWatching } from '../utils/web3connect';
 
 class Routes extends Component {
   componentWillMount() {
-    this.props.getMyUser();
+    this.props.hydrateUserData();
     this.props.initialize()
       .then(this.props.startWatching)
   };
@@ -60,7 +60,7 @@ class Routes extends Component {
 export default connect(
   null,
   dispatch => ({
-    getMyUser: () => dispatch(getMyUser()),
+    hydrateUserData: () => dispatch(hydrateUserData()),
     initialize: () => dispatch(initialize()),
     startWatching: () => dispatch(startWatching()),
   })

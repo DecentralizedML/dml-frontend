@@ -1,3 +1,3 @@
-import Marketplace from './Marketplace';
+import MarketplaceContainer from './MarketplaceContainer';
 
-export default Marketplace;
+export default MarketplaceContainer;

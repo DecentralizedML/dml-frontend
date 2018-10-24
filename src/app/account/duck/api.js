@@ -14,6 +14,6 @@ export function updateUser (payload) {
 }
 
 // User / me
-export function getMyUser () {
+export function hydrateUserData () {
   return http.get(me);
 }

@@ -31,10 +31,10 @@ const accountReducer = (state = {}, action) => {
       case types.LIST_ALGORITHMS_ERROR:
         break;
 
-      case types.LIST_ALGORITHMS_MINE:
+      case types.LIST_USER_ALGORITHMS:
         break;
 
-      case types.LIST_ALGORITHMS_MINE_ERROR:
+      case types.LIST_USER_ALGORITHMS_ERROR:
         break;
 
       case types.SHOW_ALGORITHM:

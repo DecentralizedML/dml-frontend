@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
 
 import AdditionalInfo from './components/AdditionalInfo';
 import Metamask from './components/Metamask';
@@ -75,4 +74,4 @@ Onboarding.propTypes = {
   match: PropTypes.object.isRequired,
 };
 
-export default withRouter(Onboarding);
+export default Onboarding;

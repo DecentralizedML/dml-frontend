@@ -7,7 +7,7 @@ import {
   createAlgorithm,
   downloadAlgorithm,
   listAlgorithms,
-  listAlgorithmsMine,
+  listUserAlgorithms,
   showAlgorithm,
   updateAlgorithm,
 } from './api';
@@ -51,17 +51,17 @@ function* listAlgorithmsWatcherSaga () {
   yield takeLatest(types.LIST_ALGORITHMS, listAlgorithmsSaga);
 }
 
-function* listAlgorithmsMineSaga (action) {
+function* listUserAlgorithmsSaga (action) {
   try {
-    const { data } = yield call(listAlgorithmsMine, action.payload);
+    const { data } = yield call(listUserAlgorithms, action.payload);
     yield call(console.log, data);
   } catch (error) {
-    yield put(actions.listAlgorithmsMineError(error));
+    yield put(actions.listUserAlgorithmsError(error));
   }
 }
 
-function* listAlgorithmsMineWatcherSaga () {
-  yield takeLatest(types.LIST_ALGORITHMS_MINE, listAlgorithmsMineSaga);
+function* listUserAlgorithmsWatcherSaga () {
+  yield takeLatest(types.LIST_USER_ALGORITHMS, listUserAlgorithmsSaga);
 }
 
 function* showAlgorithmSaga (action) {
@@ -94,7 +94,7 @@ export default {
   createAlgorithmWatcherSaga,
   downloadAlgorithmWatcherSaga,
   listAlgorithmsWatcherSaga,
-  listAlgorithmsMineWatcherSaga,
+  listUserAlgorithmsWatcherSaga,
   showAlgorithmWatcherSaga,
   updateAlgorithmWatcherSaga,
 };

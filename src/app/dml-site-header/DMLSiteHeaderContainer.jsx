@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import OnboardingComponent from './OnboardingComponent';
+import DMLSiteHeaderComponent from './DMLSiteHeaderComponent';
 
 const mapStateToProps = (state) => {
   const { userData } = state.account;
@@ -17,7 +17,7 @@ const OnboardingContainer = withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps,
-  )(OnboardingComponent),
+  )(DMLSiteHeaderComponent),
 );
 
 export default OnboardingContainer;

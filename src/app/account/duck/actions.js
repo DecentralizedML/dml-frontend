@@ -15,9 +15,9 @@ const listUsersError = (error) => {
   });
 };
 
-export const getMyUser = () => {
+export const hydrateUserData = () => {
   return {
-    type: types.GET_MY_USER,
+    type: types.HYDRATE_USER_DATA,
   };
 };
 
@@ -53,7 +53,7 @@ const updateUserSuccess = () => {
 export default {
   listUsers,
   listUsersError,
-  getMyUser,
+  hydrateUserData,
   loadAccountData,
   updateUser,
   updateUserError,
