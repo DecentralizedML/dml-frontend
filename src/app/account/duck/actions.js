@@ -21,6 +21,21 @@ export const hydrateUserData = () => {
   };
 };
 
+export const hydrateUserDataError = (error) => {
+  return {
+    type    : types.HYDRATE_USER_DATA_ERROR,
+    payload : {
+      error,
+    },
+  };
+};
+
+export const hydrateUserDataSuccess = () => {
+  return {
+    type: types.HYDRATE_USER_DATA_SUCCESS,
+  };
+};
+
 const loadAccountData = (data) => {
   return ({
     type    : types.LOAD_ACCOUNT_DATA,
@@ -54,6 +69,8 @@ export default {
   listUsers,
   listUsersError,
   hydrateUserData,
+  hydrateUserDataError,
+  hydrateUserDataSuccess,
   loadAccountData,
   updateUser,
   updateUserError,

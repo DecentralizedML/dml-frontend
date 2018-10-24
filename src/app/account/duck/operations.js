@@ -26,8 +26,9 @@ function* hydrateUserDataSaga () {
   try {
     const { data } = yield call(hydrateUserData);
     yield put(actions.loadAccountData(data));
+    yield put(actions.hydrateUserDataSuccess());
   } catch (error) {
-    console.error('Error fetching user');
+    yield put(actions.hydrateUserDataError());
   }
 }
 

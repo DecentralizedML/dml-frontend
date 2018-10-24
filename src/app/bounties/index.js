@@ -1,3 +1,3 @@
-import Bounties from './Bounties';
+import BountiesContainer from './BountiesContainer';
 
-export default Bounties;
+export default BountiesContainer;
