@@ -28,7 +28,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build && cp build/index.html build/404.html",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "cypress:open": "cypress open",
+    "cypress:all": "cypress run"
   },
   "browserslist": [
     ">0.2%",
@@ -37,6 +39,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "cypress": "^3.1.0",
     "eslint": "^5.6.1",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-react-app": "^3.0.3",
