@@ -1,7 +1,6 @@
 import http from '../../../utils/http';
 
 const root = '/api/users';
-const me   = '/api/me';
 
 // User / List (all)
 export function listUsers () {
@@ -15,5 +14,5 @@ export function updateUser (payload) {
 
 // User / me
 export function hydrateUserData () {
-  return http.get(me);
+  return http.get(`${root}/me`);
 }
