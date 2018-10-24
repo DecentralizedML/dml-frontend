@@ -7,62 +7,49 @@ import { requestOAuth, requestGoogleOAuth, requestFacebookOAuth } from '../../..
 
 import authActions from '../../../auth/duck/actions';
 
-// const mapStateToProps = (state) => {
-//   const { email, firstName, id, lastName, walletAddress } = state.account;
+const mapStateToProps = () => {
+  return {
+    email    : null,
+    password : null,
+  };
+};
 
-//   return {
-//     email,
-//     firstName,
-//     id,
-//     lastName,
-//     walletAddress,
-//   };
-// };
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    login: (email, password) => {
+      dispatch(authActions.login({
+        email,
+        password,
+        history: ownProps.history,
+      }));
+    },
+    signup: (email, password, passwordConfirmation, next) => {
+      dispatch(authActions.signup({
+        user: {
+          email                 : email,
+          password              : password,
+          password_confirmation : passwordConfirmation,
+        },
+        next,
+      }));
+    },
+    requestOAuth: (provider, code) => {
+      dispatch(requestOAuth(provider, code));
+    },
+    requestGoogleOAuth: () => {
+      dispatch(requestGoogleOAuth());
+    },
+    requestFacebookOAuth: () => {
+      dispatch(requestFacebookOAuth());
+    },
+  };
+};
 
-// const mapDispatchToProps = (dispatch) => {};
-
-// const SignupContainer = connect(
-//   mapStateToProps,
-//   mapDispatchToProps,
-// )(SignupComponent);
-
-const SignupContainer = withRouter(connect(
-  () => {
-    return {
-      email    : null,
-      password : null,
-    };
-  },
-  (dispatch, ownProps) => {
-    return {
-      login: (email, password) => {
-        dispatch(authActions.login({
-          email,
-          password,
-          history: ownProps.history,
-        }));
-      },
-      signup: (email, password, passwordConfirmation, next) => {
-        dispatch(authActions.signup({
-          user: {
-            email                 : email,
-            password              : password,
-            password_confirmation : passwordConfirmation,
-          },
-          next,
-        }));
-      },
-      requestOAuth: (provider, code) => {
-        dispatch(requestOAuth(provider, code));
-      },
-      requestGoogleOAuth: () => {
-        dispatch(requestGoogleOAuth());
-      },
-      requestFacebookOAuth: () => {
-        dispatch(requestFacebookOAuth());
-      },
-    };
-  },
-)(SignupComponent));
+const SignupContainer = withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  )(SignupComponent),
+);
 
 export default SignupContainer;

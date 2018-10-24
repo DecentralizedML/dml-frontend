@@ -106,6 +106,9 @@ class Signup extends Component {
                 >
                   <VerticalTab
                     title="Sign Up"
+                    onTabClick={() => {
+                      history.push('/signup');
+                    }}
                   >
                     <Box padding={6}>
                       <Title>Create Your Account</Title>
@@ -156,6 +159,9 @@ class Signup extends Component {
                   </VerticalTab>
                   <VerticalTab
                     title="Log In"
+                    onTabClick={() => {
+                      history.push('/login');
+                    }}
                   >
                     <Box padding={6}>
                       <Title>Log In</Title>

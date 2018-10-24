@@ -4,49 +4,34 @@ import { withRouter } from 'react-router-dom';
 import accountActions from '../../../account/duck/actions';
 import MetamaskComponent from './MetamaskComponent';
 
-// const mapStateToProps = (state) => {
-//   const { email, firstName, id, lastName, walletAddress } = state.account;
+const mapStateToProps = (state) => {
+  return (
+    {
+      account : state.web3connect.account,
+      web3    : state.web3connect.web3,
+    }
+  );
+};
 
-//   return {
-//     email,
-//     firstName,
-//     id,
-//     lastName,
-//     walletAddress,
-//   };
-// };
-
-// const mapDispatchToProps = (dispatch) => {};
-
-// const MetamaskContainer = connect(
-//   mapStateToProps,
-//   mapDispatchToProps,
-// )(MetamaskComponent);
+const mapDispatchToProps = (dispatch) => {
+  return (
+    {
+      updateUser: (walletAddress, next) => {
+        dispatch(accountActions.updateUser({
+          user: {
+            wallet_address: walletAddress,
+          },
+          next,
+        }));
+      },
+    }
+  );
+};
 
 const MetamaskContainer = withRouter(
   connect(
-    (state) => {
-      return (
-        {
-          account : state.web3connect.account,
-          web3    : state.web3connect.web3,
-        }
-      );
-    },
-    (dispatch) => {
-      return (
-        {
-          updateUser: (walletAddress, next) => {
-            dispatch(accountActions.updateUser({
-              user: {
-                wallet_address: walletAddress,
-              },
-              next,
-            }));
-          },
-        }
-      );
-    },
+    mapStateToProps,
+    mapDispatchToProps,
   )(MetamaskComponent),
 );
 
