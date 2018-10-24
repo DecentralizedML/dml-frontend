@@ -88,6 +88,7 @@ const AccountSettingsComponent = (props) => {
                             <TextInput
                               label="First Name"
                               value={props.firstName}
+                              data-id="account-input-firstname"
                             />
                           </Box>
                         </Column>
@@ -99,6 +100,7 @@ const AccountSettingsComponent = (props) => {
                             <TextInput
                               label="Last Name"
                               value={props.lastName}
+                              data-id="account-input-lastname"
                             />
                           </Box>
                         </Column>
@@ -110,6 +112,8 @@ const AccountSettingsComponent = (props) => {
                               label="Email Address"
                               errorMessage="Please enter a valid Email Address"
                               value={props.email}
+                              data-id="account-input-email"
+                              disabled
                             />
                           </Box>
                         </Column>
@@ -120,6 +124,7 @@ const AccountSettingsComponent = (props) => {
                             <TextArea
                               label="Bio (Optional)"
                               placeholder="Add a small description to your profile"
+                              data-id="account-input-bio"
                             >
                               {props.bio}
                             </TextArea>
@@ -132,6 +137,19 @@ const AccountSettingsComponent = (props) => {
                             <Column xl={3}>
                               <Button
                                 loading={false}
+                                onClick={() => {
+                                  const firstName = document.querySelector("[data-id='account-input-firstname']").value;
+                                  const lastName  = document.querySelector("[data-id='account-input-lastname']").value;
+                                  const email     = document.querySelector("[data-id='account-input-email']").value;
+                                  const bio       = document.querySelector("[data-id='account-input-bio']").value;
+
+                                  props.updateUser({
+                                    firstName,
+                                    lastName,
+                                    email,
+                                    bio,
+                                  });
+                                }}
                               >
                                 Save Updates
                               </Button>
@@ -261,17 +279,17 @@ const AccountSettingsComponent = (props) => {
 };
 
 AccountSettingsComponent.defaultProps = {
-  bio       : '',
-  isProfile : true,
+  bio: '',
 };
 
 AccountSettingsComponent.propTypes = {
-  bio       : PropTypes.string,
-  email     : PropTypes.string.isRequired,
-  firstName : PropTypes.string.isRequired,
-  history   : PropTypes.object.isRequired,
-  isProfile : PropTypes.bool,
-  lastName  : PropTypes.string.isRequired,
+  bio        : PropTypes.string,
+  email      : PropTypes.string.isRequired,
+  firstName  : PropTypes.string.isRequired,
+  history    : PropTypes.object.isRequired,
+  lastName   : PropTypes.string.isRequired,
+  match      : PropTypes.object.isRequired,
+  updateUser : PropTypes.func.isRequired,
 };
 
 export default AccountSettingsComponent;

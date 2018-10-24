@@ -2,6 +2,8 @@ import { connect } from 'react-redux';
 
 import AccountSettingsComponent from './AccountSettingsComponent';
 
+import accountActions from './duck/actions';
+
 const mapStateToProps = (state) => {
   const {
     email,
@@ -20,8 +22,26 @@ const mapStateToProps = (state) => {
   };
 };
 
+const mapDispatchToProps = (dispatch) => {
+  return (
+    {
+      updateUser: ({ firstName, lastName, email, bio }) => {
+        dispatch(accountActions.updateUser({
+          user: {
+            first_name : firstName,
+            last_name  : lastName,
+            email,
+            bio,
+          },
+        }));
+      },
+    }
+  );
+};
+
 const AccountSettingsContainer = connect(
   mapStateToProps,
+  mapDispatchToProps,
 )(AccountSettingsComponent);
 
 export default AccountSettingsContainer;
