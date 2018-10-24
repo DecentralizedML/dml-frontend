@@ -1,5 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import {
   AvatarControl,
@@ -21,38 +21,56 @@ import {
   VerticalTab,
 } from '@kyokan/kyokan-ui';
 
-import DMLBalance from './components/DMLBalance';
+import DMLBalance    from './components/DMLBalance';
 import DMLDebitLimit from './components/DMLDebitLimit';
+import DMLSiteHeader from '../dml-site-header';
 
 const AccountComponent = (props) => {
   return (
-    <Grid>
-      <Row>
-        <Column xlOffset={2} xl={8}>
+    <Grid fluid style={{ padding: 0 }}>
+      <DMLSiteHeader
+        marketplaceActive
+        bounties
+        myAlgorithms
+        createAlgorithm
+        accountDropdown
+      />
+      <Row nogutter>
+        <Column
+          xl={8}
+          offset={{
+            lg: 2,
+          }}
+        >
           <Box padding={8}>
             <Header>Account Settings</Header>
           </Box>
         </Column>
       </Row>
-      <Row>
-        <Column xlOffset={2} xl={8}>
+      <Row nogutter>
+        <Column
+          xl={8}
+          offset={{
+            lg: 2,
+          }}
+        >
           <Box rounded>
             <Tabs>
               <VerticalTab
                 title="Edit Profile"
                 icon="user"
               >
-                <Row>
+                <Row nogutter>
                   <Column xl={8}>
                     <Box padding={9}>
-                      <Row>
+                      <Row nogutter>
                         <Column xl={12}>
                           <Box paddingBottom={6}>
                             <Header>Basic Information</Header>
                           </Box>
                         </Column>
                       </Row>
-                      <Row>
+                      <Row nogutter>
                         <Column xl={6}>
                           <Box
                             paddingBottom={5}
@@ -76,7 +94,7 @@ const AccountComponent = (props) => {
                           </Box>
                         </Column>
                       </Row>
-                      <Row>
+                      <Row nogutter>
                         <Column xl={12}>
                           <Box paddingBottom={5}>
                             <TextInput
@@ -87,7 +105,7 @@ const AccountComponent = (props) => {
                           </Box>
                         </Column>
                       </Row>
-                      <Row>
+                      <Row nogutter>
                         <Column xl={12}>
                           <Box paddingBottom={5}>
                             <TextArea
@@ -99,9 +117,9 @@ const AccountComponent = (props) => {
                           </Box>
                         </Column>
                       </Row>
-                      <Row>
+                      <Row nogutter>
                         <Column xl={12}>
-                          <Row>
+                          <Row nogutter>
                             <Column xl={3}>
                               <Button
                                 loading={false}
@@ -117,14 +135,14 @@ const AccountComponent = (props) => {
                           </Row>
                         </Column>
                       </Row>
-                      <Row>
+                      <Row nogutter>
                         <Column xl={12}>
                           <Box verticalMargin={8}>
                             <HorizontalRule />
                           </Box>
                         </Column>
                       </Row>
-                      <Row>
+                      <Row nogutter>
                         <Column xl={12}>
                           <Header>Are you a developer?</Header>
                           <Box
@@ -159,15 +177,15 @@ const AccountComponent = (props) => {
                 title="Manage Wallet"
                 icon="wallet"
               >
-                <Row>
+                <Row nogutter>
                   <Column xl={8}>
                     <Box padding={9}>
-                      <Row>
+                      <Row nogutter>
                         <Column xl={12}>
                           <Header>DML Balance</Header>
                         </Column>
                       </Row>
-                      <Row>
+                      <Row nogutter>
                         <Column xl={12}>
                           <Box verticalMargin={8}>
                             <DMLBalance
@@ -177,7 +195,7 @@ const AccountComponent = (props) => {
                           </Box>
                         </Column>
                       </Row>
-                      <Row>
+                      <Row nogutter>
                         <Column xl={12}>
                           <Box verticalMargin={5}>
                             <Text dark>Not sure how to get DML Tokens?</Text>
@@ -187,14 +205,14 @@ const AccountComponent = (props) => {
                           </Text>
                         </Column>
                       </Row>
-                      <Row>
+                      <Row nogutter>
                         <Column xl={12}>
                           <Box verticalMargin={8}>
                             <HorizontalRule />
                           </Box>
                         </Column>
                       </Row>
-                      <Row>
+                      <Row nogutter>
                         <Column xl={12}>
                           <Box marginBottom={5}>
                             <Header dark>Approved Debit Limit</Header>
@@ -202,14 +220,14 @@ const AccountComponent = (props) => {
                           <Description>Your debt limit is dynamic. It goes down when charged and needs to be reset once it's spent.</Description>
                         </Column>
                       </Row>
-                      <Row>
+                      <Row nogutter>
                         <Column xl={12}>
                           <Box verticalMargin={8}>
                             <DMLDebitLimit />
                           </Box>
                         </Column>
                       </Row>
-                      <Row>
+                      <Row nogutter>
                         <Column xl={12}>
                           <Status
                             warning
@@ -230,6 +248,15 @@ const AccountComponent = (props) => {
   );
 };
 
-AccountComponent.propTypes = {};
+AccountComponent.defaultProps = {
+  bio: '',
+};
+
+AccountComponent.propTypes = {
+  firstName : PropTypes.string.isRequired,
+  lastName  : PropTypes.string.isRequired,
+  email     : PropTypes.string.isRequired,
+  bio       : PropTypes.string,
+};
 
 export default AccountComponent;

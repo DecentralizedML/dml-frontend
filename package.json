@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@kyokan/kyokan-ui": "^0.1.8",
+    "@kyokan/kyokan-ui": "^0.1.17",
     "axios": "^0.18.0",
     "bignumber.js": "^7.2.1",
+    "classnames": "^2.2.6",
     "immer": "^1.7.2",
     "lazyload-script": "^1.0.5",
     "prop-types": "^15.6.2",

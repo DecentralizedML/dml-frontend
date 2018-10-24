@@ -114,8 +114,8 @@ class Metamask extends Component {
   render () {
     return (
       <div className="onboarding">
-        <Grid>
-          <Row middle="xs">
+        <Grid fluid style={{ padding: 0 }}>
+          <Row nogutter align="center">
             <Column sm={2} md={2} lg={2} xl={2}>
               { this.renderSidebar() }
             </Column>
@@ -124,10 +124,12 @@ class Metamask extends Component {
               md={5}
               lg={5}
               xl={5}
-              smOffset={3}
-              mdOffset={3}
-              lgOffset={3}
-              xlOffset={3}
+              offset={{
+                sm : 3,
+                md : 3,
+                lg : 3,
+                xl : 3,
+              }}
             >
               { this.renderContent() }
             </Column>
