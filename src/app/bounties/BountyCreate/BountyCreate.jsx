@@ -9,17 +9,23 @@ import {
   Row,
 } from '@kyokan/kyokan-ui';
 
-import DMLSiteHeader from '../dml-site-header';
+import DMLSiteHeader from '../../dml-site-header';
+import DMLSiteSubheader from '../../dml-site-subheader';
 
-const Bounties = (props) => {
+const BountyCreate = (props) => {
   return (
     <Grid fluid style={{ padding: 0 }}>
       <DMLSiteHeader
-        marketplace
-        bountiesActive
+        marketplaceActive
+        bounties
         algorithms
         createAlgorithm
         accountDropdown
+      />
+      <DMLSiteSubheader
+        allBounties
+        myParticipations
+        createBountyActive
       />
       <Row nogutter>
         <Column
@@ -29,7 +35,7 @@ const Bounties = (props) => {
           }}
         >
           <Box padding={8}>
-            <Header>Bounties</Header>
+            <Header>Create Bounty</Header>
           </Box>
         </Column>
       </Row>
@@ -40,13 +46,13 @@ const Bounties = (props) => {
             lg: 2,
           }}
         >
-          BOUNTIES
+          Create Bounty
         </Column>
       </Row>
     </Grid>
   );
 };
 
-Bounties.propTypes = {};
+BountyCreate.propTypes = {};
 
-export default Bounties;
+export default BountyCreate;
