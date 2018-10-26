@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import BountiesComponent from './BountiesComponent';
+import BountiesListComponent from './BountiesListComponent';
 
 const mapStateToProps = (state) => {
   return ({
@@ -13,9 +13,9 @@ const mapDispatchToProps = (dispatch) => {
   return {};
 };
 
-const BountiesContainer = connect(
+const BountiesListContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(BountiesComponent);
+)(BountiesListComponent);
 
-export default BountiesContainer;
+export default BountiesListContainer;
