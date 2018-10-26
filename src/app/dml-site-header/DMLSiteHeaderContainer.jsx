@@ -11,10 +11,10 @@ const mapStateToProps = (state) => {
   };
 };
 
-const OnboardingContainer = withRouter(
+const DMLSiteHeaderContainer = withRouter(
   connect(
     mapStateToProps,
   )(DMLSiteHeaderComponent),
 );
 
-export default OnboardingContainer;
+export default DMLSiteHeaderContainer;

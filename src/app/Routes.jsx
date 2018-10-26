@@ -7,7 +7,10 @@ import { connect } from 'react-redux';
 
 import Account from './account';
 import Algorithms from './algorithms';
-import Bounties from './bounties';
+import BountiesList from './bounties/BountiesList';
+import BountyCreate from './bounties/BountyCreate';
+import BountiesUser from './bounties/BountiesUser';
+import Bounty from './bounties/Bounty';
 import Marketplace from './marketplace';
 import Onboarding from './onboarding';
 
@@ -28,20 +31,22 @@ class Routes extends Component {
     return (
       <Router>
         <Switch>
-          <ProtectedRoute path="/account/:section(profile|wallet)" component={Account}     />
-          <ProtectedRoute path="/account"                          component={Account}     />
-          <ProtectedRoute path="/algorithms/:id"                   component={Algorithms}  />
-          <ProtectedRoute path="/algorithms/"                      component={Algorithms}  />
-          <ProtectedRoute path="/bounties/:id"                     component={Bounties}    />
-          <ProtectedRoute path="/bounties"                         component={Bounties}    />
-          <ProtectedRoute path="/marketplace"                      component={Marketplace} />
+          <ProtectedRoute path="/account/:section(profile|wallet)" component={Account}      />
+          <ProtectedRoute path="/account"                          component={Account}      />
+          <ProtectedRoute path="/algorithms/:id"                   component={Algorithms}   />
+          <ProtectedRoute path="/algorithms/"                      component={Algorithms}   />
+          <ProtectedRoute path="/bounties/create"                  component={BountyCreate} />
+          <ProtectedRoute path="/bounties/user"                    component={BountiesUser} />
+          <ProtectedRoute path="/bounties/:id"                     component={Bounty}       />
+          <ProtectedRoute path="/bounties"                         component={BountiesList} />
+          <ProtectedRoute path="/marketplace"                      component={Marketplace}  />
 
-          <ProtectedRoute path="/details"                          component={Onboarding}  />
-          <ProtectedRoute path="/metamask"                         component={Onboarding}  />
+          <ProtectedRoute path="/details"                          component={Onboarding}   />
+          <ProtectedRoute path="/metamask"                         component={Onboarding}   />
 
-          <Route          path="/login"                            component={Onboarding}  />
-          <Route          path="/signup"                           component={Onboarding}  />
-          <Route          path="/logout"                           component={Logout}      />
+          <Route          path="/login"                            component={Onboarding}   />
+          <Route          path="/signup"                           component={Onboarding}   />
+          <Route          path="/logout"                           component={Logout}       />
 
           <Redirect to="/marketplace" />
         </Switch>
