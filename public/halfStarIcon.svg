@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="13px" viewBox="0 0 14 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>halfStar</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Marketplace" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="DML/Marketplace---Sort-Dropdown" transform="translate(-713.000000, -293.000000)">
+            <g id="halfStar" transform="translate(713.000000, 293.000000)">
+                <polygon id="Path" fill="#FFC800" points="7 0 9.163 4.27865405 14 4.96898002 10.5 8.29758149 11.326 13 7 10.778654 2.674 13 3.5 8.29758149 0 4.96898002 4.837 4.27865405"></polygon>
+                <path d="M7.5,10.4733325 L10.6595,12.0956955 L9.96115676,8.12002687 L12.9073553,5.31810661 L8.8343569,4.73681725 L7.5,2.09731122 L7.5,10.4733325 Z" id="Combined-Shape" stroke="#BDC9DD" fill="#BDC9DD" fill-rule="nonzero"></path>
+            </g>
+        </g>
+    </g>
+</svg>
