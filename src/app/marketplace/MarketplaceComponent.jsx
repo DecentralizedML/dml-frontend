@@ -27,17 +27,19 @@ const Marketplace = props => {
         </Column>
         <Column xl={7}>
           <Row>
-            {data.map(job => {
-              return (
-                <JobCard
-                  title="Fashion Items Scanner"
-                  text="Quickly classify clothing and fashion items in images"
-                  authorName="Jimmy Barnes"
-                  authorImg="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&h=350"
-                  downloads="41249"
-                />
-              );
-            })}
+            {data.map((job, index) => (
+              <JobCard
+                key={index}
+                title="Fashion Items Scanner"
+                text="Quickly classify clothing and fashion items in images"
+                authorName="Jimmy Barnes"
+                authorImg="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&h=350"
+                downloads="41249"
+                averageRating="4.5"
+                totalRatings="62"
+                rewardValue="3"
+              />
+            ))}
           </Row>
         </Column>
       </Row>

@@ -22,7 +22,16 @@ const CardContainer = styled.div`
 `;
 
 const JobCard = props => {
-  const { title, text, authorName, authorImg, downloads } = props;
+  const {
+    title,
+    text,
+    authorName,
+    authorImg,
+    downloads,
+    averageRating,
+    totalRatings,
+    rewardValue
+  } = props;
   const renderCard = () => {
     return (
       <Card>
@@ -30,7 +39,12 @@ const JobCard = props => {
           <CardTitle title={title} />
           <CardText text={text} />
           <JobAuthor img={authorImg} name={authorName} />
-          <CardFooter downloads={downloads} />
+          <CardFooter
+            downloads={downloads}
+            averageRating={averageRating}
+            totalRatings={totalRatings}
+            rewardValue={rewardValue}
+          />
         </CardContainer>
       </Card>
     );
