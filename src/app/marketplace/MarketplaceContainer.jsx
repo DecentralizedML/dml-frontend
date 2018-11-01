@@ -1,8 +1,8 @@
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
-import MarketplaceComponent from './MarketplaceComponent';
+import MarketplaceComponent from "./MarketplaceComponent";
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   const { email, firstName, id, lastName, walletAddress } = state.account;
 
   return {
@@ -10,12 +10,10 @@ const mapStateToProps = (state) => {
     firstName,
     id,
     lastName,
-    walletAddress,
+    walletAddress
   };
 };
 
-const MarketplaceContainer = connect(
-  mapStateToProps,
-)(MarketplaceComponent);
+const MarketplaceContainer = connect(mapStateToProps)(MarketplaceComponent);
 
 export default MarketplaceContainer;
