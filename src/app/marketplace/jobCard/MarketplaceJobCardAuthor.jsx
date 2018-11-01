@@ -4,6 +4,17 @@ import styled from "styled-components";
 
 import { Box, Column, Grid, Header, Row } from "@kyokan/kyokan-ui";
 
+const AuthorName = styled.p`
+  padding: 0 8px;
+  font-family: Barlow;
+  font-size: 14px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: 0.2px;
+  color: #0d2957;
+`;
+
 const JobAuthor = props => {
   const { img, name } = props;
 
@@ -15,17 +26,6 @@ const JobAuthor = props => {
     background-image: url("${img}");
     background-size: cover;
     background-position: center;
-  `;
-
-  const AuthorName = styled.p`
-    padding: 0 8px;
-    font-family: Barlow;
-    font-size: 14px;
-    font-weight: 500;
-    font-style: normal;
-    font-stretch: normal;
-    letter-spacing: 0.2px;
-    color: #0d2957;
   `;
 
   return (

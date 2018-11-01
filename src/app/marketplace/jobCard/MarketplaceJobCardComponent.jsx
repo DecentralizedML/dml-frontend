@@ -9,8 +9,8 @@ import JobAuthor from "./MarketplaceJobCardAuthor";
 import CardFooter from "./MarketplaceJobCardFooter";
 
 const Card = styled.div`
+  height: auto;
   width: 372px;
-  height: 200px;
   border-radius: 2px;
   margin: 15px;
   box-shadow: 0 1px 6px 0 rgba(4, 37, 86, 0.04), 0 1px 0 0 rgba(4, 37, 86, 0.04);

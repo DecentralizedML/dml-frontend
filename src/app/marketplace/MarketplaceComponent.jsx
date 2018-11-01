@@ -37,7 +37,7 @@ const Marketplace = props => {
                 downloads="41249"
                 averageRating="4.5"
                 totalRatings="62"
-                rewardValue="3"
+                rewardValue="2"
               />
             ))}
           </Row>
