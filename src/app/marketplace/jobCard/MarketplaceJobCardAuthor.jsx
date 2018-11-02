@@ -3,17 +3,7 @@ import styled from "styled-components";
 // import PropTypes from 'prop-types';
 
 import { Box, Column, Grid, Header, Row } from "@kyokan/kyokan-ui";
-
-const AuthorName = styled.p`
-  padding: 0 8px;
-  font-family: Barlow;
-  font-size: 14px;
-  font-weight: 500;
-  font-style: normal;
-  font-stretch: normal;
-  letter-spacing: 0.2px;
-  color: #0d2957;
-`;
+import { AuthorName } from "./UI/index";
 
 const JobAuthor = props => {
   const { img, name } = props;
