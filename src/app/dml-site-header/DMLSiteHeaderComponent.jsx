@@ -1,21 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
 
-import {
-  AccountDropdown,
-  Box,
-  Button,
-  Column,
-  Row,
-} from '@kyokan/kyokan-ui';
+import { AccountDropdown, Box, Button, Column, Row } from "@kyokan/kyokan-ui";
 
-import DMLSiteHeaderLink from './DMLSiteHeaderLink';
+import DMLSiteHeaderLink from "./DMLSiteHeaderLink";
 
-const headerHeight = '64px';
+const headerHeight = "64px";
 
 const StyledHeader = styled.div`
-  background-color : rgb(41, 54, 73);
+  background-color: rgb(41, 54, 73);
 `;
 
 const StyledLogo = styled.img`
@@ -25,11 +19,12 @@ const StyledLogo = styled.img`
 `;
 
 const StyledContainer = styled.div`
-  display         : flex;
-  height          : ${headerHeight};
+  display: flex;
+  height: ${headerHeight};
 `;
 
-const DMLSiteHeader = (props) => {
+const DMLSiteHeader = props => {
+  console.log(props.theme);
   const renderLogo = () => {
     if (props.logo) {
       return (
@@ -37,7 +32,7 @@ const DMLSiteHeader = (props) => {
           src="/logo.svg"
           alt="Decentralized Machine Learning"
           onClick={() => {
-            props.history.push('/');
+            props.history.push("/");
           }}
         />
       );
@@ -51,7 +46,7 @@ const DMLSiteHeader = (props) => {
           text="Marketplace"
           active={props.marketplaceActive}
           onClick={() => {
-            props.history.push('/marketplace');
+            props.history.push("/marketplace");
           }}
         />
       );
@@ -65,7 +60,7 @@ const DMLSiteHeader = (props) => {
           text="Bounties"
           active={props.bountiesActive}
           onClick={() => {
-            props.history.push('/bounties');
+            props.history.push("/bounties");
           }}
         />
       );
@@ -79,7 +74,7 @@ const DMLSiteHeader = (props) => {
           text="Algorithms"
           active={props.algorithmsActive}
           onClick={() => {
-            props.history.push('/algorithms');
+            props.history.push("/algorithms");
           }}
         />
       );
@@ -88,13 +83,7 @@ const DMLSiteHeader = (props) => {
 
   const renderCreateAlgorithm = () => {
     if (props.createAlgorithm) {
-      return (
-        <Button
-          leftIcon="plusCircle"
-        >
-          Create Algorithm
-        </Button>
-      );
+      return <Button leftIcon="plusCircle">Create Algorithm</Button>;
     }
   };
 
@@ -104,8 +93,8 @@ const DMLSiteHeader = (props) => {
         <AccountDropdown
           avatar={props.userAvatar}
           items={[
-            { text: 'Account Settings', route: '/account' },
-            { text: 'Logout',           route: '/logout' },
+            { text: "Account Settings", route: "/account" },
+            { text: "Logout", route: "/logout" }
           ]}
           name={props.userName}
           onItemClick={({ route }) => {
@@ -137,17 +126,12 @@ const DMLSiteHeader = (props) => {
               </StyledContainer>
             </Column>
             <Column xs={6} sm={6} md={6} lg={2} xl={2} offset={{ xl: 2 }}>
-              <Box
-                verticalPadding={2}
-                rightContent
-              >
+              <Box verticalPadding={2} rightContent>
                 {renderCreateAlgorithm()}
               </Box>
             </Column>
             <Column xs={6} sm={6} md={6} lg={2} xl={2}>
-              <Box centerContent>
-                {renderAccountDropdown()}
-              </Box>
+              <Box centerContent>{renderAccountDropdown()}</Box>
             </Column>
           </Row>
         </StyledHeader>
@@ -157,32 +141,32 @@ const DMLSiteHeader = (props) => {
 };
 
 DMLSiteHeader.defaultProps = {
-  accountDropdown   : false,
-  algorithms        : false,
-  algorithmsActive  : false,
-  bounties          : false,
-  bountiesActive    : false,
-  createAlgorithm   : false,
-  logo              : true,
-  marketplace       : false,
-  marketplaceActive : false,
-  userAvatar        : '',
-  userName          : 'User',
+  accountDropdown: false,
+  algorithms: false,
+  algorithmsActive: false,
+  bounties: false,
+  bountiesActive: false,
+  createAlgorithm: false,
+  logo: true,
+  marketplace: false,
+  marketplaceActive: false,
+  userAvatar: "",
+  userName: "User"
 };
 
 DMLSiteHeader.propTypes = {
-  accountDropdown   : PropTypes.bool,
-  algorithms        : PropTypes.bool,
-  algorithmsActive  : PropTypes.bool,
-  bounties          : PropTypes.bool,
-  bountiesActive    : PropTypes.bool,
-  createAlgorithm   : PropTypes.bool,
-  history           : PropTypes.object.isRequired,
-  logo              : PropTypes.bool,
-  marketplace       : PropTypes.bool,
-  marketplaceActive : PropTypes.bool,
-  userAvatar        : PropTypes.string,
-  userName          : PropTypes.string,
+  accountDropdown: PropTypes.bool,
+  algorithms: PropTypes.bool,
+  algorithmsActive: PropTypes.bool,
+  bounties: PropTypes.bool,
+  bountiesActive: PropTypes.bool,
+  createAlgorithm: PropTypes.bool,
+  history: PropTypes.object.isRequired,
+  logo: PropTypes.bool,
+  marketplace: PropTypes.bool,
+  marketplaceActive: PropTypes.bool,
+  userAvatar: PropTypes.string,
+  userName: PropTypes.string
 };
 
 export default DMLSiteHeader;

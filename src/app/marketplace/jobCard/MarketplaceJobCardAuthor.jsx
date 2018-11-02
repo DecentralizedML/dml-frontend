@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 // import PropTypes from 'prop-types';
 
-import { Box, Column, Grid, Header, Row } from "@kyokan/kyokan-ui";
+import { Row } from "@kyokan/kyokan-ui";
 import { AuthorName } from "./UI/index";
 
 const JobAuthor = props => {
