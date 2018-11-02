@@ -2,10 +2,11 @@ import React from "react";
 import styled from "styled-components";
 // import PropTypes from 'prop-types';
 
-import { Box, Column, Grid, Header, Row } from "@kyokan/kyokan-ui";
+import { Column, Grid, Header, Row } from "@kyokan/kyokan-ui";
 
 import DMLSiteHeader from "../dml-site-header";
 import JobCard from "./jobCard/MarketplaceJobCardComponent";
+import Sidebar from "./sidebar/MarketplaceSidebarComponent";
 
 const data = [1, 2, 3, 4, 5, 6, 7];
 
@@ -21,9 +22,7 @@ const Marketplace = props => {
       />
       <Row nogutter>
         <Column xl={3} offset={{ xl: 1 }}>
-          <Box>
-            <Header>Marketplace</Header>
-          </Box>
+          <Sidebar />
         </Column>
         <Column xl={7}>
           <Row>

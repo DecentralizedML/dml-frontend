@@ -9,6 +9,11 @@ export const Card = styled.div`
   margin: 15px;
   box-shadow: 0 1px 6px 0 rgba(4, 37, 86, 0.04), 0 1px 0 0 rgba(4, 37, 86, 0.04);
   background-color: ${mainTheme.colors.white};
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0 1px 6px 0 rgba(4, 37, 86, 0.12),
+      0 1px 0 0 rgba(4, 37, 86, 0.12);
+  }
 `;
 
 export const CardContainer = styled.div`
@@ -22,7 +27,7 @@ export const CardTitle = styled.div`
   font-weight: 600;
   line-height: 1.5;
   letter-spacing: 0.2px;
-  color: ${mainTheme.colors.cardTitle};
+  color: ${mainTheme.colors.downriver};
 `;
 
 // CardText
@@ -31,7 +36,7 @@ export const CardText = styled.div`
   font-size: 15px;
   line-height: 1.47;
   letter-spacing: 0.2px;
-  color: ${mainTheme.colors.cardText};
+  color: ${mainTheme.colors.steelplant};
 `;
 
 // Author
@@ -43,7 +48,7 @@ export const AuthorName = styled.div`
   font-style: normal;
   font-stretch: normal;
   letter-spacing: 0.2px;
-  color: ${mainTheme.colors.cardTitle};
+  color: ${mainTheme.colors.downriver};
 `;
 
 // Footer
@@ -88,15 +93,10 @@ export const DMLRectangle = styled.div`
   align-items: center;
   width: 70%;
   height: 26px;
-  background: ${mainTheme.colors.mainBlue};
-  border: solid 2px ${mainTheme.colors.mainBlue};
+  background: ${mainTheme.colors.royalBlue};
+  border: solid 2px ${mainTheme.colors.royalBlue};
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
-  &:hover {
-    cursor: pointer;
-    background: ${mainTheme.colors.secondaryBlue};
-    border: solid 2px ${mainTheme.colors.secondaryBlue};
-  }
 `;
 
 export const DMLOutline = styled.div`
@@ -113,7 +113,7 @@ export const RewardValue = styled.div`
   font-weight: 600;
   line-height: 1.41;
   text-align: center;
-  color: ${mainTheme.colors.cardTitle};
+  color: ${mainTheme.colors.downriver};
 `;
 
 export const DMLLogo = styled.img`

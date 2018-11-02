@@ -1,12 +1,14 @@
 const mainTheme = {
   font: "Barlow",
   colors: {
-    cardTitle: "#0d2957",
-    cardText: "#6c80a0",
+    steelplant: "#6c80a0",
     cardNumberValues: "#8194b2",
-    mainBlue: "#3c81ed",
+    royalBlue: "#3c81ed",
     secondaryBlue: "#5797fb",
-    white: "#ffffff"
+    sail: "#B1CCF8",
+    downriver: "#0D2957",
+    white: "#ffffff",
+    BaliHai: "#8194B2"
   }
 };
 
