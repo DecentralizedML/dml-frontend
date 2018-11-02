@@ -1,15 +1,15 @@
 /* eslint-disable react/prefer-stateless-function */
 
-import React, { Component } from 'react';
-import { Provider } from 'react-redux';
-import { ThemeProvider } from 'styled-components';
-import { DMLTheme } from '@kyokan/kyokan-ui';
+import React, { Component } from "react";
+import { Provider } from "react-redux";
+import { ThemeProvider } from "styled-components";
+import { DMLTheme } from "@kyokan/kyokan-ui";
 
-import store from '../state/store';
-import Routes from './Routes';
+import store from "../state/store";
+import Routes from "./Routes";
 
 class App extends Component {
-  render () {
+  render() {
     return (
       <ThemeProvider theme={DMLTheme}>
         <Provider store={store}>
