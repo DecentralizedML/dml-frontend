@@ -40,6 +40,7 @@ export const Dropdown = styled.select`
   overflow: hidden;
   outline: none;
   border: none;
+  width: 60%;
   height: 24px;
   font-family: ${mainTheme.font};
   font-size: 15px;
