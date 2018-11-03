@@ -49,6 +49,9 @@ export const Dropdown = styled.select`
   letter-spacing: 0.2px;
   margin-left: 2px;
   color: ${mainTheme.colors.downriver};
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 // Apparently impossible to style options with CSS
