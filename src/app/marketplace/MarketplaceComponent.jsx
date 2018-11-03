@@ -2,11 +2,12 @@ import React from "react";
 import styled from "styled-components";
 // import PropTypes from 'prop-types';
 
-import { Column, Grid, Header, Row } from "@kyokan/kyokan-ui";
+import { Column, Grid, Row } from "@kyokan/kyokan-ui";
 
 import DMLSiteHeader from "../dml-site-header";
 import JobCard from "./jobCard/MarketplaceJobCardComponent";
 import Sidebar from "./sidebar/MarketplaceSidebarComponent";
+import Topbar from "./topBar/MarketPlaceHeaderComponent";
 
 const data = [1, 2, 3, 4, 5, 6, 7];
 
@@ -20,11 +21,12 @@ const Marketplace = props => {
         createAlgorithm
         accountDropdown
       />
-      <Row nogutter>
+      <Row nogutter style={{ paddingTop: 32 }}>
         <Column xl={3} offset={{ xl: 1 }}>
           <Sidebar />
         </Column>
         <Column xl={7}>
+          <Topbar algorithmCount={data.length} />
           <Row>
             {data.map((job, index) => (
               <JobCard
