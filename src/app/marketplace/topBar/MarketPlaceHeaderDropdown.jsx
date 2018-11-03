@@ -2,17 +2,26 @@ import React from "react";
 // import PropTypes from 'prop-types';
 import { Row, Column } from "@kyokan/kyokan-ui";
 
-import { Dropdown, DropdownInner } from "./UI/index";
+import {
+  Dropdown,
+  DropdownContainer,
+  DropdownWrapper,
+  Option,
+  Description
+} from "./UI/index";
 
 const DropdownComponent = props => {
   return (
-    <Dropdown icon="/icons/Icon-Arrow-Tip-Down-Grey.svg">
-      <DropdownInner name="mydropdown" id="gender" placeholder="Gender">
-        <option value="">Gender</option>
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-      </DropdownInner>
-    </Dropdown>
+    <DropdownContainer icon="/icons/Icon-Arrow-Tip-Down-Grey.svg">
+      <DropdownWrapper>
+        <Description>Sort By: </Description>
+        <Dropdown name="mydropdown" id="gender" placeholder="Gender">
+          <Option value="">Price</Option>
+          <Option value="Downloads">Downloads</Option>
+          <Option value="Rating">Rating</Option>
+        </Dropdown>
+      </DropdownWrapper>
+    </DropdownContainer>
   );
 };
 
