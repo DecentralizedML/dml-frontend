@@ -11,12 +11,24 @@ import {
 } from "./UI/index";
 
 import CardContent from "./MarketPlaceSidebarCardContent";
+import Tag from "./MarketPlaceSidebarTagCard";
+import Searchbar from "./MarketPlaceSidebarSearchbar";
+
+const popularTags = [
+  "OCR",
+  "Sentiment Analysis",
+  "Color Trend",
+  "Fashion",
+  "Pathfinding",
+  "Image Recognition"
+];
 
 const Sidebar = props => {
   const {} = props;
   const renderSidebar = () => {
     return (
       <SidebarContainer>
+        <Searchbar />
         <OpacityHeadline>FILTER BY CATEGORY</OpacityHeadline>
         <CardContainer>
           <TopCard>
@@ -26,6 +38,12 @@ const Sidebar = props => {
             <CardContent category="Text Analysis" />
           </BottomCard>
         </CardContainer>
+        <OpacityHeadline>POPULAR TAGS</OpacityHeadline>
+        <Row nogutter>
+          {popularTags.map(tag => {
+            return <Tag title={tag} />;
+          })}
+        </Row>
       </SidebarContainer>
     );
   };

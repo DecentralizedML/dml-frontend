@@ -3,7 +3,7 @@ import mainTheme from "../../../themes/mainTheme";
 
 // Container
 export const SidebarContainer = styled.div`
-  margin: 32px 0;
+  margin: 0;
 `;
 
 export const SidebarRow = styled.div`
@@ -41,9 +41,8 @@ export const BottomCard = styled.div`
   }
 `;
 
-export const CardContainer = styled.div`
-  margin: 24px 0;
-`;
+// Styles are empty after I refactored it - still left it in case we need to add styling later
+export const CardContainer = styled.div``;
 
 export const OpacityHeadline = styled.div`
   font-family: ${mainTheme.font};
@@ -54,6 +53,7 @@ export const OpacityHeadline = styled.div`
   line-height: 1.23;
   letter-spacing: 0.5px;
   color: ${mainTheme.colors.BaliHai};
+  margin: 32px 0 18px 0;
 `;
 
 export const CategoryIcon = styled.div`
@@ -79,4 +79,65 @@ export const CategoryText = styled.div`
   line-height: 1.5;
   letter-spacing: 0.2px;
   color: ${mainTheme.colors.BaliHai};
+`;
+
+export const TagCard = styled.div`
+  height: 24px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border-radius: 2px;
+  padding: 2px 8px;
+  box-shadow: 0 1px 0 0 rgba(110, 141, 189, 0.1);
+  background-color: ${mainTheme.colors.white};
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+export const TagTitle = styled.div`
+  height: 21px;
+  font-family: ${mainTheme.font};
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.2px;
+  color: ${mainTheme.colors.BaliHai};
+`;
+
+export const SearchBox = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 306px;
+  height: 40px;
+  border-radius: 3px;
+  border: solid 1px #dae1ed;
+  background-color: ${mainTheme.colors.white};
+`;
+
+export const SearchInput = styled.input`
+  height: 24px;
+  width: 100%;
+  font-family: ${mainTheme.font};
+  font-size: 15px;
+  line-height: 1.6;
+  letter-spacing: 0.2px;
+  color: ${mainTheme.colors.BaliHai};
+  border: none;
+  outline: none;
+  margin: 7px 16px 9px 16px;
+  &::placeholder {
+    color: ${mainTheme.colors.BaliHai};
+  }
+`;
+
+export const SearchIcon = styled.div`
+  width: 16px;
+  height: 16px;
+  background-image: url("${props => props.icon}");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.8;
+  margin-right: 16px;
+  margin-left: auto;
 `;
