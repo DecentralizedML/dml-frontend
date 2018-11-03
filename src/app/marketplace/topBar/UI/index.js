@@ -16,7 +16,7 @@ export const SearchResultNumber = styled.span`
   font-weight: 600;
 `;
 
-export const Dropdown = styled.div`
+export const DropdownContainer = styled.div`
   width: 181px;
   height: 36px;
   border-radius: 3px;
@@ -24,19 +24,51 @@ export const Dropdown = styled.div`
   overflow: hidden;
   background: no-repeat #ffffff;
   background-image: url("${props => props.icon}");
-  background-position: center right;
+  background-position: 90% 50%;
 `;
 
-export const DropdownInner = styled.select`
+export const DropdownWrapper = styled.div`
+  margin: 5px 14px 7px 14px;
+`;
+
+export const Dropdown = styled.select`
+  font-family: ${mainTheme.font};
   -webkit-appearance: none;
   border-radius: 0;
   -webkit-border-radius: 0;
   background: transparent;
-  padding: 3px;
-  font-size: 1.2em;
-  height: 30px;
-  width: 120%;
   overflow: hidden;
   outline: none;
   border: none;
+  height: 24px;
+  font-family: ${mainTheme.font};
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: 0.2px;
+  margin-left: 2px;
+  color: ${mainTheme.colors.downriver};
+`;
+
+// Apparently impossible to style options with CSS
+// If we want this, we need to use a library:
+// https://github.com/fraserxu/react-dropdown
+
+export const Option = styled.option`
+  font-family: ${mainTheme.font};
+  color: ${mainTheme.colors.downriver};
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: 0.2px;
+`;
+
+export const Description = styled.span`
+  width: 53px;
+  height: 24px;
+  font-family: ${mainTheme.font};
+  font-size: 15px;
+  line-height: 1.6;
+  letter-spacing: 0.2px;
+  color: ${mainTheme.colors.BaliHai};
 `;
