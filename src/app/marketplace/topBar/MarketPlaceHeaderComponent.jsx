@@ -16,7 +16,8 @@ const Topbar = props => {
     <Row nogutter>
       <Column xl={8.15}>
         <SearchResultCount>
-          <SearchResultNumber>{algorithmCount}</SearchResultNumber> Algorithms
+          <SearchResultNumber>{algorithmCount}</SearchResultNumber>
+          {algorithmCount === 1 ? " Algorithm" : " Algorithms"}
         </SearchResultCount>
       </Column>
       <Column xl={3.85}>
