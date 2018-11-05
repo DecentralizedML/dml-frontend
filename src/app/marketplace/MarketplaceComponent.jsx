@@ -20,7 +20,19 @@ class Marketplace extends React.Component {
   async componentDidMount() {
     const algorithms = await listAlgorithms();
     this.setState({ data: algorithms.data });
-    console.log(this.state);
+    this.selectCategory("lel");
+    this.selectTag("haha");
+    console.log(this.props.category);
+    console.log(this.props.tag);
+  }
+
+  selectCategory(category) {
+    // Either "Image Recognition" or "Text Analysis"
+    this.props.selectCategory("Image Recognition");
+  }
+
+  selectTag(tag) {
+    this.props.selectTag("Sentiment Analysis");
   }
 
   render() {
