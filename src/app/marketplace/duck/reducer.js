@@ -6,11 +6,11 @@ import types from "./types";
 // import types from './types';
 
 const initialState = {
-  category = 'all',
-  tag = 'all',
-  singleView = false,
-  filteredView = false,
-}
+  category: "all",
+  tag: "all",
+  singleView: false,
+  filteredView: false
+};
 
 const marketplaceReducer = (state = initialState, action) => {
   return produce(state, draftState => {
