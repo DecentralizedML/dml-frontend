@@ -9,45 +9,69 @@ import JobCard from "./jobCard/MarketplaceJobCardComponent";
 import Sidebar from "./sidebar/MarketplaceSidebarComponent";
 import Topbar from "./topBar/MarketPlaceHeaderComponent";
 
-const data = [1, 2, 3, 4, 5, 6, 7];
+import { listAlgorithms } from "../algorithms/duck/api";
 
-const Marketplace = props => {
-  return (
-    <Grid fluid style={{ padding: 0 }}>
-      <DMLSiteHeader
-        marketplaceActive
-        bounties
-        algorithms
-        createAlgorithm
-        accountDropdown
-      />
-      <Row nogutter style={{ paddingTop: 32 }}>
-        <Column xl={3} offset={{ xl: 1 }}>
-          <Sidebar />
-        </Column>
-        <Column xl={7}>
-          <Topbar algorithmCount={data.length} />
-          <Row>
-            {data.map((job, index) => (
-              <JobCard
-                key={index}
-                title="Fashion Items Scanner"
-                text="Quickly classify clothing and fashion items in images"
-                authorName="Jimmy Barnes"
-                authorImg="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&h=350"
-                downloads="41249"
-                averageRating="4.5"
-                totalRatings="62"
-                rewardValue="2"
-              />
-            ))}
-          </Row>
-        </Column>
-      </Row>
-      <Row nogutter />
-    </Grid>
-  );
-};
+class Marketplace extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { data: [] };
+  }
+
+  async componentDidMount() {
+    const algorithms = await listAlgorithms();
+    this.setState({ data: algorithms.data });
+    console.log(this.state);
+  }
+
+  render() {
+    return (
+      <Grid fluid style={{ padding: 0 }}>
+        <DMLSiteHeader
+          marketplaceActive
+          bounties
+          algorithms
+          createAlgorithm
+          accountDropdown
+        />
+        <Row nogutter style={{ paddingTop: 32 }}>
+          <Column xl={3} offset={{ xl: 1 }}>
+            <Sidebar />
+          </Column>
+          <Column xl={7}>
+            <Topbar algorithmCount={this.state.data.length} />
+            <Row>
+              {this.state.data.map(algorithm => {
+                const fullName = `${
+                  algorithm.user.first_name
+                    ? algorithm.user.first_name
+                    : "Anonymous"
+                } ${
+                  algorithm.user.last_name
+                    ? algorithm.user.last_name
+                    : "Anonymous"
+                }`;
+                return (
+                  <JobCard
+                    key={algorithm.id}
+                    title={algorithm.title}
+                    text={algorithm.description}
+                    authorName={fullName}
+                    authorImg="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&h=350"
+                    downloads="41249"
+                    averageRating="4.5"
+                    totalRatings="62"
+                    rewardValue="2"
+                  />
+                );
+              })}
+            </Row>
+          </Column>
+        </Row>
+        <Row nogutter />
+      </Grid>
+    );
+  }
+}
 
 Marketplace.propTypes = {};
 

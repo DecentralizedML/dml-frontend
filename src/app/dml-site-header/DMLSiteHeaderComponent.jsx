@@ -24,7 +24,6 @@ const StyledContainer = styled.div`
 `;
 
 const DMLSiteHeader = props => {
-  console.log(props.theme);
   const renderLogo = () => {
     if (props.logo) {
       return (
