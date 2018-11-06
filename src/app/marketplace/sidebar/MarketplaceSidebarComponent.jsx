@@ -1,6 +1,6 @@
 import React from "react";
 // import PropTypes from 'prop-types';
-import { Column, Grid, Row, Header } from "@kyokan/kyokan-ui";
+import { Row } from "@kyokan/kyokan-ui";
 
 import {
   CardContainer,
@@ -24,7 +24,7 @@ const popularTags = [
 ];
 
 const Sidebar = props => {
-  const {} = props;
+  const { selectCategory, category } = props;
   const renderSidebar = () => {
     return (
       <SidebarContainer>
@@ -32,10 +32,18 @@ const Sidebar = props => {
         <OpacityHeadline>FILTER BY CATEGORY</OpacityHeadline>
         <CardContainer>
           <TopCard>
-            <CardContent category="Image Recognition" />
+            <CardContent
+              category="Image Recognition"
+              active={category === "Image Recognition"}
+              selectCategory={selectCategory}
+            />
           </TopCard>
           <BottomCard>
-            <CardContent category="Text Analysis" />
+            <CardContent
+              category="Text Analysis"
+              active={category === "Text Analysis"}
+              selectCategory={selectCategory}
+            />
           </BottomCard>
         </CardContainer>
         <OpacityHeadline>POPULAR TAGS</OpacityHeadline>

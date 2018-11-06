@@ -7,6 +7,9 @@ export const SidebarContainer = styled.div`
 `;
 
 export const SidebarRow = styled.div`
+  ${props =>
+    props.active && "border-left: solid 3px " + mainTheme.colors.royalBlue};
+  border-top-left-radius: 3px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -59,7 +62,8 @@ export const OpacityHeadline = styled.div`
 export const CategoryIcon = styled.div`
   width: 44px;
   height: 44px;
-  background-image: url("${props => props.icon}");
+  background-image: url("${props =>
+    props.active ? props.iconActive : props.icon}");
   background-size: cover;
   background-position: center;
 `;

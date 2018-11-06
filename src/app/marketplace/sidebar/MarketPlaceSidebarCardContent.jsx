@@ -1,6 +1,6 @@
 import React from "react";
 // import PropTypes from 'prop-types';
-import { Column, Grid, Row, Header } from "@kyokan/kyokan-ui";
+import { Column } from "@kyokan/kyokan-ui";
 import {
   CategoryIcon,
   SidebarRow,
@@ -9,14 +9,18 @@ import {
 } from "./UI/index";
 
 const CardContent = props => {
-  const { category } = props;
+  const { category, active, selectCategory } = props;
 
-  const renderCard = category => {
+  const renderCard = () => {
     if (category === "Image Recognition") {
       return (
-        <SidebarRow>
+        <SidebarRow active={active} onClick={() => selectCategory(category)}>
           <Column xl={2.5}>
-            <CategoryIcon icon="/icons/Icon-Categories-Image-Dark.svg" />
+            <CategoryIcon
+              active={active}
+              icon="/icons/Icon-Categories-Image-Dark.svg"
+              iconActive="/icons/Icon-Categories-Image-Blue.svg"
+            />
           </Column>
           <Column Column xl={9.5}>
             <CategoryTitle>{category}</CategoryTitle>
@@ -26,9 +30,13 @@ const CardContent = props => {
       );
     } else if (category === "Text Analysis") {
       return (
-        <SidebarRow>
+        <SidebarRow active={active} onClick={() => selectCategory(category)}>
           <Column xl={2.5}>
-            <CategoryIcon icon="/icons/Icon-Categories-Text-Dark.svg" />
+            <CategoryIcon
+              active={active}
+              icon="/icons/Icon-Categories-Text-Dark.svg"
+              iconActive="/icons/Icon-Categories-Text-Blue.svg"
+            />
           </Column>
           <Column Column xl={9.5}>
             <CategoryTitle>{category}</CategoryTitle>
