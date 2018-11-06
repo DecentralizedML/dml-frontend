@@ -22,9 +22,11 @@ const marketplaceReducer = (state = initialState, action) => {
         draftState["category"] === action.payload
           ? (draftState["filteredView"] = true)
           : (draftState["filteredView"] = false);
+        break;
       case types.SELECT_TAG:
         draftState["tag"] = action.payload;
         draftState["filteredView"] = true;
+        break;
       default:
     }
   });
