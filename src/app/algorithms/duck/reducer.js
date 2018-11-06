@@ -4,22 +4,14 @@ import produce from "immer";
 
 import types from "./types";
 
-/*
-
-const state = {
-  order = [id0, id1, id2, id3];
-  map = {
-    id0: data0;
-    id1: data1;
-    id2: data2;
-  };
-  myAlgoIds = [id3, id7];
-}
-
-*/
+const inititalState = {
+  allAlgorithmsOrder: [],
+  allAlgorithmsMap: {},
+  myAlgoIds: []
+};
 
 // TODO: Implement the logic
-const accountReducer = (state = {}, action) => {
+const accountReducer = (state = inititalState, action) => {
   return produce(state, draftState => {
     switch (action.type) {
       case types.CREATE_ALGORITHM:
@@ -41,9 +33,12 @@ const accountReducer = (state = {}, action) => {
         break;
 
       case types.LIST_ALGORITHMS:
-        // draftState["algorithms"] = action.payload;
+        action.payload.map(algorithm => {
+          draftState.allAlgorithmsOrder.push(algorithm.id);
+          draftState.allAlgorithmsMap[algorithm.id] = algorithm;
+          // Add a way to grab the User's Algos
+        });
         break;
-
       case types.LIST_ALGORITHMS_ERROR:
         break;
 
