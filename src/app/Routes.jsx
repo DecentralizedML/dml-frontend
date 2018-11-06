@@ -23,14 +23,16 @@ import ProtectedRoute from "./auth/ProtectedRoute";
 import Logout from "./auth/Logout";
 
 import accountActions from "./account/duck/actions";
+import algorithmsActions from "./algorithms/duck/actions";
+import { listAlgorithms as getAllAlgorithms } from "./algorithms/duck/api";
 
 import { initialize, startWatching } from "../utils/web3connect";
 
 class Routes extends Component {
-  componentWillMount() {
+  async componentWillMount() {
     this.props.hydrateUserData();
     this.props.initialize().then(this.props.startWatching);
-    // this.props.hydrateAlgorithmData();
+    await this.props.hydrateAlgorithmData();
     // this.props.hydrateUserAlgorithms();
     // -> 'entry point to everything'
   }
@@ -84,6 +86,10 @@ export default connect(
       },
       startWatching: () => {
         return dispatch(startWatching());
+      },
+      hydrateAlgorithmData: async () => {
+        const response = await getAllAlgorithms();
+        return dispatch(algorithmsActions.listAlgorithms(response.data));
       }
     };
   }
