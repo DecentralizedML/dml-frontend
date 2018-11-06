@@ -31,14 +31,14 @@ const Sidebar = props => {
         <Searchbar />
         <OpacityHeadline>FILTER BY CATEGORY</OpacityHeadline>
         <CardContainer>
-          <TopCard>
+          <TopCard active={category === "Image Recognition"}>
             <CardContent
               category="Image Recognition"
               active={category === "Image Recognition"}
               selectCategory={selectCategory}
             />
           </TopCard>
-          <BottomCard>
+          <BottomCard active={category === "Text Analysis"}>
             <CardContent
               category="Text Analysis"
               active={category === "Text Analysis"}

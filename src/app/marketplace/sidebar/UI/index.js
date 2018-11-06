@@ -7,9 +7,6 @@ export const SidebarContainer = styled.div`
 `;
 
 export const SidebarRow = styled.div`
-  ${props =>
-    props.active && "border-left: solid 3px " + mainTheme.colors.royalBlue};
-  border-top-left-radius: 3px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -19,6 +16,8 @@ export const SidebarRow = styled.div`
 
 // CardComponents
 export const TopCard = styled.div`
+  ${props =>
+    props.active && "border-left: solid 3px " + mainTheme.colors.royalBlue};
   width: 306px;
   height: 80px;
   border-top-left-radius: 3px;
@@ -31,6 +30,8 @@ export const TopCard = styled.div`
 `;
 
 export const BottomCard = styled.div`
+  ${props =>
+    props.active && "border-left: solid 3px " + mainTheme.colors.royalBlue};
   width: 306px;
   height: 80px;
   border-bottom-left-radius: 3px;
