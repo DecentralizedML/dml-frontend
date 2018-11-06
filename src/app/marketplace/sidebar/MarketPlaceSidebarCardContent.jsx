@@ -14,7 +14,7 @@ const CardContent = props => {
   const renderCard = () => {
     if (category === "Image Recognition") {
       return (
-        <SidebarRow active={active} onClick={() => selectCategory(category)}>
+        <SidebarRow active onClick={() => selectCategory(category)}>
           <Column xl={2.5}>
             <CategoryIcon
               active={active}
@@ -22,7 +22,7 @@ const CardContent = props => {
               iconActive="/icons/Icon-Categories-Image-Blue.svg"
             />
           </Column>
-          <Column Column xl={9.5}>
+          <Column xl={9.5}>
             <CategoryTitle>{category}</CategoryTitle>
             <CategoryText>Identify objects in Images</CategoryText>
           </Column>
@@ -30,7 +30,7 @@ const CardContent = props => {
       );
     } else if (category === "Text Analysis") {
       return (
-        <SidebarRow active={active} onClick={() => selectCategory(category)}>
+        <SidebarRow active onClick={() => selectCategory(category)}>
           <Column xl={2.5}>
             <CategoryIcon
               active={active}
@@ -38,7 +38,7 @@ const CardContent = props => {
               iconActive="/icons/Icon-Categories-Text-Blue.svg"
             />
           </Column>
-          <Column Column xl={9.5}>
+          <Column xl={9.5}>
             <CategoryTitle>{category}</CategoryTitle>
             <CategoryText>Make sense of unstructured text</CategoryText>
           </Column>

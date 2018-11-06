@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 // import PropTypes from 'prop-types';
 
 import { Column, Grid, Row } from "@kyokan/kyokan-ui";
@@ -82,7 +81,6 @@ class Marketplace extends React.Component {
             )}
           </Column>
         </Row>
-        <Row nogutter />
       </Grid>
     );
   }

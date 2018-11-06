@@ -2,12 +2,7 @@ import React from "react";
 // import PropTypes from 'prop-types';
 import { Row, Column } from "@kyokan/kyokan-ui";
 
-import {
-  SearchResultCount,
-  SearchResultNumber,
-  Dropdown,
-  DropdownInner
-} from "./UI/index";
+import { SearchResultCount, SearchResultNumber } from "./UI/index";
 import DropdownComponent from "./MarketPlaceHeaderDropdown";
 
 const Topbar = props => {

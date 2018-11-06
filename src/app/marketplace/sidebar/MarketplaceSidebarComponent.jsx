@@ -48,8 +48,8 @@ const Sidebar = props => {
         </CardContainer>
         <OpacityHeadline>POPULAR TAGS</OpacityHeadline>
         <Row nogutter>
-          {popularTags.map(tag => {
-            return <Tag title={tag} />;
+          {popularTags.map((tag, index) => {
+            return <Tag key={index} title={tag} />;
           })}
         </Row>
       </SidebarContainer>

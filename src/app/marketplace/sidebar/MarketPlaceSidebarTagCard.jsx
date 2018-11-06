@@ -1,5 +1,4 @@
 import React from "react";
-import { Column, Grid, Row, Header } from "@kyokan/kyokan-ui";
 
 import { TagCard, TagTitle } from "./UI/index";
 
