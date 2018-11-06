@@ -24,8 +24,7 @@ class Marketplace extends React.Component {
   }
 
   selectCategory(category) {
-    // Either "Image Recognition" or "Text Analysis"
-    this.props.selectCategory("Image Recognition");
+    this.props.selectCategory(category);
   }
 
   selectTag(tag) {
@@ -44,7 +43,10 @@ class Marketplace extends React.Component {
         />
         <Row nogutter style={{ paddingTop: 32 }}>
           <Column xl={3} offset={{ xl: 1 }}>
-            <Sidebar />
+            <Sidebar
+              selectCategory={this.selectCategory.bind(this)}
+              category={this.props.category}
+            />
           </Column>
           <Column xl={7}>
             <Topbar algorithmCount={this.state.data.length} />
