@@ -14,16 +14,22 @@ import { listAlgorithms } from "../algorithms/duck/api";
 class Marketplace extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { data: [] };
+    this.state = { data: [] }; // Get the algorithms from algo redux state
   }
 
+  //
   async componentDidMount() {
+    // move this into routes => load algos when the app loaded and save it into redux state
     const algorithms = await listAlgorithms();
     this.setState({ data: algorithms.data });
   }
 
   selectCategory(category) {
-    this.props.selectCategory(category);
+    if (category === this.props.selectedCategory) {
+      this.props.deselectCategory(category);
+    } else {
+      this.props.selectCategory(category);
+    }
   }
 
   selectTag(tag) {
@@ -44,7 +50,7 @@ class Marketplace extends React.Component {
           <Column xl={3} offset={{ xl: 1 }}>
             <Sidebar
               selectCategory={this.selectCategory.bind(this)}
-              category={this.props.category}
+              category={this.props.selectedCategory}
             />
           </Column>
           <Column xl={7}>

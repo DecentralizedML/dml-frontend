@@ -1,11 +1,26 @@
 /* eslint-disable no-param-reassign */
 
-import produce from 'immer';
+import produce from "immer";
 
-import types from './types';
+import types from "./types";
 
+/*
+
+const state = {
+  order = [id0, id1, id2, id3];
+  map = {
+    id0: data0;
+    id1: data1;
+    id2: data2;
+  };
+  myAlgoIds = [id3, id7];
+}
+
+*/
+
+// TODO: Implement the logic
 const accountReducer = (state = {}, action) => {
-  return produce(state, (draftState) => {
+  return produce(state, draftState => {
     switch (action.type) {
       case types.CREATE_ALGORITHM:
         break;
@@ -26,6 +41,7 @@ const accountReducer = (state = {}, action) => {
         break;
 
       case types.LIST_ALGORITHMS:
+        // draftState["algorithms"] = action.payload;
         break;
 
       case types.LIST_ALGORITHMS_ERROR:

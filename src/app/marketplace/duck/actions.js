@@ -7,6 +7,13 @@ const selectCategory = category => {
   };
 };
 
+const deselectCategory = category => {
+  return {
+    type: types.DESELECT_CATEGORY,
+    payload: category
+  };
+};
+
 const selectTag = tag => {
   return {
     type: types.SELECT_TAG,
@@ -14,4 +21,11 @@ const selectTag = tag => {
   };
 };
 
-export default { selectCategory, selectTag };
+const deselectTag = tag => {
+  return {
+    type: types.DESELECT_TAG,
+    payload: tag
+  };
+};
+
+export default { selectCategory, deselectCategory, selectTag, deselectTag };
