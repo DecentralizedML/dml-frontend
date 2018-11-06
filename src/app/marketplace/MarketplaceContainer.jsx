@@ -6,8 +6,8 @@ import marketplaceActions from "./duck/actions";
 
 const mapStateToProps = state => {
   // const { email, firstName, id, lastName, walletAddress } = state.account;
-  const { category, tag } = state.marketplace;
-  return { category, tag };
+  const { selectedCategory, deselectCategory } = state.marketplace;
+  return { selectedCategory, deselectCategory };
 };
 
 const mapDispatchToProps = dispatch => {
@@ -15,8 +15,8 @@ const mapDispatchToProps = dispatch => {
     selectCategory: category => {
       dispatch(marketplaceActions.selectCategory(category));
     },
-    selectTag: tag => {
-      dispatch(marketplaceActions.selectTag(tag));
+    deselectCategory: category => {
+      dispatch(marketplaceActions.deselectCategory(category));
     }
   };
 };

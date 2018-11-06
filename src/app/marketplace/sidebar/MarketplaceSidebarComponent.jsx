@@ -1,6 +1,6 @@
 import React from "react";
 // import PropTypes from 'prop-types';
-import { Row } from "@kyokan/kyokan-ui";
+// import { Row } from "@kyokan/kyokan-ui";
 
 import {
   CardContainer,
@@ -11,17 +11,18 @@ import {
 } from "./UI/index";
 
 import CardContent from "./MarketPlaceSidebarCardContent";
-import Tag from "./MarketPlaceSidebarTagCard";
 import Searchbar from "./MarketPlaceSidebarSearchbar";
+// import Tag from "./MarketPlaceSidebarTagCard";
 
-const popularTags = [
-  "OCR",
-  "Sentiment Analysis",
-  "Color Trend",
-  "Fashion",
-  "Pathfinding",
-  "Image Recognition"
-];
+// Put this into Redux once there are tags available
+// const popularTags = [
+//   "OCR",
+//   "Sentiment Analysis",
+//   "Color Trend",
+//   "Fashion",
+//   "Pathfinding",
+//   "Image Recognition"
+// ];
 
 const Sidebar = props => {
   const { selectCategory, category } = props;
@@ -46,12 +47,13 @@ const Sidebar = props => {
             />
           </BottomCard>
         </CardContainer>
+        {/*  USE THIS CODE ONCE TAGS ARE AVAILABLE:
         <OpacityHeadline>POPULAR TAGS</OpacityHeadline>
         <Row nogutter>
           {popularTags.map((tag, index) => {
             return <Tag key={index} title={tag} />;
           })}
-        </Row>
+        </Row> */}
       </SidebarContainer>
     );
   };
