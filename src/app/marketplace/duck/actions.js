@@ -47,6 +47,19 @@ const finishLoadingAlgorithms = () => {
   };
 };
 
+const selectAlgorithm = algorithm => {
+  return {
+    type: types.SELECT_ALGORITHM,
+    payload: algorithm
+  };
+};
+
+const closeSelectedAlgorithm = () => {
+  return {
+    type: types.CLOSE_SELECTED_ALGORITHM
+  };
+};
+
 export default {
   selectCategory,
   deselectCategory,
@@ -54,5 +67,7 @@ export default {
   deselectTag,
   filterAlgorithms,
   startLoadingAlgorithms,
-  finishLoadingAlgorithms
+  finishLoadingAlgorithms,
+  selectAlgorithm,
+  closeSelectedAlgorithm
 };

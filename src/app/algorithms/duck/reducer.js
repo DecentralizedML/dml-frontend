@@ -36,6 +36,11 @@ const accountReducer = (state = inititalState, action) => {
         action.payload.forEach(algorithm => {
           draftState.allAlgorithmsOrder.push(algorithm.id);
           draftState.allAlgorithmsMap[algorithm.id] = algorithm;
+          draftState.allAlgorithmsMap[algorithm.id].user.full_name = `${
+            algorithm.user.first_name ? algorithm.user.first_name : "Anonymous"
+          } ${
+            algorithm.user.last_name ? algorithm.user.last_name : "Anonymous"
+          }`;
           // Add a way to grab the User's Algos
         });
         break;
