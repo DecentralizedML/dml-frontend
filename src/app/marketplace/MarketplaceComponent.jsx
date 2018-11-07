@@ -10,10 +10,6 @@ import Topbar from "./topBar/MarketPlaceHeaderComponent";
 import EmptyState from "./emptyState/MarketplaceEmptyState";
 import SelectedAlgorithm from "./selectedAlgorithm/MarketplaceSelectedAlgorithmComponent";
 
-import CardTitle from "./jobCard/MarketplaceJobCardTitle";
-import CardText from "./jobCard/MarketplaceJobCardText";
-import JobAuthor from "./jobCard/MarketplaceJobCardAuthor";
-
 const Marketplace = props => {
   // stores all available algorithms
   let allAlgorithms = [];
@@ -107,16 +103,16 @@ const Marketplace = props => {
             </Row>
           )}
           {props.selectedAlgorithm && (
-            <SelectedAlgorithm handleClose={closeModal}>
-              <CardTitle title={selectedAlgorithm.title} />
-              <CardText text={selectedAlgorithm.description} />
-              <JobAuthor
-                img={
-                  "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&h=350"
-                }
-                name={selectedAlgorithm.user.full_name}
-              />
-            </SelectedAlgorithm>
+            <SelectedAlgorithm
+              handleClose={closeModal}
+              title={selectedAlgorithm.title}
+              text={selectedAlgorithm.description}
+              img={
+                "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&h=350"
+              }
+              fullName={selectedAlgorithm.user.full_name}
+              priceValue="2"
+            />
           )}
         </Column>
       </Row>
