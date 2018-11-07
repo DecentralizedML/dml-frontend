@@ -24,6 +24,7 @@ import Logout from "./auth/Logout";
 
 import accountActions from "./account/duck/actions";
 import algorithmsActions from "./algorithms/duck/actions";
+import marketplaceActions from "./marketplace/duck/actions";
 import { listAlgorithms as getAllAlgorithms } from "./algorithms/duck/api";
 
 import { initialize, startWatching } from "../utils/web3connect";
@@ -87,8 +88,10 @@ export default connect(
         return dispatch(startWatching());
       },
       hydrateAlgorithmData: async () => {
+        dispatch(marketplaceActions.startLoadingAlgorithms());
         const response = await getAllAlgorithms();
-        return dispatch(algorithmsActions.listAlgorithms(response.data));
+        dispatch(algorithmsActions.listAlgorithms(response.data));
+        return dispatch(marketplaceActions.finishLoadingAlgorithms());
       }
     };
   }

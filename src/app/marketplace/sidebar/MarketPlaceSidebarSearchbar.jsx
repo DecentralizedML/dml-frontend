@@ -13,6 +13,7 @@ const Searchbar = props => {
           type="text"
           name="search"
           placeholder="Search algorithms"
+          onChange={props.onChange}
         />
       </Column>
       <Column xl={2.5}>

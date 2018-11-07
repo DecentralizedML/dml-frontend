@@ -25,11 +25,11 @@ import Searchbar from "./MarketPlaceSidebarSearchbar";
 // ];
 
 const Sidebar = props => {
-  const { selectCategory, category } = props;
+  const { selectCategory, category, searchInputOnChange } = props;
   const renderSidebar = () => {
     return (
       <SidebarContainer>
-        <Searchbar />
+        <Searchbar onChange={searchInputOnChange} />
         <OpacityHeadline>FILTER BY CATEGORY</OpacityHeadline>
         <CardContainer>
           <TopCard active={category === "Image Recognition"}>

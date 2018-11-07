@@ -7,16 +7,27 @@ import DMLSiteHeader from "../dml-site-header";
 import JobCard from "./jobCard/MarketplaceJobCardComponent";
 import Sidebar from "./sidebar/MarketplaceSidebarComponent";
 import Topbar from "./topBar/MarketPlaceHeaderComponent";
-import Loading from "./loading/MarketplaceLoading";
+import EmptyState from "./emptyState/MarketplaceEmptyState";
 
 const Marketplace = props => {
-  let algorithms = [];
+  // stores all available algorithms
+  let allAlgorithms = [];
+  // decides whhich algorithms get shown:
+  let displayedAlgorithms = [];
 
-  if (props.allAlgorithmsOrder.length > 0) {
-    algorithms = props.allAlgorithmsOrder.map(algorithm => {
+  const getAllAlgorithms = () => {
+    allAlgorithms = props.allAlgorithmsOrder.map(algorithm => {
       return props.allAlgorithmsMap[algorithm];
     });
-  }
+  };
+
+  const pushAlgorithmsIntoDisplayedAlgorithms = () => {
+    if (props.allAlgorithmsOrder.length > 0 && !props.filteredAlgorithms) {
+      displayedAlgorithms = allAlgorithms;
+    } else if (props.filteredAlgorithms) {
+      displayedAlgorithms = props.filteredAlgorithms;
+    }
+  };
 
   const selectCategory = category => {
     if (category === props.selectedCategory) {
@@ -25,6 +36,21 @@ const Marketplace = props => {
       props.selectCategory(category);
     }
   };
+
+  const searchAlgorithms = event => {
+    console.log(props.loadingAlgorithms);
+    const searchInput = event.target.value.toLowerCase();
+    const filteredAlgorithms = allAlgorithms.filter(algorithm => {
+      return (
+        algorithm.title.toLowerCase().includes(searchInput) ||
+        algorithm.description.toLowerCase().includes(searchInput)
+      );
+    });
+    props.filterAlgorithms(filteredAlgorithms);
+  };
+
+  getAllAlgorithms();
+  pushAlgorithmsIntoDisplayedAlgorithms();
 
   return (
     <Grid fluid style={{ padding: 0 }}>
@@ -40,15 +66,16 @@ const Marketplace = props => {
           <Sidebar
             selectCategory={selectCategory.bind(this)}
             category={props.selectedCategory}
+            searchInputOnChange={searchAlgorithms}
           />
         </Column>
         <Column xl={7}>
-          <Topbar algorithmCount={algorithms.length} />
-          {algorithms.length === 0 ? (
-            <Loading />
+          <Topbar algorithmCount={displayedAlgorithms.length} />
+          {displayedAlgorithms.length === 0 ? (
+            <EmptyState loading={props.loadingAlgorithms} />
           ) : (
             <Row>
-              {algorithms.map(algorithm => {
+              {displayedAlgorithms.map(algorithm => {
                 const fullName = `${
                   algorithm.user.first_name
                     ? algorithm.user.first_name
