@@ -16,11 +16,12 @@ const JobCard = props => {
     downloads,
     averageRating,
     totalRatings,
-    rewardValue
+    rewardValue,
+    onClick
   } = props;
   const renderCard = () => {
     return (
-      <Card>
+      <Card onClick={onClick}>
         <CardContainer>
           <CardTitle title={title} />
           <CardText text={text} />

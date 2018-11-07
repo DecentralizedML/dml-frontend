@@ -8,12 +8,19 @@ import JobCard from "./jobCard/MarketplaceJobCardComponent";
 import Sidebar from "./sidebar/MarketplaceSidebarComponent";
 import Topbar from "./topBar/MarketPlaceHeaderComponent";
 import EmptyState from "./emptyState/MarketplaceEmptyState";
+import SelectedAlgorithm from "./selectedAlgorithm/MarketplaceSelectedAlgorithmComponent";
+
+import CardTitle from "./jobCard/MarketplaceJobCardTitle";
+import CardText from "./jobCard/MarketplaceJobCardText";
+import JobAuthor from "./jobCard/MarketplaceJobCardAuthor";
 
 const Marketplace = props => {
   // stores all available algorithms
   let allAlgorithms = [];
-  // decides whhich algorithms get shown:
+  // stores algorithms that get shown: (for filtering)
   let displayedAlgorithms = [];
+  // stores the selected Algorithm
+  const selectedAlgorithm = props.allAlgorithmsMap[props.selectedAlgorithm];
 
   const getAllAlgorithms = () => {
     allAlgorithms = props.allAlgorithmsOrder.map(algorithm => {
@@ -49,6 +56,14 @@ const Marketplace = props => {
     props.filterAlgorithms(filteredAlgorithms);
   };
 
+  const selectAlgorithm = algorithm => {
+    props.selectAlgorithm(algorithm);
+  };
+
+  const closeModal = () => {
+    props.closeSelectedAlgorithm();
+  };
+
   getAllAlgorithms();
   pushAlgorithmsIntoDisplayedAlgorithms();
 
@@ -75,31 +90,33 @@ const Marketplace = props => {
             <EmptyState loading={props.loadingAlgorithms} />
           ) : (
             <Row>
-              {displayedAlgorithms.map(algorithm => {
-                const fullName = `${
-                  algorithm.user.first_name
-                    ? algorithm.user.first_name
-                    : "Anonymous"
-                } ${
-                  algorithm.user.last_name
-                    ? algorithm.user.last_name
-                    : "Anonymous"
-                }`;
-                return (
-                  <JobCard
-                    key={algorithm.id}
-                    title={algorithm.title}
-                    text={algorithm.description}
-                    authorName={fullName}
-                    authorImg="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&h=350"
-                    downloads="41249"
-                    averageRating="4.5"
-                    totalRatings="62"
-                    rewardValue="2"
-                  />
-                );
-              })}
+              {displayedAlgorithms.map(algorithm => (
+                <JobCard
+                  key={algorithm.id}
+                  title={algorithm.title}
+                  text={algorithm.description}
+                  authorName={algorithm.user.full_name}
+                  authorImg="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&h=350"
+                  downloads="41249"
+                  averageRating="4.5"
+                  totalRatings="62"
+                  rewardValue="2"
+                  onClick={() => selectAlgorithm(algorithm.id)}
+                />
+              ))}
             </Row>
+          )}
+          {props.selectedAlgorithm && (
+            <SelectedAlgorithm handleClose={closeModal}>
+              <CardTitle title={selectedAlgorithm.title} />
+              <CardText text={selectedAlgorithm.description} />
+              <JobAuthor
+                img={
+                  "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&h=350"
+                }
+                name={selectedAlgorithm.user.full_name}
+              />
+            </SelectedAlgorithm>
           )}
         </Column>
       </Row>

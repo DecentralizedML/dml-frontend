@@ -40,7 +40,12 @@ const marketplaceReducer = (state = initialState, action) => {
       case types.FINISH_LOADING_ALGORITHMS:
         draftState["loadingAlgorithms"] = false;
         break;
-
+      case types.SELECT_ALGORITHM:
+        draftState["selectedAlgorithm"] = action.payload;
+        break;
+      case types.CLOSE_SELECTED_ALGORITHM:
+        draftState["selectedAlgorithm"] = false;
+        break;
       // case types.SELECT_ALGORITHM
       // case types.DESELECT_ALGORITHM
       default:

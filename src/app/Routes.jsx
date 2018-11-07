@@ -54,6 +54,7 @@ class Routes extends Component {
           <ProtectedRoute path="/bounties/:id" component={Bounty} />
           <ProtectedRoute path="/bounties" component={BountiesList} />
           <ProtectedRoute path="/marketplace" component={Marketplace} />
+          <ProtectedRoute path="/marketplace/:id" component={Marketplace} />
 
           <ProtectedRoute path="/details" component={Onboarding} />
           <ProtectedRoute path="/metamask" component={Onboarding} />

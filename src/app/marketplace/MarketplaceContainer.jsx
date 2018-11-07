@@ -10,7 +10,8 @@ const mapStateToProps = state => {
     selectedCategory,
     deselectCategory,
     filteredAlgorithms,
-    loadingAlgorithms
+    loadingAlgorithms,
+    selectedAlgorithm
   } = state.marketplace;
   const { allAlgorithmsMap, allAlgorithmsOrder } = state.algorithms;
   return {
@@ -19,7 +20,8 @@ const mapStateToProps = state => {
     allAlgorithmsMap,
     allAlgorithmsOrder,
     filteredAlgorithms,
-    loadingAlgorithms
+    loadingAlgorithms,
+    selectedAlgorithm
   };
 };
 
@@ -33,6 +35,12 @@ const mapDispatchToProps = dispatch => {
     },
     filterAlgorithms: algorithms => {
       dispatch(marketplaceActions.filterAlgorithms(algorithms));
+    },
+    selectAlgorithm: algorithm => {
+      dispatch(marketplaceActions.selectAlgorithm(algorithm));
+    },
+    closeSelectedAlgorithm: () => {
+      dispatch(marketplaceActions.closeSelectedAlgorithm());
     }
   };
 };
