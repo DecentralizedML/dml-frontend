@@ -15,9 +15,9 @@ const Topbar = props => {
           {algorithmCount === 1 ? " Algorithm" : " Algorithms"}
         </SearchResultCount>
       </Column>
-      <Column xl={3.85}>
+      {/* <Column xl={3.85}>
         <DropdownComponent />
-      </Column>
+      </Column> */}
     </Row>
   );
 };
