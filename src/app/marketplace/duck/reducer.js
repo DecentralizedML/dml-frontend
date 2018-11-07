@@ -8,7 +8,9 @@ import types from "./types";
 const initialState = {
   selectedAlgorithm: null,
   selectedCategory: null,
-  selectedTags: []
+  selectedTags: [],
+  filteredAlgorithms: null,
+  loadingAlgorithms: false
 };
 
 const marketplaceReducer = (state = initialState, action) => {
@@ -29,6 +31,16 @@ const marketplaceReducer = (state = initialState, action) => {
           draftState["selectedTags"].splice(index, 1);
         }
         break;
+      case types.FILTER_ALGORITHMS:
+        draftState["filteredAlgorithms"] = action.payload;
+        break;
+      case types.START_LOADING_ALGORITHMS:
+        draftState["loadingAlgorithms"] = true;
+        break;
+      case types.FINISH_LOADING_ALGORITHMS:
+        draftState["loadingAlgorithms"] = false;
+        break;
+
       // case types.SELECT_ALGORITHM
       // case types.DESELECT_ALGORITHM
       default:

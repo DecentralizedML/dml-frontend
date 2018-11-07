@@ -33,7 +33,7 @@ const accountReducer = (state = inititalState, action) => {
         break;
 
       case types.LIST_ALGORITHMS:
-        action.payload.map(algorithm => {
+        action.payload.forEach(algorithm => {
           draftState.allAlgorithmsOrder.push(algorithm.id);
           draftState.allAlgorithmsMap[algorithm.id] = algorithm;
           // Add a way to grab the User's Algos

@@ -28,4 +28,31 @@ const deselectTag = tag => {
   };
 };
 
-export default { selectCategory, deselectCategory, selectTag, deselectTag };
+const filterAlgorithms = algorithms => {
+  return {
+    type: types.FILTER_ALGORITHMS,
+    payload: algorithms
+  };
+};
+
+const startLoadingAlgorithms = () => {
+  return {
+    type: types.START_LOADING_ALGORITHMS
+  };
+};
+
+const finishLoadingAlgorithms = () => {
+  return {
+    type: types.FINISH_LOADING_ALGORITHMS
+  };
+};
+
+export default {
+  selectCategory,
+  deselectCategory,
+  selectTag,
+  deselectTag,
+  filterAlgorithms,
+  startLoadingAlgorithms,
+  finishLoadingAlgorithms
+};

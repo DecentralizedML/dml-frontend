@@ -3,18 +3,23 @@ import { connect } from "react-redux";
 import MarketplaceComponent from "./MarketplaceComponent";
 
 import marketplaceActions from "./duck/actions";
-import algorithmsActions from "../algorithms/duck/actions";
-import { listAlgorithms as getAllAlgorithms } from "../algorithms/duck/api";
 
 const mapStateToProps = state => {
   // const { email, firstName, id, lastName, walletAddress } = state.account;
-  const { selectedCategory, deselectCategory } = state.marketplace;
+  const {
+    selectedCategory,
+    deselectCategory,
+    filteredAlgorithms,
+    loadingAlgorithms
+  } = state.marketplace;
   const { allAlgorithmsMap, allAlgorithmsOrder } = state.algorithms;
   return {
     selectedCategory,
     deselectCategory,
     allAlgorithmsMap,
-    allAlgorithmsOrder
+    allAlgorithmsOrder,
+    filteredAlgorithms,
+    loadingAlgorithms
   };
 };
 
@@ -25,6 +30,9 @@ const mapDispatchToProps = dispatch => {
     },
     deselectCategory: category => {
       dispatch(marketplaceActions.deselectCategory(category));
+    },
+    filterAlgorithms: algorithms => {
+      dispatch(marketplaceActions.filterAlgorithms(algorithms));
     }
   };
 };
