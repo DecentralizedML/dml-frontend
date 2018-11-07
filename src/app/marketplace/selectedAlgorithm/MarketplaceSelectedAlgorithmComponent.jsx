@@ -1,6 +1,6 @@
 import React from "react";
 import { Row } from "@kyokan/kyokan-ui";
-import { Background, Card, CloseButton, CardContainer } from "./UI";
+import { Background, Card, CloseButton, CardContainer, CloseIcon } from "./UI";
 
 const SelectedAlgorithm = ({ handleClose, show, children }) => {
   return (
@@ -8,7 +8,9 @@ const SelectedAlgorithm = ({ handleClose, show, children }) => {
       <Card>
         <CardContainer>
           {children}
-          <CloseButton onClick={handleClose}>x</CloseButton>
+          <CloseButton onClick={handleClose}>
+            <CloseIcon />
+          </CloseButton>
         </CardContainer>
       </Card>
     </Background>

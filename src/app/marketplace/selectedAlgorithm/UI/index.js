@@ -14,12 +14,10 @@ export const Background = styled.div`
 export const Card = styled.div`
   position: fixed;
   background: white;
-  width: 80%;
+  width: 50%;
   height: auto;
   top: 50%;
   left: 50%;
-  width: 720px;
-  height: 571px;
   border-radius: 3px;
   box-shadow: 0 1px 6px 0 rgba(4, 37, 86, 0.04), 0 1px 0 0 rgba(4, 37, 86, 0.04);
   background-color: #ffffff;
@@ -27,13 +25,25 @@ export const Card = styled.div`
 `;
 
 export const CloseButton = styled.div`
-  width: 50px;
   position: fixed;
-  background: red;
-  right: -10%;
+  width: 100px;
+  height: 80px;
+  top: -30px;
+  right: -100px;
   cursor: pointer;
 `;
 
 export const CardContainer = styled.div`
   margin: 24px;
+`;
+
+export const CloseIcon = styled.div`
+  margin-top: 40px;
+  margin-left: 20px;
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  background-image: url("/icons/Icon-X-White.svg");
+  background-size: cover;
+  background-position: center;
 `;
