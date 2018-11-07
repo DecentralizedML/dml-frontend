@@ -36,7 +36,7 @@ const CardFooter = props => {
 
   return (
     <Row nogutter align="center">
-      <Column xl={3}>
+      {/* <Column xl={3}>
         <Row nogutter align="center">
           <DownloadIcon src="/downloadIcon.svg" />
           <NumberValue>{roundedDownloads}</NumberValue>
@@ -49,8 +49,8 @@ const CardFooter = props => {
           })}
           <NumberValue>{`(${totalRatings})`}</NumberValue>
         </Row>
-      </Column>
-      <Column xl={4}>
+      </Column> */}
+      <Column xl={8}>
         <Row nogutter align="center">
           <DMLOutline onClick={() => console.log("Clicked")}>
             <RewardRectangle>
