@@ -30,6 +30,7 @@ const Marketplace = props => {
   };
 
   const selectCategory = category => {
+    // TODO: Implement filter once categories show up in Algo API response
     if (category === props.selectedCategory) {
       props.deselectCategory(category);
     } else {
@@ -38,7 +39,6 @@ const Marketplace = props => {
   };
 
   const searchAlgorithms = event => {
-    console.log(props.loadingAlgorithms);
     const searchInput = event.target.value.toLowerCase();
     const filteredAlgorithms = allAlgorithms.filter(algorithm => {
       return (
