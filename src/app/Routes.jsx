@@ -28,7 +28,7 @@ class Routes extends Component {
   }
 
   render () {
-    return (
+    return !this.props.initialized ? <noscript /> : (
       <Router>
         <Switch>
           <ProtectedRoute path="/account/:section(profile|wallet)" component={Account}      />
@@ -41,12 +41,11 @@ class Routes extends Component {
           <ProtectedRoute path="/bounties"                         component={BountiesList} />
           <ProtectedRoute path="/marketplace"                      component={Marketplace}  />
 
-          <ProtectedRoute path="/details"                          component={Onboarding}   />
-          <ProtectedRoute path="/metamask"                         component={Onboarding}   />
-
-          <Route          path="/login"                            component={Onboarding}   />
-          <Route          path="/signup"                           component={Onboarding}   />
-          <Route          path="/logout"                           component={Logout}       />
+          <Route path="/details" component={Onboarding} />
+          <Route path="/metamask" component={Onboarding} />
+          <Route path="/login" component={Onboarding} />
+          <Route path="/signup" component={Onboarding} />
+          <Route path="/logout" component={Logout} />
 
           <Redirect to="/marketplace" />
         </Switch>
@@ -62,7 +61,7 @@ Routes.propTypes = {
 };
 
 export default connect(
-  null,
+  ({ account }) => ({ initialized: account.initialized }),
   (dispatch) => {
     return (
       {

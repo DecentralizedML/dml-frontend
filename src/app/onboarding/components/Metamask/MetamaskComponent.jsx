@@ -3,16 +3,22 @@ import PropTypes from 'prop-types';
 
 import {
   Button,
-  Column,
   Description,
-  Grid,
   MetaMaskButton,
   OnboardingSidebar,
-  Row,
   Title,
 } from '@kyokan/kyokan-ui';
 
-import '../../Onboarding.css';
+import '../../Onboarding.scss';
+import styled from "styled-components";
+
+const Main = styled.div`
+  display: flex;
+  flex-flow: column nowrap;
+  flex: 1 0 auto;
+  align-items: center;
+  padding-top: 5rem;
+`;
 
 class Metamask extends Component {
   constructor (props) {
@@ -38,11 +44,11 @@ class Metamask extends Component {
         totalSteps={3}
       />
     );
-  }
+  };
 
   renderInstall = () => {
     return (
-      <div className="onboarding__content">
+      <Main className="onboarding__content">
         <Title>You&apos;re Almost Done!</Title>
         <Description>DML uses Metamask as your secure wallet.</Description>
         <Description>It is also used to sign blockchain transactions.</Description>
@@ -52,13 +58,13 @@ class Metamask extends Component {
             this.setState({ hasInstalledMetamask: true });
           }}
         />
-      </div>
+      </Main>
     );
   }
 
   renderInstalled = () => {
     return (
-      <div className="onboarding__content">
+      <Main className="onboarding__content">
         <Title>You&apos;re Almost Done!</Title>
         <Description>DML uses Metamask as your secure wallet.</Description>
         <Description>It is also used to sign blockchain transactions.</Description>
@@ -71,15 +77,15 @@ class Metamask extends Component {
         >
           Refresh
         </Button>
-      </div>
+      </Main>
     );
-  }
+  };
 
   renderAddWallet = () => {
     const { account, history } = this.props;
 
     return (
-      <div className="onboarding__content">
+      <Main className="onboarding__content">
         <Title>Is this your wallet address?</Title>
         <Description>DML will associate this wallet address with you account.</Description>
         <div className="onboarding__address-container">
@@ -97,9 +103,9 @@ class Metamask extends Component {
         >
           Proceed
         </Button>
-      </div>
+      </Main>
     );
-  }
+  };
 
   renderContent () {
     const { web3 } = this.props;
@@ -119,34 +125,15 @@ class Metamask extends Component {
   render () {
     return (
       <div className="onboarding">
-        <Grid fluid style={{ padding: 0 }}>
-          <Row nogutter align="center">
-            <Column sm={2} md={2} lg={2} xl={2}>
-              { this.renderSidebar() }
-            </Column>
-            <Column
-              sm={5}
-              md={5}
-              lg={5}
-              xl={5}
-              offset={{
-                sm : 3,
-                md : 3,
-                lg : 3,
-                xl : 3,
-              }}
-            >
-              { this.renderContent() }
-            </Column>
-          </Row>
-        </Grid>
+        { this.renderSidebar() }
+        { this.renderContent() }
       </div>
     );
   }
 }
 
 Metamask.propTypes = {
-  account    : PropTypes.object.isRequired,
+  account    : PropTypes.string.isRequired,
   history    : PropTypes.object.isRequired,
   updateUser : PropTypes.func.isRequired,
   web3       : PropTypes.object.isRequired,

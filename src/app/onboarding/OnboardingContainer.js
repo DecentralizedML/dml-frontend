@@ -1,5 +1,4 @@
+import { connect } from 'react-redux';
 import OnboardingComponent from './OnboardingComponent';
 
-const OnboardingContainer = OnboardingComponent;
-
-export default OnboardingContainer;
+export default connect()(OnboardingComponent);

@@ -1,0 +1,120 @@
+@import "../../variables";
+
+.onboarding {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-flow: row nowrap;
+
+  &__gh-container {
+    margin: 2rem 0;
+
+    &__description {
+      font-size: .85rem;
+      color: $bali-blue;
+      padding: 1rem 0;
+    }
+
+    &__gh-btn {
+      display: flex;
+      font-size: .9rem;
+      font-weight: 500;
+    }
+  }
+
+  &__panel {
+    margin-top: 3rem;
+  }
+
+  &__card-header {
+    font-size: 1rem;
+    margin-bottom: .75rem;
+  }
+
+  &__footer {
+    display: flex;
+    flex-flow: column nowrap;
+  }
+}
+
+.onboarding__sidebar {
+  background-image: url("/sidebar_bg.svg");
+  background-repeat: no-repeat;
+  background-position: 202px 68px;
+  max-width: 27.5rem;
+  box-sizing: border-box;
+  flex: 0 0 auto;
+}
+
+.onboarding__metamask-install-btn {
+    margin-top: 2rem;
+    font-size: 1rem;
+}
+
+.onboarding__metamask-proceed-btn {
+    width: 14rem;
+    margin-top: 1rem;
+}
+
+.onboarding__installed-mm-text {
+    margin-top: 2rem;
+    font-weight: 300;
+    font-size: .8rem;
+    color: rgb(129,148,178);
+    letter-spacing: 0.03rem;
+}
+
+.onboarding__unlock-image {
+    margin-top: 3rem;
+    width: 24rem;
+}
+
+.onboarding__address-container {
+  border: 1px solid #d8d8d8;
+  border-radius: 4px;
+  padding: .5rem 1rem;
+  text-align: center;
+  font-size: 1rem;
+  font-family: monospace;
+  background-color: #efefef;
+  color: #737373;
+  margin: 2rem 0 1rem;
+}
+
+.onboarding__form {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 27.5rem;
+  background-color: #fff;
+  padding: 1.5rem 2rem;
+  box-sizing: border-box;
+  border-radius: .2rem;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);
+
+  &__input {
+    margin: .75rem 0;
+  }
+}
+
+.onboarding__form-header {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.onboarding__form-header > div {
+  flex: 1 0 auto;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 200ms ease-in-out;
+  margin-bottom: .25rem;
+
+  &:hover {
+    color: $dodger-blue;
+  }
+}
+
+.onboarding__view-selector--selected {
+  color: $dodger-blue;
+  font-weight: 600;
+}

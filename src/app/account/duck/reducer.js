@@ -4,9 +4,18 @@ import produce from 'immer';
 
 import types from './types';
 
-const accountReducer = (state = {}, action) => {
+const initialState = {
+  email: '',
+  firstName: '',
+  lastName: '',
+  id: '',
+  walletAddress: '',
+  initialized: false,
+};
+
+const accountReducer = (state = initialState, { type, payload }) => {
   return produce(state, (draftState) => {
-    switch (action.type) {
+    switch (type) {
       case types.LIST_USERS_ERROR:
         break;
 
@@ -14,11 +23,16 @@ const accountReducer = (state = {}, action) => {
         break;
 
       case types.LOAD_ACCOUNT_DATA:
-        draftState.email         = action.payload.email;
-        draftState.firstName     = action.payload.first_name;
-        draftState.id            = action.payload.id;
-        draftState.lastName      = action.payload.last_name;
-        draftState.walletAddress = action.payload.wallet_address;
+        draftState.email = payload.email;
+        draftState.firstName = payload.first_name;
+        draftState.id = payload.id;
+        draftState.lastName = payload.last_name;
+        draftState.walletAddress = payload.wallet_address;
+        draftState.initialized = true;
+        break;
+
+      case types.HYDRATE_USER_DATA_ERROR:
+        draftState.initialized = true;
         break;
 
       case types.UPDATE_USER_ERROR:

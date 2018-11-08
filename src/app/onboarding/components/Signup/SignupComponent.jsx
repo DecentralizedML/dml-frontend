@@ -2,26 +2,42 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import lazyLoadScript from 'lazyload-script';
 import styled from 'styled-components';
+import c from 'classnames';
 
 import {
-  Box,
-  Button,
-  Column,
-  Description,
-  Grid,
   OnboardingSidebar,
-  Row,
-  Tabs,
-  TextInput,
-  Title,
-  VerticalTab,
+  Button,
 } from '@kyokan/kyokan-ui';
 
-import '../../Onboarding.css';
+import Input from '../../../../components/Input';
+
+import '../../Onboarding.scss';
 
 const StyledContainer = styled.div`
-  height: 500px;
+  display: flex;
+  flex-flow: row nowrap;
+  flex: 1 0 auto;
+  align-items: center;
+  justify-content: center;
 `;
+
+const Actions = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  flex: 1 0 auto;
+  align-items: center;
+`;
+
+const OAuths = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  flex: 1 0 auto;
+  align-items: center;
+  justify-content: flex-end;
+`;
+
+const LOGIN = 0;
+const SIGNUP = 1;
 
 class Signup extends Component {
   requestGoogleOAuth = () => {
@@ -67,147 +83,137 @@ class Signup extends Component {
     // TODO redirect back to the current location and intercept ?code= parameter via a middleware auth handler.
   };
 
-  render () {
-    const { history } = this.props;
+  state = {
+    viewType: LOGIN,
+    email: '',
+    password: '',
+    confirmPassword: '',
+  };
 
+  switchView = viewType => {
+    this.setState({
+      viewType,
+      email: '',
+      password: '',
+      confirmPassword: '',
+    })
+  };
+
+  signup = () => {
+    const { email, password, confirmPassword } = this.state;
+    const { signup, onComplete } = this.props;
+    signup(email, password, confirmPassword, onComplete);
+  };
+
+  login = () => {
+    const { email, password } = this.state;
+    this.props.login(email, password);
+  };
+
+  renderForm() {
+    const { email, password, confirmPassword } = this.state;
+
+    switch (this.state.viewType) {
+      case SIGNUP:
+        return (
+          <div className="onboarding__form__inputs">
+            <Input
+              type="email"
+              className="onboarding__form__input"
+              placeholder="Email Address"
+              onChange={e => this.setState({ email: e.target.value })}
+              value={email}
+            />
+            <Input
+              className="onboarding__form__input"
+              type="password"
+              placeholder="Password"
+              onChange={e => this.setState({ password: e.target.value })}
+              value={password}
+            />
+            <Input
+              className="onboarding__form__input"
+              type="password"
+              placeholder="Confirm Password"
+              onChange={e => this.setState({ confirmPassword: e.target.value })}
+              value={confirmPassword}
+            />
+            <Actions>
+              <Button onClick={this.signup}>Sign Up</Button>
+              <OAuths>
+                fb and google icons here
+              </OAuths>
+            </Actions>
+          </div>
+        );
+      case LOGIN:
+      default:
+        return (
+          <div className="onboarding__form__inputs">
+            <Input
+              className="onboarding__form__input"
+              type="email"
+              placeholder="Email Address"
+              onChange={e => this.setState({ email: e.target.value })}
+              value={email}
+            />
+            <Input
+              className="onboarding__form__input"
+              type="password"
+              placeholder="Password"
+              onChange={e => this.setState({ password: e.target.value })}
+              value={password}
+            />
+            <Actions>
+              <Button onClick={this.login}>Login</Button>
+              <OAuths>
+                fb and google icons here
+              </OAuths>
+            </Actions>
+          </div>
+        );
+    }
+  }
+
+  render () {
+    const { viewType } = this.state;
     return (
       <div className="onboarding">
-        <Grid fluid style={{ padding: 0 }}>
-          <Row nogutter align="center">
-            <Column sm={2} md={2} lg={2} xl={2}>
-              <OnboardingSidebar
-                className="onboarding__sidebar"
-                logoUrl="/logo.svg"
-                logoClassName="onboarding__logo"
-                subheaderText="DEVELOPERS"
-                headerText="Create Machine Learning Algorithm"
-                descriptionText="Upload your algorithms to the marketplace and get paid each time they run on a device."
-                iconUrl="/icon_developers.svg"
-                iconClassName="onboarding__icon"
-                currentStepIndex={0}
-                totalSteps={3}
-              />
-            </Column>
-            <Column
-              sm={5}
-              md={5}
-              lg={5}
-              xl={5}
-              offset={{
-                sm : 3,
-                md : 3,
-                lg : 3,
-                xl : 3,
-              }}
-            >
-              <StyledContainer>
-                <Tabs
-                  defaultActiveTabIndex={this.props.isLogin ? 1 : 0}
-                >
-                  <VerticalTab
-                    title="Sign Up"
-                    onTabClick={() => {
-                      history.push('/signup');
-                    }}
-                  >
-                    <Box padding={6}>
-                      <Title>Create Your Account</Title>
-                      <Box verticalMargin={5}>
-                        <Description>Your email address is used for account related updates.</Description>
-                      </Box>
-                      <Box verticalMargin={1}>
-                        <TextInput
-                          type="email"
-                          placeholder="Email Address"
-                          data-id="signup-input-email"
-                        />
-                      </Box>
-                      <Box verticalMargin={1}>
-                        <TextInput
-                          type="password"
-                          placeholder="Password"
-                          data-id="signup-input-password"
-                        />
-                      </Box>
-                      <Box verticalMargin={1}>
-                        <TextInput
-                          type="password"
-                          placeholder="Confirm password"
-                          data-id="signup-input-password-confirmation"
-                        />
-                      </Box>
-                      <Box verticalMargin={2}>
-                        <Button
-                          onClick={() => {
-                            const email                = document.querySelector("[data-id='signup-input-email']").value;
-                            const password             = document.querySelector("[data-id='signup-input-password']").value;
-                            const passwordConfirmation = document.querySelector("[data-id='signup-input-password-confirmation']").value;
-
-                            this.props.signup(email, password, passwordConfirmation, this.props.onComplete);
-                          }}
-                        >
-                          Sign Up
-                        </Button>
-                      </Box>
-                      <Box verticalMargin={2}>
-                        <Button onClick={this.requestGoogleOAuth}>Sign Up with Google</Button>
-                      </Box>
-                      <Box verticalMargin={2}>
-                        <Button onClick={this.requestFacebookOAuth}>Sign Up with Facebook</Button>
-                      </Box>
-                    </Box>
-                  </VerticalTab>
-                  <VerticalTab
-                    title="Log In"
-                    onTabClick={() => {
-                      history.push('/login');
-                    }}
-                  >
-                    <Box padding={6}>
-                      <Title>Log In</Title>
-                      <Box verticalMargin={5}>
-                        <Description>Your email address is used for account related updates.</Description>
-                      </Box>
-                      <Box verticalMargin={1}>
-                        <TextInput
-                          value="user@kyokan.io"
-                          type="email"
-                          placeholder="Email Address"
-                          data-id="login-input-email"
-                        />
-                      </Box>
-                      <Box verticalMargin={1}>
-                        <TextInput
-                          value="password123"
-                          type="password"
-                          placeholder="Password"
-                          data-id="login-input-password"
-                        />
-                      </Box>
-                      <Box verticalMargin={2}>
-                        <Button
-                          onClick={() => {
-                            const email    = document.querySelector("[data-id='login-input-email']").value;
-                            const password = document.querySelector("[data-id='login-input-password']").value;
-                            this.props.login(email, password, history);
-                          }}
-                        >
-                          Log In
-                        </Button>
-                      </Box>
-                      <Box verticalMargin={2}>
-                        <Button onClick={this.requestGoogleOAuth}>Login with Google</Button>
-                      </Box>
-                      <Box verticalMargin={2}>
-                        <Button onClick={this.requestFacebookOAuth}>Login with Facebook</Button>
-                      </Box>
-                    </Box>
-                  </VerticalTab>
-                </Tabs>
-              </StyledContainer>
-            </Column>
-          </Row>
-        </Grid>
+        <OnboardingSidebar
+          className="onboarding__sidebar"
+          logoUrl="/logo.svg"
+          logoClassName="onboarding__logo"
+          subheaderText="DEVELOPERS"
+          headerText="Create Machine Learning Algorithm"
+          descriptionText="Upload your algorithms to the marketplace and get paid each time they run on a device."
+          iconUrl="/icon_developers.svg"
+          iconClassName="onboarding__icon"
+          currentStepIndex={0}
+          totalSteps={3}
+        />
+        <StyledContainer>
+          <div className="onboarding__form">
+            <div className="onboarding__form-header">
+              <div
+                className={c({
+                  'onboarding__view-selector--selected': viewType === LOGIN,
+                })}
+                onClick={() => this.switchView(LOGIN)}
+              >
+                ALREADY A MEMBER
+              </div>
+              <div
+                className={c({
+                  'onboarding__view-selector--selected': viewType === SIGNUP,
+                })}
+                onClick={() => this.switchView(SIGNUP)}
+              >
+                I AM NEW HERE
+              </div>
+            </div>
+            { this.renderForm() }
+          </div>
+        </StyledContainer>
       </div>
     );
   }
