@@ -8,7 +8,9 @@ const mainTheme = {
     sail: "#B1CCF8",
     downriver: "#0D2957",
     white: "#ffffff",
-    BaliHai: "#8194B2"
+    BaliHai: "#8194B2",
+    baliHai: "#8194B2",
+    pickledBluewood: "#29364A"
   }
 };
 
