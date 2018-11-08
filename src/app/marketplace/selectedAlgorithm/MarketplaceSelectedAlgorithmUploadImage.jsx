@@ -3,7 +3,7 @@ import {
   DemoContainer,
   DemoWrapper,
   DemoText,
-  UploadImageWrapper,
+  UploadWrapper,
   ImageIcon,
   UploadImageDescription,
   UploadImageButton,
@@ -15,7 +15,7 @@ const DemoUploadImage = () => {
     <DemoWrapper>
       <DemoText>Demo</DemoText>
       <DemoContainer>
-        <UploadImageWrapper>
+        <UploadWrapper>
           <ImageIcon />
           <UploadImageDescription>
             Upload an Image to test this algorithm
@@ -23,7 +23,7 @@ const DemoUploadImage = () => {
           <UploadImageButton>
             <UploadImageText>Upload Image </UploadImageText>
           </UploadImageButton>
-        </UploadImageWrapper>
+        </UploadWrapper>
       </DemoContainer>
     </DemoWrapper>
   );

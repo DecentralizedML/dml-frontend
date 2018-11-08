@@ -18,6 +18,7 @@ import CardTitle from "../jobCard/MarketplaceJobCardTitle";
 import CardText from "../jobCard/MarketplaceJobCardText";
 import JobAuthor from "../jobCard/MarketplaceJobCardAuthor";
 import DemoUploadImage from "./MarketplaceSelectedAlgorithmUploadImage";
+import DemoUploadText from "./MarketplaceSelectedAlgorithmUploadText";
 
 const SelectedAlgorithm = ({
   handleClose,
@@ -25,7 +26,8 @@ const SelectedAlgorithm = ({
   text,
   fullName,
   img,
-  priceValue
+  priceValue,
+  category
 }) => {
   return (
     <Background>
@@ -50,7 +52,11 @@ const SelectedAlgorithm = ({
             <CloseIcon />
           </CloseIconContainer>
         </CardContainer>
-        <DemoUploadImage />
+        {category === "Text Analysis" ? (
+          <DemoUploadText />
+        ) : (
+          <DemoUploadImage />
+        )}
       </Card>
     </Background>
   );

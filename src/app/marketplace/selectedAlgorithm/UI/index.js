@@ -14,7 +14,7 @@ export const Background = styled.div`
 export const Card = styled.div`
   position: fixed;
   background: white;
-  width: 50%;
+  width: 720px;
   height: auto;
   top: 50%;
   left: 50%;
@@ -36,7 +36,7 @@ export const CloseIconContainer = styled.div`
 export const CardContainer = styled.div`
   display: flex;
   flex-direction: row;
-  margin: 24px;
+  margin: 28px 36px;
 `;
 
 export const CloseIcon = styled.div`
@@ -175,9 +175,10 @@ export const DemoContainer = styled.div`
 `;
 
 export const DemoContentWrapper = styled.div`
+  box-sizing: border-box;
   display: flex;
   flex-direction: row;
-  flex: 1 0 auto;
+  flex: 1 1 auto;
   height: 180px;
   border-radius: 3px;
   border: solid 1px #dae1ed;
@@ -185,7 +186,7 @@ export const DemoContentWrapper = styled.div`
   justify-content: center;
 `;
 
-export const UploadImageWrapper = styled.div`
+export const UploadWrapper = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1 0 auto;
@@ -233,4 +234,67 @@ export const UploadImageText = styled.div`
   line-height: 1.47;
   letter-spacing: 0.3px;
   color: ${mainTheme.colors.downriver};
+  -webkit-touch-callout: none; 
+  user-select: none; 
+`;
+
+// Text Input Component
+
+export const InputText = styled.textarea`
+  align-self: flex-start;
+  box-sizing: border-box;
+  width: 409px;
+  height: 258px;
+  padding: 7px 16px;
+  font-family: ${mainTheme.font};
+  border-radius: 3px;
+  font-size: 15px;
+  background-color: #ffffff;
+  line-height: 1.6;
+  letter-spacing: 0.2px;
+  color: ${mainTheme.colors.downriver};
+  outline: none;
+  border: none;
+  resize: none;
+  word-break: break-word;
+  &:placeholder {
+    color: ${mainTheme.colors.baliHai};
+  }
+`;
+
+export const SentimentResultWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  width: 240px;
+  height: 258px;
+  background-color: #f7f9fc;
+  border-left: solid 1px #dae1ed;
+`;
+
+export const SentimentResultText = styled.div`
+  font-family: ${mainTheme.font};
+  font-size: 15px;
+  line-height: 1.47;
+  letter-spacing: 0.2px;
+  color: #6c80a0;
+  margin: 12px;
+`;
+
+export const SentimentResultBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 144px;
+  height: 50px;
+  border-radius: 3px;
+  border: solid 1px rgba(109, 140, 189, 0.25);
+  background-color: #e1e8f2;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.33;
+  letter-spacing: 0.3px;
+  color: ${mainTheme.colors.baliHai};
 `;
