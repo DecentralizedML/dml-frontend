@@ -26,12 +26,6 @@ const ProtectedRoute = ({ component: Component, initialized, email, firstName, l
           );
         }
 
-        console.log({
-          firstName,
-          lastName,
-          walletAddress,
-        });
-
         if (!firstName || !lastName) {
           return (
             <Redirect
@@ -45,18 +39,19 @@ const ProtectedRoute = ({ component: Component, initialized, email, firstName, l
           );
         }
 
-        if (!walletAddress) {
-          return (
-            <Redirect
-              to={{
-                pathname : '/metamask',
-                state    : {
-                  from: props.location,
-                },
-              }}
-            />
-          );
-        }
+        // TODO: Turn back on when backend starts to persist walletAddress
+        // if (!walletAddress) {
+        //   return (
+        //     <Redirect
+        //       to={{
+        //         pathname : '/metamask',
+        //         state    : {
+        //           from: props.location,
+        //         },
+        //       }}
+        //     />
+        //   );
+        // }
 
         if (storage.token !== null) {
           return (

@@ -48,6 +48,7 @@
 
 .onboarding__metamask-install-btn {
     margin-top: 2rem;
+    font-size: 1rem;
 }
 
 .onboarding__metamask-proceed-btn {
@@ -69,14 +70,15 @@
 }
 
 .onboarding__address-container {
-    border: 1px solid #d8d8d8;
-    border-radius: 4px;
-    padding: .5rem 1rem;
-    text-align: center;
-    font-size: 1rem;
-    font-family: monospace;
-    background-color: #efefef;
-    color: #737373;
+  border: 1px solid #d8d8d8;
+  border-radius: 4px;
+  padding: .5rem 1rem;
+  text-align: center;
+  font-size: 1rem;
+  font-family: monospace;
+  background-color: #efefef;
+  color: #737373;
+  margin: 2rem 0 1rem;
 }
 
 .onboarding__form {
