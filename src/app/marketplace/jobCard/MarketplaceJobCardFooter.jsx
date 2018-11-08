@@ -1,7 +1,5 @@
 import React from "react";
 // import PropTypes from 'prop-types';
-
-import { Column, Row } from "@kyokan/kyokan-ui";
 import {
   NumberValue,
   DownloadIcon,
@@ -11,7 +9,9 @@ import {
   DMLOutline,
   RewardValue,
   DMLLogo,
-  DMLText
+  DMLText,
+  FooterWrapper,
+  ButtonWrapper
 } from "./UI/index";
 
 const CardFooter = props => {
@@ -35,7 +35,7 @@ const CardFooter = props => {
   };
 
   return (
-    <Row nogutter align="center">
+    <FooterWrapper>
       {/* <Column xl={3}>
         <Row nogutter align="center">
           <DownloadIcon src="/downloadIcon.svg" />
@@ -50,20 +50,18 @@ const CardFooter = props => {
           <NumberValue>{`(${totalRatings})`}</NumberValue>
         </Row>
       </Column> */}
-      <Column xl={8}>
-        <Row nogutter align="center">
-          <DMLOutline onClick={() => console.log("Clicked")}>
-            <RewardRectangle>
-              <RewardValue>{rewardValue}</RewardValue>
-            </RewardRectangle>
-            <DMLRectangle>
-              <DMLLogo src="/iconLogo.svg" />
-              <DMLText>DML</DMLText>
-            </DMLRectangle>
-          </DMLOutline>
-        </Row>
-      </Column>
-    </Row>
+      <ButtonWrapper>
+        <DMLOutline onClick={() => console.log("Clicked")}>
+          <RewardRectangle>
+            <RewardValue>{rewardValue}</RewardValue>
+          </RewardRectangle>
+          <DMLRectangle>
+            <DMLLogo src="/iconLogo.svg" />
+            <DMLText>DML</DMLText>
+          </DMLRectangle>
+        </DMLOutline>
+      </ButtonWrapper>
+    </FooterWrapper>
   );
 };
 

@@ -132,3 +132,14 @@ export const DMLText = styled.div`
   letter-spacing: 0.5px;
   color: ${mainTheme.colors.white};
 `;
+
+export const FooterWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex: 1 0 auto;
+`;
