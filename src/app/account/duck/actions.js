@@ -15,9 +15,12 @@ const listUsersError = (error) => {
   });
 };
 
-const hydrateUserData = () => {
+const hydrateUserData = history => {
   return {
     type: types.HYDRATE_USER_DATA,
+    payload: {
+      history,
+    },
   };
 };
 

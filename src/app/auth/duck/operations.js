@@ -47,7 +47,15 @@ function* loginSaga (action) {
     yield call((jwt) => { storage.token = jwt; }, data.jwt);
     yield put(actions.loginSuccess());
     yield put(accountActions.loadAccountData(data));
-    yield call(action.payload.history.push, '/marketplace');
+
+    const { first_name, last_name, wallet_address } = data;
+    if (!first_name || !last_name) {
+      yield call(action.payload.history.push, '/details');
+    } else if (!wallet_address) {
+      yield call(action.payload.history.push, '/metamask');
+    } else {
+      yield call(action.payload.history.push, '/marketplace');
+    }
   } catch (error) {
     yield put(actions.loginError(error));
   }
