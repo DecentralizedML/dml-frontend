@@ -105,6 +105,7 @@ const Marketplace = props => {
           )}
           {props.selectedAlgorithm && (
             <SelectedAlgorithm
+              category={"Image Recognition"}
               handleClose={closeModal}
               title={selectedAlgorithm.title}
               text={selectedAlgorithm.description}
