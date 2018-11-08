@@ -84,6 +84,9 @@ export const PurchaseButton = styled.button`
     box-shadow: 0 1px 6px 0 rgba(5, 29, 66, 0.24);
     cursor: pointer;
   }
+  &:active {
+    background-image: linear-gradient(to bottom, #5797fb, #397ee9);
+  }
 `;
 
 export const PriceValue = styled.div`
