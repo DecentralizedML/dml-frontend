@@ -1,6 +1,6 @@
 import React from "react";
 // import PropTypes from 'prop-types';
-
+import styled from "styled-components";
 import { Column, Grid, Row } from "@kyokan/kyokan-ui";
 
 import DMLSiteHeader from "../dml-site-header";
@@ -63,8 +63,36 @@ const Marketplace = props => {
   getAllAlgorithms();
   pushAlgorithmsIntoDisplayedAlgorithms();
 
+
+  // Styled Component
+  const Wrapper = styled.div`
+    display: flex;
+    flex-flow: row nowrap;
+    padding: 16px;
+    justify-content: center;
+  `;
+
+  const Left = styled.div`
+    display: flex;
+    flex-flow: column nowrap;
+    flex: 0 0 auto;
+  `;
+
+  const Right = styled.div`
+    display: flex;
+    flex-flow: column nowrap;
+    flex: 1 1 auto;
+    max-width: 804px;
+  `;
+
+  const CardsWrapper = styled.div`
+    display: flex;
+    flex-flow: row wrap;
+    flex: 1 1 auto;
+  `;
+
   return (
-    <Grid fluid style={{ padding: 0 }}>
+    <div>
       <DMLSiteHeader
         marketplaceActive
         bounties
@@ -72,20 +100,20 @@ const Marketplace = props => {
         createAlgorithm
         accountDropdown
       />
-      <Row nogutter style={{ paddingTop: 32 }}>
-        <Column xl={3} offset={{ xl: 1 }}>
+      <Wrapper>
+        <Left>
           <Sidebar
             selectCategory={selectCategory.bind(this)}
             category={props.selectedCategory}
             searchInputOnChange={searchAlgorithms}
           />
-        </Column>
-        <Column xl={7}>
+        </Left>
+        <Right>
           <Topbar algorithmCount={displayedAlgorithms.length} />
           {displayedAlgorithms.length === 0 ? (
             <EmptyState loading={props.loadingAlgorithms} />
           ) : (
-            <Row>
+            <CardsWrapper>
               {displayedAlgorithms.map(algorithm => (
                 <JobCard
                   key={algorithm.id}
@@ -100,7 +128,7 @@ const Marketplace = props => {
                   onClick={() => selectAlgorithm(algorithm.id)}
                 />
               ))}
-            </Row>
+            </CardsWrapper>
           )}
           {props.selectedAlgorithm && (
             <SelectedAlgorithm
@@ -114,9 +142,9 @@ const Marketplace = props => {
               priceValue="2"
             />
           )}
-        </Column>
-      </Row>
-    </Grid>
+        </Right>
+      </Wrapper>
+    </div>
   );
 };
 
