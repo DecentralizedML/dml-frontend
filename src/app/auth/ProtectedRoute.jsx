@@ -26,6 +26,12 @@ const ProtectedRoute = ({ component: Component, initialized, email, firstName, l
           );
         }
 
+        console.log({
+          firstName,
+          lastName,
+          walletAddress,
+        });
+
         if (!firstName || !lastName) {
           return (
             <Redirect

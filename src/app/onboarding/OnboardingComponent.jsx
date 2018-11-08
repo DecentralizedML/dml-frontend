@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import AdditionalInfo from './components/AdditionalInfo';
 import Metamask from './components/Metamask';
@@ -12,66 +13,60 @@ const ADDITIONAL_INFO = 1;
 const METAMASK        = 2;
 
 class Onboarding extends Component {
-  constructor (props) {
-    super(props);
-
-    let step;
-    const stepName = props.match.path;
-
-    switch (stepName) {
-      case '/details':
-        step = ADDITIONAL_INFO;
-        break;
-      case '/metamask':
-        step = METAMASK;
-        break;
-      case '/signup':
-        step = SIGNUP;
-        break;
-      case '/login':
-        step = SIGNUP;
-        break;
-      default:
-    }
-
-    this.state = {
-      step: step,
-    };
-  }
-
   render () {
-    switch (this.state.step) {
-      case SIGNUP:
-        return (
-          <Signup
-            onComplete={() => {
-              this.setState({
-                step: ADDITIONAL_INFO,
-              });
-            }}
-            isLogin={this.props.match.path === '/login'}
-          />
-        );
-      case ADDITIONAL_INFO:
-        return (
-          <AdditionalInfo
-            onComplete={() => {
-              this.setState({
-                step: METAMASK,
-              });
-            }}
-          />
-        );
-      case METAMASK:
-        return <Metamask />;
-      default:
-        return <noscript />;
+    const { firstName, lastName, walletAddress, initialized, email } = this.props;
+
+    if (!initialized) {
+      return <noscript />;
     }
+
+    if (!email) {
+      return (
+        <Signup
+          onComplete={() => {
+            this.setState({
+              step: ADDITIONAL_INFO,
+            });
+          }}
+          isLogin={this.props.match.path === '/login'}
+        />
+      );
+    }
+
+    if (!firstName || !lastName) {
+      return (
+        <AdditionalInfo
+          onComplete={() => {
+            this.setState({
+              step: METAMASK,
+            });
+          }}
+        />
+      );
+    }
+
+    if (!walletAddress) {
+      return <Metamask />;
+    }
+
+    return <noscript />;
   }
 }
 
 Onboarding.propTypes = {
   match: PropTypes.object.isRequired,
+  firstName: PropTypes.string,
+  lastName: PropTypes.string,
+  email: PropTypes.string,
+  walletAddress: PropTypes.string,
 };
 
-export default Onboarding;
+export default connect(
+  ({ account }) => ({
+    firstName: account.firstName,
+    lastName: account.lastName,
+    walletAddress: account.walletAddress,
+    email: account.email,
+    initialized: account.initialized,
+  }),
+)(Onboarding);

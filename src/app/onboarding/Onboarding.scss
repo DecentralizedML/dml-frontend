@@ -5,6 +5,36 @@
   width: 100vw;
   display: flex;
   flex-flow: row nowrap;
+
+  &__gh-container {
+    margin: 2rem 0;
+
+    &__description {
+      font-size: .85rem;
+      color: $bali-blue;
+      padding: 1rem 0;
+    }
+
+    &__gh-btn {
+      display: flex;
+      font-size: .9rem;
+      font-weight: 500;
+    }
+  }
+
+  &__panel {
+    margin-top: 3rem;
+  }
+
+  &__card-header {
+    font-size: 1rem;
+    margin-bottom: .75rem;
+  }
+
+  &__footer {
+    display: flex;
+    flex-flow: column nowrap;
+  }
 }
 
 .onboarding__sidebar {
@@ -57,7 +87,7 @@
   padding: 1.5rem 2rem;
   box-sizing: border-box;
   border-radius: .2rem;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .05);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);
 
   &__input {
     margin: .75rem 0;

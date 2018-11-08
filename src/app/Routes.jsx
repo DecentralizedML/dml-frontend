@@ -41,11 +41,11 @@ class Routes extends Component {
           <ProtectedRoute path="/bounties"                         component={BountiesList} />
           <ProtectedRoute path="/marketplace"                      component={Marketplace}  />
 
-          <Route path="/details"                          component={Onboarding}   />
-          <Route path="/metamask"                         component={Onboarding}   />
-          <Route path="/login"                            component={Onboarding}   />
-          <Route path="/signup"                           component={Onboarding}   />
-          <Route path="/logout"                           component={Logout}       />
+          <Route path="/details" component={Onboarding} />
+          <Route path="/metamask" component={Onboarding} />
+          <Route path="/login" component={Onboarding} />
+          <Route path="/signup" component={Onboarding} />
+          <Route path="/logout" component={Logout} />
 
           <Redirect to="/marketplace" />
         </Switch>

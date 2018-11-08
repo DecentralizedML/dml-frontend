@@ -6,7 +6,6 @@ import c from 'classnames';
 
 import {
   OnboardingSidebar,
-  TextInput,
   Button,
 } from '@kyokan/kyokan-ui';
 
