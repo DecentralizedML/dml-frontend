@@ -93,13 +93,13 @@ export const CategoryText = styled.div`
   line-height: 1.5;
   letter-spacing: 0.2px;
   color: ${mainTheme.colors.BaliHai};
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */
-  -khtml-user-select: none; /* Konqueror HTML */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none; /* Non-prefixed version, currently
                                     supported by Chrome and Opera */
+                                    
 `;
 
 export const TagCard = styled.div`
@@ -137,8 +137,7 @@ export const SearchBox = styled.div`
 `;
 
 export const SearchInput = styled.input`
-  height: 24px;
-  width: 100%;
+  flex: 1 0 auto;
   font-family: ${mainTheme.font};
   font-size: 15px;
   line-height: 1.6;
@@ -146,7 +145,7 @@ export const SearchInput = styled.input`
   color: ${mainTheme.colors.BaliHai};
   border: none;
   outline: none;
-  margin: 7px 16px 9px 16px;
+  padding: 7px 16px 9px 16px;
   &::placeholder {
     color: ${mainTheme.colors.BaliHai};
   }
