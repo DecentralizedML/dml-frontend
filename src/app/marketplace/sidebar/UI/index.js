@@ -99,7 +99,6 @@ export const CategoryText = styled.div`
   -webkit-touch-callout: none; /* iOS Safari */
   user-select: none; /* Non-prefixed version, currently
                                     supported by Chrome and Opera */
-                                    
 `;
 
 export const TagCard = styled.div`
@@ -160,4 +159,11 @@ export const SearchIcon = styled.div`
   opacity: 0.8;
   margin-right: 16px;
   margin-left: auto;
+`;
+
+export const CategoryTextWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+  margin-left: 16px;
 `;
