@@ -16,7 +16,7 @@ import {
   Title,
 } from '@kyokan/kyokan-ui';
 
-import '../../Onboarding.css';
+import '../../Onboarding.scss';
 
 const AdditionalInfo = (props) => {
   return (

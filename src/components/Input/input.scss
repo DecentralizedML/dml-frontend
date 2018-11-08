@@ -1,0 +1,18 @@
+@import "../../variables";
+
+.input {
+  transition: 200ms ease-in-out;
+
+  input {
+    border-color: $catskill-gray;
+  }
+
+  &--error {
+    input {
+      border-color: $sunset-red;
+      &:focus {
+        border-color: $sunset-red;
+      }
+    }
+  }
+}

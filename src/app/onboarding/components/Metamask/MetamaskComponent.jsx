@@ -12,7 +12,7 @@ import {
   Title,
 } from '@kyokan/kyokan-ui';
 
-import '../../Onboarding.css';
+import '../../Onboarding.scss';
 
 class Metamask extends Component {
   constructor (props) {

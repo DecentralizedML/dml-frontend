@@ -5,7 +5,7 @@ import AdditionalInfo from './components/AdditionalInfo';
 import Metamask from './components/Metamask';
 import Signup from './components/Signup';
 
-import './Onboarding.css';
+import './Onboarding.scss';
 
 const SIGNUP          = 0;
 const ADDITIONAL_INFO = 1;
