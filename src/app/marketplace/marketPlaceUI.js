@@ -12,6 +12,7 @@ export const Left = styled.div`
   display: flex;
   flex-flow: column nowrap;
   flex: 0 0 auto;
+  margin-right: 40px;
 `;
 
 export const Right = styled.div`

@@ -34,6 +34,8 @@ export const CloseIconContainer = styled.div`
 `;
 
 export const CardContainer = styled.div`
+  display: flex;
+  flex-direction: row;
   margin: 24px;
 `;
 
@@ -132,5 +134,103 @@ export const DMLText = styled.span`
   line-height: 1.33;
   letter-spacing: 0.5px;
   text-align: center;
+  color: ${mainTheme.colors.downriver};
+`;
+
+export const Left = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+`;
+
+export const Right = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+// Demo View
+
+export const DemoWrapper = styled.div`
+  margin-top: 30px;
+`;
+
+export const DemoText = styled.div`
+  width: 42px;
+  font-family: ${mainTheme.font};
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.3px;
+  color: ${mainTheme.colors.pickledBluewood};
+  margin-left: 36px;
+  padding-bottom: 10px;
+  margin-bottom: -1px;
+  border-bottom: solid 3px ${mainTheme.colors.royalBlue};
+`;
+
+export const DemoContainer = styled.div`
+  height: auto;
+  border-top: solid 1px rgba(110, 141, 189, 0.2);
+  padding: 28px 36px;
+`;
+
+export const DemoContentWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex: 1 0 auto;
+  height: 180px;
+  border-radius: 3px;
+  border: solid 1px #dae1ed;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const UploadImageWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+  height: 260px;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const ImageIcon = styled.div`
+  background-image: url("./icons/Icon-Images-Grey.svg");
+  width: 48px;
+  height: 48px;
+  background-size: cover;
+  background-position: center;
+`;
+
+export const UploadImageDescription = styled.div`
+  margin: 14px 0 18px 0;
+  font-family: ${mainTheme.font};
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: 0.2px;
+  color: ${mainTheme.colors.baliHai};
+`;
+
+export const UploadImageButton = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 125px;
+  height: 36px;
+  border-radius: 3px;
+  border: solid 1px #e1e8f2;
+  background-image: linear-gradient(to bottom, #ffffff, #f7f9fc);
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+export const UploadImageText = styled.div`
+  margin-top: 
+  font-family: ${mainTheme.font};
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.47;
+  letter-spacing: 0.3px;
   color: ${mainTheme.colors.downriver};
 `;
