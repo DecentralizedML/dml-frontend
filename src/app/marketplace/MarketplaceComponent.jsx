@@ -1,7 +1,6 @@
 import React from "react";
 // import PropTypes from 'prop-types';
 import styled from "styled-components";
-import { Column, Grid, Row } from "@kyokan/kyokan-ui";
 
 import DMLSiteHeader from "../dml-site-header";
 import JobCard from "./jobCard/MarketplaceJobCardComponent";
@@ -9,6 +8,8 @@ import Sidebar from "./sidebar/MarketplaceSidebarComponent";
 import Topbar from "./topBar/MarketPlaceHeaderComponent";
 import EmptyState from "./emptyState/MarketplaceEmptyState";
 import SelectedAlgorithm from "./selectedAlgorithm/MarketplaceSelectedAlgorithmComponent";
+
+import { Wrapper, Left, Right, CardsWrapper } from "./marketPlaceUI";
 
 const Marketplace = props => {
   // stores all available algorithms
@@ -62,34 +63,6 @@ const Marketplace = props => {
 
   getAllAlgorithms();
   pushAlgorithmsIntoDisplayedAlgorithms();
-
-
-  // Styled Component
-  const Wrapper = styled.div`
-    display: flex;
-    flex-flow: row nowrap;
-    padding: 16px;
-    justify-content: center;
-  `;
-
-  const Left = styled.div`
-    display: flex;
-    flex-flow: column nowrap;
-    flex: 0 0 auto;
-  `;
-
-  const Right = styled.div`
-    display: flex;
-    flex-flow: column nowrap;
-    flex: 1 1 auto;
-    max-width: 804px;
-  `;
-
-  const CardsWrapper = styled.div`
-    display: flex;
-    flex-flow: row wrap;
-    flex: 1 1 auto;
-  `;
 
   return (
     <div>
