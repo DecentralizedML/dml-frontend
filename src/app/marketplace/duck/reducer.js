@@ -10,42 +10,46 @@ const initialState = {
   selectedCategory: null,
   selectedTags: [],
   filteredAlgorithms: null,
-  loadingAlgorithms: false
+  loadingAlgorithms: false,
+  uploadedImage: null
 };
 
 const marketplaceReducer = (state = initialState, action) => {
   return produce(state, draftState => {
     switch (action.type) {
       case types.SELECT_CATEGORY:
-        draftState["selectedCategory"] = action.payload;
+        draftState.selectedCategory = action.payload;
         break;
       case types.SELECT_TAG:
-        draftState["selectedTags"].push(action.payload);
-        break;
-      case types.DESELECT_CATEGORY:
-        draftState["selectedCategory"] = null;
-        break;
-      case types.DESELECT_TAG:
-        const index = draftState["selectedTags"].indexOf(5);
-        if (index > -1) {
-          draftState["selectedTags"].splice(index, 1);
+        if (!draftState.selectedTags.includes(action.payload)) {
+          draftState.selectedTags.push(action.payload);
         }
         break;
+      case types.DESELECT_CATEGORY:
+        draftState.selectedCategory = null;
+        break;
+      case types.DESELECT_TAG:
+        draftState.selectedTags = state.selectedTags.filter(
+          tag => tag !== action.payload
+        );
+        break;
       case types.FILTER_ALGORITHMS:
-        draftState["filteredAlgorithms"] = action.payload;
+        draftState.filteredAlgorithms = action.payload;
         break;
       case types.START_LOADING_ALGORITHMS:
-        draftState["loadingAlgorithms"] = true;
+        draftState.loadingAlgorithms = true;
         break;
       case types.FINISH_LOADING_ALGORITHMS:
-        draftState["loadingAlgorithms"] = false;
+        draftState.loadingAlgorithms = false;
         break;
       case types.SELECT_ALGORITHM:
-        draftState["selectedAlgorithm"] = action.payload;
+        draftState.selectedAlgorithm = action.payload;
         break;
       case types.CLOSE_SELECTED_ALGORITHM:
-        draftState["selectedAlgorithm"] = false;
+        draftState.selectedAlgorithm = false;
         break;
+      case types.UPLOAD_IMAGE:
+        draftState.uploadedImage = action.payload;
       // case types.SELECT_ALGORITHM
       // case types.DESELECT_ALGORITHM
       default:

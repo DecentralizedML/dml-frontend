@@ -60,6 +60,13 @@ const closeSelectedAlgorithm = () => {
   };
 };
 
+const uploadImage = image => {
+  return {
+    type: types.UPLOAD_IMAGE,
+    payload: image
+  };
+};
+
 export default {
   selectCategory,
   deselectCategory,
@@ -69,5 +76,6 @@ export default {
   startLoadingAlgorithms,
   finishLoadingAlgorithms,
   selectAlgorithm,
-  closeSelectedAlgorithm
+  closeSelectedAlgorithm,
+  uploadImage
 };

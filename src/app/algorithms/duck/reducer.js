@@ -34,13 +34,22 @@ const accountReducer = (state = inititalState, action) => {
 
       case types.LIST_ALGORITHMS:
         action.payload.forEach(algorithm => {
+          const { user } = algorithm || {};
+          const { first_name, last_name } = user || {};
           draftState.allAlgorithmsOrder.push(algorithm.id);
-          draftState.allAlgorithmsMap[algorithm.id] = algorithm;
-          draftState.allAlgorithmsMap[algorithm.id].user.full_name = `${
-            algorithm.user.first_name ? algorithm.user.first_name : "Anonymous"
-          } ${
-            algorithm.user.last_name ? algorithm.user.last_name : "Anonymous"
-          }`;
+          draftState.allAlgorithmsMap[algorithm.id] = {
+            ...algorithm,
+            user: {
+              ...algorithm.user,
+              full_name: !!(first_name && last_name)
+                ? `${first_name} ${last_name}`
+                : "Anonymous"
+            }
+          };
+          // deduplicate:
+          draftState.allAlgorithmsOrder = [
+            ...new Set(draftState.allAlgorithmsOrder)
+          ];
           // Add a way to grab the User's Algos
         });
         break;

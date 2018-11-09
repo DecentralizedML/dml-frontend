@@ -114,6 +114,8 @@ const Marketplace = props => {
               }
               fullName={selectedAlgorithm.user.full_name}
               priceValue="2"
+              uploadedImage={props.uploadedImage}
+              uploadImage={props.uploadImage}
             />
           )}
         </Right>

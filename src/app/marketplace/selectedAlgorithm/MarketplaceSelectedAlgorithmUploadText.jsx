@@ -11,7 +11,7 @@ import {
   SentimentResultBox
 } from "./UI";
 
-const DemoUploadText = () => {
+const DemoUploadText = props => {
   return (
     <DemoWrapper>
       <DemoText>Demo</DemoText>

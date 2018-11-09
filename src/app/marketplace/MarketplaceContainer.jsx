@@ -11,7 +11,8 @@ const mapStateToProps = state => {
     deselectCategory,
     filteredAlgorithms,
     loadingAlgorithms,
-    selectedAlgorithm
+    selectedAlgorithm,
+    uploadedImage
   } = state.marketplace;
   const { allAlgorithmsMap, allAlgorithmsOrder } = state.algorithms;
   return {
@@ -21,7 +22,8 @@ const mapStateToProps = state => {
     allAlgorithmsOrder,
     filteredAlgorithms,
     loadingAlgorithms,
-    selectedAlgorithm
+    selectedAlgorithm,
+    uploadedImage
   };
 };
 
@@ -41,6 +43,9 @@ const mapDispatchToProps = dispatch => {
     },
     closeSelectedAlgorithm: () => {
       dispatch(marketplaceActions.closeSelectedAlgorithm());
+    },
+    uploadImage: image => {
+      dispatch(marketplaceActions.uploadImage(image));
     }
   };
 };

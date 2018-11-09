@@ -27,7 +27,9 @@ const SelectedAlgorithm = ({
   fullName,
   img,
   priceValue,
-  category
+  category,
+  uploadedImage,
+  uploadImage
 }) => {
   return (
     <Background>
@@ -55,7 +57,10 @@ const SelectedAlgorithm = ({
         {category === "Text Analysis" ? (
           <DemoUploadText />
         ) : (
-          <DemoUploadImage />
+          <DemoUploadImage
+            uploadedImage={uploadedImage}
+            uploadImage={uploadImage}
+          />
         )}
       </Card>
     </Background>
