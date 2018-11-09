@@ -222,6 +222,7 @@ export const UploadImageDescription = styled.div`
   line-height: 1.5;
   letter-spacing: 0.2px;
   color: ${mainTheme.colors.baliHai};
+  text-align: center;
 `;
 
 export const UploadImageButton = styled.div`

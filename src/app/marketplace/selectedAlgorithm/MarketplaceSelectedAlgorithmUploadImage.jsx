@@ -224,6 +224,7 @@ class DemoUploadImage extends Component {
                   type="file"
                   accept="image/*"
                   onChange={e => {
+                    this.setState({ result: null });
                     const {
                       target: {
                         files: [file]
@@ -234,7 +235,6 @@ class DemoUploadImage extends Component {
                       this.setState({ file: e.target.result });
                     };
                     reader.readAsDataURL(file);
-                    this.analyze();
                   }}
                 />
               </UploadImageButton>
@@ -247,9 +247,15 @@ class DemoUploadImage extends Component {
                   <LoadingText>Analyzing...</LoadingText>
                 </Row>
               ) : (
-                <UploadImageButton onClick={this.analyze}>
-                  <UploadImageText>Run Algorithm</UploadImageText>
-                </UploadImageButton>
+                <Column>
+                  <UploadImageDescription>
+                    Upload successful! <br />
+                    Ready to analyze your image.
+                  </UploadImageDescription>
+                  <UploadImageButton onClick={this.analyze}>
+                    <UploadImageText>Analyze Image</UploadImageText>
+                  </UploadImageButton>
+                </Column>
               )}
             </Row>
           )}
