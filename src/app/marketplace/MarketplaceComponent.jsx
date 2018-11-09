@@ -1,5 +1,6 @@
 import React from "react";
-// import PropTypes from 'prop-types';
+import { withRouter } from "react-router-dom";
+import PropTypes from 'prop-types';
 import styled from "styled-components";
 
 import DMLSiteHeader from "../dml-site-header";
@@ -17,7 +18,7 @@ const Marketplace = props => {
   // stores algorithms that get shown: (for filtering)
   let displayedAlgorithms = [];
   // stores the selected Algorithm
-  const selectedAlgorithm = props.allAlgorithmsMap[props.selectedAlgorithm];
+  // const selectedAlgorithm = props.allAlgorithmsMap[props.selectedAlgorithm];
 
   const getAllAlgorithms = () => {
     allAlgorithms = props.allAlgorithmsOrder.map(algorithm => {
@@ -64,6 +65,10 @@ const Marketplace = props => {
   getAllAlgorithms();
   pushAlgorithmsIntoDisplayedAlgorithms();
 
+  // console.log(props);
+
+  const selectedAlgorithm = props.allAlgorithmsMap[props.match.params.algoId];
+
   return (
     <div>
       <DMLSiteHeader
@@ -98,12 +103,13 @@ const Marketplace = props => {
                   averageRating="4.5"
                   totalRatings="62"
                   rewardValue="2"
-                  onClick={() => selectAlgorithm(algorithm.id)}
+                  // onClick={() => selectAlgorithm(algorithm.id)}
+                  onClick={() => props.history.push(`/marketplace/${algorithm.id}`)}
                 />
               ))}
             </CardsWrapper>
           )}
-          {props.selectedAlgorithm && (
+          {selectedAlgorithm && (
             <SelectedAlgorithm
               category={"Image Recognition"}
               handleClose={closeModal}
@@ -124,6 +130,8 @@ const Marketplace = props => {
   );
 };
 
-Marketplace.propTypes = {};
+Marketplace.propTypes = {
+  history: PropTypes.object.isRequired,
+};
 
-export default Marketplace;
+export default withRouter(Marketplace);
