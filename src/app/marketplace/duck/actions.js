@@ -47,19 +47,6 @@ const finishLoadingAlgorithms = () => {
   };
 };
 
-const selectAlgorithm = algorithm => {
-  return {
-    type: types.SELECT_ALGORITHM,
-    payload: algorithm
-  };
-};
-
-const closeSelectedAlgorithm = () => {
-  return {
-    type: types.CLOSE_SELECTED_ALGORITHM
-  };
-};
-
 const uploadImage = image => {
   return {
     type: types.UPLOAD_IMAGE,
@@ -75,7 +62,5 @@ export default {
   filterAlgorithms,
   startLoadingAlgorithms,
   finishLoadingAlgorithms,
-  selectAlgorithm,
-  closeSelectedAlgorithm,
   uploadImage
 };

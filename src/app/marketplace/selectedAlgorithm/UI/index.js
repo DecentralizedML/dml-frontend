@@ -196,7 +196,7 @@ export const UploadWrapper = styled.div`
 `;
 
 export const ImageIcon = styled.div`
-  background-image: url("./icons/Icon-Images-Grey.svg");
+  background-image: url("/icons/Icon-Images-Grey.svg");
   width: 48px;
   height: 48px;
   background-size: cover;

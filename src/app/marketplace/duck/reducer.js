@@ -6,7 +6,6 @@ import types from "./types";
 // import types from './types';
 
 const initialState = {
-  selectedAlgorithm: null,
   selectedCategory: null,
   selectedTags: [],
   filteredAlgorithms: null,
@@ -41,12 +40,6 @@ const marketplaceReducer = (state = initialState, action) => {
         break;
       case types.FINISH_LOADING_ALGORITHMS:
         draftState.loadingAlgorithms = false;
-        break;
-      case types.SELECT_ALGORITHM:
-        draftState.selectedAlgorithm = action.payload;
-        break;
-      case types.CLOSE_SELECTED_ALGORITHM:
-        draftState.selectedAlgorithm = false;
         break;
       case types.UPLOAD_IMAGE:
         draftState.uploadedImage = action.payload;
