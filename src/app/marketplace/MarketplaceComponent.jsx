@@ -1,7 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import PropTypes from 'prop-types';
-import styled from "styled-components";
+import PropTypes from "prop-types";
 
 import DMLSiteHeader from "../dml-site-header";
 import JobCard from "./jobCard/MarketplaceJobCardComponent";
@@ -18,7 +17,7 @@ const Marketplace = props => {
   // stores algorithms that get shown: (for filtering)
   let displayedAlgorithms = [];
   // stores the selected Algorithm
-  // const selectedAlgorithm = props.allAlgorithmsMap[props.selectedAlgorithm];
+  const selectedAlgorithm = props.allAlgorithmsMap[props.match.params.algoId];
 
   const getAllAlgorithms = () => {
     allAlgorithms = props.allAlgorithmsOrder.map(algorithm => {
@@ -54,20 +53,8 @@ const Marketplace = props => {
     props.filterAlgorithms(filteredAlgorithms);
   };
 
-  const selectAlgorithm = algorithm => {
-    props.selectAlgorithm(algorithm);
-  };
-
-  const closeModal = () => {
-    props.closeSelectedAlgorithm();
-  };
-
   getAllAlgorithms();
   pushAlgorithmsIntoDisplayedAlgorithms();
-
-  // console.log(props);
-
-  const selectedAlgorithm = props.allAlgorithmsMap[props.match.params.algoId];
 
   return (
     <div>
@@ -104,7 +91,9 @@ const Marketplace = props => {
                   totalRatings="62"
                   rewardValue="2"
                   // onClick={() => selectAlgorithm(algorithm.id)}
-                  onClick={() => props.history.push(`/marketplace/${algorithm.id}`)}
+                  onClick={() =>
+                    props.history.push(`/marketplace/${algorithm.id}`)
+                  }
                 />
               ))}
             </CardsWrapper>
@@ -112,7 +101,7 @@ const Marketplace = props => {
           {selectedAlgorithm && (
             <SelectedAlgorithm
               category={"Image Recognition"}
-              handleClose={closeModal}
+              handleClose={() => props.history.push(`/marketplace`)}
               title={selectedAlgorithm.title}
               text={selectedAlgorithm.description}
               img={
@@ -131,7 +120,7 @@ const Marketplace = props => {
 };
 
 Marketplace.propTypes = {
-  history: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired
 };
 
 export default withRouter(Marketplace);
