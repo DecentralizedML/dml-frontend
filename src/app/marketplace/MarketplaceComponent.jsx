@@ -90,7 +90,6 @@ const Marketplace = props => {
                   averageRating="4.5"
                   totalRatings="62"
                   rewardValue="2"
-                  // onClick={() => selectAlgorithm(algorithm.id)}
                   onClick={() =>
                     props.history.push(`/marketplace/${algorithm.id}`)
                   }

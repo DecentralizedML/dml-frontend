@@ -20,6 +20,9 @@ const DemoUploadImage = props => {
     document.getElementById("user_avatar").click();
   };
 
+  const KerasJS = window.KerasJS;
+
+  console.log(KerasJS);
   return (
     <DemoWrapper>
       <DemoText>Demo</DemoText>
