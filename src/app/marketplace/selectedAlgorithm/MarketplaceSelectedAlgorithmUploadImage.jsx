@@ -13,7 +13,19 @@ import {
   ImageIcon,
   UploadImageDescription,
   UploadImageButton,
-  UploadImageText
+  UploadImageText,
+  UploadedContainer,
+  UploadedPhotoContainer,
+  ResultContainer,
+  LoadingIcon,
+  LoadingText,
+  Row,
+  Column,
+  SignificanceNumber,
+  SignificanceBarWrapper,
+  SignificanceBar,
+  Category,
+  SignificanceBarContainer
 } from "./UI";
 
 const KerasJS = window.KerasJS;
@@ -43,7 +55,6 @@ class DemoUploadImage extends Component {
 
     img.onload = async () => {
       this.setState({ isAnalyzing: true });
-
       if (!this.model) {
         this.model = new KerasJS.Model({
           filepath: this.state.model,
@@ -112,7 +123,6 @@ class DemoUploadImage extends Component {
                 imageError: null,
                 isAnalyzing: false
               });
-              console.log(this.state);
             } catch (err) {
               this.setState({
                 result: null,
@@ -132,7 +142,6 @@ class DemoUploadImage extends Component {
         }
       );
     };
-
     img.src = file;
   };
 
@@ -144,39 +153,117 @@ class DemoUploadImage extends Component {
     });
   };
 
+  capitalizeFirstLetters = string => {
+    const wordArray = string.split(" ");
+    const capitalizedWordArray = wordArray.map(
+      word => word.charAt(0).toUpperCase() + word.slice(1)
+    );
+    return capitalizedWordArray.join(" ");
+  };
+
+  renderEmptyView() {
+    return (
+      <UploadWrapper>
+        <ImageIcon />
+        <UploadImageDescription>
+          Upload an Image to test this algorithm
+        </UploadImageDescription>
+        <UploadImageButton onClick={this.clickUploadImageButton}>
+          <UploadImageText>Upload Image </UploadImageText>
+          <input
+            style={{ display: "none" }}
+            id="algo-modal_upload-input"
+            type="file"
+            accept="image/*"
+            onChange={async e => {
+              const {
+                target: {
+                  files: [file]
+                }
+              } = e;
+              const reader = new FileReader();
+              reader.onload = e => {
+                this.setState({ file: e.target.result });
+              };
+              reader.readAsDataURL(file);
+            }}
+          />
+        </UploadImageButton>
+      </UploadWrapper>
+    );
+  }
+
+  renderUploadedView() {
+    return (
+      <UploadedContainer>
+        <UploadedPhotoContainer imageUrl={this.state.file} />
+        <ResultContainer>
+          {this.state.result ? (
+            <Column>
+              {this.state.result.map(result => (
+                <Row>
+                  <SignificanceNumber>
+                    {Math.floor(result.probability * 10000) / 100}%
+                  </SignificanceNumber>
+                  <SignificanceBarContainer>
+                    <SignificanceBar percentage={result.probability} />
+                    <Category>
+                      {this.capitalizeFirstLetters(result.name)}
+                    </Category>
+                  </SignificanceBarContainer>
+                </Row>
+              ))}
+              <UploadImageButton
+                onClick={this.clickUploadImageButton}
+                style={{ width: "158px", margin: "20px" }}
+              >
+                <UploadImageText>Upload New Image</UploadImageText>
+                <input
+                  style={{ display: "none" }}
+                  id="algo-modal_upload-input"
+                  type="file"
+                  accept="image/*"
+                  onChange={e => {
+                    const {
+                      target: {
+                        files: [file]
+                      }
+                    } = e;
+                    const reader = new FileReader();
+                    reader.onload = e => {
+                      this.setState({ file: e.target.result });
+                    };
+                    reader.readAsDataURL(file);
+                    this.analyze();
+                  }}
+                />
+              </UploadImageButton>
+            </Column>
+          ) : (
+            <Row>
+              {this.state.isAnalyzing ? (
+                <Row>
+                  <LoadingIcon />
+                  <LoadingText>Analyzing...</LoadingText>
+                </Row>
+              ) : (
+                <UploadImageButton onClick={this.analyze}>
+                  <UploadImageText>Run Algorithm</UploadImageText>
+                </UploadImageButton>
+              )}
+            </Row>
+          )}
+        </ResultContainer>
+      </UploadedContainer>
+    );
+  }
+
   render() {
     return (
       <DemoWrapper>
         <DemoText>Demo</DemoText>
         <DemoContainer>
-          <UploadWrapper>
-            <ImageIcon />
-            <UploadImageDescription>
-              Upload an Image to test this algorithm
-            </UploadImageDescription>
-            <UploadImageButton onClick={this.clickUploadImageButton}>
-              <UploadImageText>Upload Image </UploadImageText>
-              <input
-                style={{ display: "none" }}
-                id="algo-modal_upload-input"
-                type="file"
-                accept="image/*"
-                onChange={e => {
-                  const {
-                    target: {
-                      files: [file]
-                    }
-                  } = e;
-                  const reader = new FileReader();
-                  reader.onload = e => {
-                    this.setState({ file: e.target.result });
-                  };
-                  reader.readAsDataURL(file);
-                }}
-              />
-            </UploadImageButton>
-          </UploadWrapper>
-          <button onClick={this.analyze} />
+          {this.state.file ? this.renderUploadedView() : this.renderEmptyView()}
         </DemoContainer>
       </DemoWrapper>
     );

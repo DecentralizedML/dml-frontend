@@ -1,6 +1,18 @@
 import styled from "styled-components";
 import mainTheme from "../../../themes/mainTheme";
 
+export const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const Column = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 export const Background = styled.div`
   position: fixed;
   top: 0;
@@ -227,15 +239,14 @@ export const UploadImageButton = styled.div`
 `;
 
 export const UploadImageText = styled.div`
-  margin-top: 
   font-family: ${mainTheme.font};
   font-size: 15px;
   font-weight: 500;
   line-height: 1.47;
   letter-spacing: 0.3px;
   color: ${mainTheme.colors.downriver};
-  -webkit-touch-callout: none; 
-  user-select: none; 
+  -webkit-touch-callout: none;
+  user-select: none;
 `;
 
 // Text Input Component
@@ -297,4 +308,88 @@ export const SentimentResultBox = styled.div`
   line-height: 1.33;
   letter-spacing: 0.3px;
   color: ${mainTheme.colors.baliHai};
+`;
+
+// Uploaded Image View
+export const UploadedContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 650px;
+  height: 250px;
+  border: solid 1px #e1e8f2;
+  background-color: #f9fbfd;
+  border-radius: 2px;
+`;
+
+export const UploadedPhotoContainer = styled.div`
+  width: 250px;
+  height: 250px;
+  background-image: url(${props => props.imageUrl});
+  background-size: cover;
+  background-position: center;
+`;
+
+export const ResultContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 399px;
+  height: 250px;
+`;
+
+export const LoadingIcon = styled.div`
+  width: 32px;
+  height: 32px;
+  background-image: url("/icons/Loading-Grid.svg");
+  background-size: cover;
+  background-position: center;
+`;
+
+export const LoadingText = styled.div`
+  padding-left: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  color: ${mainTheme.colors.cardNumberValues};
+`;
+
+export const SignificanceNumber = styled.div`
+  width: 60px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.85;
+  letter-spacing: 0.2px;
+  color: #0d2957;
+`;
+
+export const SignificanceBarContainer = styled.div`
+  width: 252px;
+  height: 22px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 2px;
+  margin: 2px;
+  background-color: #edf0f5;
+`;
+
+export const SignificanceBar = styled.div`
+  width: ${props => props.percentage * 252}px;
+  height: 22px;
+  border-radius: 2px;
+  background-color: #83b2ff;
+`;
+
+export const Category = styled.div`
+  width: 245px;
+  position: absolute;
+  z-index: 10;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.85;
+  letter-spacing: 0.2px;
+  text-align: right;
+  color: #0d2957;
 `;
