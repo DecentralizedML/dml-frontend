@@ -34,8 +34,9 @@ function* hydrateUserDataSaga () {
 
 function* updateUserSaga (action) {
   try {
-    yield call(updateUser, action.payload);
+    const { data } = yield call(updateUser, action.payload);
     yield put(actions.updateUserSuccess());
+    yield put(actions.loadAccountData(data));
     yield action.payload.next && action.payload.next();
   } catch (error) {
     yield put(actions.updateUserError(error));

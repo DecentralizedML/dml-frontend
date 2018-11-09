@@ -49,13 +49,19 @@ function* loginSaga (action) {
     yield put(accountActions.loadAccountData(data));
 
     const { first_name, last_name, wallet_address } = data;
+
     if (!first_name || !last_name) {
       yield call(action.payload.history.push, '/details');
-    } else if (!wallet_address) {
-      yield call(action.payload.history.push, '/metamask');
-    } else {
-      yield call(action.payload.history.push, '/marketplace');
+      return;
     }
+
+    // if (!wallet_address) {
+    //   yield call(action.payload.history.push, '/metamask');
+    //   return;
+    // }
+
+    yield call(action.payload.history.push, '/marketplace');
+
   } catch (error) {
     yield put(actions.loginError(error));
   }
@@ -84,6 +90,7 @@ function* signupSaga (action) {
     const { data } = yield call(signup, action.payload);
     yield call((jwt) => { storage.token = jwt; }, data.jwt);
     yield put(actions.signupSuccess());
+    yield put(accountActions.loadAccountData(data));
     yield action.payload.next && action.payload.next();
   } catch (error) {
     yield put(actions.signupError(error));

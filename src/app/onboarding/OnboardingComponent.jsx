@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import AdditionalInfo from './components/AdditionalInfo';
 import Metamask from './components/Metamask';
@@ -14,7 +15,15 @@ const METAMASK        = 2;
 
 class Onboarding extends Component {
   render () {
-    const { firstName, lastName, walletAddress, initialized, email } = this.props;
+    const {
+      firstName,
+      lastName,
+      // walletAddress,
+      initialized,
+      email,
+      history: { push },
+      location,
+    } = this.props;
 
     if (!initialized) {
       return <noscript />;
@@ -23,11 +32,7 @@ class Onboarding extends Component {
     if (!email) {
       return (
         <Signup
-          onComplete={() => {
-            this.setState({
-              step: ADDITIONAL_INFO,
-            });
-          }}
+          onComplete={() => push('/details')}
           isLogin={this.props.match.path === '/login'}
         />
       );
@@ -36,29 +41,39 @@ class Onboarding extends Component {
     if (!firstName || !lastName) {
       return (
         <AdditionalInfo
-          onComplete={() => {
-            this.setState({
-              step: METAMASK,
-            });
-          }}
+          // onComplete={() => push('/metamask')}
+          onComplete={() => push('/marketplace')}
         />
       );
     }
 
-    if (!walletAddress) {
-      return <Metamask />;
-    }
+    // if (!walletAddress) {
+    //   return <Metamask />;
+    // }
 
-    return <noscript />;
+    return (
+      <Redirect
+        to={{
+          pathname : '/marketplace',
+          state    : {
+            from: location,
+          },
+        }}
+      />
+    );
   }
 }
 
 Onboarding.propTypes = {
   match: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
   firstName: PropTypes.string,
   lastName: PropTypes.string,
   email: PropTypes.string,
   walletAddress: PropTypes.string,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default connect(
