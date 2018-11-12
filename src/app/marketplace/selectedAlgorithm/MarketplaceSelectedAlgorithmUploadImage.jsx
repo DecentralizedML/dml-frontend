@@ -42,6 +42,7 @@ class DemoUploadImage extends Component {
   };
 
   clickUploadImageButton() {
+    // Stretch the input field over the whole button with opacity 0;
     document.getElementById("algo-modal_upload-input").click();
   }
 
@@ -153,14 +154,6 @@ class DemoUploadImage extends Component {
     });
   };
 
-  capitalizeFirstLetters = string => {
-    const wordArray = string.split(" ");
-    const capitalizedWordArray = wordArray.map(
-      word => word.charAt(0).toUpperCase() + word.slice(1)
-    );
-    return capitalizedWordArray.join(" ");
-  };
-
   renderEmptyView() {
     return (
       <UploadWrapper>
@@ -207,9 +200,7 @@ class DemoUploadImage extends Component {
                   </SignificanceNumber>
                   <SignificanceBarContainer>
                     <SignificanceBar percentage={result.probability} />
-                    <Category>
-                      {this.capitalizeFirstLetters(result.name)}
-                    </Category>
+                    <Category>{result.name}</Category>
                   </SignificanceBarContainer>
                 </Row>
               ))}

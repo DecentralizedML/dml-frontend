@@ -384,6 +384,7 @@ export const SignificanceBar = styled.div`
 `;
 
 export const Category = styled.div`
+  text-transform: capitalize;
   width: 245px;
   position: absolute;
   z-index: 10;
