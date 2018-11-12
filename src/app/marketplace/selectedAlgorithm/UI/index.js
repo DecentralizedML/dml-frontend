@@ -342,9 +342,7 @@ export const ResultContainer = styled.div`
 export const LoadingIcon = styled.div`
   width: 32px;
   height: 32px;
-  ${console.log(
-    "hello from icon"
-  )} background-image: url("/icons/Loading-Grid.svg");
+  background-image: url("/icons/Loading-Grid.svg");
   background-size: cover;
   background-position: center;
 `;
