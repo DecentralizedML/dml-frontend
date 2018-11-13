@@ -18,6 +18,7 @@ import BountiesUser from "./bounties/BountiesUser";
 import Bounty from "./bounties/Bounty";
 import Marketplace from "./marketplace";
 import Onboarding from "./onboarding";
+import CreateAlgorithm from "./create-algorithm";
 
 import ProtectedRoute from "./auth/ProtectedRoute";
 import Logout from "./auth/Logout";
@@ -38,8 +39,10 @@ class Routes extends Component {
     // -> 'entry point to everything'
   }
 
-  render () {
-    return !this.props.initialized ? <noscript /> : (
+  render() {
+    return !this.props.initialized ? (
+      <noscript />
+    ) : (
       <Router>
         <Switch>
           <ProtectedRoute
@@ -49,11 +52,18 @@ class Routes extends Component {
           <ProtectedRoute path="/account" component={Account} />
           <ProtectedRoute path="/algorithms/:id" component={Algorithms} />
           <ProtectedRoute path="/algorithms/" component={Algorithms} />
+          <ProtectedRoute
+            path="/create-algorithm/"
+            component={CreateAlgorithm}
+          />
           <ProtectedRoute path="/bounties/create" component={BountyCreate} />
           <ProtectedRoute path="/bounties/user" component={BountiesUser} />
           <ProtectedRoute path="/bounties/:id" component={Bounty} />
           <ProtectedRoute path="/bounties" component={BountiesList} />
-          <ProtectedRoute path="/marketplace/:algoId?" component={Marketplace} />
+          <ProtectedRoute
+            path="/marketplace/:algoId?"
+            component={Marketplace}
+          />
 
           <Route path="/details" component={Onboarding} />
           <Route path="/metamask" component={Onboarding} />
