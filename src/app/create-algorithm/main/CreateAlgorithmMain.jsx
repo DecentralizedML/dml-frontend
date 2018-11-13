@@ -7,11 +7,15 @@ import {
   SubHeadline,
   Divider,
   InputField,
-  DropdownContainer,
-  DropdownWrapper,
-  Dropdown,
+  DescriptionText,
   DropdownSectionRow,
-  DropdownSectionColumn
+  DropdownSectionColumn,
+  DMLContainer,
+  DMLLogo,
+  DMLText,
+  NextButton,
+  NextButtonText,
+  RightArrow
 } from "./UI";
 import CreateAlgorithmDropdown from "./CreateAlgorithmDropdown";
 import CreateAlgorithmCheckboxDropdown from "./CreateAlgorithmCheckboxDropdown";
@@ -38,6 +42,27 @@ const CreateAlgorithmMain = props => {
         </DropdownSectionColumn>
       </DropdownSectionRow>
       <Divider />
+      <Headline>Set a Price</Headline>
+      <DescriptionText>
+        This is the value you get each time your algorithm runs on a device.
+      </DescriptionText>
+      <SubHeadline>Per Device fee</SubHeadline>
+      <div style={{ position: "relative", width: "366px" }}>
+        <InputField
+          placeholder="e.g. 1"
+          type="text"
+          style={{ height: "48px" }}
+        />
+        <DMLContainer>
+          <DMLLogo />
+          <DMLText>DML</DMLText>
+        </DMLContainer>
+      </div>
+      <Divider />
+      <NextButton>
+        <NextButtonText>Next Step</NextButtonText>
+        <RightArrow />
+      </NextButton>
     </Main>
   );
 };

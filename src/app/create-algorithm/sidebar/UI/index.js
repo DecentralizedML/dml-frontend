@@ -3,7 +3,7 @@ import mainTheme from "../../../themes/mainTheme";
 
 export const Sidebar = styled.div`
   width: 264px;
-  height: 689px;
+  height: auto;
   box-shadow: inset -1px 0 0 0 rgba(110, 141, 189, 0.1);
   background-color: rgba(110, 141, 189, 0.04);
   padding: 24px;

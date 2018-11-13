@@ -5,7 +5,7 @@ export const Main = styled.div`
   display: flex;
   flex-direction: column;
   width: 876px;
-  height: 737px;
+  height: auto;
   padding: 36px;
 `;
 
@@ -156,4 +156,75 @@ export const DataLabel = styled.label`
     color: ${mainTheme.colors.downriver};
     cursor: pointer;
   }
+`;
+
+export const DMLContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+  width: 57px;
+  height: 24px;
+  margin: 12px;
+  border-radius: 2px;
+  background-color: #3c81ed;
+`;
+
+export const DMLLogo = styled.div`
+  width: 12px;
+  height: 12px;
+  background-image: url("/iconLogo.svg");
+  background-size: cover;
+  background-position: center;
+`;
+
+export const DMLText = styled.div`
+  height: 16px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.33;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+`;
+
+export const NextButton = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 144px;
+  height: 40px;
+  border-radius: 3px;
+  box-shadow: 0 1px 4px 0 rgba(5, 29, 66, 0.12);
+  background-image: linear-gradient(to bottom, #5797fb, #397ee9);
+  margin-left: auto;
+  margin-right: 0;
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0 1px 4px 0 rgba(5, 29, 66, 0.36);
+  }
+`;
+
+export const NextButtonText = styled.div`
+  width: 74px;
+  height: 24px;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.07);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  color: ${mainTheme.colors.white};
+`;
+
+export const RightArrow = styled.div`
+  width: 16px;
+  height: 12px;
+  background-image: url("/icons/Icon-Arrow Right-White.svg");
+  background-size: cover;
+  background-position: center;
+  margin-left: 8px;
 `;

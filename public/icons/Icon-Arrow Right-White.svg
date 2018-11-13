@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.3 (67297) - http://www.bohemiancoding.com/sketch -->
+    <title>Icon-Arrow Right-White</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icon/16px/Arrow-Right/White" fill="#FFFFFF" fill-rule="nonzero">
+            <path d="M10.5857864,9 L3,9 C2.44771525,9 2,8.55228475 2,8 C2,7.44771525 2.44771525,7 3,7 L10.5857864,7 L8.5,4.91421356 C8.10947571,4.52368927 8.10947571,3.89052429 8.5,3.5 C8.89052429,3.10947571 9.52368927,3.10947571 9.91421356,3.5 L13.7071068,7.29289322 C13.8880712,7.47385763 14,7.72385763 14,8 C14,8.27614237 13.8880712,8.52614237 13.7071068,8.70710678 L9.91421356,12.5 C9.52368927,12.8905243 8.89052429,12.8905243 8.5,12.5 C8.10947571,12.1094757 8.10947571,11.4763107 8.5,11.0857864 L10.5857864,9 Z" id="Combined-Shape"></path>
+        </g>
+    </g>
+</svg>
