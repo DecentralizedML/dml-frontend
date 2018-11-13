@@ -259,6 +259,7 @@ export const InputText = styled.textarea`
   height: 258px;
   padding: 7px 16px;
   font-family: ${mainTheme.font};
+  font-weight: 600;
   border-radius: 3px;
   font-size: 15px;
   background-color: #ffffff;
@@ -303,12 +304,23 @@ export const SentimentResultBox = styled.div`
   height: 50px;
   border-radius: 3px;
   border: solid 1px rgba(109, 140, 189, 0.25);
-  background-color: #e1e8f2;
+  background-color: ${props => {
+    if (!props.result) {
+      return "#e1e8f2";
+    }
+    if (props.result < 0.4) {
+      return "#ff2d57";
+    }
+    if (props.result > 0.6) {
+      return "#10d369";
+    }
+    return "#f6b93b";
+  }}
   font-size: 24px;
   font-weight: 600;
   line-height: 1.33;
   letter-spacing: 0.3px;
-  color: ${mainTheme.colors.baliHai};
+  color: ${props => (props.result ? "#ffffff" : mainTheme.colors.baliHai)};
 `;
 
 // Uploaded Image View

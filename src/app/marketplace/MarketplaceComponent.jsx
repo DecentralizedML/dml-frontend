@@ -90,6 +90,7 @@ const Marketplace = props => {
                   averageRating="4.5"
                   totalRatings="62"
                   rewardValue="2"
+                  category="Text Analysis"
                   onClick={() =>
                     props.history.push(`/marketplace/${algorithm.id}`)
                   }
@@ -99,7 +100,7 @@ const Marketplace = props => {
           )}
           {selectedAlgorithm && (
             <SelectedAlgorithm
-              category={"Image Recognition"}
+              category="Text Analysis"
               handleClose={() => props.history.push(`/marketplace`)}
               title={selectedAlgorithm.title}
               text={selectedAlgorithm.description}

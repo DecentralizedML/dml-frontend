@@ -82,7 +82,16 @@ const DMLSiteHeader = props => {
 
   const renderCreateAlgorithm = () => {
     if (props.createAlgorithm) {
-      return <Button leftIcon="plusCircle">Create Algorithm</Button>;
+      return (
+        <Button
+          onClick={() => {
+            props.history.push("/create-algorithm");
+          }}
+          leftIcon="plusCircle"
+        >
+          Create Algorithm
+        </Button>
+      );
     }
   };
 
