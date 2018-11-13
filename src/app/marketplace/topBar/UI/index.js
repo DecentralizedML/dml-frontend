@@ -60,12 +60,11 @@ export const Dropdown = styled.select`
 
 export const Option = styled.option`
   font-family: ${mainTheme.font};
+  color: ${mainTheme.colors.downriver};
   font-size: 15px;
   font-weight: 500;
   line-height: 1.6;
   letter-spacing: 0.2px;
-  color: ${props =>
-    props.placeholder ? mainTheme.colors.baliHai : mainTheme.colors.downriver};
 `;
 
 export const Description = styled.span`

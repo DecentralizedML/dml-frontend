@@ -97,7 +97,8 @@ export const Dropdown = styled.select`
   line-height: 1.6;
   letter-spacing: 0.2px;
   margin-left: 2px;
-  color: ${mainTheme.colors.downriver};
+  color: ${props =>
+    props.value === "" ? mainTheme.colors.baliHai : mainTheme.colors.downriver};
   &:hover {
     cursor: pointer;
   }
@@ -105,7 +106,8 @@ export const Dropdown = styled.select`
 
 export const Option = styled.option`
   font-family: ${mainTheme.font};
-  color: ${mainTheme.colors.downriver};
+  color: ${props =>
+    props.value === "" ? mainTheme.colors.baliHai : mainTheme.colors.downriver};
   font-size: 15px;
   font-weight: 500;
   line-height: 1.6;
