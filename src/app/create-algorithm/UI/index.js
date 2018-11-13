@@ -28,16 +28,3 @@ export const TitleHeaderText = styled.div`
   letter-spacing: 0.3px;
   color: ${mainTheme.colors.baliHai};
 `;
-
-export const Sidebar = styled.div`
-  width: 264px;
-  height: 737px;
-  box-shadow: inset -1px 0 0 0 rgba(110, 141, 189, 0.1);
-  background-color: rgba(110, 141, 189, 0.04);
-  padding: 24px;
-`;
-
-export const Main = styled.div`
-  width: 876px;
-  height: 737px;
-`;

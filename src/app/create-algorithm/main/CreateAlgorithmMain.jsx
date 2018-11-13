@@ -10,8 +10,11 @@ import {
   DropdownContainer,
   DropdownWrapper,
   Dropdown,
-  Option
+  DropdownSectionRow,
+  DropdownSectionColumn
 } from "./UI";
+import CreateAlgorithmDropdown from "./CreateAlgorithmDropdown";
+import CreateAlgorithmCheckboxDropdown from "./CreateAlgorithmCheckboxDropdown";
 
 const CreateAlgorithmMain = props => {
   return (
@@ -24,18 +27,16 @@ const CreateAlgorithmMain = props => {
         placeholder="Add a short, one sentence description"
         type="text"
       />
-      <SubHeadline>Category</SubHeadline>
-      <DropdownContainer icon="/icons/Icon-Arrow-Tip-Down-Grey.svg">
-        <DropdownWrapper>
-          <Dropdown name="categoryDropdown" id="category">
-            <Option value="" placeholder="true" disabled selected>
-              Select a category
-            </Option>
-            <Option value="Image Recognition">Image Recognition</Option>
-            <Option value="Text Analysis">Text Analysis</Option>
-          </Dropdown>
-        </DropdownWrapper>
-      </DropdownContainer>
+      <DropdownSectionRow>
+        <DropdownSectionColumn>
+          <SubHeadline>Category</SubHeadline>
+          <CreateAlgorithmDropdown />
+        </DropdownSectionColumn>
+        <DropdownSectionColumn>
+          <SubHeadline>Data Required</SubHeadline>
+          <CreateAlgorithmCheckboxDropdown />
+        </DropdownSectionColumn>
+      </DropdownSectionRow>
       <Divider />
     </Main>
   );

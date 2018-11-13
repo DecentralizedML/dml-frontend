@@ -20,7 +20,7 @@ export const Headline = styled.div`
 `;
 
 export const SubHeadline = styled.div`
-  width: 756px;
+  flex: 0 1 auto;
   height: 16px;
   font-size: 12px;
   font-weight: 500;
@@ -45,6 +45,7 @@ export const Divider = styled.div`
   width: 100%;
   height: 1px;
   background-color: rgba(110, 141, 189, 0.2);
+  margin: 30px 0 24px 0;
 `;
 
 export const InputField = styled.input`
@@ -71,8 +72,7 @@ export const DropdownContainer = styled.div`
   border-radius: 3px;
   border: solid 1px rgba(109, 140, 189, 0.25);
   overflow: hidden;
-  background: no-repeat #ffffff;
-  background-image: url("${props => props.icon}");
+  background: url("${props => props.icon}") 0 0 no-repeat #ffffff;
   background-position: 95% 50%;
 `;
 
@@ -97,19 +97,63 @@ export const Dropdown = styled.select`
   line-height: 1.6;
   letter-spacing: 0.2px;
   margin-left: 2px;
-  color: ${props =>
-    props.value === "" ? mainTheme.colors.baliHai : mainTheme.colors.downriver};
+  color: ${mainTheme.colors.downriver};
   &:hover {
     cursor: pointer;
   }
+  &:invalid {
+    color: ${mainTheme.colors.baliHai};
+  }
 `;
 
-export const Option = styled.option`
-  font-family: ${mainTheme.font};
-  color: ${props =>
-    props.value === "" ? mainTheme.colors.baliHai : mainTheme.colors.downriver};
+export const DropdownSectionRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+export const DropdownSectionColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const OptionsWrapper = styled.div`
+  box-sizing: border-box;
+  position: absolute;
+  top: 42px;
+  left: 0;
+  z-index: 1000;
+  width: 366px;
+  border-radius: 3px;
+  box-shadow: 0 2px 8px 0 rgba(110, 141, 189, 0.36);
+  background-color: #ffffff;
   font-size: 15px;
   font-weight: 500;
   line-height: 1.6;
   letter-spacing: 0.2px;
+  color: #0d2957;
+  padding: 13px 20px;
+`;
+
+export const Checkbox = styled.input`
+  border-color: ${mainTheme.colors.baliHai};
+  box-shadow: none;
+  margin-right: 12px;
+`;
+
+export const DataLabel = styled.label`
+  margin: 4px 0px;
+  width: 304px;
+  height: 24px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: 0.2px;
+  color: ${mainTheme.colors.baliHai};
+  -webkit-touch-callout: none;
+  user-select: none;
+  &:hover {
+    color: ${mainTheme.colors.downriver};
+    cursor: pointer;
+  }
 `;
