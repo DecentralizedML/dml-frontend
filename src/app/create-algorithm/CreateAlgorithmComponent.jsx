@@ -4,7 +4,7 @@ import React from "react";
 import DMLSiteHeader from "../dml-site-header";
 import { MainContainer, TitleHeaderContainer, TitleHeaderText } from "./UI";
 import CreateAlgorithmSidebar from "./sidebar/CreateAlgorithmSidebar";
-import CreateAlgorithmMain from "./CreateAlgorithMain";
+import CreateAlgorithmMain from "./main/CreateAlgorithmMain";
 
 const CreateAlgorithm = props => {
   return (
