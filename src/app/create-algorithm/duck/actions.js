@@ -7,6 +7,14 @@ const createAlgorithm = data => {
   };
 };
 
+const saveNewAlgorithmData = data => {
+  return {
+    type: types.SAVE_NEW_ALGORITHM_DATA,
+    payload: data
+  };
+};
+
 export default {
-  createAlgorithm
+  createAlgorithm,
+  saveNewAlgorithmData
 };

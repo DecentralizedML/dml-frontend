@@ -9,7 +9,7 @@ import {
   DropdownSectionRow,
   Checkbox,
   DataLabel
-} from "./UI";
+} from "../UI";
 
 class CreateAlgorithmCheckboxDropdown extends Component {
   state = {
@@ -40,7 +40,7 @@ class CreateAlgorithmCheckboxDropdown extends Component {
             type="checkbox"
             id={option}
             checked={this.state.selection.includes(option)}
-            onClick={e => this.handleCheckboxSelection(e)}
+            onChange={e => this.handleCheckboxSelection(e)}
           />
           {option}
         </DataLabel>
@@ -56,7 +56,9 @@ class CreateAlgorithmCheckboxDropdown extends Component {
       const index = selection.indexOf(e.target.id);
       selection.splice(index, 1);
     }
+    // this 'double saving' is not the cleanest code but it works for now
     this.setState({ selection: selection });
+    this.props.onChange(selection);
   };
 
   renderSelection = () => {
@@ -72,7 +74,7 @@ class CreateAlgorithmCheckboxDropdown extends Component {
               name="dataDropdown"
               id="data"
               onClick={this.showCheckboxes}
-              required={this.state.selection.length < 1 && "false"}
+              required={this.state.selection.length < 1 && true}
             >
               <option value="" hidden>
                 {this.state.selection.length < 1

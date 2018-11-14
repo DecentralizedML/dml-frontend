@@ -21,7 +21,10 @@ const CreateAlgorithm = props => {
       </TitleHeaderContainer>
       <MainContainer>
         <CreateAlgorithmSidebar />
-        <CreateAlgorithmMain />
+        <CreateAlgorithmMain
+          step={props.match.params.step}
+          saveNewAlgorithmData={props.saveNewAlgorithmData}
+        />
       </MainContainer>
     </div>
   );

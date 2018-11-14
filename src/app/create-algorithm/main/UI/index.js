@@ -218,6 +218,8 @@ export const NextButtonText = styled.div`
   line-height: 1.5;
   letter-spacing: 0.5px;
   color: ${mainTheme.colors.white};
+  -webkit-touch-callout: none;
+  user-select: none;
 `;
 
 export const RightArrow = styled.div`

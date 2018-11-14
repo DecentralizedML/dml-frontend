@@ -1,13 +1,18 @@
 import React from "react";
 // import PropTypes from 'prop-types';
 
-import { DropdownContainer, DropdownWrapper, Dropdown } from "./UI";
+import { DropdownContainer, DropdownWrapper, Dropdown } from "../UI";
 
 const CreateAlgorithmDropdown = props => {
   return (
     <DropdownContainer icon="/icons/Icon-Arrow-Tip-Down-Grey.svg">
       <DropdownWrapper>
-        <Dropdown name="categoryDropdown" id="category" required>
+        <Dropdown
+          name="categoryDropdown"
+          id="category"
+          required
+          onChange={e => props.onChange(e)}
+        >
           <option value="" hidden>
             Select a category
           </option>

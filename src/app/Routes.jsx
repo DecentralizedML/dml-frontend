@@ -18,6 +18,7 @@ import BountiesUser from "./bounties/BountiesUser";
 import Bounty from "./bounties/Bounty";
 import Marketplace from "./marketplace";
 import Onboarding from "./onboarding";
+
 import CreateAlgorithm from "./create-algorithm";
 
 import ProtectedRoute from "./auth/ProtectedRoute";
@@ -53,7 +54,7 @@ class Routes extends Component {
           <ProtectedRoute path="/algorithms/:id" component={Algorithms} />
           <ProtectedRoute path="/algorithms/" component={Algorithms} />
           <ProtectedRoute
-            path="/create-algorithm/"
+            path="/create-algorithm/:step?"
             component={CreateAlgorithm}
           />
           <ProtectedRoute path="/bounties/create" component={BountyCreate} />

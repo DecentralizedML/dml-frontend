@@ -315,7 +315,7 @@ export const SentimentResultBox = styled.div`
       return "#10d369";
     }
     return "#f6b93b";
-  }}
+  }};
   font-size: 24px;
   font-weight: 600;
   line-height: 1.33;
