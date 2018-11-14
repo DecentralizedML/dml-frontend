@@ -6,17 +6,18 @@ import types from "./types";
 
 // Add more values later -> start with component state
 const inititalState = {
-  currentStep: null,
+  currentStep: 1,
   title: null,
   description: null,
   category: null,
+  preProcessing: null,
   dataRequired: null,
   price: null,
   mlModel: null
 };
 
 // TODO: Implement the logic
-const accountReducer = (state = inititalState, action) => {
+const createAlgorithmReducer = (state = inititalState, action) => {
   return produce(state, draftState => {
     switch (action.type) {
       case types.CREATE_ALGORITHM:
@@ -32,4 +33,4 @@ const accountReducer = (state = inititalState, action) => {
   });
 };
 
-export default accountReducer;
+export default createAlgorithmReducer;

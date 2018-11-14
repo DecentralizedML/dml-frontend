@@ -17,17 +17,27 @@ const CreateAlgorithmSidebar = props => {
     <Sidebar>
       <CreateAlgorithmStepRow
         stepNumber="1"
-        active="true"
         stepTitle="Information"
+        currentStep={props.currentStep}
       />
       <CreateAlgorithmDividerRow />
-      <CreateAlgorithmStepRow stepNumber="2" stepTitle="Pre-Processing" />
+      <CreateAlgorithmStepRow
+        stepNumber="2"
+        stepTitle="Algorithm Upload"
+        currentStep={props.currentStep}
+      />
       <CreateAlgorithmDividerRow />
-      <CreateAlgorithmStepRow stepNumber="3" stepTitle="Algorithm Upload" />
+      <CreateAlgorithmStepRow
+        stepNumber="3"
+        stepTitle="Post-Processing"
+        currentStep={props.currentStep}
+      />
       <CreateAlgorithmDividerRow />
-      <CreateAlgorithmStepRow stepNumber="4" stepTitle="Post-Processing" />
-      <CreateAlgorithmDividerRow />
-      <CreateAlgorithmStepRow stepNumber="5" stepTitle="Submit" />
+      <CreateAlgorithmStepRow
+        stepNumber="4"
+        stepTitle="Submit"
+        currentStep={props.currentStep}
+      />
       <Divider />
       <SaveProgressText>
         Saving your progress allows you to continue at a later date.

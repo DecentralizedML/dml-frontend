@@ -4,22 +4,50 @@ import React from "react";
 import {
   Main,
   Headline,
-  SubHeadline,
+  DescriptionText,
   Divider,
-  NextButton,
-  NextButtonText,
-  RightArrow
+  UploadAlgorithmWrapper,
+  NavigationFooter,
+  UploadIcon,
+  DescriptionLink,
+  UploadTypeDescription
 } from "./UI";
+import CreateAlgorithmNavigationButton from "./components/CreateAlgorithmNavigationButton";
 
 const CreateAlgorithmStepTwo = props => {
   return (
     <Main>
-      <Headline>Algorithm information</Headline>
+      <Headline>Upload machine learning algorithm</Headline>
+      <DescriptionText>
+        We will run your algorithm using the data you pre-processed in the
+        previous step.
+      </DescriptionText>
+      <UploadAlgorithmWrapper>
+        <UploadIcon />
+        <Headline style={{ fontSize: "22px", margin: "18px 0 6px 0" }}>
+          Drag & drop your algorithm here
+        </Headline>
+        <DescriptionText style={{ fontSize: "15px" }}>
+          or you can also
+          <DescriptionLink>browse your files</DescriptionLink>
+        </DescriptionText>
+        <DescriptionText
+          style={{
+            fontSize: "12px",
+            textAlign: "right",
+            width: "100%",
+            margin: "32px 16px 0 0"
+          }}
+        >
+          supported file types:
+          <UploadTypeDescription> .bin .h5</UploadTypeDescription>
+        </DescriptionText>
+      </UploadAlgorithmWrapper>
       <Divider />
-      <NextButton>
-        <NextButtonText>Next Step</NextButtonText>
-        <RightArrow />
-      </NextButton>
+      <NavigationFooter>
+        <CreateAlgorithmNavigationButton type="back" />
+        <CreateAlgorithmNavigationButton type="next" />
+      </NavigationFooter>
     </Main>
   );
 };

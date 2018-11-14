@@ -14,8 +14,8 @@ import {
   DMLContainer,
   DMLLogo,
   DMLText,
-  NextButton,
-  NextButtonText,
+  NavigationButton,
+  NavigationButtonText,
   RightArrow
 } from "./UI";
 import CreateAlgorithmDropdown from "./components/CreateAlgorithmDropdown";
@@ -26,15 +26,53 @@ class CreateAlgorithmStepOne extends Component {
     title: null,
     description: null,
     category: null,
+    preProcessing: null,
     dataRequired: [],
-    price: null
+    price: null,
+    currentStep: this.props.currentStep
   };
 
-  redirectToStep2() {
+  redirectToNextStep() {
     // Process the data and verify it
     // Save it to redux
-    this.props.saveData(this.state);
-    this.props.history.push(`/create-algorithm/${2}`);
+    const output = {
+      ...this.state,
+      currentStep: Number(this.state.currentStep) + 1
+    };
+    this.props.saveData(output);
+  }
+
+  renderPreprocessingDropdown() {
+    if (this.state.category === "Text Analysis") {
+      return (
+        <CreateAlgorithmDropdown
+          placeholder={"Select a pre processing option"}
+          options={["200 words", "500 words", "1000 words"]}
+          onChange={(e =>
+            this.setState({ preProcessing: e.target.value })).bind(this)}
+        />
+      );
+    } else if (this.state.category === "Image Recognition") {
+      return (
+        <CreateAlgorithmDropdown
+          placeholder={"Select a pre processing option"}
+          options={[
+            "300 x 300 pixels",
+            "500 x 500 pixels",
+            "1000 x 1000 pixels"
+          ]}
+          onChange={(e =>
+            this.setState({ preProcessing: e.target.value })).bind(this)}
+        />
+      );
+    } else
+      return (
+        <CreateAlgorithmDropdown
+          placeholder={"Select a category first"}
+          options={[]}
+          disabled={true}
+        />
+      );
   }
 
   render() {
@@ -57,21 +95,23 @@ class CreateAlgorithmStepOne extends Component {
           <DropdownSectionColumn>
             <SubHeadline>Category</SubHeadline>
             <CreateAlgorithmDropdown
+              placeholder={"Select a category"}
+              options={["Image Recognition", "Text Analysis"]}
               onChange={(e => this.setState({ category: e.target.value })).bind(
                 this
               )}
             />
           </DropdownSectionColumn>
           <DropdownSectionColumn>
-            <SubHeadline>Data Required</SubHeadline>
-            <CreateAlgorithmCheckboxDropdown
-              selection={this.state.dataRequired}
-              onChange={(data => this.setState({ dataRequired: data })).bind(
-                this
-              )}
-            />
+            <SubHeadline>Pre Processing</SubHeadline>
+            {this.renderPreprocessingDropdown()}
           </DropdownSectionColumn>
         </DropdownSectionRow>
+        <SubHeadline>Data Required</SubHeadline>
+        <CreateAlgorithmCheckboxDropdown
+          selection={this.state.dataRequired}
+          onChange={(data => this.setState({ dataRequired: data })).bind(this)}
+        />
         <Divider />
         <Headline>Set a Price</Headline>
         <DescriptionText>
@@ -91,10 +131,10 @@ class CreateAlgorithmStepOne extends Component {
           </DMLContainer>
         </div>
         <Divider />
-        <NextButton onClick={this.redirectToStep2.bind(this)}>
-          <NextButtonText>Next Step</NextButtonText>
+        <NavigationButton onClick={this.redirectToNextStep.bind(this)}>
+          <NavigationButtonText>Next Step</NavigationButtonText>
           <RightArrow />
-        </NextButton>
+        </NavigationButton>
       </Main>
     );
   }

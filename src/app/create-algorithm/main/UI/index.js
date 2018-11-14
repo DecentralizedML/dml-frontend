@@ -10,7 +10,6 @@ export const Main = styled.div`
 `;
 
 export const Headline = styled.div`
-  width: 180px;
   height: 28px;
   font-size: 18px;
   font-weight: 600;
@@ -33,12 +32,25 @@ export const SubHeadline = styled.div`
 `;
 
 export const DescriptionText = styled.div`
-  width: 414px;
   height: 21px;
   font-size: 14px;
   line-height: 1.5;
   letter-spacing: 0.2px;
   color: ${mainTheme.colors.baliHai};
+`;
+
+export const DescriptionLink = styled.span`
+  width: 114px;
+  height: 22px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.47;
+  letter-spacing: 0.2px;
+  color: ${mainTheme.colors.royalBlue};
+  padding: 5px;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export const Divider = styled.div`
@@ -74,6 +86,7 @@ export const DropdownContainer = styled.div`
   overflow: hidden;
   background: url("${props => props.icon}") 0 0 no-repeat #ffffff;
   background-position: 95% 50%;
+  opacity: ${props => (props.disabled ? "0.5" : "1")};
 `;
 
 export const DropdownWrapper = styled.div`
@@ -98,8 +111,9 @@ export const Dropdown = styled.select`
   letter-spacing: 0.2px;
   margin-left: 2px;
   color: ${mainTheme.colors.downriver};
+  opacity: ${props => (props.disabled ? "0.5" : "1")};
   &:hover {
-    cursor: pointer;
+    cursor: ${props => (props.disabled ? "default" : "pointer")};
   }
   &:invalid {
     color: ${mainTheme.colors.baliHai};
@@ -190,8 +204,13 @@ export const DMLText = styled.div`
   letter-spacing: 0.5px;
   color: #ffffff;
 `;
-
-export const NextButton = styled.div`
+export const NavigationFooter = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+export const NavigationButton = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -200,7 +219,10 @@ export const NextButton = styled.div`
   height: 40px;
   border-radius: 3px;
   box-shadow: 0 1px 4px 0 rgba(5, 29, 66, 0.12);
-  background-image: linear-gradient(to bottom, #5797fb, #397ee9);
+  background-image: ${props =>
+    props.type === "back"
+      ? "linear-gradient(to bottom, #ffffff, #f7f9fc)"
+      : "linear-gradient(to bottom, #5797fb, #397ee9)"};
   margin-left: auto;
   margin-right: 0;
   &:hover {
@@ -209,15 +231,16 @@ export const NextButton = styled.div`
   }
 `;
 
-export const NextButtonText = styled.div`
-  width: 74px;
-  height: 24px;
+export const NavigationButtonText = styled.div`
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.07);
   font-size: 16px;
   font-weight: 600;
   line-height: 1.5;
   letter-spacing: 0.5px;
-  color: ${mainTheme.colors.white};
+  color: ${props =>
+    props.type === "back"
+      ? mainTheme.colors.downriver
+      : mainTheme.colors.white};
   -webkit-touch-callout: none;
   user-select: none;
 `;
@@ -229,4 +252,44 @@ export const RightArrow = styled.div`
   background-size: cover;
   background-position: center;
   margin-left: 8px;
+`;
+
+export const LeftArrow = styled.div`
+  width: 16px;
+  height: 12px;
+  background-image: url("/icons/Icon-Arrow Left-Grey.svg");
+  background-size: cover;
+  background-position: center;
+  margin-right: 8px;
+`;
+
+export const UploadAlgorithmWrapper = styled.div`
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 756px;
+  height: 220px;
+  border-radius: 3px;
+  background-color: #ffffff;
+  border: dashed 1px rgba(110, 141, 189, 0.2);
+  margin-top: 18px;
+`;
+
+export const UploadIcon = styled.div`
+  margin-top: 42px;
+  background-image: url("/icons/Icon-56px-Upload.svg");
+  background-size: cover;
+  background-position: center;
+  width: 55.5px;
+  height: 44px;
+`;
+
+export const UploadTypeDescription = styled.span`
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.33;
+  letter-spacing: 0.3px;
+  color: ${mainTheme.colors.baliHai};
 `;

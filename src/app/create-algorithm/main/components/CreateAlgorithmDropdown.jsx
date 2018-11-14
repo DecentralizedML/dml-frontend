@@ -4,20 +4,31 @@ import React from "react";
 import { DropdownContainer, DropdownWrapper, Dropdown } from "../UI";
 
 const CreateAlgorithmDropdown = props => {
+  const options = [...props.options];
+  const disabled = props.disabled;
   return (
-    <DropdownContainer icon="/icons/Icon-Arrow-Tip-Down-Grey.svg">
+    <DropdownContainer
+      icon="/icons/Icon-Arrow-Tip-Down-Grey.svg"
+      disabled={disabled}
+    >
       <DropdownWrapper>
         <Dropdown
           name="categoryDropdown"
           id="category"
           required
           onChange={e => props.onChange(e)}
+          disabled={disabled}
         >
           <option value="" hidden>
-            Select a category
+            {props.placeholder}
           </option>
-          <option value="Image Recognition">Image Recognition</option>
-          <option value="Text Analysis">Text Analysis</option>
+          {options.map(option => {
+            return (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            );
+          })}
         </Dropdown>
       </DropdownWrapper>
     </DropdownContainer>

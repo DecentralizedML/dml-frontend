@@ -48,6 +48,25 @@ export const StepNumberWrapperActive = styled.div`
   background-color: ${mainTheme.colors.royalBlue};
 `;
 
+export const StepNumberWrapperDone = styled.div`
+  box-sizing: border-box;
+  display: flex;
+  width: 28px;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 2px solid rgba(60, 129, 237, 0.4);
+`;
+
+export const StepDoneTick = styled.div`
+  width: 16px;
+  height: 12px;
+  background-image: url("/icons/Icon-Check-Blue.svg");
+  background-size: cover;
+  background-position: center;
+`;
+
 export const StepNumber = styled.div`
   height: 16px;
   font-size: 14px;

@@ -4,9 +4,9 @@ import CreateAlgorithmComponent from "./CreateAlgorithmComponent";
 import createAlgorithmActions from "./duck/actions";
 
 const mapStateToProps = state => {
+  const { currentStep } = state.createAlgorithm;
   return {
-    text: state.text,
-    isAuthenticated: state.account.isAuthenticated
+    currentStep
   };
 };
 

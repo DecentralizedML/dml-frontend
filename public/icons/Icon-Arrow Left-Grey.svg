@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.3 (67297) - http://www.bohemiancoding.com/sketch -->
+    <title>Icon-Arrow Left-Grey</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icon/16px/Arrow-Left/Grey" fill="#8194B2">
+            <path d="M11.5857864,9 L2,9 C1.44771525,9 1,8.55228475 1,8 C1,7.44771525 1.44771525,7 2,7 L11.5857864,7 L8.5,3.91421356 C8.10947571,3.52368927 8.10947571,2.89052429 8.5,2.5 C8.89052429,2.10947571 9.52368927,2.10947571 9.91421356,2.5 L14.7071068,7.29289322 C14.8880712,7.47385763 15,7.72385763 15,8 C15,8.27614237 14.8880712,8.52614237 14.7071068,8.70710678 L9.91421356,13.5 C9.52368927,13.8905243 8.89052429,13.8905243 8.5,13.5 C8.10947571,13.1094757 8.10947571,12.4763107 8.5,12.0857864 L11.5857864,9 Z" id="Combined-Shape" transform="translate(8.000000, 8.000000) scale(-1, 1) translate(-8.000000, -8.000000) "></path>
+        </g>
+    </g>
+</svg>

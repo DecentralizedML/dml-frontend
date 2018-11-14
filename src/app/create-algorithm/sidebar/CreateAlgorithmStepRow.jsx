@@ -5,25 +5,42 @@ import {
   StepRow,
   StepNumberWrapperActive,
   StepNumberWrapperInactive,
+  StepNumberWrapperDone,
   StepNumber,
-  StepTitle
+  StepTitle,
+  StepDoneTick
 } from "./UI";
 
 const CreateAlgorithmStepRow = props => {
-  return (
-    <StepRow>
-      {props.active ? (
+  console.log(props);
+  if (Number(props.currentStep) === Number(props.stepNumber)) {
+    return (
+      <StepRow>
         <StepNumberWrapperActive>
-          <StepNumber active={props.active}>{props.stepNumber}</StepNumber>
+          <StepNumber active={true}>{props.stepNumber}</StepNumber>
         </StepNumberWrapperActive>
-      ) : (
+        <StepTitle active={props.active}>{props.stepTitle}</StepTitle>
+      </StepRow>
+    );
+  } else if (Number(props.currentStep) > Number(props.stepNumber)) {
+    return (
+      <StepRow>
+        <StepNumberWrapperDone>
+          <StepDoneTick />
+        </StepNumberWrapperDone>
+        <StepTitle active={props.active}>{props.stepTitle}</StepTitle>
+      </StepRow>
+    );
+  } else {
+    return (
+      <StepRow>
         <StepNumberWrapperInactive>
           <StepNumber>{props.stepNumber}</StepNumber>
         </StepNumberWrapperInactive>
-      )}
-      <StepTitle active={props.active}>{props.stepTitle}</StepTitle>
-    </StepRow>
-  );
+        <StepTitle active={props.active}>{props.stepTitle}</StepTitle>
+      </StepRow>
+    );
+  }
 };
 
 CreateAlgorithmStepRow.propTypes = {};
