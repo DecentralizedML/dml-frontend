@@ -13,31 +13,26 @@ import CreateAlgorithmStepRow from "./CreateAlgorithmStepRow";
 import CreateAlgorithmDividerRow from "./CreateAlgorithmDividerRow";
 
 const CreateAlgorithmSidebar = props => {
+  const steps = [
+    { stepTitle: "Information" },
+    { stepTitle: "Algorithm Upload" },
+    { stepTitle: "Post-Processing" },
+    { stepTitle: "Submit" }
+  ];
   return (
     <Sidebar>
-      <CreateAlgorithmStepRow
-        stepNumber="1"
-        stepTitle="Information"
-        currentStep={props.currentStep}
-      />
-      <CreateAlgorithmDividerRow />
-      <CreateAlgorithmStepRow
-        stepNumber="2"
-        stepTitle="Algorithm Upload"
-        currentStep={props.currentStep}
-      />
-      <CreateAlgorithmDividerRow />
-      <CreateAlgorithmStepRow
-        stepNumber="3"
-        stepTitle="Post-Processing"
-        currentStep={props.currentStep}
-      />
-      <CreateAlgorithmDividerRow />
-      <CreateAlgorithmStepRow
-        stepNumber="4"
-        stepTitle="Submit"
-        currentStep={props.currentStep}
-      />
+      {steps.map(({ stepTitle }, index) => {
+        return (
+          <div>
+            <CreateAlgorithmStepRow
+              stepNumber={index + 1}
+              stepTitle={stepTitle}
+              currentStep={props.currentStep}
+            />
+            {index < steps.length - 1 && <CreateAlgorithmDividerRow />}
+          </div>
+        );
+      })}
       <Divider />
       <SaveProgressText>
         Saving your progress allows you to continue at a later date.

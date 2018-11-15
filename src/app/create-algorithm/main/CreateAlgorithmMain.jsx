@@ -33,13 +33,6 @@ const CreateAlgorithmMain = props => {
           currentStep={props.currentStep}
         />
       );
-    case 5:
-      return (
-        <CreateAlgorithmStepOne
-          saveData={props.saveNewAlgorithmData}
-          currentStep={props.currentStep}
-        />
-      );
     default:
       return (
         <CreateAlgorithmStepOne

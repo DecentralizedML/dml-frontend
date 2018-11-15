@@ -6,7 +6,7 @@ import types from "./types";
 
 // Add more values later -> start with component state
 const inititalState = {
-  currentStep: 2,
+  currentStep: 1,
   title: null,
   description: null,
   category: null,

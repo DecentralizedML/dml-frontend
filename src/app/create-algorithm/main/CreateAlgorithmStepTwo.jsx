@@ -145,6 +145,7 @@ class CreateAlgorithmStepTwo extends Component {
         </Row>
         <ErrorBox>
           <SubHeadline style={{ margin: "0" }}>Error Details</SubHeadline>
+          {/* Loop through the errors once you receive them */}
           <ErrorMessage>
             2018-03-19 15:10:26,618 - simple_example - DEBUG - debug message
           </ErrorMessage>
@@ -164,9 +165,7 @@ class CreateAlgorithmStepTwo extends Component {
           We will run your algorithm using the data you pre-processed in the
           previous step.
         </DescriptionText>
-        {this.state.uploading
-          ? this.renderUpload()
-          : this.renderUploadFailure()}
+        {this.state.uploading ? this.renderUpload() : this.renderUploader()}
         <Divider />
         <NavigationFooter>
           <CreateAlgorithmNavigationButton type="back" />
