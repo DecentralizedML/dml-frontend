@@ -1,6 +1,18 @@
 import styled from "styled-components";
 import mainTheme from "../../../themes/mainTheme";
 
+export const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const Column = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 export const Main = styled.div`
   display: flex;
   flex-direction: column;
@@ -273,7 +285,7 @@ export const UploadAlgorithmWrapper = styled.div`
   height: 220px;
   border-radius: 3px;
   background-color: #ffffff;
-  border: dashed 1px rgba(110, 141, 189, 0.2);
+  border: solid 1px rgba(110, 141, 189, 0.2);
   margin-top: 18px;
 `;
 
@@ -292,4 +304,44 @@ export const UploadTypeDescription = styled.span`
   line-height: 1.33;
   letter-spacing: 0.3px;
   color: ${mainTheme.colors.baliHai};
+`;
+
+export const IconBox = styled.div`
+  display: flex;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(110, 141, 189, 0.4);
+  align-items: center;
+  justify-content: center;
+  margin-right: 16px;
+`;
+
+export const FailureIcon = styled.div`
+  background-image: url("/icons/Icon-X-Red.svg");
+  width: 24px;
+  height: 24px;
+  background-position: center;
+  background-size: cover;
+`;
+
+export const ErrorBox = styled.div`
+  box-sizing: border-box;
+  width: 100%;
+  height: 110px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  background-color: #f7f9fc;
+  border-top: solid 1px rgba(110, 141, 189, 0.2);
+  padding: 18px 20px;
+`;
+
+export const ErrorMessage = styled.div`
+  width: 100%;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: 0.2px;
+  margin-top: 4px;
+  color: #8194b2;
 `;

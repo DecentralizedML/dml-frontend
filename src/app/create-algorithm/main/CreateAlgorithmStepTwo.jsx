@@ -13,8 +13,16 @@ import {
   NavigationFooter,
   UploadIcon,
   DescriptionLink,
-  UploadTypeDescription
+  UploadTypeDescription,
+  Row,
+  Column,
+  IconBox,
+  FailureIcon,
+  ErrorBox,
+  ErrorMessage
 } from "./UI";
+import { StepDoneTick } from "../sidebar/UI";
+
 import CreateAlgorithmNavigationButton from "./components/CreateAlgorithmNavigationButton";
 
 class CreateAlgorithmStepTwo extends Component {
@@ -22,15 +30,15 @@ class CreateAlgorithmStepTwo extends Component {
     uploading: false,
     fileName: null
   };
-  onDrop = files => {
-    this.setState({ uploading: true, fileName: files[0].name });
-    // POST to a test endpoint for demo purposes
-    const req = request.post("https://httpbin.org/post");
-    files.forEach(file => {
-      req.attach(file.name, file);
-    });
-    req.end();
-  };
+
+  onDrop(files) {
+    // check for filetype and how many files => throw error if uploaded
+    const file = files[0];
+    // const req = request.post("/upload");   <- this is the actual upload
+    // req.attach(file.name, file);
+    this.setState({ uploading: true, fileName: file.name });
+    // req.end(callback);
+  }
 
   dropzoneStyles = {
     boxSizing: "border-box",
@@ -49,19 +57,13 @@ class CreateAlgorithmStepTwo extends Component {
     }
   };
 
-  renderUpload() {
-    return (
-      <UploadAlgorithmWrapper>
-        <SubHeadline>Running Algorithm</SubHeadline>
-        <Headline>{this.state.fileName}</Headline>
-        <DescriptionText>This may take several minutes</DescriptionText>
-      </UploadAlgorithmWrapper>
-    );
-  }
-
   renderUploader() {
+    console.log(this.state.uploading);
     return (
-      <ReactDropzone onDrop={this.onDrop} style={this.dropzoneStyles}>
+      <ReactDropzone
+        onDrop={files => this.onDrop(files)}
+        style={this.dropzoneStyles}
+      >
         <UploadIcon />
         <Headline style={{ fontSize: "22px", margin: "18px 0 6px 0" }}>
           Drag and drop your algorithm here
@@ -85,6 +87,75 @@ class CreateAlgorithmStepTwo extends Component {
     );
   }
 
+  renderUpload() {
+    return (
+      <UploadAlgorithmWrapper>
+        <SubHeadline>Running Algorithm</SubHeadline>
+        <Headline>{this.state.fileName}</Headline>
+        <DescriptionText>This may take several minutes</DescriptionText>
+      </UploadAlgorithmWrapper>
+    );
+  }
+
+  renderUploadSuccess() {
+    return (
+      <UploadAlgorithmWrapper>
+        <Row>
+          <Column />
+          <IconBox>
+            <StepDoneTick
+              style={{
+                width: "24px",
+                height: "18px"
+              }}
+            />
+          </IconBox>
+          <Column>
+            <Headline>Algorithm processed successfully!</Headline>
+            <DescriptionText style={{ fontSize: "15px" }}>
+              You can proceed to the next step.
+            </DescriptionText>
+          </Column>
+        </Row>
+      </UploadAlgorithmWrapper>
+    );
+  }
+
+  renderUploadFailure() {
+    return (
+      <ReactDropzone
+        onDrop={files => this.onDrop(files)}
+        style={{
+          ...this.dropzoneStyles,
+          border: "solid 1px rgba(110, 141, 189, 0.2)"
+        }}
+      >
+        <Row style={{ margin: "30px 0" }}>
+          <Column />
+          <IconBox>
+            <FailureIcon />
+          </IconBox>
+          <Column>
+            <Headline>An error occurred processing your algorithm</Headline>
+            <DescriptionText style={{ fontSize: "15px" }}>
+              Please review your algorithm and
+              <DescriptionLink>upload again</DescriptionLink>
+            </DescriptionText>
+          </Column>
+        </Row>
+        <ErrorBox>
+          <SubHeadline style={{ margin: "0" }}>Error Details</SubHeadline>
+          <ErrorMessage>
+            2018-03-19 15:10:26,618 - simple_example - DEBUG - debug message
+          </ErrorMessage>
+          <ErrorMessage>
+            2018-03-19 15:10:26,697 - ERROR - error message
+          </ErrorMessage>
+        </ErrorBox>
+      </ReactDropzone>
+    );
+  }
+
   render() {
     return (
       <Main>
@@ -93,7 +164,9 @@ class CreateAlgorithmStepTwo extends Component {
           We will run your algorithm using the data you pre-processed in the
           previous step.
         </DescriptionText>
-        {this.state.uploading ? this.renderUpload() : this.renderUploader()}
+        {this.state.uploading
+          ? this.renderUpload()
+          : this.renderUploadFailure()}
         <Divider />
         <NavigationFooter>
           <CreateAlgorithmNavigationButton type="back" />
