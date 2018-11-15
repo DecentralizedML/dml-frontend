@@ -281,7 +281,7 @@ export const UploadAlgorithmWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 756px;
+  width: 100%;
   height: 220px;
   border-radius: 3px;
   background-color: #ffffff;
@@ -344,4 +344,35 @@ export const ErrorMessage = styled.div`
   letter-spacing: 0.2px;
   margin-top: 4px;
   color: #8194b2;
+`;
+
+export const CodeEditorHeader = styled.div`
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  padding: 15px 20px 17px 20px;
+  width: 100%;
+  height: 54px;
+  box-shadow: 0 1px 4px 0 rgba(23, 34, 51, 0.4);
+  background-color: #37455a;
+  margin-top: 18px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+`;
+
+export const CodeEditorHeaderText = styled.div`
+  height: 22px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.47;
+  letter-spacing: 0.2px;
+  color: #adbcd4;
+`;
+
+export const CodeEditorDivider = styled.div`
+  width: 1px;
+  height: 24px;
+  opacity: 0.6;
+  background-color: #8194b2;
+  margin: 0 18px;
 `;

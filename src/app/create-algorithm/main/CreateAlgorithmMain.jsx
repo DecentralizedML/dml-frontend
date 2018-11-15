@@ -7,11 +7,12 @@ import createAlgorithmActions from "../duck/actions";
 import StepsWrapper from "../StepsWrapperComponent";
 import CreateAlgorithmStepOne from "./CreateAlgorithmStepOne";
 import CreateAlgorithmStepTwo from "./CreateAlgorithmStepTwo";
+import CreateAlgorithmStepThree from "./CreateAlgorithmStepThree";
 
 const steps = [
   { component: CreateAlgorithmStepOne },
   { component: CreateAlgorithmStepTwo },
-  { component: CreateAlgorithmStepOne },
+  { component: CreateAlgorithmStepThree },
   { component: CreateAlgorithmStepOne }
 ];
 

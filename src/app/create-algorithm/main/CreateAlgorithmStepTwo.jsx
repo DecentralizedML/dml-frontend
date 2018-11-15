@@ -47,7 +47,7 @@ class CreateAlgorithmStepTwo extends Component {
     flexDirection: "column",
     alignItems: " center",
     justifyContent: "center",
-    width: "756px",
+    width: "100%",
     height: "220px",
     borderRadius: "3px",
     backgroundColor: "#ffffff",
