@@ -33,10 +33,11 @@ class CreateAlgorithmStepTwo extends Component {
 
   onDrop(files) {
     // check for filetype and how many files => throw error if uploaded
-    const file = files[0];
-    // const req = request.post("/upload");   <- this is the actual upload
+    // html attributes
+    // const file = files[0];
+    // const req = request.post("/upload");
     // req.attach(file.name, file);
-    this.setState({ uploading: true, fileName: file.name });
+    // this.setState({ uploading: true, fileName: file.name });
     // req.end(callback);
   }
 
@@ -58,7 +59,6 @@ class CreateAlgorithmStepTwo extends Component {
   };
 
   renderUploader() {
-    console.log(this.state.uploading);
     return (
       <ReactDropzone
         onDrop={files => this.onDrop(files)}
@@ -168,8 +168,14 @@ class CreateAlgorithmStepTwo extends Component {
         {this.state.uploading ? this.renderUpload() : this.renderUploader()}
         <Divider />
         <NavigationFooter>
-          <CreateAlgorithmNavigationButton type="back" />
-          <CreateAlgorithmNavigationButton type="next" />
+          <CreateAlgorithmNavigationButton
+            type="back"
+            onClick={this.props.navigateBack}
+          />
+          <CreateAlgorithmNavigationButton
+            type="next"
+            onClick={this.props.navigateNext}
+          />
         </NavigationFooter>
       </Main>
     );

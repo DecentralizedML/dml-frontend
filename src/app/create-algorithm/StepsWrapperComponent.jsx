@@ -5,7 +5,7 @@ const StepsWrapper = props => {
   const { steps, currentStep } = props;
   const Step = steps[currentStep].component;
 
-  return <Step />;
+  return Step ? <Step {...props} /> : <div>Cannot find step component</div>;
 };
 
 const mapStateToProps = state => {

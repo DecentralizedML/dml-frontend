@@ -13,13 +13,11 @@ import {
   DropdownSectionColumn,
   DMLContainer,
   DMLLogo,
-  DMLText,
-  NavigationButton,
-  NavigationButtonText,
-  RightArrow
+  DMLText
 } from "./UI";
 import CreateAlgorithmDropdown from "./components/CreateAlgorithmDropdown";
 import CreateAlgorithmCheckboxDropdown from "./components/CreateAlgorithmCheckboxDropdown";
+import CreateAlgorithmNavigationButton from "./components/CreateAlgorithmNavigationButton";
 
 class CreateAlgorithmStepOne extends Component {
   state = {
@@ -37,9 +35,10 @@ class CreateAlgorithmStepOne extends Component {
     // Save it to redux
     const output = {
       ...this.state,
-      currentStep: Number(this.state.currentStep) + 1
+      currentStep: Number(this.state.currentStep)
     };
     this.props.saveData(output);
+    this.props.navigateNext();
   }
 
   renderPreprocessingDropdown() {
@@ -131,10 +130,10 @@ class CreateAlgorithmStepOne extends Component {
           </DMLContainer>
         </div>
         <Divider />
-        <NavigationButton onClick={this.redirectToNextStep.bind(this)}>
-          <NavigationButtonText>Next Step</NavigationButtonText>
-          <RightArrow />
-        </NavigationButton>
+        <CreateAlgorithmNavigationButton
+          type="next"
+          onClick={this.redirectToNextStep.bind(this)}
+        />
       </Main>
     );
   }

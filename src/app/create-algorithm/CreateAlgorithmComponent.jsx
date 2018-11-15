@@ -20,11 +20,8 @@ const CreateAlgorithm = props => {
         <TitleHeaderText>Create Algorithm</TitleHeaderText>
       </TitleHeaderContainer>
       <MainContainer>
-        <CreateAlgorithmSidebar currentStep={props.currentStep} />
-        <CreateAlgorithmMain
-          currentStep={props.currentStep}
-          saveNewAlgorithmData={props.saveNewAlgorithmData}
-        />
+        <CreateAlgorithmSidebar />
+        <CreateAlgorithmMain />
       </MainContainer>
     </div>
   );

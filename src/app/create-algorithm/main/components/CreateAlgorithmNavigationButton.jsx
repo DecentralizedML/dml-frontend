@@ -10,17 +10,20 @@ import {
 import { SaveProgressButton } from "../../sidebar/UI";
 
 const CreateAlgorithmNavigationButton = props => {
-  const { type } = props;
+  const { type, onClick } = props;
   if (type === "back") {
     return (
-      <SaveProgressButton style={{ width: "174px", margin: 0 }}>
+      <SaveProgressButton
+        style={{ width: "174px", margin: 0 }}
+        onClick={onClick}
+      >
         <LeftArrow />
         <NavigationButtonText type={"back"}>Previous Step</NavigationButtonText>
       </SaveProgressButton>
     );
   } else {
     return (
-      <NavigationButton>
+      <NavigationButton onClick={onClick}>
         <NavigationButtonText>Next Step</NavigationButtonText>
         <RightArrow />
       </NavigationButton>

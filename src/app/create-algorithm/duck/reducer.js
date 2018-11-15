@@ -6,7 +6,7 @@ import types from "./types";
 
 // Add more values later -> start with component state
 const inititalState = {
-  currentStep: 1,
+  currentStep: 0,
   title: null,
   description: null,
   category: null,
@@ -27,6 +27,12 @@ const createAlgorithmReducer = (state = inititalState, action) => {
         for (let key in action.payload) {
           draftState[key] = action.payload[key];
         }
+        break;
+      case types.NAVIGATE_BACK:
+        draftState.currentStep--;
+        break;
+      case types.NAVIGATE_NEXT:
+        draftState.currentStep++;
         break;
       default:
     }

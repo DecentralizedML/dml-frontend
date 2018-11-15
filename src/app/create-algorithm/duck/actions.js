@@ -14,7 +14,21 @@ const saveNewAlgorithmData = data => {
   };
 };
 
+const navigateBack = data => {
+  return {
+    type: types.NAVIGATE_BACK
+  };
+};
+
+const navigateNext = data => {
+  return {
+    type: types.NAVIGATE_NEXT
+  };
+};
+
 export default {
   createAlgorithm,
-  saveNewAlgorithmData
+  saveNewAlgorithmData,
+  navigateBack,
+  navigateNext
 };

@@ -12,8 +12,7 @@ import {
 } from "./UI";
 
 const CreateAlgorithmStepRow = props => {
-  console.log(props);
-  if (Number(props.currentStep) === Number(props.stepNumber)) {
+  if (Number(props.currentStep) === Number(props.stepNumber - 1)) {
     return (
       <StepRow>
         <StepNumberWrapperActive>
@@ -22,7 +21,7 @@ const CreateAlgorithmStepRow = props => {
         <StepTitle active={props.active}>{props.stepTitle}</StepTitle>
       </StepRow>
     );
-  } else if (Number(props.currentStep) > Number(props.stepNumber)) {
+  } else if (Number(props.currentStep) > Number(props.stepNumber - 1)) {
     return (
       <StepRow>
         <StepNumberWrapperDone>

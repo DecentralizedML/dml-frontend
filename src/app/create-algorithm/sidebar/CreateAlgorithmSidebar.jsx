@@ -9,25 +9,26 @@ import {
   SaveProgressButtonText,
   DeleteAlgorithmButton
 } from "./UI";
+import StepsWrapper from "../StepsWrapperComponent";
 import CreateAlgorithmStepRow from "./CreateAlgorithmStepRow";
 import CreateAlgorithmDividerRow from "./CreateAlgorithmDividerRow";
 
 const CreateAlgorithmSidebar = props => {
   const steps = [
-    { stepTitle: "Information" },
-    { stepTitle: "Algorithm Upload" },
-    { stepTitle: "Post-Processing" },
-    { stepTitle: "Submit" }
+    { stepTitle: "Information", component: CreateAlgorithmStepRow },
+    { stepTitle: "Algorithm Upload", component: CreateAlgorithmStepRow },
+    { stepTitle: "Post-Processing", component: CreateAlgorithmStepRow },
+    { stepTitle: "Submit", component: CreateAlgorithmStepRow }
   ];
   return (
     <Sidebar>
       {steps.map(({ stepTitle }, index) => {
         return (
-          <div>
-            <CreateAlgorithmStepRow
+          <div key={index}>
+            <StepsWrapper
+              steps={steps}
               stepNumber={index + 1}
               stepTitle={stepTitle}
-              currentStep={props.currentStep}
             />
             {index < steps.length - 1 && <CreateAlgorithmDividerRow />}
           </div>
