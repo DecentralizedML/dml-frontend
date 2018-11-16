@@ -41,6 +41,7 @@ const mapStateToProps = state => {
     dataRequired,
     price,
     mlModel,
+    mlModelFileName,
     postProcessingCode
   } = state.createAlgorithm;
   return {
@@ -52,6 +53,7 @@ const mapStateToProps = state => {
     dataRequired,
     price,
     mlModel,
+    mlModelFileName,
     postProcessingCode
   };
 };

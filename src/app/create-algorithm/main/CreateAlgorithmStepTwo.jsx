@@ -61,6 +61,10 @@ class CreateAlgorithmStepTwo extends Component {
   }
 
   validateInput() {
+    console.log(this.state.uploaded);
+    console.log(this.state.acceptedFileType);
+    console.log(this.state.fileName);
+    console.log(this.state.file);
     return (
       this.state.uploaded &&
       this.state.acceptedFileType &&
@@ -157,7 +161,7 @@ class CreateAlgorithmStepTwo extends Component {
           <Column>
             <Headline>Algorithm processed successfully!</Headline>
             <DescriptionText style={{ fontSize: "15px" }}>
-              You can proceed to the next step.
+              You have successfully uploaded {this.state.fileName}
             </DescriptionText>
           </Column>
         </Row>
