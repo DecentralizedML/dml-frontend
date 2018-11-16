@@ -9,8 +9,8 @@ import {
   Divider,
   InputField,
   DescriptionText,
-  DropdownSectionRow,
-  DropdownSectionColumn,
+  SectionRow,
+  SectionColumn,
   DMLContainer,
   DMLLogo,
   DMLText
@@ -89,8 +89,8 @@ class CreateAlgorithmStepOne extends Component {
           onChange={e => this.setState({ description: e.target.value })}
           value={this.state.description}
         />
-        <DropdownSectionRow>
-          <DropdownSectionColumn>
+        <SectionRow>
+          <SectionColumn>
             <SubHeadline>Category</SubHeadline>
             <CreateAlgorithmDropdown
               selected={this.state.category}
@@ -98,12 +98,12 @@ class CreateAlgorithmStepOne extends Component {
               options={["Image Recognition", "Text Analysis"]}
               onChange={e => this.setState({ category: e.target.value })}
             />
-          </DropdownSectionColumn>
-          <DropdownSectionColumn>
+          </SectionColumn>
+          <SectionColumn>
             <SubHeadline>Pre Processing</SubHeadline>
             {this.renderPreprocessingDropdown()}
-          </DropdownSectionColumn>
-        </DropdownSectionRow>
+          </SectionColumn>
+        </SectionRow>
         <SubHeadline>Data Required</SubHeadline>
         <CreateAlgorithmCheckboxDropdown
           selection={this.state.dataRequired}

@@ -43,6 +43,16 @@ export const SubHeadline = styled.div`
   margin-top: 18px;
 `;
 
+export const TitleText = styled.div`
+  height: 24px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: 0.2px;
+  color: ${mainTheme.colors.downriver};
+  margin-bottom: 5px;
+`;
+
 export const DescriptionText = styled.div`
   height: 21px;
   font-size: 14px;
@@ -132,15 +142,16 @@ export const Dropdown = styled.select`
   }
 `;
 
-export const DropdownSectionRow = styled.div`
+export const SectionRow = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 `;
 
-export const DropdownSectionColumn = styled.div`
+export const SectionColumn = styled.div`
   display: flex;
   flex-direction: column;
+  width: 366px;
 `;
 
 export const OptionsWrapper = styled.div`
@@ -255,6 +266,15 @@ export const NavigationButtonText = styled.div`
       : mainTheme.colors.white};
   -webkit-touch-callout: none;
   user-select: none;
+`;
+
+export const WhiteTick = styled.div`
+  width: 16px;
+  height: 12px;
+  background-image: url("/icons/Icon-Check-White.svg");
+  background-size: cover;
+  background-position: center;
+  margin-left: 8px;
 `;
 
 export const RightArrow = styled.div`

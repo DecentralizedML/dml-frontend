@@ -26,9 +26,17 @@ const navigateNext = data => {
   };
 };
 
+const switchStep = step => {
+  return {
+    type: types.NAVIGATE_NEXT,
+    payload: step
+  };
+};
+
 export default {
   createAlgorithm,
   saveNewAlgorithmData,
   navigateBack,
-  navigateNext
+  navigateNext,
+  switchStep
 };

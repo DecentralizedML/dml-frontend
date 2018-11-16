@@ -21,7 +21,7 @@ import CreateAlgorithmNavigationButton from "./components/CreateAlgorithmNavigat
 
 class CreateAlgorithmStepThree extends Component {
   state = {
-    input: "Type code here"
+    input: this.props.postProcessingCode
   };
 
   onChange(newValue) {
@@ -39,7 +39,10 @@ class CreateAlgorithmStepThree extends Component {
       <AceEditor
         mode="python"
         theme="twilight"
-        style={{ backgroundColor: "#29364a" }}
+        style={{
+          backgroundColor: "#29364a",
+          boxShadow: " 0 1px 4px 0 rgba(23, 34, 51, 0.4)"
+        }}
         onChange={e => this.onChange(e)}
         name="UNIQUE_ID_OF_DIV"
         editorProps={{ $blockScrolling: true }}

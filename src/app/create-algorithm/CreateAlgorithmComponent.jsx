@@ -3,8 +3,8 @@ import React from "react";
 
 import DMLSiteHeader from "../dml-site-header";
 import { MainContainer, TitleHeaderContainer, TitleHeaderText } from "./UI";
-import CreateAlgorithmSidebar from "./sidebar/CreateAlgorithmSidebar";
-import CreateAlgorithmMain from "./main/CreateAlgorithmMain";
+import CreateAlgorithmSidebarContainer from "./sidebar/CreateAlgorithmSidebarContainer";
+import CreateAlgorithmMainContainer from "./main/CreateAlgorithmMainContainer";
 
 const CreateAlgorithm = props => {
   return (
@@ -20,8 +20,8 @@ const CreateAlgorithm = props => {
         <TitleHeaderText>Create Algorithm</TitleHeaderText>
       </TitleHeaderContainer>
       <MainContainer>
-        <CreateAlgorithmSidebar />
-        <CreateAlgorithmMain />
+        <CreateAlgorithmSidebarContainer />
+        <CreateAlgorithmMainContainer />
       </MainContainer>
     </div>
   );

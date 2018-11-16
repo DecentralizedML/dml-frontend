@@ -3,6 +3,7 @@ import React from "react";
 import {
   NavigationButton,
   NavigationButtonText,
+  WhiteTick,
   RightArrow,
   LeftArrow
 } from "../UI";
@@ -21,13 +22,22 @@ const CreateAlgorithmNavigationButton = props => {
         <NavigationButtonText type={"back"}>Previous Step</NavigationButtonText>
       </SaveProgressButton>
     );
-  } else {
+  } else if (type === "next") {
     return (
       <NavigationButton onClick={onClick}>
         <NavigationButtonText>Next Step</NavigationButtonText>
         <RightArrow />
       </NavigationButton>
     );
+  } else if (type === "submit") {
+    return (
+      <NavigationButton onClick={onClick}>
+        <NavigationButtonText>Submit</NavigationButtonText>
+        <WhiteTick />
+      </NavigationButton>
+    );
+  } else {
+    return <div>Button type not defined</div>;
   }
 };
 

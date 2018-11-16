@@ -8,12 +8,13 @@ import StepsWrapper from "../StepsWrapperComponent";
 import CreateAlgorithmStepOne from "./CreateAlgorithmStepOne";
 import CreateAlgorithmStepTwo from "./CreateAlgorithmStepTwo";
 import CreateAlgorithmStepThree from "./CreateAlgorithmStepThree";
+import CreateAlgorithmStepFour from "./CreateAlgorithmStepFour";
 
 const steps = [
   { component: CreateAlgorithmStepOne },
   { component: CreateAlgorithmStepTwo },
   { component: CreateAlgorithmStepThree },
-  { component: CreateAlgorithmStepOne }
+  { component: CreateAlgorithmStepFour }
 ];
 
 const CreateAlgorithmMain = props => {

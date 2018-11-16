@@ -6,7 +6,7 @@ import {
   DropdownWrapper,
   Dropdown,
   OptionsWrapper,
-  DropdownSectionRow,
+  SectionRow,
   Checkbox,
   DataLabel
 } from "../UI";
@@ -34,7 +34,7 @@ class CreateAlgorithmCheckboxDropdown extends Component {
 
   renderRow = (option, index) => {
     return (
-      <DropdownSectionRow key={index}>
+      <SectionRow key={index}>
         <DataLabel>
           <Checkbox
             type="checkbox"
@@ -44,7 +44,7 @@ class CreateAlgorithmCheckboxDropdown extends Component {
           />
           {option}
         </DataLabel>
-      </DropdownSectionRow>
+      </SectionRow>
     );
   };
 

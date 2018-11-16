@@ -13,8 +13,8 @@ const inititalState = {
   preProcessing: "",
   dataRequired: [],
   price: "",
-  mlModel: null,
-  postProcessingCode: ""
+  mlModel: "",
+  postProcessingCode: "Your code here"
 };
 
 // TODO: Implement the logic
@@ -35,7 +35,11 @@ const createAlgorithmReducer = (state = inititalState, action) => {
       case types.NAVIGATE_NEXT:
         draftState.currentStep++;
         break;
+      case types.SWITCH_STEP:
+        draftState.currentStep = types.payload;
+        break;
       default:
+        break;
     }
   });
 };

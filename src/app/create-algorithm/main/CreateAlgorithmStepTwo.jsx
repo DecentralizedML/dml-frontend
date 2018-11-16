@@ -44,10 +44,10 @@ const dropzoneStyles = {
 
 class CreateAlgorithmStepTwo extends Component {
   state = {
-    uploaded: false,
-    acceptedFileType: false,
-    fileName: null,
-    file: null
+    uploaded: !!this.props.mlModel,
+    acceptedFileType: !!this.props.mlModel,
+    fileName: this.props.mlModel ? this.props.mlModel.name : "",
+    file: this.props.mlModel || ""
   };
 
   onClickNext() {
