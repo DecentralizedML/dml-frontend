@@ -112,7 +112,11 @@ class CreateAlgorithmStepFour extends Component {
           </SectionColumn>
           <SectionColumn>
             <SubHeadline>Data Required</SubHeadline>
-            <TitleText>{this.props.dataRequired.join(", ")}</TitleText>
+            <TitleText>
+              {this.props.dataRequired.length > 0
+                ? this.props.dataRequired.join(", ")
+                : "Not specified"}
+            </TitleText>
           </SectionColumn>
         </SectionRow>
         <SectionRow>

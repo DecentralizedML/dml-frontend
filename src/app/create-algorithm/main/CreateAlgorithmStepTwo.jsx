@@ -52,8 +52,19 @@ class CreateAlgorithmStepTwo extends Component {
 
   onClickNext() {
     // Error Handling - if any
-    this.props.saveData({ mlModel: this.state.file });
-    this.props.navigateNext();
+    if (this.validateInput()) {
+      this.props.saveData({ mlModel: this.state.file });
+      this.props.navigateNext();
+    }
+  }
+
+  validateInput() {
+    return (
+      this.state.uploaded &&
+      this.state.acceptedFileType &&
+      this.state.fileName &&
+      this.state.file
+    );
   }
 
   checkExtension(fileName, exts) {
@@ -205,6 +216,7 @@ class CreateAlgorithmStepTwo extends Component {
           <CreateAlgorithmNavigationButton
             type="next"
             onClick={() => this.onClickNext()}
+            disabled={!this.validateInput()}
           />
         </NavigationFooter>
       </Main>

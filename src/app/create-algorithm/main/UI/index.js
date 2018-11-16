@@ -43,6 +43,16 @@ export const SubHeadline = styled.div`
   margin-top: 18px;
 `;
 
+export const SubHeadlineError = styled.span`
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.33;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+  float: right;
+  color: #ff1745;
+`;
+
 export const TitleText = styled.div`
   height: 24px;
   font-size: 15px;
@@ -248,8 +258,9 @@ export const NavigationButton = styled.div`
       : "linear-gradient(to bottom, #5797fb, #397ee9)"};
   margin-left: auto;
   margin-right: 0;
+  opacity: ${props => (props.disabled ? "0.5" : "1")};
   &:hover {
-    cursor: pointer;
+    cursor: ${props => (props.disabled ? "default" : "pointer")};
     box-shadow: 0 1px 4px 0 rgba(5, 29, 66, 0.36);
   }
 `;

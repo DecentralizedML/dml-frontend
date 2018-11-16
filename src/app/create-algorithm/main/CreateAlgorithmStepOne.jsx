@@ -34,8 +34,20 @@ class CreateAlgorithmStepOne extends Component {
     // TODO: ERROR HANDLINE
     // Process the data and verify it
     // Save potential Error Messages to Redux
-    this.props.saveData(this.state);
-    this.props.navigateNext();
+    if (this.validateInput()) {
+      this.props.saveData(this.state);
+      this.props.navigateNext();
+    }
+  }
+
+  validateInput() {
+    return (
+      this.state.title &&
+      this.state.description &&
+      this.state.category &&
+      this.state.preProcessing &&
+      this.state.price
+    );
   }
 
   renderPreprocessingDropdown() {
@@ -139,6 +151,7 @@ class CreateAlgorithmStepOne extends Component {
         <CreateAlgorithmNavigationButton
           type="next"
           onClick={this.redirectToNextStep.bind(this)}
+          disabled={!this.validateInput()}
         />
       </Main>
     );

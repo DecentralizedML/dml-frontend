@@ -29,9 +29,17 @@ class CreateAlgorithmStepThree extends Component {
   }
 
   onClickNext() {
-    // Error Handling - if any
-    this.props.saveData({ postProcessingCode: this.state.input });
-    this.props.navigateNext();
+    if (this.validateInput()) {
+      this.props.saveData({
+        postProcessingCode: this.state.input,
+        readyToSubmit: true
+      });
+      this.props.navigateNext();
+    }
+  }
+
+  validateInput() {
+    return this.state.input.length > 0;
   }
 
   renderEditor() {

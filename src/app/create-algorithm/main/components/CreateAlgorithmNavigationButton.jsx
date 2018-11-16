@@ -11,7 +11,7 @@ import {
 import { SaveProgressButton } from "../../sidebar/UI";
 
 const CreateAlgorithmNavigationButton = props => {
-  const { type, onClick } = props;
+  const { type, onClick, disabled } = props;
   if (type === "back") {
     return (
       <SaveProgressButton
@@ -24,14 +24,14 @@ const CreateAlgorithmNavigationButton = props => {
     );
   } else if (type === "next") {
     return (
-      <NavigationButton onClick={onClick}>
+      <NavigationButton onClick={onClick} disabled={disabled}>
         <NavigationButtonText>Next Step</NavigationButtonText>
         <RightArrow />
       </NavigationButton>
     );
   } else if (type === "submit") {
     return (
-      <NavigationButton onClick={onClick}>
+      <NavigationButton onClick={onClick} disabled={disabled}>
         <NavigationButtonText>Submit</NavigationButtonText>
         <WhiteTick />
       </NavigationButton>
