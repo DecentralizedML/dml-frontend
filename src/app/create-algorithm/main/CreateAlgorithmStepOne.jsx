@@ -21,23 +21,20 @@ import CreateAlgorithmNavigationButton from "./components/CreateAlgorithmNavigat
 
 class CreateAlgorithmStepOne extends Component {
   state = {
-    title: null,
-    description: null,
-    category: null,
-    preProcessing: null,
-    dataRequired: [],
-    price: null,
+    title: this.props.title,
+    description: this.props.description,
+    category: this.props.category,
+    preProcessing: this.props.preProcessing,
+    dataRequired: this.props.dataRequired,
+    price: this.props.price,
     currentStep: this.props.currentStep
   };
 
   redirectToNextStep() {
+    // TODO: ERROR HANDLINE
     // Process the data and verify it
-    // Save it to redux
-    const output = {
-      ...this.state,
-      currentStep: Number(this.state.currentStep)
-    };
-    this.props.saveData(output);
+    // Save potential Error Messages to Redux
+    this.props.saveData(this.state);
     this.props.navigateNext();
   }
 
@@ -47,8 +44,8 @@ class CreateAlgorithmStepOne extends Component {
         <CreateAlgorithmDropdown
           placeholder={"Select a pre processing option"}
           options={["200 words", "500 words", "1000 words"]}
-          onChange={(e =>
-            this.setState({ preProcessing: e.target.value })).bind(this)}
+          onChange={e => this.setState({ preProcessing: e.target.value })}
+          selected={this.state.preProcessing}
         />
       );
     } else if (this.state.category === "Image Recognition") {
@@ -60,8 +57,8 @@ class CreateAlgorithmStepOne extends Component {
             "500 x 500 pixels",
             "1000 x 1000 pixels"
           ]}
-          onChange={(e =>
-            this.setState({ preProcessing: e.target.value })).bind(this)}
+          onChange={e => this.setState({ preProcessing: e.target.value })}
+          selected={this.state.preProcessing}
         />
       );
     } else
@@ -83,22 +80,23 @@ class CreateAlgorithmStepOne extends Component {
           placeholder="Add a short title"
           type="text"
           onChange={e => this.setState({ title: e.target.value })}
+          value={this.state.title}
         />
         <SubHeadline>Description</SubHeadline>
         <InputField
           placeholder="Add a short, one sentence description"
           type="text"
           onChange={e => this.setState({ description: e.target.value })}
+          value={this.state.description}
         />
         <DropdownSectionRow>
           <DropdownSectionColumn>
             <SubHeadline>Category</SubHeadline>
             <CreateAlgorithmDropdown
+              selected={this.state.category}
               placeholder={"Select a category"}
               options={["Image Recognition", "Text Analysis"]}
-              onChange={(e => this.setState({ category: e.target.value })).bind(
-                this
-              )}
+              onChange={e => this.setState({ category: e.target.value })}
             />
           </DropdownSectionColumn>
           <DropdownSectionColumn>
@@ -109,7 +107,8 @@ class CreateAlgorithmStepOne extends Component {
         <SubHeadline>Data Required</SubHeadline>
         <CreateAlgorithmCheckboxDropdown
           selection={this.state.dataRequired}
-          onChange={(data => this.setState({ dataRequired: data })).bind(this)}
+          onChange={data => this.setState({ dataRequired: data })}
+          selection={this.state.dataRequired}
         />
         <Divider />
         <Headline>Set a Price</Headline>
@@ -122,7 +121,14 @@ class CreateAlgorithmStepOne extends Component {
             placeholder="e.g. 1"
             type="text"
             style={{ height: "48px" }}
-            onChange={e => this.setState({ price: Number(e.target.value) })}
+            onChange={e => {
+              const input = e.target.value
+                .replace(/[^0-9.]/g, "")
+                .replace(/(\..*)\./g, "$1");
+
+              this.setState({ price: input });
+            }}
+            value={this.state.price}
           />
           <DMLContainer>
             <DMLLogo />

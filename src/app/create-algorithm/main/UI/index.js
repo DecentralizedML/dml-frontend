@@ -328,7 +328,7 @@ export const FailureIcon = styled.div`
 export const ErrorBox = styled.div`
   box-sizing: border-box;
   width: 100%;
-  height: 110px;
+  height: 80px;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
   background-color: #f7f9fc;

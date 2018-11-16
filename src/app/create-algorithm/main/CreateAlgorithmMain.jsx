@@ -23,6 +23,7 @@ const CreateAlgorithmMain = props => {
       saveData={props.saveNewAlgorithmData}
       navigateNext={props.navigateNext}
       navigateBack={props.navigateBack}
+      {...props}
     />
   );
 };
@@ -30,9 +31,27 @@ const CreateAlgorithmMain = props => {
 CreateAlgorithmMain.propTypes = {};
 
 const mapStateToProps = state => {
-  const { currentStep } = state.createAlgorithm;
+  const {
+    currentStep,
+    title,
+    description,
+    category,
+    preProcessing,
+    dataRequired,
+    price,
+    mlModel,
+    postProcessingCode
+  } = state.createAlgorithm;
   return {
-    currentStep
+    currentStep,
+    title,
+    description,
+    category,
+    preProcessing,
+    dataRequired,
+    price,
+    mlModel,
+    postProcessingCode
   };
 };
 

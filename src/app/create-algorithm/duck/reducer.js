@@ -7,13 +7,14 @@ import types from "./types";
 // Add more values later -> start with component state
 const inititalState = {
   currentStep: 0,
-  title: null,
-  description: null,
-  category: null,
-  preProcessing: null,
-  dataRequired: null,
-  price: null,
-  mlModel: null
+  title: "",
+  description: "",
+  category: "",
+  preProcessing: "",
+  dataRequired: [],
+  price: "",
+  mlModel: null,
+  postProcessingCode: ""
 };
 
 // TODO: Implement the logic

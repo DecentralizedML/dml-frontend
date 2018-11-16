@@ -6,6 +6,7 @@ import { DropdownContainer, DropdownWrapper, Dropdown } from "../UI";
 const CreateAlgorithmDropdown = props => {
   const options = [...props.options];
   const disabled = props.disabled;
+  const selected = props.selected;
   return (
     <DropdownContainer
       icon="/icons/Icon-Arrow-Tip-Down-Grey.svg"
@@ -18,6 +19,7 @@ const CreateAlgorithmDropdown = props => {
           required
           onChange={e => props.onChange(e)}
           disabled={disabled}
+          value={selected}
         >
           <option value="" hidden>
             {props.placeholder}

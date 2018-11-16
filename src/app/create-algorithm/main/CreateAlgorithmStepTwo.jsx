@@ -25,44 +25,71 @@ import { StepDoneTick } from "../sidebar/UI";
 
 import CreateAlgorithmNavigationButton from "./components/CreateAlgorithmNavigationButton";
 
+const dropzoneStyles = {
+  boxSizing: "border-box",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: " center",
+  justifyContent: "center",
+  width: "100%",
+  height: "220px",
+  borderRadius: "3px",
+  backgroundColor: "#ffffff",
+  border: "dashed 1px rgba(110, 141, 189, 0.2)",
+  marginTop: "18px",
+  "&:hover": {
+    cursor: "pointer"
+  }
+};
+
 class CreateAlgorithmStepTwo extends Component {
   state = {
-    uploading: false,
-    fileName: null
+    uploaded: false,
+    acceptedFileType: false,
+    fileName: null,
+    file: null
   };
 
-  onDrop(files) {
-    // check for filetype and how many files => throw error if uploaded
-    // html attributes
-    // const file = files[0];
-    // const req = request.post("/upload");
-    // req.attach(file.name, file);
-    // this.setState({ uploading: true, fileName: file.name });
-    // req.end(callback);
+  onClickNext() {
+    // Error Handling - if any
+    this.props.saveData({ mlModel: this.state.file });
+    this.props.navigateNext();
   }
 
-  dropzoneStyles = {
-    boxSizing: "border-box",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: " center",
-    justifyContent: "center",
-    width: "100%",
-    height: "220px",
-    borderRadius: "3px",
-    backgroundColor: "#ffffff",
-    border: "dashed 1px rgba(110, 141, 189, 0.2)",
-    marginTop: "18px",
-    "&:hover": {
-      cursor: "pointer"
+  checkExtension(fileName, exts) {
+    return new RegExp(
+      "(" + exts.join("|").replace(/\./g, "\\.") + ")$",
+      "i"
+    ).test(fileName);
+  }
+
+  onDrop(files) {
+    const file = files[0];
+    const isValid = this.checkExtension(file.name, ["bin", "h5"]);
+    // const req = request.post("/upload");
+    // req.attach(file.name, file);
+    if (isValid) {
+      // Dispatch to Redux
+      this.setState({
+        uploaded: true,
+        acceptedFileType: isValid,
+        fileName: file.name,
+        file: file
+      });
+    } else {
+      this.setState({
+        uploaded: true,
+        acceptedFileType: isValid
+      });
     }
-  };
+    // req.end(callback);
+  }
 
   renderUploader() {
     return (
       <ReactDropzone
         onDrop={files => this.onDrop(files)}
-        style={this.dropzoneStyles}
+        style={dropzoneStyles}
       >
         <UploadIcon />
         <Headline style={{ fontSize: "22px", margin: "18px 0 6px 0" }}>
@@ -130,7 +157,7 @@ class CreateAlgorithmStepTwo extends Component {
           border: "solid 1px rgba(110, 141, 189, 0.2)"
         }}
       >
-        <Row style={{ margin: "30px 0" }}>
+        <Row style={{ margin: "50px 0" }}>
           <Column />
           <IconBox>
             <FailureIcon />
@@ -147,14 +174,17 @@ class CreateAlgorithmStepTwo extends Component {
           <SubHeadline style={{ margin: "0" }}>Error Details</SubHeadline>
           {/* Loop through the errors once you receive them */}
           <ErrorMessage>
-            2018-03-19 15:10:26,618 - simple_example - DEBUG - debug message
-          </ErrorMessage>
-          <ErrorMessage>
-            2018-03-19 15:10:26,697 - ERROR - error message
+            ERROR: Incorrect file type. Valid types: .bin, .h5
           </ErrorMessage>
         </ErrorBox>
       </ReactDropzone>
     );
+  }
+
+  renderResult() {
+    return this.state.acceptedFileType
+      ? this.renderUploadSuccess()
+      : this.renderUploadFailure();
   }
 
   render() {
@@ -165,7 +195,7 @@ class CreateAlgorithmStepTwo extends Component {
           We will run your algorithm using the data you pre-processed in the
           previous step.
         </DescriptionText>
-        {this.state.uploading ? this.renderUpload() : this.renderUploader()}
+        {this.state.uploaded ? this.renderResult() : this.renderUploader()}
         <Divider />
         <NavigationFooter>
           <CreateAlgorithmNavigationButton
@@ -174,7 +204,7 @@ class CreateAlgorithmStepTwo extends Component {
           />
           <CreateAlgorithmNavigationButton
             type="next"
-            onClick={this.props.navigateNext}
+            onClick={() => this.onClickNext()}
           />
         </NavigationFooter>
       </Main>

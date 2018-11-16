@@ -15,7 +15,7 @@ class CreateAlgorithmCheckboxDropdown extends Component {
   state = {
     display: false,
     dataOptions: ["GPS Location", "Photos", "SMS"],
-    selection: []
+    selection: this.props.selection
   };
 
   showCheckboxes = () => {

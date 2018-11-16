@@ -21,12 +21,33 @@ import CreateAlgorithmNavigationButton from "./components/CreateAlgorithmNavigat
 
 class CreateAlgorithmStepThree extends Component {
   state = {
-    uploading: false,
-    fileName: null
+    input: "Type code here"
   };
 
   onChange(newValue) {
-    console.log("change", newValue);
+    this.setState({ input: newValue });
+  }
+
+  onClickNext() {
+    // Error Handling - if any
+    this.props.saveData({ postProcessingCode: this.state.input });
+    this.props.navigateNext();
+  }
+
+  renderEditor() {
+    return (
+      <AceEditor
+        mode="python"
+        theme="twilight"
+        style={{ backgroundColor: "#29364a" }}
+        onChange={e => this.onChange(e)}
+        name="UNIQUE_ID_OF_DIV"
+        editorProps={{ $blockScrolling: true }}
+        value={this.state.input}
+        width={"100%"}
+        height={"216px"}
+      />
+    );
   }
 
   render() {
@@ -41,16 +62,7 @@ class CreateAlgorithmStepThree extends Component {
           <CodeEditorDivider />
           <CodeEditorHeaderText>Python 3.7.0</CodeEditorHeaderText>
         </CodeEditorHeader>
-        <AceEditor
-          mode="python"
-          theme="twilight"
-          style={{ backgroundColor: "#29364a" }}
-          onChange={this.onChange}
-          name="UNIQUE_ID_OF_DIV"
-          editorProps={{ $blockScrolling: true }}
-          width={"100%"}
-          height={"216px"}
-        />
+        {this.renderEditor()}
         <Divider />
         <NavigationFooter>
           <CreateAlgorithmNavigationButton
@@ -59,7 +71,7 @@ class CreateAlgorithmStepThree extends Component {
           />
           <CreateAlgorithmNavigationButton
             type="next"
-            onClick={this.props.navigateNext}
+            onClick={() => this.onClickNext()}
           />
         </NavigationFooter>
       </Main>
