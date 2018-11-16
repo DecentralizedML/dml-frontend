@@ -28,7 +28,7 @@ const navigateNext = data => {
 
 const switchStep = step => {
   return {
-    type: types.NAVIGATE_NEXT,
+    type: types.SWITCH_STEP,
     payload: step
   };
 };

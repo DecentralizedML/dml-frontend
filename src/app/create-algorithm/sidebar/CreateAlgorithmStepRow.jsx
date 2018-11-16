@@ -14,7 +14,7 @@ import {
 const CreateAlgorithmStepRow = props => {
   if (Number(props.currentStep) === Number(props.stepNumber - 1)) {
     return (
-      <StepRow>
+      <StepRow onClick={props.onClick} readyToSubmit={props.readyToSubmit}>
         <StepNumberWrapperActive>
           <StepNumber active={true}>{props.stepNumber}</StepNumber>
         </StepNumberWrapperActive>
@@ -23,7 +23,7 @@ const CreateAlgorithmStepRow = props => {
     );
   } else if (Number(props.currentStep) > Number(props.stepNumber - 1)) {
     return (
-      <StepRow>
+      <StepRow onClick={props.onClick} readyToSubmit={props.readyToSubmit}>
         <StepNumberWrapperDone>
           <StepDoneTick />
         </StepNumberWrapperDone>
@@ -32,7 +32,7 @@ const CreateAlgorithmStepRow = props => {
     );
   } else {
     return (
-      <StepRow>
+      <StepRow onClick={props.onClick} readyToSubmit={props.readyToSubmit}>
         <StepNumberWrapperInactive>
           <StepNumber>{props.stepNumber}</StepNumber>
         </StepNumberWrapperInactive>

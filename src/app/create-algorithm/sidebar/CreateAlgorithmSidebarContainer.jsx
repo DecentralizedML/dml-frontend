@@ -32,6 +32,8 @@ const CreateAlgorithmSidebar = props => {
               steps={steps}
               stepNumber={index + 1}
               stepTitle={stepTitle}
+              onClick={() => props.switchStep(index)}
+              readyToSubmit={props.readyToSubmit}
             />
             {index < steps.length - 1 && <CreateAlgorithmDividerRow />}
           </div>
@@ -41,7 +43,7 @@ const CreateAlgorithmSidebar = props => {
       <SaveProgressText>
         Saving your progress allows you to continue at a later date.
       </SaveProgressText>
-      <SaveProgressButton onClick={() => props.switchStep(3)}>
+      <SaveProgressButton>
         <SaveProgressButtonText>Save Progress</SaveProgressButtonText>
       </SaveProgressButton>
       <Divider />
@@ -53,9 +55,10 @@ const CreateAlgorithmSidebar = props => {
 CreateAlgorithmSidebar.propTypes = {};
 
 const mapStateToProps = state => {
-  const { currentStep } = state.createAlgorithm;
+  const { currentStep, readyToSubmit } = state.createAlgorithm;
   return {
-    currentStep
+    currentStep,
+    readyToSubmit
   };
 };
 
