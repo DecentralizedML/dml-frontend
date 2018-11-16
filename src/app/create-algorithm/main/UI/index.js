@@ -54,7 +54,6 @@ export const SubHeadlineError = styled.span`
 `;
 
 export const TitleText = styled.div`
-  height: 24px;
   font-size: 15px;
   font-weight: 500;
   line-height: 1.6;

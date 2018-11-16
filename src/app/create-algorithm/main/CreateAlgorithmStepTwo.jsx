@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 // import PropTypes from 'prop-types';
 import ReactDropzone from "react-dropzone";
-import request from "superagent";
 
 import {
   Main,
@@ -46,14 +45,17 @@ class CreateAlgorithmStepTwo extends Component {
   state = {
     uploaded: !!this.props.mlModel,
     acceptedFileType: !!this.props.mlModel,
-    fileName: this.props.mlModel ? this.props.mlModel.name : "",
+    fileName: this.props.mlModel ? this.props.mlModelFileName : "",
     file: this.props.mlModel || ""
   };
 
   onClickNext() {
     // Error Handling - if any
     if (this.validateInput()) {
-      this.props.saveData({ mlModel: this.state.file });
+      this.props.saveData({
+        mlModel: this.state.file,
+        mlModelFileName: this.state.fileName
+      });
       this.props.navigateNext();
     }
   }
@@ -77,23 +79,27 @@ class CreateAlgorithmStepTwo extends Component {
   onDrop(files) {
     const file = files[0];
     const isValid = this.checkExtension(file.name, ["bin", "h5"]);
-    // const req = request.post("/upload");
-    // req.attach(file.name, file);
+
     if (isValid) {
-      // Dispatch to Redux
-      this.setState({
-        uploaded: true,
-        acceptedFileType: isValid,
-        fileName: file.name,
-        file: file
-      });
+      const reader = new FileReader();
+      reader.onload = () => {
+        const fileAsBinaryString = reader.result;
+        this.setState({
+          uploaded: true,
+          acceptedFileType: isValid,
+          fileName: file.name,
+          file: fileAsBinaryString
+        });
+      };
+      reader.onabort = () => console.log("file reading was aborted");
+      reader.onerror = () => console.log("file reading has failed");
+      reader.readAsBinaryString(file);
     } else {
       this.setState({
         uploaded: true,
         acceptedFileType: isValid
       });
     }
-    // req.end(callback);
   }
 
   renderUploader() {

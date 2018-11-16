@@ -15,6 +15,7 @@ const inititalState = {
   dataRequired: [],
   price: "",
   mlModel: "",
+  mlModelFileName: "",
   postProcessingCode: "Your code here"
 };
 
