@@ -8,8 +8,6 @@ import { DMLTheme } from "@kyokan/kyokan-ui";
 import store from "../state/store";
 import Routes from "./Routes";
 
-import './index.scss';
-
 class App extends Component {
   render() {
     return (

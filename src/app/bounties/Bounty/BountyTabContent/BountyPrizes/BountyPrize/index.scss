@@ -1,0 +1,38 @@
+@import '../../../../../../variables.scss';
+
+.bounty-prize {
+  width: 232px;
+  height: 76px;
+  border: 1px solid $catskill-gray;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__details {
+    margin-left: 16px;
+  }
+
+  &__title {
+    font-size: .75rem;
+    color: $steelplant;
+    margin-bottom: 8px;
+  }
+
+  &__tokens {
+    display: flex;
+    align-items: center;
+  }
+
+  &__tokens-count {
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.5rem;
+  }
+
+  &__dml-logo {
+    padding: 5px 8px;
+    border-radius: 2px;
+    margin-left: 8px;
+  }
+}

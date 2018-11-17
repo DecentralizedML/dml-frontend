@@ -1,0 +1,19 @@
+.dml-logo {
+  display: flex;
+  align-items: center;
+  font-size: .75rem;
+  font-weight: 600;
+
+  &--white {
+    background: white;
+  }
+
+  &--blue {
+    background: $royal-blue;
+    color: white;
+  }
+
+  &__label {
+    padding-left: 4px;
+  }
+}

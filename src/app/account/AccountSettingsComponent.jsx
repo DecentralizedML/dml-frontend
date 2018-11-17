@@ -25,20 +25,12 @@ import {
 
 import DMLBalance    from './components/DMLBalance';
 import DMLDebitLimit from './components/DMLDebitLimit';
-import DMLSiteHeader from '../dml-site-header';
 
 const AccountSettingsComponent = (props) => {
   const isProfile = (!props.match.params.section || props.match.params.section === 'profile');
 
   return (
     <Grid fluid style={{ padding: 0 }}>
-      <DMLSiteHeader
-        marketplace
-        bounties
-        algorithms
-        createAlgorithm
-        accountDropdown
-      />
       <Row nogutter>
         <Column
           xl={8}
@@ -66,7 +58,7 @@ const AccountSettingsComponent = (props) => {
                 title="Edit Profile"
                 icon="user"
                 onTabClick={() => {
-                  props.history.push('/account/profile');
+                  props.history.push('/authenticated/account/profile');
                 }}
               >
                 <Row nogutter>
@@ -204,7 +196,7 @@ const AccountSettingsComponent = (props) => {
                 title="Manage Wallet"
                 icon="wallet"
                 onTabClick={() => {
-                  props.history.push('/account/wallet');
+                  props.history.push('/authenticated/account/wallet');
                 }}
               >
                 <Row nogutter>

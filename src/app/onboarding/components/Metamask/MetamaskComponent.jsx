@@ -95,7 +95,7 @@ class Metamask extends Component {
           onClick={() => {
             if (account) {
               this.props.updateUser(account, () => {
-                history.push('/account');
+                history.push('/authenticated/account');
               });
             }
           }}

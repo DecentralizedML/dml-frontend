@@ -58,13 +58,6 @@ const Marketplace = props => {
 
   return (
     <div>
-      <DMLSiteHeader
-        marketplaceActive
-        bounties
-        algorithms
-        createAlgorithm
-        accountDropdown
-      />
       <Wrapper>
         <Left>
           <Sidebar
@@ -92,7 +85,7 @@ const Marketplace = props => {
                   rewardValue="2"
                   category="Text Analysis"
                   onClick={() =>
-                    props.history.push(`/marketplace/${algorithm.id}`)
+                    props.history.push(`/authenticated/marketplace/${algorithm.id}`)
                   }
                 />
               ))}
@@ -101,7 +94,7 @@ const Marketplace = props => {
           {selectedAlgorithm && (
             <SelectedAlgorithm
               category="Text Analysis"
-              handleClose={() => props.history.push(`/marketplace`)}
+              handleClose={() => props.history.push(`/authenticated/marketplace`)}
               title={selectedAlgorithm.title}
               text={selectedAlgorithm.description}
               img={

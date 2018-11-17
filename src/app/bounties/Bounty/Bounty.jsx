@@ -1,132 +1,92 @@
-import React from 'react';
-// import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 
-import {
-  Box,
-  Column,
-  CountMetric,
-  Description,
-  Grid,
-  Identity,
-  Row,
-  Status,
-  Tabs,
-  Text,
-  Title,
-  TokenAction,
-  VerticalTab,
-} from '@kyokan/kyokan-ui';
+import BountyDetails from '../BountyDetails';
+import BountyPrizePool from './BountyPrizePool';
 
-import DMLSiteHeader from '../../dml-site-header';
-import DMLSiteSubheader from '../../dml-site-subheader';
+import BountyTabs from './BountyTabs';
+import BountyTabContent from './BountyTabContent';
 
-const StyledBox = styled.div`
-  background-color: white;
-`;
+const mockBounty = {
+  id: 1,
+  name: 'Home Credit Default Risk',
+  tagline: 'Can you predict how capable each applicant is of repaying a loan?',
+  organization: 'Home Credit Group',
+  userCount: 120,
+  prizes: [250, 125, 60],
+  description: '# Description\n\nIntro',
+  timeline: {
+    enrollment: {
+      start: 1542400222686,
+      end: 1542400243046,
+    },
+    submissions: {
+      start: 1542401661898,
+      end: 1545401674359,
+    },
+    evaluation: {
+      start: 1645522714727,
+      end: 1742401714780,
+    },
+    winners: {
+      announcement: 1753401714727,
+    }
+  }
+}
 
-const Bounty = (props) => {
-  return (
-    <Grid fluid style={{ padding: 0 }}>
-      <DMLSiteHeader
-        marketplaceActive
-        bounties
-        algorithms
-        createAlgorithm
-        accountDropdown
-      />
-      <DMLSiteSubheader
-        allBounties
-        myParticipations
-        createBounty
-      />
-      <Row nogutter>
-        <Column
-          xl={8}
-          offset={{
-            lg: 2,
-          }}
-        >
-          <Box padding={8} />
-        </Column>
-      </Row>
-      <Row nogutter>
-        <Column
-          xl={8}
-          offset={{
-            lg: 2,
-          }}
-        >
-          <StyledBox>
-            <Row>
-              <Column>
-                <Box>
-                  <Row>
-                    <Column>
-                      <Title>Coupon Purchase Prediction</Title>
-                    </Column>
-                  </Row>
-                  <Row>
-                    <Column>
-                      <Description>Predict which coupons customers will buy</Description>
-                    </Column>
-                  </Row>
-                  <Row>
-                    <Column>
-                      <Identity
-                        name="Recruit"
-                      />
-                    </Column>
-                    <Column>
-                      <CountMetric
-                        icon="user"
-                        metricValue={56}
-                      />
-                    </Column>
-                    <Column>
-                      <Status warning>
-                        Enrollment Closes: <b>Sep 8</b>
-                      </Status>
+export default class Bounty extends PureComponent {
+  state = {
+    bounty: {}
+  }
 
-                      <Status success>
-                        Submissions: <b>Sep 9 - Nov 23</b>
-                      </Status>
-                    </Column>
-                    <Column>
-                      <Text>Prize Pool</Text>
-                      <TokenAction
-                        amount={435}
-                        token="DML"
-                        buttonText="Enroll in Bounty"
-                        onClick={() => {
+  componentDidMount () {
+    this.setState({ bounty: { ...mockBounty } })
+  }
 
-                        }}
-                      />
-                    </Column>
-                  </Row>
-                </Box>
-              </Column>
-            </Row>
-            <Row>
-              <Column>
-                <Tabs>
-                  <VerticalTab title="Description">Description</VerticalTab>
-                  <VerticalTab title="Prizes">Prizes</VerticalTab>
-                  <VerticalTab title="Timeline">Timeline</VerticalTab>
-                  <VerticalTab title="Data">Data</VerticalTab>
-                  <VerticalTab title="Evaluation">Evaluation</VerticalTab>
-                  <VerticalTab title="Rules">Rules</VerticalTab>
-                  <VerticalTab title="Submission">Submission</VerticalTab>
-                </Tabs>
-              </Column>
-            </Row>
-          </StyledBox>
-        </Column>
-      </Row>
-    </Grid>
-  );
-};
+  render () {
+    const { bounty = {} } = this.state;
+    const { id, name, tagline, organization, userCount, prizes = [] } = bounty
+    const prizePool = prizes.reduce((acc, base) => acc + base, 0);
 
-Bounty.propTypes = {};
-
-export default Bounty;
+    return (
+      <div className="bounty__container">
+        <div className="bounty">
+          <div className="bounty__header">
+            <div className="bounty__info">
+              <div className="bounty__title">
+                { name }
+              </div>
+              <div className="bounty__subtitle">
+                { tagline }
+              </div>
+              <div className="bounty__details">
+                <BountyDetails
+                  organization={organization}
+                  count={userCount}
+                  enrollmentCloseDate={1542401661898}
+                />
+              </div>
+            </div>
+            <div className="">
+              <BountyPrizePool
+                count={prizePool}
+                onEnroll={() => {}}
+              />
+            </div>
+          </div>
+          <div className="bounty__tabs-container">
+            <BountyTabs
+              className="bounty__tabs"
+              bountyId={id}
+            />
+            <div className="bounty__tab-content">
+              <BountyTabContent
+                bounty={bounty}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+}
