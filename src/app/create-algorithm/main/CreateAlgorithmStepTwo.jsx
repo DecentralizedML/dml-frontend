@@ -61,10 +61,6 @@ class CreateAlgorithmStepTwo extends Component {
   }
 
   validateInput() {
-    console.log(this.state.uploaded);
-    console.log(this.state.acceptedFileType);
-    console.log(this.state.fileName);
-    console.log(this.state.file);
     return (
       this.state.uploaded &&
       this.state.acceptedFileType &&

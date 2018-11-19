@@ -54,7 +54,7 @@ class CreateAlgorithmStepFour extends Component {
           backgroundColor: "#29364a",
           boxShadow: " 0 1px 4px 0 rgba(23, 34, 51, 0.4)"
         }}
-        name="UNIQUE_ID_OF_DIV"
+        name="code_editor"
         editorProps={{ $blockScrolling: true }}
         value={this.props.postProcessingCode}
         width={"100%"}
@@ -65,11 +65,9 @@ class CreateAlgorithmStepFour extends Component {
   }
 
   saveFinalStep() {
-    // TODO: ERROR HANDLINE
     // Process the data and verify it
-    // Save potential Error Messages to Redux
     this.props.saveData(this.state);
-    // send it off to API?
+    // send it off to API
   }
 
   render() {

@@ -52,7 +52,7 @@ class CreateAlgorithmStepThree extends Component {
           boxShadow: " 0 1px 4px 0 rgba(23, 34, 51, 0.4)"
         }}
         onChange={e => this.onChange(e)}
-        name="UNIQUE_ID_OF_DIV"
+        name="code_editor"
         editorProps={{ $blockScrolling: true }}
         value={this.state.input}
         width={"100%"}
