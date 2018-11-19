@@ -11,8 +11,6 @@ import {
 
 import Input from '../../../../components/Input';
 
-import '../../Onboarding.scss';
-
 const StyledContainer = styled.div`
   display: flex;
   flex-flow: row nowrap;

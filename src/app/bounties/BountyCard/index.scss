@@ -1,0 +1,41 @@
+@import "../../../variables.scss";
+
+.bounty-card {
+  cursor: pointer;
+  width: 720px;
+  background: white;
+  padding: 24px;
+  border-radius: 3px;
+  box-shadow: 0 1px 6px 0 rgba(4, 37, 86, 0.04), 0 1px 0 0 rgba(4, 37, 86, 0.04);
+
+  &__title {
+    font-size: 1.25rem;
+    font-weight: 500;
+    padding-bottom: 6px;
+  }
+
+  &__subtitle {
+    color: $steelplant;
+  }
+
+  &__header {
+    margin-bottom: 4px;
+  }
+
+  &__details {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  &__prize-pool {
+    margin-left: auto;
+  }
+
+  &__prize-pool-label {
+    font-size: .75rem;
+    color: $steelplant;
+    text-align: end;
+    padding-bottom: 8px;
+  }
+}

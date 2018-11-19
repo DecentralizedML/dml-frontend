@@ -1,0 +1,9 @@
+@import '../../../../variables.scss';
+
+.bounty-tabs {
+  &__placeholder {
+    background: $black-squeeze;
+    border-right: 1px solid $catskill-gray;
+    flex: 1;
+  }
+}

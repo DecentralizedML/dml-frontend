@@ -14,13 +14,6 @@ import DMLSiteHeader from '../dml-site-header';
 const Algorithms = (props) => {
   return (
     <Grid fluid style={{ padding: 0 }}>
-      <DMLSiteHeader
-        marketplace
-        bounties
-        algorithmsActive
-        createAlgorithm
-        accountDropdown
-      />
       <Row nogutter>
         <Column
           xl={8}

@@ -11,7 +11,6 @@ import {
 
 import Input from '../../../../components/Input';
 import GitHubButton from '../../../../components/GitHubButton';
-import '../../Onboarding.scss';
 
 const Main = styled.div`
   display: flex;

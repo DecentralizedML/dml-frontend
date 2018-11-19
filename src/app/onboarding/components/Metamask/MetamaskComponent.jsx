@@ -9,7 +9,6 @@ import {
   Title,
 } from '@kyokan/kyokan-ui';
 
-import '../../Onboarding.scss';
 import styled from "styled-components";
 
 const Main = styled.div`
@@ -96,7 +95,7 @@ class Metamask extends Component {
           onClick={() => {
             if (account) {
               this.props.updateUser(account, () => {
-                history.push('/account');
+                history.push('/authenticated/account');
               });
             }
           }}

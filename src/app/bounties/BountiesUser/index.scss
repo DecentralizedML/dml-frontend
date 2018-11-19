@@ -1,0 +1,17 @@
+.bounties-user {
+  display: flex;
+  justify-content: center;
+
+  &__bounties-container {
+    padding-left: 56px;
+  }
+
+  &__bounties-header {
+    padding: 24px;
+  }
+
+  &__bounties-count {
+    font-size: 1.125rem;
+    color: $steelplant;
+  }
+}

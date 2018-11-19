@@ -1,0 +1,30 @@
+@import "../../variables";
+
+.token-display {
+  display: flex;
+  align-items: center;
+  height: 26px;
+
+  &__tokens {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 4px 6px;
+    font-weight: 500;
+    border-style: solid;
+    border-color: $cornflower-blue;
+    border-width: 2px 0 2px 2px;
+    border-radius: 2px 0 0 2px;
+    line-height: 16px;
+  }
+
+  &__dml-logo {
+    padding: 4px 6px;
+    border-style: solid;
+    border-color: $royal-blue;
+    border-width: 2px 2px 2px 0;
+    border-radius: 0 2px 2px 0;
+  }
+}
