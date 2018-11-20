@@ -79,6 +79,7 @@ class CreateAlgorithmStepTwo extends Component {
   onDrop(files) {
     const file = files[0];
     const isValid = this.checkExtension(file.name, ["bin", "h5"]);
+    console.log(file);
 
     if (isValid) {
       const reader = new FileReader();

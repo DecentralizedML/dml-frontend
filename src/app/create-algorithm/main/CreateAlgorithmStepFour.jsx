@@ -73,7 +73,7 @@ class CreateAlgorithmStepFour extends Component {
   render() {
     return (
       <Main>
-        <Row style={{ justifyContent: "flex-start" }}>
+        <Row flexStart>
           <Column />
           <IconBox>
             <StepDoneTick
@@ -120,7 +120,7 @@ class CreateAlgorithmStepFour extends Component {
         <SectionRow>
           <SectionColumn>
             <SubHeadline>Per Device fee</SubHeadline>
-            <Row style={{ justifyContent: "flex-start" }}>
+            <Row flexStart>
               <TitleText style={{ fontSize: "18px" }}>
                 {this.props.price}
               </TitleText>

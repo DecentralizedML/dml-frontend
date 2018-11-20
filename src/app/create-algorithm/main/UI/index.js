@@ -5,7 +5,7 @@ export const Row = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: ${props => (props.flexStart ? "flex-start" : "center")};
 `;
 
 export const Column = styled.div`

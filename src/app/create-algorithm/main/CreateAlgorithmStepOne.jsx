@@ -131,14 +131,11 @@ class CreateAlgorithmStepOne extends Component {
         <div style={{ position: "relative", width: "366px" }}>
           <InputField
             placeholder="e.g. 1"
-            type="text"
+            type="number"
+            min="1"
             style={{ height: "48px" }}
             onChange={e => {
-              const input = e.target.value
-                .replace(/[^0-9.]/g, "")
-                .replace(/(\..*)\./g, "$1");
-
-              this.setState({ price: input });
+              this.setState({ price: e.target.value });
             }}
             value={this.state.price}
           />

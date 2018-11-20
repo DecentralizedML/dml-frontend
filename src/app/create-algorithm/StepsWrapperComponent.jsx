@@ -3,9 +3,9 @@ import { connect } from "react-redux";
 
 const StepsWrapper = props => {
   const { steps, currentStep } = props;
-  const Step = steps[currentStep].component;
+  const Step = (steps[currentStep] || {}).component;
 
-  return Step ? <Step {...props} /> : <div>Cannot find step component</div>;
+  return Step ? <Step {...props} /> : new Error("No such component found");
 };
 
 const mapStateToProps = state => {

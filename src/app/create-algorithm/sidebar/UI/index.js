@@ -14,7 +14,7 @@ export const StepRow = styled.div`
   flex-direction: row;
   height: 28px;
   &:hover {
-    cursor: ${props => props.readyToSubmit && "pointer"};
+    cursor: ${props => (props.readyToSubmit ? "pointer" : "default")};
   }
 `;
 
