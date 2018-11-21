@@ -15,6 +15,7 @@ import {
 import StepsWrapper from "../StepsWrapperComponent";
 import CreateAlgorithmStepRow from "./CreateAlgorithmStepRow";
 import CreateAlgorithmDividerRow from "./CreateAlgorithmDividerRow";
+import isSwitchable from "../../../utils/isSwitchable";
 
 const CreateAlgorithmSidebar = props => {
   const steps = [
@@ -23,6 +24,7 @@ const CreateAlgorithmSidebar = props => {
     { stepTitle: "Post-Processing", component: CreateAlgorithmStepRow },
     { stepTitle: "Submit", component: CreateAlgorithmStepRow }
   ];
+
   return (
     <Sidebar>
       {steps.map(({ stepTitle }, index) => {
@@ -33,7 +35,7 @@ const CreateAlgorithmSidebar = props => {
               stepNumber={index + 1}
               stepTitle={stepTitle}
               onClick={() => props.switchStep(index)}
-              readyToSubmit={props.readyToSubmit}
+              isSwitchable={!!isSwitchable(index, props.algorithmState)}
             />
             {index < steps.length - 1 && <CreateAlgorithmDividerRow />}
           </div>
@@ -55,10 +57,9 @@ const CreateAlgorithmSidebar = props => {
 CreateAlgorithmSidebar.propTypes = {};
 
 const mapStateToProps = state => {
-  const { currentStep, readyToSubmit } = state.createAlgorithm;
+  const algorithmState = state.createAlgorithm;
   return {
-    currentStep,
-    readyToSubmit
+    algorithmState: algorithmState
   };
 };
 

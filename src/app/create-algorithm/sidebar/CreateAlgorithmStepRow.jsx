@@ -12,9 +12,13 @@ import {
 } from "./UI";
 
 const CreateAlgorithmStepRow = props => {
+  const switchTab = () => {
+    return props.isSwitchable ? props.onClick : "";
+  };
+
   if (Number(props.currentStep) === Number(props.stepNumber - 1)) {
     return (
-      <StepRow onClick={props.onClick} readyToSubmit={props.readyToSubmit}>
+      <StepRow onClick={switchTab()} isSwitchable={props.isSwitchable}>
         <StepNumberWrapperActive>
           <StepNumber active={true}>{props.stepNumber}</StepNumber>
         </StepNumberWrapperActive>
@@ -23,7 +27,7 @@ const CreateAlgorithmStepRow = props => {
     );
   } else if (Number(props.currentStep) > Number(props.stepNumber - 1)) {
     return (
-      <StepRow onClick={props.onClick} readyToSubmit={props.readyToSubmit}>
+      <StepRow onClick={switchTab()} isSwitchable={props.isSwitchable}>
         <StepNumberWrapperDone>
           <StepDoneTick />
         </StepNumberWrapperDone>
@@ -32,7 +36,7 @@ const CreateAlgorithmStepRow = props => {
     );
   } else {
     return (
-      <StepRow onClick={props.onClick} readyToSubmit={props.readyToSubmit}>
+      <StepRow onClick={switchTab()} isSwitchable={props.isSwitchable}>
         <StepNumberWrapperInactive>
           <StepNumber>{props.stepNumber}</StepNumber>
         </StepNumberWrapperInactive>

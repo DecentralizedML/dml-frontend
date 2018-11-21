@@ -6,7 +6,6 @@ import types from "./types";
 
 // Add more values later -> start with component state
 const inititalState = {
-  readyToSubmit: false, // <- to enable switching between steps
   currentStep: 0,
   title: "",
   description: "",
@@ -15,7 +14,6 @@ const inititalState = {
   dataRequired: [],
   price: "",
   mlModel: "",
-  mlModelFileName: "",
   postProcessingCode: "# your code here"
 };
 
@@ -38,7 +36,7 @@ const createAlgorithmReducer = (state = inititalState, action) => {
         draftState.currentStep++;
         break;
       case types.SWITCH_STEP:
-        draftState.readyToSubmit && (draftState.currentStep = action.payload);
+        draftState.currentStep = action.payload;
         break;
       default:
         break;
