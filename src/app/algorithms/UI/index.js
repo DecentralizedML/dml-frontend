@@ -5,11 +5,15 @@ export const Row = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: ${props =>
+    props.horizontalAlign ? props.horizontalAlign : "flex-start"};
 `;
 
 export const Column = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: ${props =>
+    props.verticalAlign ? props.verticalAlign : "flex-start"};
 `;
 
 export const MyAlgorithmsContainer = styled.div`

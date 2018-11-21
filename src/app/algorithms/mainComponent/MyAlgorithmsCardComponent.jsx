@@ -23,8 +23,8 @@ const MyAlgorithmsCard = props => {
   return (
     <Card>
       <Column
+        verticalAlign="space-evenly"
         style={{
-          justifyContent: "space-between",
           height: "100%",
           width: "300px"
         }}
@@ -34,12 +34,12 @@ const MyAlgorithmsCard = props => {
       </Column>
       <VerticalDivider />
       <Column
+        verticalAlign="space-evenly"
         style={{
-          justifyContent: "space-evenly",
           height: "100%"
         }}
       >
-        <Row style={{ justifyContent: "space-between", width: "108px" }}>
+        <Row horizontalAlign="space-between" style={{ width: "108px" }}>
           <KPITitle>Earnings</KPITitle>
           <Row>
             <AlgoPriceNumber>{props.price}</AlgoPriceNumber>
