@@ -16,7 +16,7 @@ const inititalState = {
   price: "",
   mlModel: "",
   mlModelFileName: "",
-  postProcessingCode: "Your code here"
+  postProcessingCode: "# your code here"
 };
 
 // TODO: Implement the logic

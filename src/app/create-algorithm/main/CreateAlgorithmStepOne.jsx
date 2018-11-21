@@ -46,7 +46,7 @@ class CreateAlgorithmStepOne extends Component {
       this.state.description &&
       this.state.category &&
       this.state.preProcessing &&
-      this.state.price
+      this.state.price.length > 0
     );
   }
 
@@ -132,7 +132,7 @@ class CreateAlgorithmStepOne extends Component {
           <InputField
             placeholder="e.g. 1"
             type="number"
-            min="1"
+            min="0"
             style={{ height: "48px" }}
             onChange={e => {
               this.setState({ price: e.target.value });

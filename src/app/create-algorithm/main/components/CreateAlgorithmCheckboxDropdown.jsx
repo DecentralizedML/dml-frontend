@@ -15,7 +15,7 @@ class CreateAlgorithmCheckboxDropdown extends Component {
   state = {
     display: false,
     dataOptions: ["GPS Location", "Photos", "SMS"],
-    selection: Array.isArray(this.props.selection) ? this.props.selection : []
+    selection: this.props.selection
   };
 
   showCheckboxes = () => {
@@ -39,7 +39,10 @@ class CreateAlgorithmCheckboxDropdown extends Component {
           <Checkbox
             type="checkbox"
             id={option}
-            checked={this.state.selection.includes(option)}
+            checked={
+              Array.isArray(this.selection) &&
+              this.state.selection.includes(option)
+            }
             onChange={e => this.handleCheckboxSelection(e)}
           />
           {option}
