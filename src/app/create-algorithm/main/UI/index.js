@@ -217,7 +217,7 @@ export const DMLContainer = styled.div`
   height: 24px;
   margin: 12px;
   border-radius: 2px;
-  background-color: #3c81ed;
+  background-color: ${mainTheme.colors.royalBlue};
 `;
 
 export const DMLLogo = styled.div`

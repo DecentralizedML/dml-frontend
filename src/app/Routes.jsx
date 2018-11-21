@@ -51,7 +51,7 @@ class Routes extends Component {
             component={Account}
           />
           <ProtectedRoute path="/account" component={Account} />
-          <ProtectedRoute path="/algorithms/:id" component={Algorithms} />
+          <ProtectedRoute path="/algorithms/:algoId?" component={Algorithms} />
           <ProtectedRoute path="/algorithms/" component={Algorithms} />
           <ProtectedRoute
             path="/create-algorithm/"

@@ -112,6 +112,7 @@ export const SaveProgressButton = styled.div`
   border: solid 1px #e1e8f2;
   background-image: linear-gradient(to bottom, #ffffff, #f7f9fc);
   margin-top: 18px;
+  user-select: none;
   &:hover {
     cursor: pointer;
     box-shadow: 0 0 2px 1px rgba(110, 141, 189, 0.1);
