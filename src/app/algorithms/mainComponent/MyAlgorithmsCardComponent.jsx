@@ -26,11 +26,11 @@ const MyAlgorithmsCard = props => {
         verticalAlign="space-evenly"
         style={{
           height: "100%",
-          width: "300px"
+          width: "310px"
         }}
       >
         <CardTitle>{props.title}</CardTitle>
-        <StatusLabel label={props.status} />
+        <StatusLabel label={props.status} onClick={props.onClick} />
       </Column>
       <VerticalDivider />
       <Column
@@ -39,7 +39,7 @@ const MyAlgorithmsCard = props => {
           height: "100%"
         }}
       >
-        <Row horizontalAlign="space-between" style={{ width: "108px" }}>
+        <Row horizontalAlign="space-between" style={{ width: "105px" }}>
           <KPITitle>Earnings</KPITitle>
           <Row>
             <AlgoPriceNumber>{props.price}</AlgoPriceNumber>
@@ -59,7 +59,7 @@ const MyAlgorithmsCard = props => {
           </DMLWrapper>
         </Row>
       </Column>
-      <EditButton>Edit</EditButton>
+      <EditButton onClick={props.onClick}>Edit</EditButton>
     </Card>
   );
 };

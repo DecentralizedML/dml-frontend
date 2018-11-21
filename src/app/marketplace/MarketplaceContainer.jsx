@@ -5,7 +5,6 @@ import MarketplaceComponent from "./MarketplaceComponent";
 import marketplaceActions from "./duck/actions";
 
 const mapStateToProps = state => {
-  // const { email, firstName, id, lastName, walletAddress } = state.account;
   const {
     selectedCategory,
     deselectCategory,
