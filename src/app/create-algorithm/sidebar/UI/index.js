@@ -3,7 +3,7 @@ import mainTheme from "../../../themes/mainTheme";
 
 export const Sidebar = styled.div`
   width: 264px;
-  height: 689px;
+  height: auto;
   box-shadow: inset -1px 0 0 0 rgba(110, 141, 189, 0.1);
   background-color: rgba(110, 141, 189, 0.04);
   padding: 24px;
@@ -14,7 +14,7 @@ export const StepRow = styled.div`
   flex-direction: row;
   height: 28px;
   &:hover {
-    cursor: pointer;
+    cursor: ${props => (!!props.isSwitchable ? "pointer" : "default")};
   }
 `;
 
@@ -46,6 +46,25 @@ export const StepNumberWrapperActive = styled.div`
   height: 28px;
   border-radius: 50%;
   background-color: ${mainTheme.colors.royalBlue};
+`;
+
+export const StepNumberWrapperDone = styled.div`
+  box-sizing: border-box;
+  display: flex;
+  width: 28px;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 2px solid rgba(60, 129, 237, 0.4);
+`;
+
+export const StepDoneTick = styled.div`
+  width: 16px;
+  height: 12px;
+  background-image: url("/icons/Icon-Check-Blue.svg");
+  background-size: cover;
+  background-position: center;
 `;
 
 export const StepNumber = styled.div`
@@ -93,6 +112,7 @@ export const SaveProgressButton = styled.div`
   border: solid 1px #e1e8f2;
   background-image: linear-gradient(to bottom, #ffffff, #f7f9fc);
   margin-top: 18px;
+  user-select: none;
   &:hover {
     cursor: pointer;
     box-shadow: 0 0 2px 1px rgba(110, 141, 189, 0.1);

@@ -5,25 +5,45 @@ import {
   StepRow,
   StepNumberWrapperActive,
   StepNumberWrapperInactive,
+  StepNumberWrapperDone,
   StepNumber,
-  StepTitle
+  StepTitle,
+  StepDoneTick
 } from "./UI";
 
 const CreateAlgorithmStepRow = props => {
-  return (
-    <StepRow>
-      {props.active ? (
+  const switchTab = () => {
+    return props.isSwitchable ? props.onClick : "";
+  };
+
+  if (Number(props.currentStep) === Number(props.stepNumber - 1)) {
+    return (
+      <StepRow onClick={switchTab()} isSwitchable={props.isSwitchable}>
         <StepNumberWrapperActive>
-          <StepNumber active={props.active}>{props.stepNumber}</StepNumber>
+          <StepNumber active={true}>{props.stepNumber}</StepNumber>
         </StepNumberWrapperActive>
-      ) : (
+        <StepTitle active={props.active}>{props.stepTitle}</StepTitle>
+      </StepRow>
+    );
+  } else if (Number(props.currentStep) > Number(props.stepNumber - 1)) {
+    return (
+      <StepRow onClick={switchTab()} isSwitchable={props.isSwitchable}>
+        <StepNumberWrapperDone>
+          <StepDoneTick />
+        </StepNumberWrapperDone>
+        <StepTitle active={props.active}>{props.stepTitle}</StepTitle>
+      </StepRow>
+    );
+  } else {
+    return (
+      <StepRow onClick={switchTab()} isSwitchable={props.isSwitchable}>
         <StepNumberWrapperInactive>
           <StepNumber>{props.stepNumber}</StepNumber>
         </StepNumberWrapperInactive>
-      )}
-      <StepTitle active={props.active}>{props.stepTitle}</StepTitle>
-    </StepRow>
-  );
+        <StepTitle active={props.active}>{props.stepTitle}</StepTitle>
+      </StepRow>
+    );
+  }
 };
 
 CreateAlgorithmStepRow.propTypes = {};

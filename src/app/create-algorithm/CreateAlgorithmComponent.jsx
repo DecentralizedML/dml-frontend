@@ -2,8 +2,8 @@ import React from "react";
 // import PropTypes from 'prop-types';
 
 import { MainContainer, TitleHeaderContainer, TitleHeaderText } from "./UI";
-import CreateAlgorithmSidebar from "./sidebar/CreateAlgorithmSidebar";
-import CreateAlgorithmMain from "./CreateAlgorithMain";
+import CreateAlgorithmSidebarContainer from "./sidebar/CreateAlgorithmSidebarContainer";
+import CreateAlgorithmMainContainer from "./main/CreateAlgorithmMainContainer";
 
 const CreateAlgorithm = props => {
   return (
@@ -12,8 +12,8 @@ const CreateAlgorithm = props => {
         <TitleHeaderText>Create Algorithm</TitleHeaderText>
       </TitleHeaderContainer>
       <MainContainer>
-        <CreateAlgorithmSidebar />
-        <CreateAlgorithmMain />
+        <CreateAlgorithmSidebarContainer />
+        <CreateAlgorithmMainContainer />
       </MainContainer>
     </div>
   );

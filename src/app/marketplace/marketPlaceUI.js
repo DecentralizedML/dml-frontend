@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   display: flex;
   flex-flow: row nowrap;
-  padding: 16px;
+  padding: 32px;
   justify-content: center;
 `;
 

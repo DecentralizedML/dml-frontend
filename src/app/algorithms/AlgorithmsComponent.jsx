@@ -1,42 +1,26 @@
-import React from 'react';
+import React from "react";
 // import PropTypes from 'prop-types';
 
-import {
-  Box,
-  Column,
-  Grid,
-  Header,
-  Row,
-} from '@kyokan/kyokan-ui';
+import DMLSiteHeader from "../dml-site-header";
+import MyAlgorithmsSidebarComponent from "./sidebarComponent/MyAlgorithmsSidebarComponent";
+import MyAlgorithmsMainComponent from "./mainComponent/MyAlgorithmsMainComponent";
+import { MyAlgorithmsContainer } from "./UI";
 
-import DMLSiteHeader from '../dml-site-header';
-
-const Algorithms = (props) => {
+const Algorithms = props => {
   return (
-    <Grid fluid style={{ padding: 0 }}>
-      <Row nogutter>
-        <Column
-          xl={8}
-          offset={{
-            lg: 2,
-          }}
-        >
-          <Box padding={8}>
-            <Header>Algorithms</Header>
-          </Box>
-        </Column>
-      </Row>
-      <Row nogutter>
-        <Column
-          xl={8}
-          offset={{
-            lg: 2,
-          }}
-        >
-          ALGORITHMS
-        </Column>
-      </Row>
-    </Grid>
+    <div>
+      <DMLSiteHeader
+        marketplace
+        bounties
+        algorithmsActive
+        createAlgorithm
+        accountDropdown
+      />
+      <MyAlgorithmsContainer>
+        <MyAlgorithmsSidebarComponent />
+        <MyAlgorithmsMainComponent />
+      </MyAlgorithmsContainer>
+    </div>
   );
 };
 

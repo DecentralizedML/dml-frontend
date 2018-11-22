@@ -61,12 +61,13 @@ export default class DMLSiteHeader extends PureComponent {
     )
   }
 
+
   renderCreateAlgorithm () {
     const { showCreateAlgorithm, history } = this.props;
 
     return showCreateAlgorithm && (
       <Button
-        onClick={() => history.push("/authenticated/create-algorithm")}
+        onClick={() => history.push("/authenticated/algorithms/new")}
         leftIcon="plusCircle"
       >
         Create Algorithm
