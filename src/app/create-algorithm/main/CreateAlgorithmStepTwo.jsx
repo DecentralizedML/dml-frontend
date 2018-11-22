@@ -45,7 +45,7 @@ class CreateAlgorithmStepTwo extends Component {
   state = {
     uploaded: !!this.props.mlModel,
     acceptedFileType: !!this.props.mlModel,
-    fileName: this.props.mlModel ? this.props.mlModelFileName : "",
+    fileName: this.props.mlModel ? this.props.mlModelFileName : "your file",
     file: this.props.mlModel || ""
   };
 
@@ -79,7 +79,6 @@ class CreateAlgorithmStepTwo extends Component {
   onDrop(files) {
     const file = files[0];
     const isValid = this.checkExtension(file.name, ["bin", "h5"]);
-    console.log(file);
 
     if (isValid) {
       const reader = new FileReader();

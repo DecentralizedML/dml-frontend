@@ -85,7 +85,7 @@ const DMLSiteHeader = props => {
       return (
         <Button
           onClick={() => {
-            props.history.push("/create-algorithm");
+            props.history.push("/algorithms/new");
           }}
           leftIcon="plusCircle"
         >

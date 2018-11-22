@@ -3,10 +3,12 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 // import PropTypes from 'prop-types';
 
+import createAlgorithmActions from "../../create-algorithm/duck/actions";
 import { MainWrapper } from "../UI";
 import Topbar from "../../marketplace/topBar/MarketPlaceHeaderComponent";
 import MyAlgorithmsCardComponent from "./MyAlgorithmsCardComponent";
-import MyAlgorithmsSelectedAlgorithmComponent from "../selectedAlgorithmComponent/MyAlgorithmsSelectedAlgorithmComponent";
+
+import { latestStep } from "../../../utils/isSwitchable";
 
 const myAlgorithmsOrder = [1, 2, 3, 4, 5];
 const myAlgorithmsMap = {
@@ -16,7 +18,9 @@ const myAlgorithmsMap = {
     status: "Continue Progress",
     price: "2",
     earnings: "0",
-    description: "blah"
+    description: "blah",
+    category: "Text Analysis",
+    preProcessing: "200 words"
   },
   2: {
     id: 2,
@@ -24,7 +28,11 @@ const myAlgorithmsMap = {
     status: "Under Review",
     price: "1",
     earnings: "0",
-    description: "blah"
+    description: "blah",
+    category: "Image Recognition",
+    preProcessing: "500 x 500 pixels",
+    mlModel: "Some model",
+    postProcessingCode: "def greetings = 'Hello World'"
   },
   3: {
     id: 3,
@@ -53,7 +61,11 @@ const myAlgorithmsMap = {
 };
 
 const MyAlgorithmsMain = props => {
-  const selectedAlgorithm = myAlgorithmsMap[props.match.params.algoId];
+  const editAlgorithm = algorithm => {
+    const whereToContinue = latestStep(algorithm);
+    props.saveNewAlgorithmData({ ...algorithm, currentStep: whereToContinue });
+    props.history.push(`/algorithms/edit/${algorithm.id}`);
+  };
   return (
     <MainWrapper>
       <Topbar algorithmCount={myAlgorithmsOrder.length} />
@@ -67,11 +79,10 @@ const MyAlgorithmsMain = props => {
             price={algorithm.price}
             earnings={algorithm.earnings}
             description={algorithm.description}
-            onClick={() => props.history.push(`/algorithms/${algorithm.id}`)}
+            onClick={() => editAlgorithm(algorithm)}
           />
         );
       })}
-      {selectedAlgorithm && <MyAlgorithmsSelectedAlgorithmComponent />}
     </MainWrapper>
   );
 };
@@ -85,6 +96,17 @@ const mapStateToProps = state => {
   };
 };
 
-const MyAlgorithmsMainComponent = connect(mapStateToProps)(MyAlgorithmsMain);
+const mapDispatchToProps = dispatch => {
+  return {
+    saveNewAlgorithmData: data => {
+      dispatch(createAlgorithmActions.saveNewAlgorithmData(data));
+    }
+  };
+};
+
+const MyAlgorithmsMainComponent = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MyAlgorithmsMain);
 
 export default withRouter(MyAlgorithmsMainComponent);

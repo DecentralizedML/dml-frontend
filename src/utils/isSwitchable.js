@@ -35,4 +35,15 @@ const isSwitchable = (stepNumber, state) => {
   return isSwitchable;
 };
 
-export default isSwitchable;
+const latestStep = state => {
+  const steps = 4;
+  let highestStep = 0;
+  for (let i = 0; i < steps; i++) {
+    if (isSwitchable(i, state)) {
+      highestStep = i;
+    }
+  }
+  return highestStep;
+};
+
+export { isSwitchable, latestStep };

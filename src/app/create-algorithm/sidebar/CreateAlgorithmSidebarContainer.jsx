@@ -15,7 +15,7 @@ import {
 import StepsWrapper from "../StepsWrapperComponent";
 import CreateAlgorithmStepRow from "./CreateAlgorithmStepRow";
 import CreateAlgorithmDividerRow from "./CreateAlgorithmDividerRow";
-import isSwitchable from "../../../utils/isSwitchable";
+import { isSwitchable } from "../../../utils/isSwitchable";
 
 const CreateAlgorithmSidebar = props => {
   const steps = [
