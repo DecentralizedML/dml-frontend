@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@kyokan/kyokan-ui": "^0.1.22",
+    "@kyokan/kyokan-ui": "git://github.com/kyokan/kyokan-ui.git#b637a30",
     "axios": "^0.18.0",
     "bignumber.js": "^7.2.1",
     "blueimp-load-image": "^2.19.0",
