@@ -1,0 +1,21 @@
+.bounties-subheader-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 19px 0 16px;
+  margin: 0 24px;
+  box-sizing: border-box;
+  color: rgb(173, 188, 212);
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+
+  &--active {
+    color: rgb(31, 42, 59);
+    font-weight: 500;
+    border-bottom: 3px solid rgb(60, 129, 232);
+  }
+
+  &:hover {
+    color: rgb(31, 42, 59);
+  }
+}

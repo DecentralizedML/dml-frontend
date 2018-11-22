@@ -10,17 +10,9 @@ import {
 } from "react-router-dom";
 import { connect } from "react-redux";
 
-import Account from "./account";
-import Algorithms from "./algorithms";
-import BountiesList from "./bounties/BountiesList";
-import BountyCreate from "./bounties/BountyCreate";
-import BountiesUser from "./bounties/BountiesUser";
-import Bounty from "./bounties/Bounty";
-import Marketplace from "./marketplace";
+import Authenticated from "./authenticated"
 import Onboarding from "./onboarding";
-
 import CreateAlgorithm from "./create-algorithm";
-
 import ProtectedRoute from "./auth/ProtectedRoute";
 import Logout from "./auth/Logout";
 
@@ -46,33 +38,21 @@ class Routes extends Component {
     ) : (
       <Router>
         <Switch>
-          <ProtectedRoute
-            path="/account/:section(profile|wallet)"
-            component={Account}
-          />
-          <ProtectedRoute path="/account" component={Account} />
+          {/* Move to Authenticated Component */}
           <ProtectedRoute
             path="/algorithms/edit/:algoId"
             component={CreateAlgorithm}
           />
           <ProtectedRoute path="/algorithms/new" component={CreateAlgorithm} />
-          <ProtectedRoute path="/algorithms/" component={Algorithms} />
-          <ProtectedRoute path="/bounties/create" component={BountyCreate} />
-          <ProtectedRoute path="/bounties/user" component={BountiesUser} />
-          <ProtectedRoute path="/bounties/:id" component={Bounty} />
-          <ProtectedRoute path="/bounties" component={BountiesList} />
-          <ProtectedRoute
-            path="/marketplace/:algoId?"
-            component={Marketplace}
-          />
-
+          {/* Move to Authenticated Component */}
+          <ProtectedRoute path="/authenticated" component={Authenticated} />
           <Route path="/details" component={Onboarding} />
           <Route path="/metamask" component={Onboarding} />
           <Route path="/login" component={Onboarding} />
           <Route path="/signup" component={Onboarding} />
           <Route path="/logout" component={Logout} />
 
-          <Redirect to="/marketplace" />
+          <Redirect to="/authenticated/marketplace" />
         </Switch>
       </Router>
     );

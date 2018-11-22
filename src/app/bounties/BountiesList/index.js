@@ -1,3 +1,1 @@
-import BountiesListContainer from './BountiesListContainer';
-
-export default BountiesListContainer;
+export { default } from './BountiesListContainer';

@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-
 import BountiesListComponent from './BountiesListComponent';
 
 const mapStateToProps = (state) => {
@@ -9,13 +8,4 @@ const mapStateToProps = (state) => {
   });
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {};
-};
-
-const BountiesListContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(BountiesListComponent);
-
-export default BountiesListContainer;
+export default connect(mapStateToProps)(BountiesListComponent);

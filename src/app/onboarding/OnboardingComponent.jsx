@@ -7,8 +7,6 @@ import AdditionalInfo from './components/AdditionalInfo';
 import Metamask from './components/Metamask';
 import Signup from './components/Signup';
 
-import './Onboarding.scss';
-
 const SIGNUP          = 0;
 const ADDITIONAL_INFO = 1;
 const METAMASK        = 2;

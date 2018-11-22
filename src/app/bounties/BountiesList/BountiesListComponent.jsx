@@ -1,179 +1,132 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 
-import {
-  Box,
-  Column,
-  CountMetric,
-  Description,
-  Grid,
-  Header,
-  Identity,
-  Row,
-  Sorter,
-  Status,
-  TabbedSelector,
-  TabbedSelectorOption,
-  Text,
-  TextInput,
-  TokenAmount,
-} from '@kyokan/kyokan-ui';
+import { Sorter, TextInput } from '@kyokan/kyokan-ui';
 
-import DMLSiteHeader from '../../dml-site-header';
-import DMLSiteSubheader from '../../dml-site-subheader';
+import BountyCard from '../BountyCard';
+import BountiesListFilter from './BountiesListFilter';
 
-const Bounties = (props) => {
-  const StyledContainer = styled.div`
-    width: 100%;
-    background-color: white;
-  `;
+const OPEN_FOR_ENROLLMENT_FILTER = 'OPEN_FOR_ENROLLMENT_FILTER'
+const OPEN_FOR_SUBMISSIONS_FILTER = 'OPEN_FOR_SUBMISSIONS_FILTER'
+const UNDER_EVALUATION_FILTER = 'UNDER_EVALUATION_FILTER'
+const FINISHED_FILTER = 'FINISHED_FILTER'
 
-  const StyledBox = styled.div`
-    width: 100%;
-    background-color: white;
-    margin-top: 20px;
-    padding: 10px;
-  `;
+const mockBounties = [
+  {
+    id: 1,
+    name: 'Home Credit Default Risk',
+    tagline: 'Can you predict how capable each applicant is of repaying a loan?',
+    organization: 'Home Credit Group',
+    userCount: 120,
+    prizes: [250, 125, 60],
+    enrollmentCloseDate: 1542400243046
+  }
+]
 
-  const StyledHeader = styled.div`
-    width: 100%;
-    margin-top: 10px;
-    padding: 10px;
-  `;
+export default class Bounties extends PureComponent {
+  static propTypes = {
+    history: PropTypes.object.isRequired,
+  };
 
-  return (
-    <Grid fluid style={{ padding: 0 }}>
-      <DMLSiteHeader
-        marketplace
-        bountiesActive
-        algorithms
-        createAlgorithm
-        accountDropdown
-      />
-      <DMLSiteSubheader
-        allBountiesActive
-        myParticipations
-        createBounty
-      />
-      <Row nogutter>
-        <Column
-          xl={8}
-          offset={{
-            lg: 2,
-          }}
-        >
-          <Box marginTop={8}>
-            <Row>
-              <Column xl={4}>
-                <Row>
-                  <Column>
-                    <TextInput placeholder="Search" />
-                  </Column>
-                </Row>
-                <Row>
-                  <Column>
-                    <StyledHeader>FILTER BY STATUS</StyledHeader>
-                    <StyledContainer>
-                      <TabbedSelector
-                        defaultSelectedIndex={0}
-                        onlyOne
-                        vertical
-                      >
-                        <TabbedSelectorOption
-                          icon="addUser"
-                        >
-                          Open for Enrollment
-                        </TabbedSelectorOption>
+  state = {
+    activeFilter: OPEN_FOR_ENROLLMENT_FILTER,
+    bounties: []
+  }
 
-                        <TabbedSelectorOption
-                          icon="copy"
-                        >
-                          Open for Submissions
-                        </TabbedSelectorOption>
+  componentDidMount () {
+    this.setState({ bounties: [...mockBounties] })
+  }
 
-                        <TabbedSelectorOption
-                          icon="clipboard"
-                        >
-                          Under Evaluation
-                        </TabbedSelectorOption>
+  renderFilters () {
+    const { activeFilter } = this.state
 
-                        <TabbedSelectorOption
-                          icon="award"
-                        >
-                          Finished
-                        </TabbedSelectorOption>
-                      </TabbedSelector>
-                    </StyledContainer>
-                  </Column>
-                </Row>
-              </Column>
-              <Column xl={8}>
-                <Row>
-                  <Column>
-                    <Header>22 Bounties</Header>
-                  </Column>
-                  <Column>
-                    <Sorter />
-                  </Column>
-                </Row>
-                <Row>
-                  <StyledBox
-                    onClick={() => {
-                      props.history.push('/bounties/1');
-                    }}
-                  >
-                    <Row>
-                      <Column>
-                        <Header>Home Credit Default Risk</Header>
-                      </Column>
-                    </Row>
-                    <Row>
-                      <Column>
-                        <Description>Can you predict how capable each applicant is of repaying a loan?</Description>
-                      </Column>
-                    </Row>
-                    <Row>
-                      <Column>
-                        <Identity
-                          name="Home Credit Group"
-                        />
-                      </Column>
-                      <Column>
-                        <CountMetric
-                          icon="user"
-                          metricValue={120}
-                        />
-                      </Column>
-                      <Column>
-                        <Status
-                          error
-                        >
-                          Enrollment Closes: <b>Sep 5</b>
-                        </Status>
-                      </Column>
-                      <Column>
-                        <Text>Prize Pool</Text>
-                        <TokenAmount
-                          token="DML"
-                          amount={250}
-                          dark
-                        />
-                      </Column>
-                    </Row>
-                  </StyledBox>
-                </Row>
-              </Column>
-            </Row>
-          </Box>
-        </Column>
-      </Row>
-    </Grid>
-  );
-};
+    return (
+      <div className="bounties-list__filters-container">
+        <div className="bounties-list__filters-title">
+          FILTER BY STATUS
+        </div>
+        <div className="bounties-list__filters">
+          <BountiesListFilter
+            isActive={activeFilter === OPEN_FOR_ENROLLMENT_FILTER}
+            onClick={() => this.setState({ activeFilter: OPEN_FOR_ENROLLMENT_FILTER })}
+          >
+            Open for Enrollment
+          </BountiesListFilter>
+          <BountiesListFilter
+            isActive={activeFilter === OPEN_FOR_SUBMISSIONS_FILTER}
+            onClick={() => this.setState({ activeFilter: OPEN_FOR_SUBMISSIONS_FILTER })}
+          >
+            Open for Submissions
+          </BountiesListFilter>
+          <BountiesListFilter
+            isActive={activeFilter === UNDER_EVALUATION_FILTER}
+            onClick={() => this.setState({ activeFilter: UNDER_EVALUATION_FILTER })}
+          >
+            Under Evaluation
+          </BountiesListFilter>
+          <BountiesListFilter
+            isActive={activeFilter === FINISHED_FILTER}
+            onClick={() => this.setState({ activeFilter: FINISHED_FILTER })}
+          >
+            Finished
+          </BountiesListFilter>
+        </div>
+      </div>
+    )
+  }
 
-Bounties.propTypes = {
-  history: PropTypes.object.isRequired,
-};
+  render () {
+    const { history } = this.props;
+    const { bounties } = this.state;
 
-export default Bounties;
+    return (
+      <div className="bounties-list">
+        <div className="bounties-list__sidebar">
+          <TextInput placeholder="Search" />
+          { this.renderFilters() }
+        </div>
+        <div className="bounties-list__bounties-container">
+          <div className="bounties-list__bounties-header">
+            <div className="bounties-list__bounties-count">
+              <b>22</b> Bounties
+            </div>
+            <Sorter
+              prefix="Sort by:"
+              sortOptions={['Deadline']}
+            />
+          </div>
+          <div className="bounties-list__bounties">
+            {
+              bounties.map(bounty => {
+                const {
+                  id,
+                  name,
+                  tagline,
+                  organization,
+                  enrollmentCloseDate,
+                  userCount,
+                  prizes = []
+                } = bounty;
+
+                const prizePool = prizes.reduce((acc, base) => acc + base, 0);
+
+                return (
+                  <BountyCard
+                    onClick={() => history.push(`/authenticated/bounties/${id}`)}
+                    title={name}
+                    subtitle={tagline}
+                    organization={organization}
+                    enrollmentCloseDate={enrollmentCloseDate}
+                    prizePool={prizePool}
+                    count={userCount}
+                    key={id}
+                  />
+                )
+              })
+            }
+          </div>
+        </div>
+      </div>
+    );
+  }
+}

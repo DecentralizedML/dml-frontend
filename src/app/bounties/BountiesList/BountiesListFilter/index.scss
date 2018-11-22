@@ -1,0 +1,26 @@
+@import "../../../../variables.scss";
+
+.bounties-list-filter {
+  background: white;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding-left: 24px;
+  cursor: pointer;
+
+  &--active {
+    border-left: 5px solid rgb(60, 129, 232);
+  }
+
+  &:first-child {
+    border-radius: 3px 3px 0 0;
+  }
+
+  &:last-child {
+    border-radius: 0 0 3px 3px;
+  }
+
+  &:not(:last-child) {
+    border-bottom: 1px solid $catskill-gray;
+  }
+}

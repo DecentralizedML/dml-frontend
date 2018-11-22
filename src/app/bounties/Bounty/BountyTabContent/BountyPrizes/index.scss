@@ -1,0 +1,27 @@
+@import '../../../../../variables.scss';
+
+@import './BountyPrize/index';
+
+.bounty-prizes {
+  &__prize {
+    &:not(:last-child) {
+      margin-right: 24px;
+    }
+  }
+
+  &__prizes {
+    display: flex;
+    flex-flow: row wrap;
+    margin-bottom: 36px;
+  }
+
+  &__title {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+
+  &__description {
+    color: $steelplant;
+  }
+}
