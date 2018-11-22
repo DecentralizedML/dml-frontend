@@ -10,9 +10,8 @@ import {
 } from "react-router-dom";
 import { connect } from "react-redux";
 
-import Authenticated from "./authenticated"
+import Authenticated from "./authenticated";
 import Onboarding from "./onboarding";
-import CreateAlgorithm from "./create-algorithm";
 import ProtectedRoute from "./auth/ProtectedRoute";
 import Logout from "./auth/Logout";
 
@@ -38,13 +37,6 @@ class Routes extends Component {
     ) : (
       <Router>
         <Switch>
-          {/* Move to Authenticated Component */}
-          <ProtectedRoute
-            path="/algorithms/edit/:algoId"
-            component={CreateAlgorithm}
-          />
-          <ProtectedRoute path="/algorithms/new" component={CreateAlgorithm} />
-          {/* Move to Authenticated Component */}
           <ProtectedRoute path="/authenticated" component={Authenticated} />
           <Route path="/details" component={Onboarding} />
           <Route path="/metamask" component={Onboarding} />

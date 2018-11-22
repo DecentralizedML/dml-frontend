@@ -9,7 +9,7 @@ import {
 
 import ProtectedRoute from "../auth/ProtectedRoute";
 
-import DMLSiteHeader from '../dml-site-header';
+import DMLSiteHeader from "../dml-site-header";
 import Account from "../account";
 import Algorithms from "../algorithms";
 import Bounties from "../bounties";
@@ -17,7 +17,7 @@ import Marketplace from "../marketplace";
 import CreateAlgorithm from "../create-algorithm";
 
 export default class Authenticated extends PureComponent {
-  render () {
+  render() {
     return (
       <div className="authenticated">
         <div>
@@ -36,17 +36,26 @@ export default class Authenticated extends PureComponent {
             component={Account}
           />
           <ProtectedRoute path="/authenticated/account" component={Account} />
-          <ProtectedRoute path="/authenticated/algorithms/:id" component={Algorithms} />
-          <ProtectedRoute path="/authenticated/algorithms/" component={Algorithms} />
           <ProtectedRoute
-            path="/authenticated/create-algorithm/"
+            path="/authenticated/algorithms/edit/:id"
             component={CreateAlgorithm}
           />
+          <ProtectedRoute
+            path="/authenticated/algorithms/new"
+            component={CreateAlgorithm}
+          />
+          <ProtectedRoute
+            path="/authenticated/algorithms/"
+            component={Algorithms}
+          />
           <ProtectedRoute path="/authenticated/bounties" component={Bounties} />
-          <ProtectedRoute path="/authenticated/marketplace/:algoId?" component={Marketplace} />
+          <ProtectedRoute
+            path="/authenticated/marketplace/:algoId?"
+            component={Marketplace}
+          />
           <Redirect to="/authenticated/marketplace" />
         </Switch>
       </div>
-    )
+    );
   }
 }

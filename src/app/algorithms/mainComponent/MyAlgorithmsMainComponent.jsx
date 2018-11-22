@@ -64,7 +64,7 @@ const MyAlgorithmsMain = props => {
   const editAlgorithm = algorithm => {
     const whereToContinue = latestStep(algorithm);
     props.saveNewAlgorithmData({ ...algorithm, currentStep: whereToContinue });
-    props.history.push(`/algorithms/edit/${algorithm.id}`);
+    props.history.push(`/authenticated/algorithms/edit/${algorithm.id}`);
   };
   return (
     <MainWrapper>
