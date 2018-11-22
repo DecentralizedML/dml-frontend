@@ -99,7 +99,7 @@ export const DMLWrapper = styled.div`
 export const DMLLogo = styled.div`
   width: 12px;
   height: 12px;
-  background-image: url("./iconLogo.svg");
+  background-image: url("/iconLogo.svg");
   background-position: center;
   background-size: contain;
 `;
@@ -124,7 +124,7 @@ export const KPITitle = styled.div`
 export const DMLLogoBlue = styled.div`
   width: 16px;
   height: 16px;
-  background-image: url("./logos/Logo-Icon-Blue.svg");
+  background-image: url("/logos/Logo-Icon-Blue.svg");
   background-position: center;
   background-size: contain;
 `;
