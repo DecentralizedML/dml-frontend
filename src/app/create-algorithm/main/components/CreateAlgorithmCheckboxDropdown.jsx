@@ -40,7 +40,7 @@ class CreateAlgorithmCheckboxDropdown extends Component {
             type="checkbox"
             id={option}
             checked={
-              Array.isArray(this.selection) &&
+              Array.isArray(this.state.selection) &&
               this.state.selection.includes(option)
             }
             onChange={e => this.handleCheckboxSelection(e)}
