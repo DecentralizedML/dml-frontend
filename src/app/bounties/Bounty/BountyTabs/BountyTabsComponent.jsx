@@ -1,29 +1,34 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
-import { matchPath } from 'react-router-dom';
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
+import classnames from "classnames";
+import { matchPath } from "react-router-dom";
 
-import BountyTab from '../BountyTab';
+import BountyTab from "../BountyTab";
 
 export default class BountyTabs extends PureComponent {
   static propTypes = {
     history: PropTypes.object,
     location: PropTypes.object,
-    bountyId: PropTypes.number,
+    bountyId: PropTypes.number
+  };
+
+  isActive(path) {
+    return Boolean(
+      matchPath(this.props.location.pathname, {
+        path,
+        exact: true
+      })
+    );
   }
 
-  isActive (path) {
-    return Boolean(matchPath(this.props.location.pathname, {
-      path, exact: true,
-    }))
-  }
-
-  render () {
-    const { className, history, bountyId } = this.props;
-    const url = `/authenticated/bounties/${bountyId}`;
+  render() {
+    const { className, history, bountyId, create } = this.props;
+    const url = create
+      ? `/authenticated/bounties/create`
+      : `/authenticated/bounties/${bountyId}`;
 
     return (
-      <div className={classnames('bounty-tabs', className)}>
+      <div className={classnames("bounty-tabs", className)}>
         <BountyTab
           onClick={() => history.push(url)}
           isActive={this.isActive(url)}
@@ -68,6 +73,6 @@ export default class BountyTabs extends PureComponent {
         </BountyTab>
         <div className="bounty-tabs__placeholder" />
       </div>
-    )
+    );
   }
 }

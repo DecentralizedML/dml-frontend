@@ -1,88 +1,87 @@
-import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import React from "react";
+import { Switch, Route } from "react-router-dom";
 
-import BountyDescription from './BountyDescription';
-import BountyPrizes from './BountyPrizes';
-import BountyTimeline from './BountyTimeline';
+import BountyDescription from "./BountyDescription";
+import BountyPrizes from "./BountyPrizes";
+import BountyTimeline from "./BountyTimeline";
 
-export default function BountyTabContent (props) {
+export default function BountyTabContent(props) {
   const { bounty } = props;
-  const { description, prizes, timeline } = bounty;
+  const { description, prizes, timeline, create } = bounty;
+
+  const root = create
+    ? "/authenticated/bounties/create"
+    : "/authenticated/bounties/:id";
+
+  const placeholder = title => {
+    return (
+      <div>
+        <p class="md-block-unstyled">
+          <strong class="md-inline-bold">{title}</strong>
+        </p>
+        <p class="md-block-unstyled">Your description here.</p>
+      </div>
+    );
+  };
+
+  const renderContent = htmlAsJSON => {
+    let content = "";
+    if (htmlAsJSON) {
+      console.log(htmlAsJSON);
+      content = JSON.parse(htmlAsJSON);
+    }
+    return content;
+  };
 
   return (
     <Switch>
       <Route
-        path="/authenticated/bounties/:id/prizes"
+        path={`${root}/prizes`}
+        render={props => <BountyPrizes {...props} prizes={prizes} />}
+      />
+      <Route
+        path={`${root}/timeline`}
+        render={props => <BountyTimeline {...props} timeline={timeline} />}
+      />
+      <Route
+        path={`${root}/data`}
         render={props => (
-          <BountyPrizes
-            { ...props }
-            prizes={prizes}
-          />
+          <BountyDescription {...props} content={placeholder("Data")} />
         )}
       />
       <Route
-        path="/authenticated/bounties/:id/timeline"
+        path={`${root}/data`}
         render={props => (
-          <BountyTimeline
-            { ...props }
-            timeline={timeline}
-          />
+          <BountyDescription {...props} content={placeholder("Data")} />
         )}
       />
       <Route
-        path="/authenticated/bounties/:id/data"
+        path={`${root}/evaluation`}
+        render={props => (
+          <BountyDescription {...props} content={placeholder("Evaluation")} />
+        )}
+      />
+      <Route
+        path={`${root}/rules`}
+        render={props => (
+          <BountyDescription {...props} content={placeholder("Rules")} />
+        )}
+      />
+      <Route
+        path={`${root}/submission`}
+        render={props => (
+          <BountyDescription {...props} content={placeholder("Submission")} />
+        )}
+      />
+      <Route
+        path={`${root}`}
         render={props => (
           <BountyDescription
-            { ...props }
-            content={'# Data\n\nIntro'}
-          />
-        )}
-      />
-      <Route
-        path="/authenticated/bounties/:id/data"
-        render={props => (
-          <BountyDescription
-            { ...props }
-            content={'# Data\n\nIntro'}
-          />
-        )}
-      />
-      <Route
-        path="/authenticated/bounties/:id/evaluation"
-        render={props => (
-          <BountyDescription
-            { ...props }
-            content={'# Evaluation\n\nIntro'}
-          />
-        )}
-      />
-      <Route
-        path="/authenticated/bounties/:id/rules"
-        render={props => (
-          <BountyDescription
-            { ...props }
-            content={'# Rules\n\nIntro'}
-          />
-        )}
-      />
-      <Route
-        path="/authenticated/bounties/:id/submission"
-        render={props => (
-          <BountyDescription
-            { ...props }
-            content={'# Submission\n\nIntro'}
-          />
-        )}
-      />
-      <Route
-        path="/authenticated/bounties/:id"
-        render={props => (
-          <BountyDescription
-            { ...props }
-            content={description}
+            {...props}
+            content={placeholder("WE NEED TO IMPLEMENT THIS")}
           />
         )}
       />
     </Switch>
-  )
+  );
 }
