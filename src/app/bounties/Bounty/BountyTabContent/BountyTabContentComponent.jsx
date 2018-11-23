@@ -7,7 +7,7 @@ import BountyTimeline from "./BountyTimeline";
 
 export default function BountyTabContent(props) {
   const { bounty } = props;
-  const { description, prizes, timeline, create } = bounty;
+  const { description, prizes, timeline, create, edit } = bounty;
 
   const root = create
     ? "/authenticated/bounties/create"
@@ -46,31 +46,51 @@ export default function BountyTabContent(props) {
       <Route
         path={`${root}/data`}
         render={props => (
-          <BountyDescription {...props} content={placeholder("Data")} />
+          <BountyDescription
+            {...props}
+            edit={edit}
+            content={placeholder("Data")}
+          />
         )}
       />
       <Route
         path={`${root}/data`}
         render={props => (
-          <BountyDescription {...props} content={placeholder("Data")} />
+          <BountyDescription
+            {...props}
+            edit={edit}
+            content={placeholder("Data")}
+          />
         )}
       />
       <Route
         path={`${root}/evaluation`}
         render={props => (
-          <BountyDescription {...props} content={placeholder("Evaluation")} />
+          <BountyDescription
+            {...props}
+            edit={edit}
+            content={placeholder("Evaluation")}
+          />
         )}
       />
       <Route
         path={`${root}/rules`}
         render={props => (
-          <BountyDescription {...props} content={placeholder("Rules")} />
+          <BountyDescription
+            {...props}
+            edit={edit}
+            content={placeholder("Rules")}
+          />
         )}
       />
       <Route
         path={`${root}/submission`}
         render={props => (
-          <BountyDescription {...props} content={placeholder("Submission")} />
+          <BountyDescription
+            {...props}
+            edit={edit}
+            content={placeholder("Submission")}
+          />
         )}
       />
       <Route
@@ -78,6 +98,7 @@ export default function BountyTabContent(props) {
         render={props => (
           <BountyDescription
             {...props}
+            edit={edit}
             content={placeholder("WE NEED TO IMPLEMENT THIS")}
           />
         )}

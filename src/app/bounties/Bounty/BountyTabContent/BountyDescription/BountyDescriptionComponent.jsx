@@ -21,7 +21,6 @@ class BountyDescription extends React.Component {
     const renderedHTML = mediumDraftExporter(
       editorStateNew.getCurrentContent()
     );
-    console.log(renderedHTML);
   }
 
   renderContent() {
@@ -32,8 +31,6 @@ class BountyDescription extends React.Component {
     const { editorState } = this.state;
     return (
       <div>
-        {this.renderStuff()}
-        {this.renderHtml()}
         <Editor
           ref={this.refsEditor}
           editorState={editorState}

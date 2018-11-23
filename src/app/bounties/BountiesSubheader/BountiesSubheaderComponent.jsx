@@ -1,8 +1,8 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import { matchPath } from 'react-router-dom'
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
+import { matchPath } from "react-router-dom";
 
-import BountiesSubheaderLink from './BountiesSubheaderLink';
+import BountiesSubheaderLink from "./BountiesSubheaderLink";
 
 export default class BountiesSubheader extends PureComponent {
   static propTypes = {
@@ -10,64 +10,73 @@ export default class BountiesSubheader extends PureComponent {
     showCreateBounty: PropTypes.bool,
     history: PropTypes.object.isRequired,
     location: PropTypes.object,
-    showMyParticipations: PropTypes.bool,
+    showMyParticipations: PropTypes.bool
   };
 
   static defaultProps = {
     showAllBounties: false,
     showCreateBounty: false,
-    showMyParticipations: false,
+    showMyParticipations: false
   };
 
-  isActive (path) {
-    return Boolean(matchPath(this.props.location.pathname, {
-      path, exact: true,
-    }))
+  isActive(path, exactMatch) {
+    return Boolean(
+      matchPath(this.props.location.pathname, {
+        path,
+        exact: exactMatch
+      })
+    );
   }
 
-  renderAllBounties () {
-    const { showAllBounties, history } = this.props
+  renderAllBounties() {
+    const { showAllBounties, history } = this.props;
 
-    return showAllBounties && (
-      <BountiesSubheaderLink
-        text="All Bounties"
-        active={this.isActive('/authenticated/bounties')}
-        onClick={() => history.push('/authenticated/bounties')}
-      />
-    )
+    return (
+      showAllBounties && (
+        <BountiesSubheaderLink
+          text="All Bounties"
+          active={this.isActive("/authenticated/bounties", true)}
+          onClick={() => history.push("/authenticated/bounties")}
+        />
+      )
+    );
   }
 
-  renderMyParticipations () {
-    const { showMyParticipations, history } = this.props
+  renderMyParticipations() {
+    const { showMyParticipations, history } = this.props;
 
-    return showMyParticipations && (
-      <BountiesSubheaderLink
-        text="My Participations"
-        active={this.isActive('/authenticated/bounties/user')}
-        onClick={() => history.push('/authenticated/bounties/user')}
-      />
-    )
+    return (
+      showMyParticipations && (
+        <BountiesSubheaderLink
+          text="My Participations"
+          active={this.isActive("/authenticated/bounties/user", true)}
+          onClick={() => history.push("/authenticated/bounties/user")}
+        />
+      )
+    );
   }
 
-  renderCreateBounty () {
-    const { showCreateBounty, history } = this.props
+  renderCreateBounty() {
+    const { showCreateBounty, history } = this.props;
 
-    return showCreateBounty && (
-      <BountiesSubheaderLink
-        text="Create Bounty"
-        active={this.isActive('/authenticated/bounties/create')}
-        onClick={() => history.push('/authenticated/bounties/create')}
-      />
-    )
+    return (
+      showCreateBounty && (
+        <BountiesSubheaderLink
+          text="Create Bounty"
+          active={this.isActive("/authenticated/bounties/create", false)}
+          onClick={() => history.push("/authenticated/bounties/create")}
+        />
+      )
+    );
   }
 
-  render () {
+  render() {
     return (
       <div className="bounties-subheader">
-        { this.renderAllBounties() }
-        { this.renderMyParticipations() }
-        { this.renderCreateBounty() }
+        {this.renderAllBounties()}
+        {this.renderMyParticipations()}
+        {this.renderCreateBounty()}
       </div>
-    )
+    );
   }
 }

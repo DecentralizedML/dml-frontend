@@ -12,6 +12,7 @@ class BountyCreate extends Component {
     this.state = {
       bounty: {
         create: true,
+        edit: true,
         id: 0,
         name: "Your Awesome Name",
         tagline: "Your Amazing Tagline",
